@@ -1,0 +1,997 @@
+<script>
+ 
+  
+  let rechargeInfo = JSON.parse(localStorage.getItem("rechargeInfo"))
+  let rechargeId = rechargeInfo == undefined ? '' : rechargeInfo['customer'] == null ? '' : rechargeInfo['customer']['hash']
+    
+  localStorage.setItem('hasNoSub', false)
+  {% if cart.item_count > 0 %}
+  	if (localStorage.getItem('comingFromCart') === 'true') {
+    	localStorage.setItem('comingFromCart', false);
+    	{% if customer %}
+          if(rechargeId === ''){
+    		function reChargeProcessCart() {
+      			function get_cookie(name){ return( document.cookie.match('(^|; )'+name+'=([^;]*)')||0 )[2] }
+      			do { token=get_cookie('cart'); } while(token == undefined);
+      			var myshopify_domain='{{ shop.permanent_domain }}'
+      			try { var ga_linker = ga.getAll()[0].get('linkerParam') } catch(err) { var ga_linker ='' }
+      			var customer_param = '{% if customer %}customer_id={{customer.id}}&customer_email={{customer.email}}{% endif %}'
+      			checkout_url= "https://checkout.vejo.com/r/checkout?myshopify_domain="+myshopify_domain+"&cart_token="+token+"&"+ga_linker+"&"+customer_param;
+      			return checkout_url;
+    		}
+    		window.location.href = reChargeProcessCart();
+          } else {
+            window.location.href = "https://subscriptions.vejo.com/#/subscriptions?id=" + rechargeId + "&region=1&language=en";
+          }
+       {% endif %}
+    } else {
+      if (rechargeId !== "") {
+        var extraParam = ''
+        if(localStorage.getItem('productName') != '' && localStorage.getItem('productName') != null && localStorage.getItem('productName') != undefined){
+          extraParam = "&productName=" + localStorage.getItem('productName')
+          localStorage.setItem('productName', '')
+        }
+        window.location.href = "https://subscriptions.vejo.com/#/subscriptions?id=" + rechargeId + "&region=1&language=en" + extraParam;
+      }
+    } 
+  {% else %}
+    if (rechargeId !== "") {
+        var extraParam = ''
+        if(localStorage.getItem('productName') != '' && localStorage.getItem('productName') != null && localStorage.getItem('productName') != undefined){
+          extraParam = "&productName=" + localStorage.getItem('productName')
+          localStorage.setItem('productName', '')
+        }
+        window.location.href = "https://subscriptions.vejo.com/#/subscriptions?id=" + `{{ customer.metafields.subscriptions.customer_string }}` + "&region=1&language=en" + extraParam;
+      }
+  {% endif %}
+
+</script>
+
+{{ "myaccount.scss.css" | asset_url | stylesheet_tag }}
+
+<div class="myaccount">
+{% comment %}Navigation{% endcomment %}
+	<nav>
+		<div class="nav-container">
+			<div style="justify-content: space-between;" class="nav-item menu-header dropdown-arrow-container">
+				<h1>Account</h1>
+                <h1 onclick='window.location.href="https://www.vejo.com/account/logout"'>Log Out</a>
+<!-- 				<div class="dropdown-arrow"></div> -->
+			</div>
+			<div class="menu-items mobile">
+				<div class="nav-item menu-item account active" data-menu="Account">
+					<h1>Account</h1>
+					<span></span>
+        </div>
+        
+<!--         {% if customer.metafields.subscriptions.customer_string != null %}
+          <a href="https://www.vejo.com/tools/recurring/login" 
+            class="nav-item menu-item" 
+            data-menu="Subscriptions"
+          >
+            <h1>Subscriptions</h1>
+            <span></span>
+          </a>
+        {% else %}
+          <div class="nav-item menu-item subscriptions" data-menu="Subscriptions">
+            <h1>Subscriptions</h1>
+            <span></span>
+          </div>
+        {% endif %} -->
+
+				
+        
+<!-- 				<div class="nav-item menu-item orders" data-menu="Order History">
+					<h1>Order History</h1>
+					<span></span>
+        </div> -->
+        {% if !customer.has_account %}
+          <div class="nav-item logout">
+            <a data-auth="logout" href="https://www.vejo.com/account/logout">Log Out</a>
+            <span></span>
+          </div>
+        {% endif %} 
+			</div>
+		</div>
+	</nav>
+{% comment %} End of Navigation {% endcomment %} 
+
+{% comment %} Customer Account {% endcomment %}
+	<section class="customer customer-account">
+    <div class="banner" style="margin-bottom:15px">
+      <h1 class="section-title">Account <br/>Details</h1>
+      <div class="banner-bg"></div>
+    </div>
+
+    <div class="section-content" style="background-color:black; margin-top:15px; margin-bottom:15px">
+      <div class="section-content-no-sub-info">It appears that you don't have a subscription yet. <a href="https://www.vejo.com/collections/all-blends-4-packs" style="text-decoration:underline; cursor:pointer">Choose</a> five 4-packs to qualify for 10% off subscription purchases plus free shipping.</div>
+    </div>   
+		<div class="section-content" style="margin-top:15px">
+			<h2 class="content-title">Customer Information</h2>
+
+			<div class="section-wrap customer-content">
+        {% if !customer.has_account %}
+          <div class="customer-info-wrap">
+            <div class="customer-wrap">
+              <p class="customer-name customer-info">
+                <b>Name</b>&nbsp;&nbsp; <span>{{ customer.first_name }} {{ customer.last_name }}</span>
+              </p>
+              <p class="customer-email customer-info" id="customer-email" customer-email="{{ customer.email }}">
+                <b>Email</b>&nbsp;&nbsp; <span>{{ customer.email }}</span>
+              </p>
+              {% if !customer.default_address.phone %}
+                <p class="customer-phone customer-info">
+                  <b>Phone</b>&nbsp;&nbsp;
+                  <span>{{ customer.default_address.phone }}</span>
+                </p>
+              {% endif %}
+              {% if !customer.default_address %}
+                <p class="customer-address customer-info">
+                  <b>Address</b>&nbsp;&nbsp;
+                  <span>
+                    {{ customer.default_address.address1 }} {{ customer.default_address.address2 }}<br/>
+                    {{ customer.default_address.city }},&nbsp;
+                    {{ customer.default_address.province_code }}&nbsp;
+                    {{ customer.default_address.zip }}
+                  </span>
+                </p>
+              {% endif %}
+              <!--<p class="customer-phone customer-info">
+                <b>Phone</b>&nbsp;&nbsp;
+                {% if !customer.default_address.phone %}
+                  <span>{{ customer.default_address.phone }}</span>
+                {% else %}
+                  <span>No phone number set yet.</span>
+                {% endif %}
+              </p>
+              <p class="customer-address customer-info">
+                <b>Address</b>&nbsp;&nbsp;
+                {% if !customer.default_address %}
+                  <span>
+                    {{ customer.default_address.address1 }} {{ customer.default_address.address2 }}<br/>
+                    {{ customer.default_address.city }},&nbsp;
+                    {{ customer.default_address.province_code }}&nbsp;
+                    {{ customer.default_address.zip }}
+                  </span>
+                {% else %}
+                  <span>No shipping address set yet.</span>
+                {% endif %}
+              </p>-->
+              
+              <!-- <button id="edit-info" class="edit-button">Edit Info</button> -->
+              <button id="reset-password" class="edit-button reset-button" style="padding-left:30px; margin-left:0px">Reset Password <span class="email-status"></span></button>
+<!--               <button class="my-sub-button" onclick="getRechargeInfo(`{{ customer.email }}`)">See my Subscriptions</button> -->
+            </div>
+  
+            <div class="edit-info-wrap form-wrap">
+              <h2 class="content-title">Edit Information</h2>
+              <form action="">
+                <div class="input-wrap one-half">
+                  <label for="first_name">First Name</label>
+                  <input 
+                    type="text" 
+                    value="{{ customer.first_name }}"
+                    name="first_name" 
+                    required>
+                </div>
+                <div class="input-wrap one-half">
+                  <label for="last_name">Last Name</label>
+                  <input 
+                    type="text" 
+                    value="{{ customer.last_name }}"
+                    name="last_name"
+                    required>
+                </div>
+                <div class="input-wrap two-thirds">
+                  <label for="address1">Street Address</label>
+                  <input 
+                    type="text" 
+                    value="{{ customer.default_address.address1 }}"
+                    name="address1" 
+                    required>
+                </div>
+                <div class="input-wrap one-third">
+                  <label for="address1">Apt/Ste #</label>
+                  <input 
+                    type="text" 
+                    value="{{ customer.default_address.address2 }}"
+                    name="address2">
+                </div>
+                <div class="input-wrap two-thirds">
+                  <label for="address1">City</label>
+                  <input 
+                    type="text" 
+                    value="{{ customer.default_address.city }}"
+                    name="city" 
+                    required>
+                </div>
+                <div class="input-wrap one-third">
+                  <label for="address1">Postal/ZIP</label>
+                  <input 
+                    type="text" 
+                    value="{{ customer.default_address.zip }}" 
+                    name="zip" 
+                    required>
+                </div>
+                <div class="input-wrap one-third">
+                  <label for="address1">State/Province</label>
+                  <input 
+                    type="text" 
+                    value="{{ customer.default_address.province }}" 
+                    name="zip" 
+                    required>
+                </div>
+                <div class="input-wrap one-third">
+                  <label for="address1">Country</label>
+                  <select name="country">
+                    {{ country_option_tags }}
+                  </select>
+                </div>
+                <div class="input-wrap one-third">
+                  <label for="phone">Phone #</label>
+                  <input 
+                    type="text" 
+                    value="{{ customer.default_address.phone }}" 
+                    name="phone" 
+                    required>
+                </div>
+                <div class="button-wrap buttons-update">
+                  <button 
+                    class="button-submit customer-button" 
+                    id="info-submit">
+                    Update Info
+                  </button>
+                  <button class="close-button close-info">Close</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        {% else %}
+          <p>You are not logged in yet.</p>
+				  <a href="https://www.vejo.com/pages/login" class="customer-account customer-button">Create an account</a>
+				  <a href="https://www.vejo.com/pages/login" class="customer-account customer-button">Sign in</a>
+        {% endif %} 
+			</div>
+      
+      
+<!--         <a href="https://www.vejo.com/pages/rewards-program"
+            class="customer-button"
+          >My Rewards</a>
+		</div> -->
+	</section>
+{% comment %} End of Customer Account {% endcomment %} 
+
+{% comment %} Customer Subscriptions {% endcomment %}
+	<section class="customer customer-subscriptions">
+		{% if customer.metafields.subscriptions.customer_string != null %}
+      <p class="loading">Loading...</p>
+    {% else %}
+      <div class="banner">
+        <h1 class="section-title">Subscriptions</h1>
+        <div class="banner-bg"></div>
+      </div>
+      <div class="section-content">
+        <h2 class="content-title">Active Subscriptions</h2>
+        <div class="section-wrap">
+          <p class="empty-field">
+            You do not have any subsriptions yet, start one by adding a monthly blend!
+          </p>
+          <a href="https://www.vejo.com/collections/subscription-products#/"
+            class="customer-button"
+          >Get Started</a>
+			  </div>
+      </div>
+    {% endif %}
+	</section>
+{% comment %} End of Customer Subscriptions {% endcomment %} 
+  
+{% comment %}Customer Orders {% endcomment %}
+	<section class="customer customer-orders">
+		<div class="banner">
+      <h1 class="section-title">Order <br/>History</h1>
+      <div class="banner-bg"></div>
+    </div>
+		<div class="section-content">
+			<h2 class="content-title">Orders</h2>
+			<div class="section-wrap">
+        {% if customer.orders_count > 0 %}
+         
+
+          <div class="order-list">
+            {% for order in customer.orders %}
+              {% assign hasVejoPlusProduct = false %}
+              {% assign isMonthlySubscription = false %}
+
+              <div class="orders">
+                <div class="order-header order-sections">
+                  <div class="order-title">
+                    <h2 class="order-number">Order #{{ order.order_number }}</h2>
+                    <h3 class="order-date">{{ order.created_at | date: "%b %d, %Y" }}</h3>
+                    <div class="item-names">
+                      {% for line_item in order.line_items %}
+                        <div class="item-name">
+                          <a href="{{line_item.product.url}}" target="_blank" rel="noopener noreferrer">
+                            <h2 class="product-titles">
+                              <span class="item-title">{{ line_item.product.title }}</span>
+                              <span class="variant-title">{{ line_item.variant.title }}</span>
+                            </h2>
+                          </a>
+                        </div>
+
+                        {% if line_item.product.title contains "Vejo+" %}
+                          {% assign hasVejoPlusProduct = true %}
+                        {% endif %}
+
+                        {% for tag in line_item.product.tags %}
+                          {% if tag contains "Subscription" %}
+                            {% assign isMonthlySubscription = true %}
+                          {% endif %}
+                        {% endfor %}
+
+                      {% endfor %}
+                    </div>
+                  </div>
+
+                  <!-- Order Status -->
+                  <div class="order-status">
+                    <!-- Check if order is cancelled -->
+                    {% if order.cancelled %}
+                      <!-- Canceled -->
+                      <p class="cancelled">Order Cancelled</p> 
+                      <div class="cancel-explanatioin">
+                        <p class="cancel-date">{{ order.cancelled_at | date: format: 'abbreviated_date'}}</p>
+                        {% if order.cancel_reason %}
+                          <p class="cancel-reason">Reason: {{ order.cancel_reason }}</p>
+                        {% endif %}
+                      </div>
+                    <!-- End of Canceled -->
+                    {% else %}
+                      {% if order.fulfillment_status == 'fulfilled' %}
+                        <p class="fulfilled">Fulfilled</p> 
+                      {% elsif order.fulfillment_status == 'partial' %}
+                        <p class="partially">Partially fulfilled</p>
+                        <a href="{{ order.order_status_url }}" class="track-package" target="blank" rel="noopener noreferrer">Track your package</a>
+                      {% else %}
+                        <p class="in-progress">{{ order.fulfillment_status }}</p>
+                        <a href="{{ order.order_status_url }}" class="track-package" target="blank" rel="noopener noreferrer">Track your package</a>
+                      {% endif %}
+                    {% endif %}    
+                  </div>
+                  <!-- End of Order Status -->
+
+
+                </div>
+
+                <div class="order-wrap">
+                  <div class="order-again">
+                    {% if hasVejoPlusProduct %}
+                      <p class="no-reorder">This order cannot be express reordered because it contains a Vejo+ item</p>
+                    {% elsif isMonthlySubscription %}
+
+                    {% else %}
+                      <button class="order-button customer-button" id="re-order">Reorder</button>
+                    {% endif %}
+                  </div>
+                  
+                  <script>
+                    $(function(){     
+                      
+                      // Reorder Logic
+                      $("#re-order").on('click', function(e) {
+                        CartJS.addItems([
+                          {% for line_item in order.line_items %}
+                            {
+                              id: {{ line_item.variant_id | json }} ,
+                              quantity: {{ line_item.quantity | json }} 
+                            }{% unless forloop.last %},{% endunless %}
+                          {% endfor %}
+                        ],{
+                          "success": function(data, textStatus, jqXHR) {   
+                            window.location.href = "https://www.vejo.com/checkout";
+                          },
+                          "error": function(jqXHR, textStatus, errorThrown) {
+                            console.log('Error: ' + errorThrown + '!');
+                          }
+                        })
+                      });
+
+                      // Reset Password
+                    })
+
+                  </script>
+                 
+                  <div class="more-details dropdown-arrow-container">
+                    <p class="info-title">More Info</p>
+                    <div class="dropdown-arrow"></div>
+                  </div>
+                  <div class="more-info">
+                    <div class="order-info-wrap">
+                        <div class="order-info">
+                          <div class="product-details">
+                            {% for line_item in order.line_items %}
+                            <script>console.log({{line_item | json}})</script>
+                              <div class="order-item">
+                                <div class="item-image">
+                                  <a href="{{line_item.product.url}}" class="product-url product-image" target="blank" rel="noopener noreferrer">
+                                    {{ line_item.image | img_url: '100x100' | img_tag }}
+                                  </a>
+                                </div>
+                                
+                                <div class="item-text">
+                                  <a href="{{line_item.product.url}}" class="product-url" target="blank" rel="noopener noreferrer">
+                                    <h2 class="product-titles">{{ line_item.product.title }}<span class="variant-title">{{ line_item.variant.title }}</span></h2>
+                                  </a>
+                                  <p>Qty. {{ line_item.quantity }}</p>
+                                  <p>{{ line_item.final_price | money }}</p>
+
+                                  {% if hasVejoPlusProduct %}
+                                    <p class="no-reorder">This item cannot be express reordered because it is a Vejo+ item</p>
+                                  {% elsif isMonthlySubscription %}
+
+                                  {% else %}
+                                    <div class="reorder-buttons">
+                                      <button data-vid="{{line_item.variant_id}}" data-qty="{{ line_item.quantity }}" class="atc-button order-button">Add To Cart</button>
+                                      <a href="https://www.vejo.com/cart/{{line_item.variant_id}}:{{ line_item.quantity }}" class="reorder-button order-button">Buy Again</a>
+                                    </div>
+                                  {% endif %}
+
+                                </div>
+                              </div>
+                            {% endfor %}
+                          </div>
+                          <div class="order-total order-sections">
+                            <h1 class="details-header">Order Details</h1>
+                            <p class="price-subtotal prices">Sub Total: <span>{{ order.subtotal_price | money }}</span></p>
+                            <p class="price-shipping prices">Shipping Price: <span>{{ order.shipping_price | money }}</span></p>
+                            <p class="price-shipping prices">Taxes: <span>{{ order.tax_price | money }}</span></p>
+      
+                            {% for discount_application in order.discount_applications %}
+                              <div class="discounts">
+                                <p class="discount-name prices">Discount: {{ discount_application.title }} <span>-{{ discount_application.total_allocated_amount | money }}</span></p>
+                              </div>
+                            {% endfor %}
+                            
+                            <p class="price-total prices">Total Price: <span>{{ order.total_price | money }}</span></p>
+      
+                            <!-- Payment Type -->
+                            <!-- <p class="pay-info">{{ order.transaction.payment_details.credit_card_number }} <span>{{ order.transaction.payment_details.credit_card_company }}</span></p> -->
+                            <!-- End of Type -->
+      
+                            <p class="pay-status prices">
+                              {% if (order.financial_status == 'paid'||order.financial_status == 'partially_paid') %}
+                                Thank you for your business. <span class="paid">{{ order.financial_status }}</span> 
+                              {% elsif (order.financial_status == 'refunded'||order.financial_status == 'partially_refunded')%}
+                                <span class="refunded">{{ order.financial_status }}</span>
+                              {% elsif (order.financial_status == 'pending'||order.financial_status == 'authorized')%}
+                                Thank you for your business. <span class="pending">{{ order.financial_status }}</span>
+                              {% elsif (order.financial_status == 'voided')%}
+                                <a href="https://help.vejo.com/" 
+                                target="blank" 
+                                rel="noopener noreferrer"
+                                >Contact customer support</a>
+                                <span class="void">{{ order.financial_status }}</span>
+                              {% else %}
+                                Thank you for your business.
+                              {% endif %}
+                            </p>
+                          </div>
+                        </div>
+                        <!-- Shipping/Billing Address -->
+                        <div class="address-wrap">
+                          <div class="shipping-details order-sections">
+                            <h1 class="details-header">Shipping Address</h1>
+                            <h2 class="details-subheader">{{ order.shipping_address.first_name }} {{ order.shipping_address.last_name }}</h2>
+                            <p class="shipping-address">
+                              {{ order.shipping_address.address1 }},&nbsp; 
+                              <span class="address2">{{ order.shipping_address.address2 }}</span>
+                            </p>
+                            <p class="city-state-province">
+                              <span>{{ order.shipping_address.city }}</span>,&nbsp;
+                              <span>{{ order.shipping_address.province }}</span>&nbsp;
+                              <span>{{ order.shipping_address.zip }}</span>
+                            </p>  
+                          </div>
+      
+                          <div class="billing-details order-sections">
+                            <h1 class="details-header">Billing Address</h1>
+                            <h2 class="details-subheader">{{ order.billing_address.first_name }} {{ order.billing_address.last_name }}</h2>
+                            <p class="billing-address">
+                              {{ order.billing_address.address1 }},&nbsp; 
+                              <span class="address2">{{ order.billing_address.address2 }}</span>
+                            </p>
+                            <p class="city-state-province">
+                              <span>{{ order.billing_address.city }}</span>,&nbsp;
+                              <span>{{ order.billing_address.province }}</span>&nbsp;
+                              <span>{{ order.billing_address.zip }}</span>
+                            </p>  
+                          </div>
+                        </div>
+                        <!-- End of Shipping/Billing Address -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+
+          </div>
+
+        {% else %}
+          <p class="empty-field">You have not ordered anything yet!</p>
+          <a
+            href="https://www.vejo.com/collections/all-blends#/"
+            class="customer-button"
+            >Shop Blends</a
+          >
+				{% endif %}
+			</div>
+		</div>
+	</section>
+{% comment %} End of Customer Orders {% endcomment %}
+</div>
+
+{{ "myaccount.js" | asset_url | script_tag }}
+
+<style>
+  .my-sub-button{
+    background-color: black;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+  }
+  .myaccount .customer.customer-account p b{
+    width: auto;
+    padding-left:30px;
+  }
+  .section-content-no-sub-info{
+    color:white;
+    text-align:center;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+  }
+</style>
+
+
+{% comment %}
+<script>
+  if(`{{ customer.metafields.subscriptions.customer_string }}` === ''){
+    window.location.href = 'https://www.vejo.com/account/#/orders';
+  } else{
+    window.location.href = 'https://www.vejo.com/tools/recurring/login';
+  }
+</script>
+
+<section class="section-generic" style="padding:0px">
+  <div class="shell" style="max-width:10000px !important; width:100vw; padding:0px">
+    <nav style="margin-top:20px; height:50px; display:flex; /*background-color:black; color:white; */ color:black; justify-content:space-around; align-items:center">
+      <div class="myaccountbutton mobileFont" style="cursor:pointer; font-weight:700; /*width:20%; */text-align:center">
+<!--         <div class="myaccountlinetop" style="width:0%; border-bottom:2px solid black" hidden></div> -->
+<!--         <div style="display:flex">
+          <div class="myaccountlineleft" style="width:0%; border-left:2px solid black" hidden></div>
+          My Account
+          <div class="myaccountlineright" style="width:0%; border-right:2px solid black" hidden></div>
+        </div> -->
+        My Account
+        <div class="myaccountline" style="width:0%; border-top:2px solid black" hidden></div>
+        <div class="myaccountline2" style="width:60%; border-top:2px solid black"></div>
+      </div>
+      <div class="mysubbutton mobileFont" style="cursor:pointer; /*width:20%; */text-align:center">
+<!--         <div class="mysublinetop" style="width:0%; border-bottom:2px solid black"></div> -->
+<!--         <div style="display:flex">
+          <div class="mysublineleft" style="height:0px; border-right:2px solid black"></div>
+          My Subscription(s)
+          <div class="mysublineright" style="height:0px; border-left:2px solid black"></div>
+        </div> -->
+        My Subscription(s)
+        <div class="mysubline" style="width:0%; border-top:2px solid black"></div>
+        <div class="mysubline2" style="width:60%; border-top:2px solid black" hidden></div>
+      </div>
+      <div class="myorderbutton mobileFont" style="cursor:pointer; /*width:20%; */text-align:center">
+        Order History
+        <div class="myorderline" style="width:0%; border-top:2px solid black"></div>
+        <div class="myorderline2" style="width:60%; border-top:2px solid black" hidden></div>
+      </div>
+      <a href="#logout" data-auth="logout" class="logoutbutton mobileFont" style="text-decoration:none; cursor:pointer; /*width:20%; */text-align:center">
+        Log Out
+        <div class="logoutline" style="width:0%; border-top:2px solid black"></div>
+        <div class="logoutline2" style="width:60%; border-top:2px solid black" hidden></div>
+      </a>
+    </nav>
+    <div class="myorder" hidden style="margin-bottom:75px">
+      	{% if customer.orders.size != 0 %}
+          <h3 style="text-align:center; margin-top:50px; margin-bottom:30px; font-weight:500">
+              Your Order History
+          </h3>
+          <div class="allOrders" style="display:flex; flex-direction:row; align-items:center; flex-wrap: wrap; justify-content:center">
+              {% for order in customer.orders %}
+                  <article onClick="$(this).showOrderdetail({{ forloop.index }});" 
+                           class="article2" onmouseover="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2)" 
+                           style="margin-top:20px; cursor:pointer; display:flex; justify-content:space-between; border-radius:10px">
+                      <div>
+                        <div class="article__head" style="font-weight:700; margin-bottom:5px">
+                            {{ order.created_at | date: "%b %d, %Y"}}
+                        </div>
+                        <div style="margin-bottom:5px">
+                            {{ order.total_price | money }} | Order #{{ order.order_number }}
+                        </div>
+                        <div {% if order.cancelled == true %} style="color:red" {% elsif order.financial_status == "paid"%} style="color:green" {% endif %}>
+                            {% if order.cancelled == true %} Cancelled {% else %} {{ order.financial_status }} {% endif %}
+                        </div>
+                      </div>
+                      <div style="align-items:center; margin-left:30px; display:flex">
+                        View Order
+                      </div>
+                  </article>
+              {% endfor %}
+          </div>
+      	{% else %}
+      		<div style="font-size:20px; margin-top:50px; align-items: center; display: flex; justify-content: center; text-align:center; padding:20px">
+          		You have not ordered anything yet!
+      		</div>
+      	{% endif %}
+    </div>
+    <div class="mysub" hidden style="
+    align-items: center;
+    display: flex;
+    justify-content: center;">
+      {% if customer.metafields.subscriptions.customer_string != null %}
+<!--       	<iframe id="iframe" style="width:100%; height:600px" src="https://www.vejo.com/tools/recurring/portal/{{customer.metafields.subscriptions.customer_string}}/subscriptions?token=176c8e534a064b5184d7e61f42503b98"></iframe> -->
+<!--       	<embed style="width:100%; height:600px" src="https://www.vejo.com/tools/recurring/portal/17450184132a29c49ad6c3f6/subscriptions?token=416d7c57c9fd47ad92a3c241ffd2c8cb&preview_theme=4348"> -->
+      	<iframe style="width:100%; height:600px" src="https://www.vejo.com"></iframe>
+      {% else %}
+      	<div style="font-size:20px; margin-top:50px; text-align:center; padding:20px">
+          You do not have any subsriptions yet, start one by adding a monthly blend!
+      	</div>
+      {% endif %}
+    </div>
+    <div class="myaccount" style="margin-bottom:50px; margin-top:50px">
+<!--       <h3 style="width:40%; margin:auto; text-align:left; margin-top:20px; margin-bottom:20px; font-weight:400">
+        My Account
+      </h3> -->
+      <div style="	width: 40%;
+    				min-width: 325px;
+    				margin: auto;
+                    background-color: #f4f4f4;
+                    border-radius: 10px;
+                    padding: 20px;">
+        <h3 style="text-align:center; margin-top:10px; margin-bottom:30px; font-weight:500">
+          My Account
+        </h3>
+        <div style="margin:auto; width:90%; min-width:300px">
+          <div style="display:flex; justify-content:space-between;">
+            <div style="/*justify-content:center;*/ display:flex; margin-bottom:10px" class="accountEmail">
+            </div>
+            <a href="">change</a>
+          </div>
+          <div style="/*justify-content:center;*/ display:flex; margin-bottom:10px" class="accountName">
+          </div>
+          <div style="/*justify-content:center;*/ display:flex; margin-bottom:10px" class="accountDefaultAddress">
+          </div>
+          <div style="/*justify-content:center;*/ display:flex; margin-bottom:10px" class="accountDefaultZipCity">
+          </div>
+          <div style="/*justify-content:center;*/ display:flex; margin-bottom:10px" class="accountPhone">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="orderInfo" hidden style="margin-bottom:50px">  
+      <div class="backToOrderHistory" style="padding-top:20px; padding-left:20px; cursor:pointer; padding-bottom:20px">
+          < back to order history
+      </div>
+      <div style="	width: 40%;
+    				min-width: 325px;
+    				margin: auto;
+                    background-color: #f4f4f4;
+                    border-radius: 10px;
+                    padding: 20px;">
+        <h3 style="text-align:center; margin-top:10px; margin-bottom:30px; font-weight:500">
+          Order Info
+        </h3>
+        <div style="margin:auto; width:60%; min-width:300px">
+          <div style="/*justify-content:center;*/ display:flex; margin-bottom:10px" class="orderDate">
+          </div>
+          <div style="/*justify-content:center;*/ display:flex; margin-bottom:10px" class="orderNumber">
+          </div>
+          <div style="/*justify-content:center;*/ display:flex; margin-bottom:10px" class="orderTotal">
+          </div>
+          <div style="/*justify-content:center;*/ display:flex; margin-bottom:10px" class="orderEmail">
+          </div>
+          <div style="/*justify-content:center;*/ display:flex; margin-bottom:10px" class="orderStatus">
+          </div>
+        </div>
+      </div>
+    </div>
+  	<!-- order details here -->
+  </div><!-- /.shell -->
+</section><!-- /.section-generic -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js" type="text/javascript"></script>
+<script>
+  /*$( document ).ready(function() {
+    console.log(localStorage.getItem('websiteAccess'))
+  });*/
+  $( document ).ready(function() {
+    $('#iframe').on("load", function(event){
+    	var frame = document.getElementById("iframe");
+        //console.log("HEIGHT")
+        //console.log(this.contentWindow.document.body.offsetHeight)
+        //$('#iframe').css("height", this.contentWindow.document.body.offsetHeight)
+        header = frame.contentDocument.querySelector("header");
+        header.remove();
+        footer = frame.contentDocument.querySelector("footer");
+        footer.remove();
+    })
+    
+    window.onmessage = (e) => {
+      if (e.data.hasOwnProperty("frameHeight")) {
+        console.log(e.data.frameHeight)
+        document.getElementById("iframe").style.height = `${e.data.frameHeight + 200}px`;
+      }
+    };
+            
+    $('.accountEmail').html(`<b>Email</b>\u00A0\u00A0{{ customer.email }}`);
+    $('.accountName').html(`<b>Name</b>\u00A0\u00A0{{ customer.first_name }} {{ customer.last_name}}`);
+    {% if customer.default_address != nil %}
+      	$('.accountDefaultAddress').html(`<b>Default Address</b>\u00A0\u00A0{{ customer.default_address.address1 }}`);
+      	$('.accountDefaultZipCity').html(`<b>Zip, City</b>\u00A0\u00A0{{ customer.default_address.zip }}, {{ customer.default_address.city }}`);
+      	$('.accountPhone').html(`<b>Phone</b>\u00A0\u00A0{{ customer.default_address.phone }}`);
+    {% else %}
+    	$('.accountDefaultAddress').html(`<b>Default Address</b>\u00A0\u00A0No Default Address Set`);
+    {% endif %}
+    	
+
+    //$('.mysub').attr("hidden", true);
+    //$('.myorder').attr("hidden", true)
+    $.fn.showOrderdetail = function(index) {
+      {% for order in customer.orders %}
+        if(index == {{ forloop.index }}){
+            //console.log({{ order.order_number }});
+      		$('.orderNumber').html(`<b>Order#</b>\u00A0\u00A0{{ order.order_number }}`);
+            $('.orderEmail').html(`<b>Order Email</b>\u00A0\u00A0{{ order.email }}`);
+      		$('.orderTotal').html(`<b>Order Total</b>\u00A0\u00A0{{ order.total_price | money }}`);
+      		$('.orderDate').html(`<b>Order Date</b>\u00A0\u00A0{{ order.created_at | date: "%b %d, %Y"}}`);
+      		{% if order.cancelled == true %}
+      			$('.orderStatus').html(`<b>Order Status</b>\u00A0\u00A0<mark class="red">Cancelled</mark>`);
+      		{% else %}
+      			$('.orderStatus').html(`<b>Order Status</b>\u00A0\u00A0{{ order.financial_status }} - {{ order.fullfillment_status }}`);
+      		{% endif %}
+            $('.orderInfo').attr('hidden', false);
+      		$('.myorder').attr('hidden', true);
+        }
+      {% endfor %}
+    }
+                      
+    $('.backToOrderHistory').on("click", function(event){
+    	$('.myaccount').attr("hidden", true);
+    	$('.myorder').attr("hidden", false);
+      	$('.mysub').attr("hidden", true);
+    	$('.orderInfo').attr('hidden', true);
+      
+      	$('.myaccountbutton').css('font-weight', '500');
+    	$('.myorderbutton').css('font-weight', '700');
+      	$('.mysubbutton').css('font-weight', '500');
+    })
+
+    $('.mysubbutton').on("click", function(event){
+    	$('.myaccount').attr("hidden", true);
+    	$('.myorder').attr("hidden", true);
+      	$('.mysub').attr("hidden", false);
+      	$('.orderInfo').attr('hidden', true);
+      
+        //$('.myaccountlinetop').attr("hidden", false);
+        $('.myaccountline').attr("hidden", false);
+        $('.myaccountline2').attr("hidden", true);
+      
+        //$('.mysublinetop').attr("hidden", true);
+        $('.mysubline').attr("hidden", true);
+        $('.mysubline2').attr("hidden", false);
+      
+        $('.myorderline').attr("hidden", false);
+        $('.myorderline2').attr("hidden", true);
+      
+        $('.logoutline').attr("hidden", false);
+        $('.logoutline2').attr("hidden", true);
+      
+      	$('.myaccountbutton').css('font-weight', '500');
+    	$('.myorderbutton').css('font-weight', '500');
+      	$('.mysubbutton').css('font-weight', '700');
+      
+    })
+    
+    $('.myorderbutton').on("click", function(event){
+    	$('.myaccount').attr("hidden", true);
+    	$('.myorder').attr("hidden", false);
+      	$('.mysub').attr("hidden", true);
+      	$('.orderInfo').attr('hidden', true);
+      
+        $('.myaccountline').attr("hidden", false);
+        $('.myaccountline2').attr("hidden", true);
+      
+        $('.mysubline').attr("hidden", false);
+        $('.mysubline2').attr("hidden", true);
+      
+        $('.myorderline').attr("hidden", true);
+        $('.myorderline2').attr("hidden", false);
+      
+        $('.logoutline').attr("hidden", false);
+        $('.logoutline2').attr("hidden", true);
+         
+      	$('.myaccountbutton').css('font-weight', '500');
+    	$('.myorderbutton').css('font-weight', '700');
+      	$('.mysubbutton').css('font-weight', '500');
+    })
+    
+    $('.myaccountbutton').on("click", function(event){
+    	$('.myaccount').attr("hidden", false);
+    	$('.myorder').attr("hidden", true);
+      	$('.mysub').attr("hidden", true);
+      	$('.orderInfo').attr('hidden', true);
+      
+        //$('.myaccountlinetop').attr("hidden", true);
+        $('.myaccountline').attr("hidden", true);
+        $('.myaccountline2').attr("hidden", false);
+      
+        //$('.mysublinetop').attr("hidden", false);
+        $('.mysubline').attr("hidden", false);
+        $('.mysubline2').attr("hidden", true);
+      
+        $('.myorderline').attr("hidden", false);
+        $('.myorderline2').attr("hidden", true);
+      
+        $('.logoutline').attr("hidden", false);
+        $('.logoutline2').attr("hidden", true);
+      
+      	$('.myaccountbutton').css('font-weight', '700');
+    	$('.myorderbutton').css('font-weight', '500');
+      	$('.mysubbutton').css('font-weight', '500');
+    })
+    
+    $('.myaccountbutton').hover(function(){
+      $('.myaccountline').css('width', '60%')
+      //$('.myaccountlinetop').delay(300).css('width', '100%')
+    })
+    $('.myaccountbutton').mouseleave(function(){
+      $('.myaccountline').css('width', '0%')
+      //$('.myaccountlinetop').delay(300).css('width', '0%')
+    })
+    
+    $('.myorderbutton').hover(function(){
+      $('.myorderline').css('width', '60%')
+      //$('.myaccountlinetop').delay(300).css('width', '100%')
+    })
+    $('.myorderbutton').mouseleave(function(){
+      $('.myorderline').css('width', '0%')
+      //$('.myaccountlinetop').delay(300).css('width', '0%')
+    })
+    
+    $('.logoutbutton').hover(function(){
+      $('.logoutline').css('width', '60%')
+      //$('.myaccountlinetop').delay(300).css('width', '100%')
+    })
+    $('.logoutbutton').mouseleave(function(){
+      $('.logoutline').css('width', '0%')
+      //$('.myaccountlinetop').delay(300).css('width', '0%')
+    })
+
+    $('.mysubbutton').hover(function(){
+      $('.mysubline').css('width', '60%')
+      /*$('.mysublinetop').delay(600).queue(function (next) { 
+        $(this).css('width', '100%'); 
+        next(); 
+      });
+      $('.mysublineright').delay(300).queue(function (next) { 
+        $(this).css('height', '20px'); 
+        next(); 
+      });
+      $('.mysublineleft').delay(900).queue(function (next) { 
+        $(this).css('height', '20px'); 
+        next(); 
+      });*/
+    })
+    $('.mysubbutton').mouseleave(function(){
+      $('.mysubline').css('width', '0%')
+      /*$('.mysublinetop').delay(600).queue(function (next) { 
+        $(this).css('width', '0%'); 
+        next(); 
+      });
+      $('.mysublineright').delay(300).queue(function (next) { 
+        $(this).css('height', '0px'); 
+        next(); 
+      });
+      $('.mysublineleft').delay(900).queue(function (next) { 
+        $(this).css('height', '0px'); 
+        next(); 
+      });*/
+    })
+  })
+</script>
+
+<style type="text/css" media="screen">
+  @media only screen and (max-width:780px) {
+    .article2 {
+      padding-top:20px; padding-bottom:20px; padding-left:30px; padding-right:30px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); width:30%; flex:0 0 90% !important
+    }
+  }
+  
+  @media only screen and (max-width:660px) {
+    .mobileFont {
+      font-size:13px;
+    }
+  }
+  
+  @media only screen and (min-width:780px) {
+    .article2 {
+      padding-top:20px; padding-bottom:20px; padding-left:30px; padding-right:30px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); width:30%; flex:0 0 40% !important; margin-right:20px
+    }
+  }
+  
+  .article2:hover {
+      box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
+  }
+  
+  mark.red {
+    color:red;
+    background: none;
+  }
+  
+  .myaccountline {
+      -webkit-transition: width 0.3s ease-in-out;
+      -moz-transition: width 0.3s ease-in-out;
+      -o-transition: width 0.3s ease-in-out;
+      transition: width 0.3s ease-in-out;
+  }
+  
+/*   .myaccountlinetop {
+      -webkit-transition: width 0.3s ease-in-out;
+      -moz-transition: width 0.3s ease-in-out;
+      -o-transition: width 0.3s ease-in-out;
+      transition: width 0.3s ease-in-out;
+  } */
+
+  .mysubline {
+      -webkit-transition: width 0.3s ease-in-out;
+      -moz-transition: width 0.3s ease-in-out;
+      -o-transition: width 0.3s ease-in-out;
+      transition: width 0.3s ease-in-out;
+  }
+  
+  .myorderline {
+      -webkit-transition: width 0.3s ease-in-out;
+      -moz-transition: width 0.3s ease-in-out;
+      -o-transition: width 0.3s ease-in-out;
+      transition: width 0.3s ease-in-out;
+  }
+  
+  .logoutline {
+      -webkit-transition: width 0.3s ease-in-out;
+      -moz-transition: width 0.3s ease-in-out;
+      -o-transition: width 0.3s ease-in-out;
+      transition: width 0.3s ease-in-out;
+  }
+  
+/*   .mysublinetop {
+      -webkit-transition: width 0.3s ease-in-out;
+      -moz-transition: width 0.3s ease-in-out;
+      -o-transition: width 0.3s ease-in-out;
+      transition: width 0.3s ease-in-out;
+  }
+  
+  .mysublineleft {
+      -webkit-transition: height 0.3s ease-in-out;
+      -moz-transition: height 0.3s ease-in-out;
+      -o-transition: height 0.3s ease-in-out;
+      transition: height 0.3s ease-in-out;
+  }
+  
+  .mysublineright {
+      -webkit-transition: height 0.3s ease-in-out;
+      -moz-transition: height 0.3s ease-in-out;
+      -o-transition: height 0.3s ease-in-out;
+      transition: height 0.3s ease-in-out;
+  } */
+</style>
+  
+{% endcomment %}
+

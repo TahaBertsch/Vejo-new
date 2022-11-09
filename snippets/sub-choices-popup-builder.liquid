@@ -1,0 +1,126 @@
+<style>
+  .sub-choices-popup-bg-builder{	
+    display:none;	
+    height:100vh;	
+    width:100vw;	
+    justify-content:center;	
+    align-items:center;	
+    position:fixed;	
+    background-color:rgba(0, 0, 0, 0.9);	
+    z-index:1000;	
+    top:0;
+  }	
+  .sub-choices-popup-builder {
+    text-align: center;
+    padding: 30px 30px;
+    margin: 0;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .sub-choices-popup-title-builder{ 
+    font-size:19px; 
+    font-weight:400; 
+    font-family:'Scandia'; 
+    margin-top:10px; 
+    margin-bottom:20px
+  }
+  .sub-choices-button-builder{
+    margin-bottom:0px;
+    background-color:black;
+    border-radius:100px;
+    border: 2px solid black;
+    padding-bottom: 15px;
+    padding-top: 20px;
+    font-size: 21px;
+    font-weight: 500;
+    width: 312px;
+    cursor:pointer;
+    max-height: 58px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    color:white;
+  }
+  .add-address-button-builder{
+     background-color: black;
+    border-radius: 100px;
+    border: 2px solid black;
+    padding-bottom: 15px;
+    padding-top: 20px;
+    font-size: 21px;
+    font-weight: 500;
+    width: 312px;
+    cursor: pointer;
+    max-height: 58px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    }
+  @media(max-width: 800px) {
+    .sub-choices-popup-builder {
+      padding: 30px 30px;
+      width: 88vw;
+      overflow: scroll;
+      top: 60%;
+    }
+    .sub-choices-popup-title-builder{
+      padding-left:20px;
+      padding-right:20px;
+    }
+    .add-address-button-builder{
+      width:100%;
+    }
+  }
+</style>
+
+<div class="sub-choices-popup-bg-builder">
+  <div class="sub-choices-popup-builder">
+    <div class="sub-choices-popup-title-builder" style="margin-bottom:30px">Do you have a Vejo monthly subscription?</div>
+    <div id="hasSub-builder" class="add-address-button-builder" style="margin-bottom:15px">
+      YES I DO
+    </div>
+    <div id="noSub-builder" class="add-address-button-builder">
+      NO, NOT YET
+    </div>
+  </div>
+</div>
+
+<script>
+  function loginBuilder(isSignup){
+      $('#close-drawer').trigger('click')
+      if(isSignup){
+       $('#signupBtn').trigger('click')
+      } else {
+        localStorage.setItem('comingFromCart', false)
+        $('#loginBtn').trigger('click')
+      }
+      $('.popup-login-bg').css('display','flex')
+    }
+
+  
+  $(document).ready(function() {
+    $('#hasSub-builder').on('click', function() {
+      loginBuilder(false)
+
+      $('.sub-choices-popup-bg-builder').css('display','none')
+    })
+    $('#noSub-builder').on('click', function() {
+    $('.sub-choices-popup-bg-builder').css('display','none')
+
+      loginBuilder(true)
+
+      
+    })
+  })
+</script>

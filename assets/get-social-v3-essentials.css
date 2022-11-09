@@ -1,0 +1,174 @@
+@font-face {
+  font-family: 'Scandia';
+  src: url('Scandia-Bold.woff2') format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Scandia';
+  src: url('Scandia-Medium.woff2') format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Scandia';
+  src: url('Scandia-Regular.woff2') format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html {
+  padding-bottom: 0px !important;
+}
+
+em {
+  font-style: normal !important;
+}
+
+body {
+  margin: 0px;
+  font-family: "TT Commons", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 1.11 !important;
+}
+
+
+.sticky-your-choices {
+  width: -webkit-fill-available;
+  position: fixed;
+  height: 90px;
+  background-color: #f7f8f7;
+  color: #fff;
+  top: 40px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 0 4px #00000080;
+}
+
+.body {
+  margin: 0;
+}
+
+.checkout-btn {
+  font-family: "Scandia";
+  padding-top: 3px;
+  /*margin-top:5px;*/
+  background-color: green;
+  width: 30vw;
+  color: white;
+  /*border-radius:8px;*/
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.left-div {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  /*margin-left:10px;*/
+}
+
+.sum-img {
+  height: 80px;
+  margin-bottom: 0px;
+}
+
+.sticky-title {
+  color: black;
+}
+
+.sum-color {
+  font-family: "Scandia";
+  color: black;
+  font-size: 13px;
+  width: min-content;
+}
+
+.sum-div {
+  display: flex;
+  align-items: center;
+}
+
+.sum-device {
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.main-sum-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: -webkit-fill-available;
+}
+
+.sum-pack {
+  height: 80px;
+  margin-bottom: 0px;
+  margin-right: 3px;
+}
+
+.sum-pack-name {
+  font-family: Scandia;
+  color: #000;
+  width: min-content;
+  font-size: 13px;
+  padding-left: 0.5vw;
+  padding-right: 3vw;
+}
+
+.sum-div-pack {
+  display: flex;
+  align-items: center;
+  /*margin-right: 20px;*/
+}
+
+.x-div {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  padding-left: 3vw;
+  padding-right: 1vw;
+}
+
+.step1-div {
+  font-family: "Scandia";
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+}
+
+.step-icon {
+  padding-left: 10px;
+  color: black;
+  font-size: 18px !important;
+  width: 30px;
+}

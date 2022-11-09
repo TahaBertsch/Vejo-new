@@ -1,0 +1,444 @@
+@charset "UTF-8";
+
+a {
+    cursor: pointer !important;
+}
+
+
+body {
+   
+    font-family: "TT Commons", serif !important;
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    line-height: 1.11!important;
+   
+}
+.ff-body {
+   
+    font-family: "TT Commons", serif !important;
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    line-height: 1.11 !important;
+   
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+header a:hover{
+  color: inherit;
+  text-decoration: none !important;
+}
+a:hover{
+  color: none !important;
+  text-decoration: none !important;
+}
+
+
+.ff-heading,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Scandia"!important;
+    font-weight: 500 !important;
+    margin-bottom: .555em
+}
+
+
+@font-face {
+    font-family: 'Scandia';
+    src: url('Scandia-Bold.woff2') format("woff2");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Scandia';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/Scandia-BoldItalic.woff2?v=95010029873821223761667557903") format("woff2");
+   
+    font-weight: 700;
+    font-style: italic;
+  font-display: swap;
+}
+@font-face {
+    font-family: 'Scandia';
+    src: url('Scandia-Medium.woff2') format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Scandia';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/Scandia-MediumItalic.woff2?v=8502134729239392921667557903") format("woff2");
+   
+    font-weight: 500;
+    font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'Scandia';
+    src: url('Scandia-Light.woff2') format("woff2");
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Scandia';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/Scandia-LightItalic.woff2?v=149909856719602316151667557903") format("woff2");
+    font-weight: 300;
+    font-style: italic;
+  font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Scandia';
+    src: url('Scandia-Regular.woff2') format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Scandia';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/Scandia-RegularItalic.woff2?v=22697633952046423771667557903") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+  font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Scandia-Stencil';
+    src: url('Scandia-Stencil.woff2') format("woff2");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+
+
+
+
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-DemiBold.woff2?v=66694553792722667491667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-DemiBold.woff?182187") format("woff");
+    font-weight: 600;
+    font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-MediumItalic.woff2?v=181139894052749702861667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-MediumItalic.woff?182187") format("woff");
+    font-weight: 500;
+    font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-LightItalic.woff2?v=21827066157936115841667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-LightItalic.woff?182187") format("woff");
+    font-weight: 300;
+    font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-ExtraLightItalic.woff2?v=154826593063424024631667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-ExtraLightItalic.woff?182187") format("woff");
+    font-weight: 200;
+    font-style: italic;
+  font-display: swap;
+}
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Thin.woff2?v=29735544455899233801667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Thin.woff?182187") format("woff");
+    font-weight: 100;
+    font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Regular.woff2?v=97781263154783970691667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Regular.woff?182187") format("woff");
+    font-weight: 400;
+    font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Medium.woff2?v=89843608787450606501667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Medium.woff?182187") format("woff");
+    font-weight: 500;
+    font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-BlackItalic.woff2?v=74248314767274797711667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-BlackItalic.woff?182187") format("woff");
+    font-weight: 900;
+    font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-DemiBoldItalic.woff2?v=175108607481527353811667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-DemiBoldItalic.woff?182187") format("woff");
+    font-weight: 600;
+    font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-ExtraBoldItalic.woff2?v=67421631155676013021667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-ExtraBoldItalic.woff?182187") format("woff");
+    font-weight: 800;
+    font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Italic.woff2?v=99525082572510249921667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Italic.woff?182187") format("woff");
+    font-weight: 400;
+    font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-ExtraLight.woff2?v=83817787562929053151667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-ExtraLight.woff?182187") format("woff");
+    font-weight: 200;
+    font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-ThinItalic.woff2?v=130976256111471550741667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-ThinItalic.woff?182187") format("woff");
+    font-weight: 100;
+    font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Black.woff2?v=75250696225624693321667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Black.woff?182187") format("woff");
+    font-weight: 900;
+    font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-ExtraBold.woff2?v=116635731086866604321667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-ExtraBold.woff?182187") format("woff");
+    font-weight: 800;
+    font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Light.woff2?v=90556213579401110381667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Light.woff?182187") format("woff");
+    font-weight: 300;
+    font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Bold.woff2?v=176714862154696929581667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-Bold.woff?182187") format("woff");
+    font-weight: 700;
+    font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Commons';
+    src:url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-BoldItalic.woff2?v=144933726348720049141667557903") format("woff2"),
+    url("//cdn.shopify.com/s/files/1/1852/7957/t/219/assets/TTCommons-BoldItalic.woff?182187") format("woff");
+    font-weight: 700;
+    font-style: italic;
+  font-display: swap;
+}
+
+img,
+object,
+video {
+    max-width: 100%
+}
+
+.footer a {
+    text-decoration: none;
+   	font-family: "Scandia" !important;
+    font-size: 12px !important;
+    position: relative
+}
+.btn {
+    font-family: "Scandia" !important;
+    font-size: 18px !important;  
+    text-transform: uppercase !important;
+    font-weight: 500 !important;
+}
+section
+{
+  margin-top:0px !important;
+}
+nav {
+    text-transform: uppercase;
+    font-size: 14px !important;
+    font-weight: 500;
+    font-family: "Scandia"!important;
+}
+
+nav ul {
+   font-size: inherit !important;
+  
+}
+nav button{
+  text-transform:inherit;
+   font-weight: inherit !important;
+    
+}
+.popup h4 {
+    font-family: TT Commons;
+    margin-bottom: 40px;
+    font-size: 24px;
+    font-weight: 300;
+}
+.page__rte img 
+{
+  width: auto !important;
+}
+
+.post_article_header {
+  background-color: #f7f7f7;
+  height: 790px;
+}
+.article_header {
+   float: right;
+  
+   width: 50%;
+   padding: 3%;
+}
+.article_header h1 {
+ margin-top: 42%;
+}
+.article_content {
+  //vertical-align: bottom;
+  margin-top: 52px;
+}
+
+@media (max-width: 769px){
+  	.article_header{
+        float: none !important;
+    	width: 100% !important;
+    	padding: 3% !important;
+
+    }
+	.article_header h1{
+     	margin-top: 11% !important;
+    }
+  .post_article_header{
+    height: 750px;
+  }
+
+}
+
+.product_link a{
+  background-color: #1d8c28;
+  padding: 20px;
+  border-radius: 35px;
+  margin-bottom: 20px !important;
+  color: white;
+  width: 100% !important;
+} 
+mark {
+ padding: 0px !important; 
+}
+.button_centered{
+  	margin-left:auto !important;
+  }
+.withOut_button{
+   		display:none;
+    }
+  @media (max-width: 769px){
+	.quote_heading_mobile{
+      display: block !important;
+    }
+  	.quote_heading_desktop{
+      display: none !important;
+    }
+}
+.link-back {
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #7a7a7a;
+  margin: 0 0 0 10px;
+  padding: 0 0 0 10px;
+  display: inline-block;
+
+}
+.media_thumbnail-indicators_items 
+{
+  width: 74px !important;
+  height: 74px !important;
+}
+.media_thumbnail-indicators button
+{ width: 74px !important;
+  height: 74px !important;
+  padding-top: 0px;
+}
+.media_thumbnail-indicators .product-thumbnails__item-image
+{ width:68px !important;
+  height: 68px !important;
+}
+.media_thumbnail-indicators  .slick-prev{
+ 
+  left:-55px;
+}
+.media_thumbnail-indicators .slick-next{
+  
+  right:-50px;
+}
+.media_thumbnail-indicators{
+  margin-left:7%;
+  margin-right:6%
+}
+ @media (max-width: 769px){
+	.media_thumbnail-indicators{
+      margin-left:0 !important;
+      margin-right:0 !important;
+    }
+}
+.spr-starrating .spr-stars{
+	line-height: 1.3rem !important;
+}

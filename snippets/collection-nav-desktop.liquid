@@ -1,0 +1,50 @@
+{% assign activeCollection = collection.title | downcase %}
+{% assign activeMenu = false %}
+ <nav style="background-color: white;border: 1px solid black;border-radius: 25px;" class="collection-nav-desktop" role="navigation">
+   	<ul class="collection-nav-mobile__list">
+      {% for link in menu_links %}
+          {% assign menuName = link.title | downcase %}
+  	
+          {% if link.active  %}
+               {% assign activeMenu = true %}
+          {% endif %}
+        {% assign current_url = false %}
+        {%- if link.url contains request.path or request.path contains link.url-%}
+              {% assign current_url = true %}
+      	
+        {%- endif  -%}
+        {% assign activeMenuTitle = link.title | downcase %}
+        {% assign activeMenuHandle = link.handle %}
+			
+        <li  {% if current_url %}id="activeItem"{% endif %} class="collection-nav-mobile__item">         
+            <!-- MENU LINK-->  
+              <a class="collection-nav-desktop__link {% if current_url %}active{% endif %}"  href="{{ link.url }}" >
+                 {{ link.title }}
+                 <div class="collection-nav-mobile__underline"></div>          
+              </a>
+        </li> 
+      {% endfor %}
+	</ul>
+</nav>
+<script>
+
+    $(document).ready(function() {
+        
+        // IF BROWSING PRODUCTS, SLIDE MOBILE COLLECTIN NAV TO CURRENT MENU ITEM 
+        if($("#activeItem").length > 0) {
+            setTimeout(function() {
+                var activeItem = $("#activeItem"),                   
+                    itemList = $(".collection-nav-mobile__list"),
+                    offset = activeItem.offset(),
+                    position = offset.left - 100,
+                    positionString = position.toString(),
+                    finalPosition = "+=" + positionString;
+                            
+                $(itemList).animate({ scrollLeft: finalPosition }, 500, 'swing');
+            }, 500 );
+        }
+
+    });
+
+</script>
+

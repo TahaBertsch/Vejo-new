@@ -1,0 +1,6 @@
+{% assign vejo_care_customer = false %}
+{%- for tag in customer.tags -%}
+  {%- if tag == "Vejo Care" or tag == "Vejo Invited" -%}
+    {% assign vejo_care_customer = true %}
+  {%- endif -%}
+{%- endfor -%}

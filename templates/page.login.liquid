@@ -1,0 +1,2578 @@
+<style>
+
+  .main{
+    padding-top:100px !important;
+  }
+
+  .vejo-logo {
+    height: 72px; /* Vejo image has margin */
+  }
+
+  .section-login {
+    background-color: #ffffff;
+  }
+
+  .login-header-title {
+    font-weight: 600;
+    font-family: 'Scandia';
+    text-align: center;
+    padding-bottom: 15px;
+    font-size: 24px;
+  }
+
+  .login-header-subtitle {
+    font-weight: 400;
+    font-family: 'Scandia';
+    text-align: center;
+    padding-bottom: 30px;
+    font-size: 16px;
+  }
+
+  .auth0-header {
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+  }
+
+  .auth0-header__header {
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    margin: 0 0 20px 0 !important;
+    color: black;
+  }
+
+  .auth0-header__list {
+    font-family: "TT Commons", Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    margin: 0 auto 30px auto;
+    letter-spacing: 0.03em;
+    color: black;
+  }
+  
+  .password_requirements{
+    font-family: "TT Commons", Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    letter-spacing: 0.03em;
+    color: red;
+  }
+
+  .auth0-header__list-item > span {
+    color: #1D8C28;
+    margin-right: 3px;
+  }
+
+  .auth0-header__list-item:not(:last-child) {
+    margin: 0 0 5px 0 !important;
+  }
+  
+  .auth0-header__list-item-requirements > span {
+    color: red;
+    margin-right: 3px;
+  }
+
+  .auth0-header__list-item-requirements:not(:last-child) {
+    margin: 0 0 5px 0 !important;
+  }
+  
+  .auth0-header__list-item-requirements2 > span {
+    color: red;
+    margin-right: 3px;
+  }
+
+  .auth0-header__list-item-requirements2:not(:last-child) {
+    margin: 0 0 5px 0 !important;
+  }
+  
+  .auth0-header__list-item-requirements3 > span {
+    color: red;
+    margin-right: 3px;
+  }
+
+  .auth0-header__list-item-requirements3:not(:last-child) {
+    margin: 0 0 5px 0 !important;
+  }
+  
+  .auth0-header__list-item-requirements4 > span {
+    color: red;
+    margin-right: 3px;
+  }
+
+  .auth0-header__list-item-requirements4:not(:last-child) {
+    margin: 0 0 5px 0 !important;
+  }
+
+  .auth0-form__box {
+    /*max-width: 440px;*/
+    max-width: 440px;
+    width: 90vw;
+    height: 610px;
+    padding: 40px 30px;
+    /*box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;*/
+    margin: 0;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .auth0-form__box_forgot {
+    max-width: 440px;
+    height: 465px;
+    padding: 40px 30px;
+    /*box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;*/
+    margin: 0 auto 100px auto;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    margin-top:50px;
+  }
+  
+  .auth0-form__box_success {
+    max-width: 440px;
+    height: 275px;
+    padding: 40px 30px;
+    /*box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;*/
+    margin: 0 auto 100px auto;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    margin-top:50px;
+  }
+  
+  .auth0-form__box-signup {
+    max-width: 440px;
+    height: 780px !important;
+    padding: 40px 30px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+    margin: 0 auto 100px auto;
+    border-radius: 8px;
+    background-color: white;
+  }
+
+  .auth0-form__wrapper {
+    position: relative;
+    max-width: 520px;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 50px 20px;
+  }
+
+  .auth0-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 50px 0 0 0;
+    width: 100%;
+    display: none;
+  }
+  
+  .auth0-signup-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 50px 0 0 0;
+    width: 100%;
+    display: none;
+  }
+
+  .auth0-form__tab-btn {
+    position: absolute;
+    z-index: 1;
+    width: 50%;
+    opacity: 0;
+    border-radius: 0;
+    height: 25px;
+    cursor: pointer;
+  }
+
+  #loginBtn {
+    top: 0;
+    left: 0;
+  }
+
+  #signupBtn {
+    top: 0;
+    right: 0;
+  }
+
+  .auth0-form__tab-label {
+    position: absolute;
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    width: 50%;
+    text-align: center;
+    text-transform: uppercase;
+    color: gray;
+    padding: 0 0 10px 0;
+  }
+
+  .auth0-form__tab-label[for="login"] {
+    left: 0;
+    top: 0;
+  }
+
+  .auth0-form__tab-label[for="signup"] {
+    right: 0;
+    top: 0;
+  }
+
+  #loginBtn:checked + .auth0-form__tab-label,
+  #signupBtn:checked + .auth0-form__tab-label {
+    color: black;
+    border-bottom: 2px solid black;
+  }
+
+  #loginBtn:checked ~ .auth0-login-form {
+    display: block;
+  }
+
+  #signupBtn:checked ~ .auth0-signup-form {
+    display: block;
+  }
+
+  .auth0-form__container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 50px 0;
+  }
+
+  .auth0-form__input {
+    width: 100%;
+    margin: 0 0 20px 0;
+    /*border: 1px solid #f1f1f1;*/
+    /*border: 1.5px solid black;*/
+    border: 2px solid #CBCBCB;
+    border-radius:0px;
+    padding: 12px;
+    font-family: "Scandia", Helvetica, sans-serif;
+  }
+
+  .auth0-form__input::placeholder {
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-size: 12px;
+    color: gray;
+  }
+
+  .auth0-form__input::placeholder {
+    color: gray;
+  }
+  
+  .auth0-form__input_forgot {
+    width: 100%;
+    margin: 0 0 20px 0;
+    /*border: 1px solid #f1f1f1;*/
+    border: 2px solid #CBCBCB;
+    padding: 12px;
+    font-family: "Scandia", Helvetica, sans-serif;
+  }
+
+  .auth0-form__input_forgot::placeholder {
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-size: 12px;
+    color: gray;
+  }
+
+  .auth0-form__input_forgot::placeholder {
+    color: gray;
+  }
+
+  .auth0-form__btn {
+    /*margin: 0 0 10px 0;
+    padding: 5px 10px;
+    text-transform: uppercase;
+	  border:none;
+    width: 100%;
+    padding: 16px 10px 14px;
+    font-size: 100%;
+    background-color: #1D8C28;
+    color: white;
+    text-decoration: none;
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    cursor: pointer !important;
+    margin: 0 auto 15px auto;*/
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    font-family: "Scandia";
+    font-size: 18px;
+    padding-bottom: 0px;
+    color: white;
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 10px;
+    font-weight: 500;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+    text-transform: uppercase;
+    margin:auto;
+    margin-top:25px;
+  }
+
+  .auth0-form__btn:active{
+    transform:scale(0.95);
+  }
+
+  .auth0-form__btn:hover {
+    background-color:white;
+    border:2px solid black;
+    color:black;
+  }
+  
+  .auth0-form__btn_forgot {
+    /*margin: 0 0 10px 0;
+    padding: 5px 10px;
+    text-transform: uppercase;
+	  display: block;
+    width: 100%;
+    padding: 16px 10px 14px;
+    font-size: 100%;
+    background-color: #1D8C28;
+    color: white;
+    text-decoration: none;
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    cursor: pointer !important;
+    margin: 0 auto 15px auto;
+    border:none;*/
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    font-family: "Scandia";
+    font-size: 18px;
+    padding-bottom: 0px;
+    color: white;
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 10px;
+    font-weight: 500;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+    text-transform: uppercase;
+    margin:auto;
+    margin-top:25px;
+  }
+
+  .auth0-form__btn_forgot:active{
+    transform:scale(0.95);
+  }
+
+  .auth0-form__btn_forgot:hover {
+    background-color:white;
+    border:2px solid black;
+    color:black;
+  }
+
+  .auth0-form__btn_forgot:hover {
+    opacity: 0.8;
+  }
+
+  .auth0-form__remember {
+    margin: 0 0 20px 0;
+    text-align: center;
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    display: none;
+  }
+
+  .auth0-form__forgot {
+    text-align: left;
+    margin: 0 0 15px 0;
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-size: 14px;
+    color:grey;
+  }
+
+  @media(min-width: 800px) {
+
+    /*
+    .auth0-form__wrapper {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+    background-color: white;
+  }
+    */
+
+  }
+  
+  .back-text{
+  	margin-bottom:20px;
+    font-size:15px;
+  }
+  
+  .forgot-text{
+  	margin-bottom: 25px;
+    font-size: 16px;
+    font-family: Scandia;
+    text-align: center;
+  }
+  
+  .success-text{
+  	margin-top:15px;
+    font-size:25px;
+    text-align:center;
+  }
+  
+  .back-text:hover{
+  	cursor:pointer;
+  }
+  
+  .validation{
+  	color:red;
+    font-size:12px;
+    font-weight:600;
+  }
+  
+  
+
+  .label__checkbox {
+    display: none;
+  }
+
+  .label__check {
+    display: inline-block;
+    border-radius: 50%;
+    border: 5px solid rgba(0,0,0,0.1);
+    background: white;
+    vertical-align: middle;
+    margin-right: 0px;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border .3s ease;
+    font-size:50px;
+
+    i.icon {
+      opacity: 0.2;
+      font-size: ~'calc(1rem + 1vw)';
+      color: transparent;
+      transition: opacity .3s .1s ease;
+      -webkit-text-stroke: 3px rgba(0,0,0,.5);
+    }
+
+    &:hover {
+      border: 5px solid rgba(0,0,0,0.2);
+    }
+  }
+
+  .label__checkbox:checked + .label__text .label__check {
+    animation: check .5s cubic-bezier(0.895, 0.030, 0.685, 0.220) forwards;
+
+    .icon {
+      opacity: 1;
+      transform: scale(0);
+      color: white;
+      -webkit-text-stroke: 0;
+      animation: icon .3s cubic-bezier(1.000, 0.008, 0.565, 1.650) .1s 1 forwards;
+    }
+  }
+
+  .center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  @keyframes icon {
+    from {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1)
+    }
+  }
+
+  @keyframes check {
+    0% {
+      width: 1.5em;
+      height: 1.5em;
+      border-width: 5px;
+    }
+    10% {
+      width: 1.5em;
+      height: 1.5em;
+      opacity: 0.1;
+      background: rgba(0,0,0,0.2);
+      border-width: 15px;
+    }
+    12% {
+      width: 1.5em;
+      height: 1.5em;
+      opacity: 0.4;
+      background: rgba(0,0,0,0.1);
+      border-width: 0;
+    }
+    50% {
+      width: 2em;
+      height: 2em;
+      background: #1d8c28;
+      border: 0;
+      opacity: 0.6;
+    }
+    100% {
+      width: 2em;
+      height: 2em;
+      background: #1d8c28;
+      border: 0;
+      opacity: 1;
+    }
+  }
+  .wrong-div{	
+    background-color: red;
+    color: white;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 15px;
+  }
+  .already-div{	
+    background-color: red;
+    color: white;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 15px;
+  }
+  @media(max-width: 800px) {
+    .auth0-form__box {
+      padding:35px 30px
+    }
+    .wrong-div{
+      font-size:3vw;
+    }
+    .already-div{
+      font-size:3vw;
+    }
+    .vejo-logo {
+      height: 60px; /* Vejo image has margin */
+    }
+    .auth0-form__box_forgot {
+      padding:40px 30px
+    }
+  }
+ 
+div#rc_login {
+    display: none !important;
+}
+</style>
+
+<section class="section-generic section-login" style="min-height:700px !important; ">
+  <div class="shell">
+
+<!--     <div class="auth0-header">
+      <img class="auth0-header__logo-img vejo-logo" src="https://s3.amazonaws.com/joosterassets/Vejo-logo-Auth0" alt="Vejo Logo">
+
+      <h5 class="auth0-header__header">
+        To continue, create an account or log into an existing one.
+      </h5>
+      <ul class="auth0-header__list">
+        <li class="auth0-header__list-item">
+          <span><i class="fa fa-check-circle"></i></span>
+          Easily manage monthly deliveries
+        </li>
+        <li class="auth0-header__list-item">
+          <span><i class="fa fa-check-circle"></i></span>
+          Sync with the Vejo app
+        </li>
+        <li class="auth0-header__list-item">
+          <span><i class="fa fa-check-circle"></i></span>
+          Exclusive member benefits
+        </li>
+      </ul>
+    </div> -->
+
+    <div class="auth0-form__box" style="top:53% !important">
+      <div class="login-header">
+        <div class="login-header-title">Welcome Back!</div>
+        <div class="login-header-subtitle">Please sign in below to continue. Not a member? Create an account.</div>
+      </div>
+      <div class="auth0-header">
+        <img class="auth0-header__logo-img vejo-logo" src="https://s3.amazonaws.com/joosterassets/Vejo-logo-Auth0" alt="Vejo Logo">
+
+        <h5 class="auth0-header__header">
+          To continue, create an account or log into an existing one.
+        </h5>
+        <div style="margin-bottom:10px !important; font-weight:bold" class="auth0-header__header">
+          MEMBERSHIP PERKS
+        </div>
+        <ul class="auth0-header__list">
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Save each and every time you shop vejo.com
+          </li>
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Up to 25% on Every Order
+          </li>
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            4 Free Blends a Month
+          </li>
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Free US Shipping
+          </li>
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Exclusive Offers & VIP Gifts
+          </li>
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Free to join, you can edit or cancel at any time!
+          </li>
+        </ul>
+      </div>
+      <div class="auth0-form__wrapper">
+
+        <input id="loginBtn" class="auth0-form__tab-btn" type="radio" name="form" value="login" checked />
+        <label class="auth0-form__tab-label" for="login">Log In</label>
+        <form class="auth0-form auth0-login-form" method="post" action="">
+          <div class="auth0-form__container">       
+			<div hidden class="wrong-div">
+              Wrong email/password combination, please try again.
+            </div>
+            <div class="auth0-form__input-container">
+              <span class="auth0-form__input-icon"></span>
+              <div hidden class="validation" id="empty-email">Please enter a valid email</div>
+              <input id="auth0User" class="auth0-form__input" placeholder="Email" name="uname">
+            </div>
+            <div class="auth0-form__input-container">
+              <span class="auth0-form__input-icon"></span>
+              <div hidden class="validation" id="empty-pw">Please enter a password</div>
+              <input id="auth0Password" class="auth0-form__input" type="password" placeholder="Password" name="psw">
+            </div>
+
+            <span class="auth0-form__forgot" class="psw">
+              <a href="#">Forgot your password?</a>
+            </span>
+
+            <button class="auth0-form__btn" type="submit">Log In</button>
+
+            <label class="auth0-form__remember">
+              <input class="auth0-form__remember-input" type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+
+          </div>
+        </form>
+
+        <input id="signupBtn" class="auth0-form__tab-btn" type="radio" name="form" value="signup" />
+        <label class="auth0-form__tab-label" for="signup">Create Account</label>
+        <form class="auth0-signup-form" method="post" action="">
+          <div class="auth0-form__container">    
+            <div hidden class="already-div already-div-2">
+              Email address already in use.
+            </div>
+            <div hidden class="already-div wrong-pw-div">
+              Please avoid using a password that contains personal info.
+            </div>
+  			    <div hidden class="validation" id="empty-fn">Please enter a first name</div>
+            <input id="auth0FirstName" class="auth0-form__input" type="text" placeholder="First Name" name="firstname" style="text-transform:capitalize"> 
+            <div hidden class="validation" id="empty-ln">Please enter a last name</div>
+            <input id="auth0LastName" class="auth0-form__input" type="text" placeholder="Last Name" name="lastname" style="text-transform:capitalize">
+            <div hidden class="validation" id="empty-emailAlready">The email you entered already exist in our system</div>
+            <div hidden class="validation" id="empty-auth0User">Please enter a valid email</div>
+            <input id="auth0UserSU" class="auth0-form__input" type="email" placeholder="Email" name="uname"> 
+            <div hidden class="validation" id="empty-auth0Pw">Please enter a password</div>
+            <div hidden class="validation" id="empty-auth0PwTooWeak">Password is too weak</div>
+            <ul hidden class="password_requirements">
+              <li class="auth0-header__list-item-requirements">
+                <span><i id="iconn" class="fa fa-times-circle"></i></span>
+                At least one upper case letter
+              </li>
+              <li class="auth0-header__list-item-requirements2">
+                <span><i id="iconn2" class="fa fa-times-circle"></i></span>
+                At least one lower case letter
+              </li>
+              <li class="auth0-header__list-item-requirements3">
+                <span><i id="iconn3" class="fa fa-times-circle"></i></span>
+                At least one number
+              </li>
+              <li class="auth0-header__list-item-requirements4">
+                <span><i id="iconn4" class="fa fa-times-circle"></i></span>
+                At least 8 characters
+              </li>
+            </ul>
+            <input id="auth0PasswordSU" class="auth0-form__input" type="password" placeholder="Password" name="psw">
+            <div hidden class="validation" id="empty-auth0RPw">Please repeat your password</div>
+            <div hidden class="validation" id="empty-auth0RPwNoMatch">Passwords do not match</div>
+            <input id="auth0RPassword" class="auth0-form__input" type="password" placeholder="Repeat Password" name="rpsw">
+
+            <button class="auth0-form__btn" type="submit">CREATE ACCOUNT</button>
+
+          </div>
+        </form>
+
+      </div>
+    </div>
+    
+    <div hidden class="auth0-form__box_forgot">
+      <div class="back-text">&larr; Back</div>
+      <div class="auth0-header">
+        <img class="auth0-header__logo-img vejo-logo" src="https://s3.amazonaws.com/joosterassets/Vejo-logo-Auth0" alt="Vejo Logo">
+
+        <h5 class="auth0-header__header">
+          To continue, create an account or log into an existing one.
+        </h5>
+        <ul class="auth0-header__list">
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Easily manage monthly deliveries
+          </li>
+<!--           <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Free contactless U.S. shipping to your door on all subscription orders
+          </li> -->
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Up to 22% off subscription orders
+          </li>
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Free blends with every subscription order
+          </li>
+        </ul>
+      </div>
+      <div class="forgot-text"> Enter your email address to receive an email with a link to reset your password.</div>
+      <div hidden class="validation" id="empty-forgotEmail">Please enter a valid email</div>
+      <input id="auth0EmailForgot" class="auth0-form__input_forgot" type="email" placeholder="Email" name="femail" required>
+      <button class="auth0-form__btn_forgot" type="submit">Send Email</button>
+    </div>
+    
+    <div hidden class="auth0-form__box_success">
+      <div class="center">
+        <label class="label">
+          <input  class="label__checkbox" type="checkbox" />
+          <span class="label__text">
+            <span class="label__check">
+              <i class="fa fa-check icon" style="color:white"></i>
+            </span>
+          </span>
+        </label>
+        <div class="success-text">Sent!</div>
+      </div>
+    </div>
+
+
+  </div><!-- /.shell -->
+</section><!-- /.section-generic -->
+
+<script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
+<script>
+
+  $(document).ready(function() {
+    var referrer =  document.referrer;
+    console.log("referrer", referrer);
+    
+    if(referrer.includes("rewards-program")){
+      localStorage.setItem("comingFromRewards", "true")
+    }
+    else{
+      localStorage.setItem("comingFromRewards", "false")
+    }
+//     $.ajax({
+//                 method:'POST',
+//                 //url: "http://10.0.1.20:3000/tasks",
+//                 //url: "https://3271f253.ngrok.io/getmultipass",
+//                 //url: "https://6d7dab4a927f.ngrok.io/getrechargeinfo",
+//                 url: "https://shopify-stage.vejo.com/getrechargeinfo",
+//                 data: {
+//                   "email": "garret.lamb@vejo.com",//"holland67@comcast.net", //"devonpayne@gmail.com" //"courtney+test@vejo.com" //"courtney.higginson@vejo.com" ////"tony.sziklai@gmail.com",
+//                   "shopify_id": "" 
+//                 },
+//                 success: function(result){
+//                   console.log(result)
+//                   localStorage.setItem("rechargeInfo", JSON.stringify(result))
+//                   //window.location.href = redirectToUrl;
+//                 },
+//               });
+    
+    
+    
+    var hasUpper = false
+    var hasLower = false
+    var hasNumber = false
+    var hasEight = false
+        
+    //var returnTo = "https://www.vejo.com/tools/recurring/login"  
+    var returnTo = "https://www.vejo.com/pages/myaccount#/"
+    /*
+    if (localStorage.getItem('comingFromCart') === 'true'){
+      returnTo = "https://www.vejo.com/account/"
+    }
+    */
+        
+    $('#loginBtn').on("click", function(){
+    	console.log("login")
+      $('.section-login').css("min-height", "700px")
+      $('.login-header-title').html('Welcome Back!')
+      $('.login-header-subtitle').html('Please sign in below to continue. Not a member? Create an account.')
+    })
+    $('#signupBtn').on("click", function(){
+    	console.log("signup")
+      $('.section-login').css("min-height", "910px")
+      $('.login-header-title').html('Welcome!')
+      $('.login-header-subtitle').html('Create your Vejo account below to enjoy membership benefits such as discounts, free blends and more!')
+    })
+    $('.auth0-form__tab-btn').on("click", function(){
+      $("#empty-pw").attr("hidden", '')
+      $("#empty-email").attr("hidden", '')
+      $(".wrong-div").attr("hidden", '')
+      $(".already-div").attr("hidden", '')
+      $(".password_requirements").attr("hidden", '')
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+    })
+    
+    $("#auth0User").on("click", function(e){
+      if(!$("#empty-email").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 12).toString() + "px")
+      }
+      if(!$(".wrong-div").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 35).toString() + "px")
+      }
+      $("#empty-email").attr("hidden", '')
+      $(".wrong-div").attr("hidden", '')
+    })
+    
+    $("#auth0Password").on("click", function(e){
+      if(!$(".wrong-div").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 35).toString() + "px")
+      }
+      if(!$("#empty-pw").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 12).toString() + "px")
+      }
+      $("#empty-pw").attr("hidden", '')
+      $(".wrong-div").attr("hidden", '')
+    })
+    $("#auth0PasswordSU").on("click", function(e){
+      $(".auth0-form__box").css("height", "855px")
+      $('.section-login').css("min-height", "910px")
+      $("#empty-auth0Pw").attr("hidden", '')
+      $(".password_requirements").removeAttr("hidden")
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+      $(".already-div").attr("hidden", '')
+    })
+    
+    $("#auth0PasswordSU").bind("input", function(){
+    	var val = $("#auth0PasswordSU").val()
+        hasUpper = false
+        hasLower = false
+        hasNumber = false
+        hasEight = false
+        
+        if(val.length > 7){
+       		hasEight = true
+        }
+      
+        for(var i = 0; i < val.length; i++){
+          if(val[i] == val[i].toLowerCase()){
+            if(isNaN(val[i])){
+          	  hasLower = true
+            }
+          }
+          if(val[i] == val[i].toUpperCase()){
+          	if(isNaN(val[i])){
+          	  hasUpper = true
+            }
+          }
+//           if(/\d/.test(val[i])){
+//           	hasNumber = true
+//           }
+          
+          if(!isNaN(val[i])){
+          	hasNumber = true
+          }
+        }
+      
+//       	console.log(hasUpper)
+//         console.log(hasLower)
+//         console.log(hasNumber)
+//         console.log(hasEight)
+      
+        if(hasUpper){
+        	$(".auth0-header__list-item-requirements").css("color", "green")
+            $("#iconn").removeClass("fa-times-circle")
+            $("#iconn").addClass("fa-check-circle")
+            $("#iconn").css("color", "green")
+        }
+        else{
+          	$(".auth0-header__list-item-requirements").css("color", "red")
+            $("#iconn").removeClass("fa-check-circle")
+            $("#iconn").addClass("fa-times-circle")
+            $("#iconn").css("color", "red")
+        }
+      
+      	if(hasLower){
+        	$(".auth0-header__list-item-requirements2").css("color", "green")
+            $("#iconn2").removeClass("fa-times-circle")
+            $("#iconn2").addClass("fa-check-circle")
+            $("#iconn2").css("color", "green")
+        }
+        else{
+          	$(".auth0-header__list-item-requirements2").css("color", "red")
+            $("#iconn2").removeClass("fa-check-circle")
+            $("#iconn2").addClass("fa-times-circle")
+            $("#iconn2").css("color", "red")
+        }
+      	if(hasNumber){
+        	$(".auth0-header__list-item-requirements3").css("color", "green")
+            $("#iconn3").removeClass("fa-times-circle")
+            $("#iconn3").addClass("fa-check-circle")
+            $("#iconn3").css("color", "green")
+        }
+        else{
+          	$(".auth0-header__list-item-requirements3").css("color", "red")
+            $("#iconn3").removeClass("fa-check-circle")
+            $("#iconn3").addClass("fa-times-circle")
+            $("#iconn3").css("color", "red")
+        }
+      	if(hasEight){
+        	$(".auth0-header__list-item-requirements4").css("color", "green")
+            $("#iconn4").removeClass("fa-times-circle")
+            $("#iconn4").addClass("fa-check-circle")
+            $("#iconn4").css("color", "green")
+        }
+        else{
+          	$(".auth0-header__list-item-requirements4").css("color", "red")
+            $("#iconn4").removeClass("fa-check-circle")
+            $("#iconn4").addClass("fa-times-circle")
+            $("#iconn4").css("color", "red")
+        }
+    })
+    
+    $("#auth0RPassword").on("click", function(e){
+      if(!$("#empty-auth0RPw").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 12).toString() + "px")
+      }
+      else{
+      	$(".auth0-form__box").css("height", "780px")
+      }
+      $(".password_requirements").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      
+      $(".auth0-form__box").css("height", "780px")
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+      $(".already-div").attr("hidden", '')
+    })
+    
+    $("#auth0FirstName").on("click", function(e){
+      if(!$("#empty-fn").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 12).toString() + "px")
+      }
+      else{
+      	$(".auth0-form__box").css("height", "780px")
+      }
+      $(".password_requirements").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      
+      $(".auth0-form__box").css("height", "780px")
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+      $(".already-div").attr("hidden", '')
+    })
+    
+    $("#auth0LastName").on("click", function(e){
+      if(!$("#empty-ln").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 12).toString() + "px")
+      }
+      else{
+      	$(".auth0-form__box").css("height", "780px")
+      }
+      $(".password_requirements").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      
+      $(".auth0-form__box").css("height", "780px")
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+      $(".already-div").attr("hidden", '')
+    })
+    
+    $("#auth0UserSU").on("click", function(e){
+      if(!$("#empty-auth0User").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 12).toString() + "px")
+      }
+      else{
+      	$(".auth0-form__box").css("height", "780px")
+      }
+      $(".password_requirements").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+      
+      $(".auth0-form__box").css("height", "780px")
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+      $(".already-div").attr("hidden", '')
+    })
+    
+    $("#auth0EmailForgot").on("click", function(e){
+      $("#empty-forgotEmail").attr("hidden", '')
+    })
+    
+    $(".auth0-form__forgot").on("click", function(e){
+    	console.log("forgot")
+        $(".auth0-form__box").attr("hidden", '')
+        $(".auth0-form__box_forgot").removeAttr("hidden")
+    })
+    
+    $(".back-text").on("click", function(e){
+        $(".auth0-form__box_forgot").attr("hidden", '')
+        $(".auth0-form__box").removeAttr("hidden")
+    })
+    
+    $("#signupBtn").on("click", function(e){
+        //$(".auth0-form__box").addClass("auth0-form__box-signup")
+    	$(".auth0-form__box").css("height", "780px")
+    })
+    
+    $("#loginBtn").on("click", function(e){
+        //$(".auth0-form__box").removeClass("auth0-form__box-signup")
+      	 $(".auth0-form__box").css("height", "610px")
+    })
+
+    $(".auth0-form").on("submit", function(e) {
+      console.log("LOGGIN IN")
+      e.preventDefault();
+      
+      var valid = true;
+      var extraHeight = 0;
+
+      const user = $("#auth0User").val(),
+            pw = $("#auth0Password").val();
+      
+      if(user == "" || !user.includes("@")){
+      	$("#empty-email").removeAttr("hidden")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      if(pw == ""){
+      	$("#empty-pw").removeAttr("hidden")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      extraHeight = (extraHeight + 610).toString() + "px"
+      $(".auth0-form__box").css("height", extraHeight)
+      
+      if(valid){
+        $('.auth0-form__btn').html("LOGGING YOU IN..")
+        $.ajax({
+          method:'POST',
+          //url: "http://10.0.1.20:3000/tasks",
+          //url: "https://3271f253.ngrok.io/getmultipass",
+          url: "https://shopify-stage.vejo.com/getmultipass",
+          data: {
+            "username":user,
+            "password":pw,
+            "returnto": returnTo
+          },
+          success: function(result){
+            console.log(result);
+            var redirectToUrl = result
+            console.log(user.replace("+", "%2B"))
+            if(result != "Wrong email or password"){
+              $.ajax({
+                method:'POST',
+                //url: "http://10.0.1.20:3000/tasks",
+                //url: "https://3271f253.ngrok.io/getmultipass",
+                //url: "https://6d7dab4a927f.ngrok.io/getrechargeinfo",
+                url: "https://shopify-stage.vejo.com/getrechargeinfo",
+                data: {
+                  "email": user.replace("+", "%2B"), //"devonpayne@gmail.com" //"courtney+test@vejo.com" //"courtney.higginson@vejo.com" ////"tony.sziklai@gmail.com",
+                  "shopify_id": "" 
+                },
+                success: function(result){
+                  console.log(result)
+                  localStorage.setItem("rechargeInfo", JSON.stringify(result))
+                  window.location.href = redirectToUrl;
+                },
+              });
+              //window.location.href = result;
+            }     
+            else{
+              $('.auth0-form__btn').html("LOG IN")
+              console.log("wrong email or password")
+              $(".wrong-div").removeAttr("hidden")
+              $(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) + 35).toString() + "px")
+            }
+          },
+        });
+      }
+      else{
+      	console.log("FORM ISNT VALID")
+        console.log(user)
+        console.log(pw)
+      }
+    });
+
+    $(".auth0-signup-form").on("submit", function(e) {
+      e.preventDefault();
+      
+      $(".password_requirements").attr("hidden", '')
+      
+      var valid = true;
+      var extraHeight = 0;
+
+      const fn = $("#auth0FirstName").val(),
+            ln = $("#auth0LastName").val(),
+      		email = $("#auth0UserSU").val(),
+     		psw = $("#auth0PasswordSU").val(),
+      		rpsw = $("#auth0RPassword").val()
+      
+      if(email == "" || !email.includes("@")){
+      	$("#empty-auth0User").removeAttr("hidden")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      if(fn == ""){
+      	$("#empty-fn").removeAttr("hidden")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      if(ln == ""){
+      	$("#empty-ln").removeAttr("hidden")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      if(psw == ""){
+      	$("#empty-auth0Pw").removeAttr("hidden")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      if(rpsw == ""){
+      	$("#empty-auth0RPw").removeAttr("hidden")
+        $("#empty-auth0RPw").html("Please repeat your password")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      if(rpsw != "" && psw != rpsw){
+      	$("#empty-auth0RPw").removeAttr("hidden")
+        $("#empty-auth0RPw").html("Passwords don't match")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      extraHeight = (extraHeight + 780).toString() + "px"
+      $(".auth0-form__box").css("height", extraHeight)
+      
+      if(!hasUpper || !hasLower || !hasNumber || !hasEight){
+      	valid = false
+        $(".auth0-form__box").css("height", "855px")
+        $('.section-login').css("min-height", "910px")
+        $("#empty-auth0Pw").attr("hidden", '')
+        $(".password_requirements").removeAttr("hidden")
+        $("#empty-auth0Pw").attr("hidden", '')
+        $("#empty-auth0RPw").attr("hidden", '')
+        $("#empty-fn").attr("hidden", '')
+        $("#empty-ln").attr("hidden", '')
+        $("#empty-auth0User").attr("hidden", '')
+        $(".already-div").attr("hidden", '')
+      }
+      
+      if(valid){
+        $('.auth0-form__btn').html("SIGNING YOU IN..")
+        console.log("SIGNING UP");
+        $.ajax({
+          method:'POST',
+          //url: "http://10.0.1.20:3000/tasks",
+          //url: "https://3271f253.ngrok.io/signup",
+          url: "https://shopify-stage.vejo.com/signup",
+          data: {"firstname":fn, 
+                 "lastname":ln, 
+                 "password":psw, 
+                 "returnto":returnTo, 
+                 "email":email
+                },
+          success: function(result){
+            console.log(result);
+            if(result == "Email already in use"){
+              $('.auth0-form__btn').html("CREATE ACCOUNT")
+              console.log("Email already in use")
+              $(".already-div-2").removeAttr("hidden")
+              $(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) + 35).toString() + "px")
+            } 
+            else if(result == "Wrong email or password"){
+              $('.auth0-form__btn').html("CREATE ACCOUNT")
+              console.log("Wrong pw")
+              $(".wrong-pw-div").removeAttr("hidden")
+              $(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) + 35).toString() + "px")
+            }
+            else{
+              window.location.href = result;
+            }
+          },
+        });
+
+        console.log("first", fn);
+        console.log("last", ln);
+        console.log("email", email);
+        console.log("pw", psw);
+        console.log("rpw", rpsw);
+      }
+      else{
+      	console.log("Form is not valid")
+      }
+    });
+
+    $(".auth0-form__btn_forgot").on("click", function(e) {
+      var valid = true
+      const email = $("#auth0EmailForgot").val()
+      
+      if(email == "" || !email.includes("@")){
+        $("#empty-forgotEmail").removeAttr("hidden")
+      	valid = false
+      }
+      
+      if(valid){
+        $(".auth0-form__box_forgot").attr("hidden", '')
+      	$(".auth0-form__box_success").removeAttr("hidden")
+      	console.log("FORGOT");
+        console.log(email);
+        $.ajax({
+          method:'POST',
+          //url: "http://10.0.1.20:3000/tasks",
+          //url: "https://3271f253.ngrok.io/resetpw",
+          url: "https://shopify-stage.vejo.com/resetpw",
+          data: {"email":email},
+          success: function(result){
+            console.log(result);
+            $(".label__checkbox").prop( "checked", true );
+            setTimeout(function(){
+                $(".auth0-form__box_success").attr("hidden", '')
+                $(".auth0-form__box_forgot").attr("hidden", '')
+                $(".auth0-form__box").removeAttr("hidden")
+            }, 3000);
+          
+          },
+        });
+      }
+      else{
+      	console.log("Form is not valid")
+      }
+//       setTimeout(function(){
+//         $(".label__checkbox").prop( "checked", true );
+//         setTimeout(function(){
+//         	$(".auth0-form__box_success").attr("hidden", '')
+//             $(".auth0-form__box_forgot").attr("hidden", '')
+//             $(".auth0-form__box").removeAttr("hidden")
+//       	}, 3000);
+//       }, 500);      
+    })
+
+  });
+
+</script>
+
+
+{% comment %}
+
+
+<style>
+  .main{
+    background-color:#f8f8f8
+  }
+
+  .vejo-logo {
+    height: 72px; /* Vejo image has margin */
+  }
+
+  .section-login {
+    background-color: #f8f8f8;
+  }
+
+  .auth0-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+  }
+
+  .auth0-header__header {
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    margin: 0 0 20px 0 !important;
+    color: black;
+  }
+
+  .auth0-header__list {
+    font-family: "TT Commons", Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    margin: 0 auto 30px auto;
+    letter-spacing: 0.03em;
+    color: black;
+  }
+  
+  .password_requirements{
+    font-family: "TT Commons", Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    letter-spacing: 0.03em;
+    color: red;
+  }
+
+  .auth0-header__list-item > span {
+    color: #1D8C28;
+    margin-right: 3px;
+  }
+
+  .auth0-header__list-item:not(:last-child) {
+    margin: 0 0 5px 0 !important;
+  }
+  
+  .auth0-header__list-item-requirements > span {
+    color: red;
+    margin-right: 3px;
+  }
+
+  .auth0-header__list-item-requirements:not(:last-child) {
+    margin: 0 0 5px 0 !important;
+  }
+  
+  .auth0-header__list-item-requirements2 > span {
+    color: red;
+    margin-right: 3px;
+  }
+
+  .auth0-header__list-item-requirements2:not(:last-child) {
+    margin: 0 0 5px 0 !important;
+  }
+  
+  .auth0-header__list-item-requirements3 > span {
+    color: red;
+    margin-right: 3px;
+  }
+
+  .auth0-header__list-item-requirements3:not(:last-child) {
+    margin: 0 0 5px 0 !important;
+  }
+  
+  .auth0-header__list-item-requirements4 > span {
+    color: red;
+    margin-right: 3px;
+  }
+
+  .auth0-header__list-item-requirements4:not(:last-child) {
+    margin: 0 0 5px 0 !important;
+  }
+
+  .auth0-form__box {
+    max-width: 440px;
+    width: 90vw;
+    height: 610px;
+    padding: 40px 30px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+    margin: 0;
+    border-radius: 8px;
+    background-color: white;
+    position: absolute;
+    top: 63%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .auth0-form__box_forgot {
+    max-width: 440px;
+    height: 465px;
+    padding: 40px 30px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+    margin: 0 auto 100px auto;
+    border-radius: 8px;
+    background-color: white;
+    margin-top:50px;
+  }
+  
+  .auth0-form__box_success {
+    max-width: 440px;
+    height: 275px;
+    padding: 40px 30px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+    margin: 0 auto 100px auto;
+    border-radius: 8px;
+    background-color: white;
+    margin-top:50px;
+  }
+  
+  .auth0-form__box-signup {
+    max-width: 440px;
+    height: 780px !important;
+    padding: 40px 30px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+    margin: 0 auto 100px auto;
+    border-radius: 8px;
+    background-color: white;
+  }
+
+  .auth0-form__wrapper {
+    position: relative;
+    max-width: 520px;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 50px 20px;
+  }
+
+  .auth0-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 50px 0 0 0;
+    width: 100%;
+    display: none;
+  }
+  
+  .auth0-signup-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 50px 0 0 0;
+    width: 100%;
+    display: none;
+    
+  }
+
+  .auth0-form__tab-btn {
+    position: absolute;
+    z-index: 1;
+    width: 50%;
+    opacity: 0;
+    border-radius: 0;
+    height: 25px;
+    cursor: pointer;
+  }
+
+  #loginBtn {
+    top: 0;
+    left: 0;
+  }
+
+  #signupBtn {
+    top: 0;
+    right: 0;
+  }
+
+  .auth0-form__tab-label {
+    position: absolute;
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    width: 50%;
+    text-align: center;
+    text-transform: uppercase;
+    color: gray;
+    padding: 0 0 10px 0;
+  }
+
+  .auth0-form__tab-label[for="login"] {
+    left: 0;
+    top: 0;
+  }
+
+  .auth0-form__tab-label[for="signup"] {
+    right: 0;
+    top: 0;
+  }
+
+  #loginBtn:checked + .auth0-form__tab-label,
+  #signupBtn:checked + .auth0-form__tab-label {
+    color: black;
+    border-bottom: 2px solid black;
+  }
+
+  #loginBtn:checked ~ .auth0-login-form {
+    display: block;
+  }
+
+  #signupBtn:checked ~ .auth0-signup-form {
+    display: block;
+  }
+
+  .auth0-form__container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 50px 0;
+  }
+
+  .auth0-form__input {
+    width: 100%;
+    margin: 0 0 20px 0;
+    /*border: 1px solid #f1f1f1;*/
+    /*border: 1.5px solid black;*/
+    border: 1px solid black;
+    border-radius:0px;
+    padding: 12px;
+    font-family: "Scandia", Helvetica, sans-serif;
+  }
+
+  .auth0-form__input::placeholder {
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-size: 12px;
+    color: gray;
+  }
+
+  .auth0-form__input::placeholder {
+    color: gray;
+  }
+  
+  .auth0-form__input_forgot {
+    width: 100%;
+    margin: 0 0 20px 0;
+    /*border: 1px solid #f1f1f1;*/
+    border: 1px solid black;
+    padding: 12px;
+    font-family: "Scandia", Helvetica, sans-serif;
+  }
+
+  .auth0-form__input_forgot::placeholder {
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-size: 12px;
+    color: gray;
+  }
+
+  .auth0-form__input_forgot::placeholder {
+    color: gray;
+  }
+
+  .auth0-form__btn {
+    margin: 0 0 10px 0;
+    padding: 5px 10px;
+    text-transform: uppercase;
+	border:none;
+    width: 100%;
+    padding: 16px 10px 14px;
+    font-size: 100%;
+    background-color: black;
+    border-radius:100px;
+    color: white;
+    text-decoration: none;
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    /*transition: all 0.3s ease-out;*/
+    cursor: pointer !important;
+    margin: 0 auto 15px auto;
+    border:2px solid black;
+  }
+
+  .auth0-form__btn:hover {
+    background-color: white;
+    color:black;
+  }
+  .auth0-form__btn:active {
+    transform:scale(0.95);
+  }
+  
+  .auth0-form__btn_forgot {
+    border-radius:100px;
+    margin: 0 0 10px 0;
+    padding: 5px 10px;
+    text-transform: uppercase;
+	display: block;
+    width: 100%;
+    padding: 16px 10px 14px;
+    font-size: 100%;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    cursor: pointer !important;
+    margin: 0 auto 15px auto;
+    border:none;
+    border:2px solid black;
+  }
+
+  .auth0-form__btn_forgot:hover {
+    background-color: white;
+    color:black;
+  }
+
+  .auth0-form__remember {
+    margin: 0 0 20px 0;
+    text-align: center;
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    display: none;
+  }
+
+  .auth0-form__forgot {
+    text-align: right;
+    margin: 0 0 15px 0;
+    font-family: "Scandia", Helvetica, sans-serif;
+    font-size: 13px;
+  }
+
+  @media(min-width: 800px) {
+
+    /*
+    .auth0-form__wrapper {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+    background-color: white;
+  }
+    */
+
+  }
+  
+  .back-text{
+  	margin-bottom:20px;
+    font-size:15px;
+  }
+  
+  .forgot-text{
+  	margin-bottom:10px;
+    font-size:14px;
+    font-family:Scandia;
+  }
+  
+  .success-text{
+  	margin-top:15px;
+    font-size:25px;
+    text-align:center;
+  }
+  
+  .back-text:hover{
+  	cursor:pointer;
+  }
+  
+  .validation{
+  	color:red;
+    font-size:12px;
+    font-weight:600;
+  }
+  
+  
+
+  .label__checkbox {
+    display: none;
+  }
+
+  .label__check {
+    display: inline-block;
+    border-radius: 50%;
+    border: 5px solid rgba(0,0,0,0.1);
+    background: white;
+    vertical-align: middle;
+    margin-right: 0px;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border .3s ease;
+    font-size:50px;
+
+    i.icon {
+      opacity: 0.2;
+      font-size: ~'calc(1rem + 1vw)';
+      color: transparent;
+      transition: opacity .3s .1s ease;
+      -webkit-text-stroke: 3px rgba(0,0,0,.5);
+    }
+
+    &:hover {
+      border: 5px solid rgba(0,0,0,0.2);
+    }
+  }
+
+  .label__checkbox:checked + .label__text .label__check {
+    animation: check .5s cubic-bezier(0.895, 0.030, 0.685, 0.220) forwards;
+
+    .icon {
+      opacity: 1;
+      transform: scale(0);
+      color: white;
+      -webkit-text-stroke: 0;
+      animation: icon .3s cubic-bezier(1.000, 0.008, 0.565, 1.650) .1s 1 forwards;
+    }
+  }
+
+  .center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  @keyframes icon {
+    from {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1)
+    }
+  }
+
+  @keyframes check {
+    0% {
+      width: 1.5em;
+      height: 1.5em;
+      border-width: 5px;
+    }
+    10% {
+      width: 1.5em;
+      height: 1.5em;
+      opacity: 0.1;
+      background: rgba(0,0,0,0.2);
+      border-width: 15px;
+    }
+    12% {
+      width: 1.5em;
+      height: 1.5em;
+      opacity: 0.4;
+      background: rgba(0,0,0,0.1);
+      border-width: 0;
+    }
+    50% {
+      width: 2em;
+      height: 2em;
+      background: #1d8c28;
+      border: 0;
+      opacity: 0.6;
+    }
+    100% {
+      width: 2em;
+      height: 2em;
+      background: #1d8c28;
+      border: 0;
+      opacity: 1;
+    }
+  }
+  .wrong-div{	
+    background-color: red;
+    color: white;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 15px;
+  }
+  .already-div{	
+    background-color: red;
+    color: white;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 15px;
+  }
+  @media(max-width: 800px) {
+    .auth0-form__box {
+      padding:35px 30px
+    }
+    .wrong-div{
+      font-size:3vw;
+    }
+    .already-div{
+      font-size:3vw;
+    }
+    .vejo-logo {
+      height: 60px; /* Vejo image has margin */
+    }
+    .auth0-form__box_forgot {
+      padding:40px 30px
+    }
+  }
+</style>
+
+<section class="section-generic section-login" style="min-height:700px !important;">
+  <div class="shell">
+
+<!--     <div class="auth0-header">
+      <img class="auth0-header__logo-img vejo-logo" src="https://s3.amazonaws.com/joosterassets/Vejo-logo-Auth0" alt="Vejo Logo">
+
+      <h5 class="auth0-header__header">
+        To continue, create an account or log into an existing one.
+      </h5>
+      <ul class="auth0-header__list">
+        <li class="auth0-header__list-item">
+          <span><i class="fa fa-check-circle"></i></span>
+          Easily manage monthly deliveries
+        </li>
+        <li class="auth0-header__list-item">
+          <span><i class="fa fa-check-circle"></i></span>
+          Sync with the Vejo app
+        </li>
+        <li class="auth0-header__list-item">
+          <span><i class="fa fa-check-circle"></i></span>
+          Exclusive member benefits
+        </li>
+      </ul>
+    </div> -->
+
+    <div class="auth0-form__box">
+      <div class="auth0-header">
+        <img class="auth0-header__logo-img vejo-logo" src="https://s3.amazonaws.com/joosterassets/Vejo-logo-Auth0" alt="Vejo Logo">
+
+        <h5 class="auth0-header__header">
+          To continue, create an account or log into an existing one.
+        </h5>
+        <div style="margin-bottom:10px !important; font-weight:bold" class="auth0-header__header">
+          MEMBERSHIP PERKS
+        </div>
+        <ul class="auth0-header__list">
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Save each and every time you shop vejo.com
+          </li>
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Up to 25% on Every Order
+          </li>
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            4 Free Blends a Month
+          </li>
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Free US Shipping
+          </li>
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Exclusive Offers & VIP Gifts
+          </li>
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Free to join, you can adjust, skip or cancel anytime!
+          </li>
+        </ul>
+      </div>
+      <div class="auth0-form__wrapper">
+
+        <input id="loginBtn" class="auth0-form__tab-btn" type="radio" name="form" value="login" checked />
+        <label class="auth0-form__tab-label" for="login">Log In</label>
+        <form class="auth0-form auth0-login-form" method="post" action="">
+          <div class="auth0-form__container">       
+			<div hidden class="wrong-div">
+              Wrong email/password combination, please try again.
+            </div>
+            <div class="auth0-form__input-container">
+              <span class="auth0-form__input-icon"></span>
+              <div hidden class="validation" id="empty-email">Please enter a valid email</div>
+              <input id="auth0User" class="auth0-form__input" placeholder="Email" name="uname">
+            </div>
+            <div class="auth0-form__input-container">
+              <span class="auth0-form__input-icon"></span>
+              <div hidden class="validation" id="empty-pw">Please enter a password</div>
+              <input id="auth0Password" class="auth0-form__input" type="password" placeholder="Password" name="psw">
+            </div>
+
+            <span class="auth0-form__forgot" class="psw">
+              <a href="#">Forgot your password?</a>
+            </span>
+
+            <button class="auth0-form__btn" type="submit">Log In</button>
+
+            <label class="auth0-form__remember">
+              <input class="auth0-form__remember-input" type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+
+          </div>
+        </form>
+
+        <input id="signupBtn" class="auth0-form__tab-btn" type="radio" name="form" value="signup" />
+        <label class="auth0-form__tab-label" for="signup">Create Account</label>
+        <form class="auth0-signup-form" method="post" action="">
+          <div class="auth0-form__container">    
+            <div hidden class="already-div already-div-2">
+              Email address already in use.
+            </div>
+            <div hidden class="already-div wrong-pw-div">
+              Please avoid using a password that contains personal info.
+            </div>
+  			<div hidden class="validation" id="empty-fn">Please enter a first name</div>
+            <input id="auth0FirstName" class="auth0-form__input" type="text" placeholder="First Name" name="firstname" style="text-transform:capitalize"> 
+            <div hidden class="validation" id="empty-ln">Please enter a last name</div>
+            <input id="auth0LastName" class="auth0-form__input" type="text" placeholder="Last Name" name="lastname" style="text-transform:capitalize">
+            <div hidden class="validation" id="empty-emailAlready">The email you entered already exist in our system</div>
+            <div hidden class="validation" id="empty-auth0User">Please enter a valid email</div>
+            <input id="auth0UserSU" class="auth0-form__input" type="email" placeholder="Email" name="uname"> 
+            <div hidden class="validation" id="empty-auth0Pw">Please enter a password</div>
+            <div hidden class="validation" id="empty-auth0PwTooWeak">Password is too weak</div>
+            <ul hidden class="password_requirements">
+              <li class="auth0-header__list-item-requirements">
+                <span><i id="iconn" class="fa fa-times-circle"></i></span>
+                At least one upper case letter
+              </li>
+              <li class="auth0-header__list-item-requirements2">
+                <span><i id="iconn2" class="fa fa-times-circle"></i></span>
+                At least one lower case letter
+              </li>
+              <li class="auth0-header__list-item-requirements3">
+                <span><i id="iconn3" class="fa fa-times-circle"></i></span>
+                At least one number
+              </li>
+              <li class="auth0-header__list-item-requirements4">
+                <span><i id="iconn4" class="fa fa-times-circle"></i></span>
+                At least 8 characters
+              </li>
+            </ul>
+            <input id="auth0PasswordSU" class="auth0-form__input" type="password" placeholder="Password" name="psw">
+            <div hidden class="validation" id="empty-auth0RPw">Please repeat your password</div>
+            <div hidden class="validation" id="empty-auth0RPwNoMatch">Passwords do not match</div>
+            <input id="auth0RPassword" class="auth0-form__input" type="password" placeholder="Repeat Password" name="rpsw">
+
+            <button class="auth0-form__btn" type="submit">START SAVING</button>
+
+          </div>
+        </form>
+
+      </div>
+    </div>
+    
+    <div hidden class="auth0-form__box_forgot">
+      <div class="back-text">&larr; Back</div>
+      <div class="auth0-header">
+        <img class="auth0-header__logo-img vejo-logo" src="https://s3.amazonaws.com/joosterassets/Vejo-logo-Auth0" alt="Vejo Logo">
+
+        <h5 class="auth0-header__header">
+          To continue, create an account or log into an existing one.
+        </h5>
+        <ul class="auth0-header__list">
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Easily manage monthly deliveries
+          </li>
+<!--           <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Free contactless U.S. shipping to your door on all subscription orders
+          </li> -->
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Up to 22% off subscription orders
+          </li>
+          <li class="auth0-header__list-item">
+            <span><i class="fa fa-check-circle"></i></span>
+            Free blends with every subscription order
+          </li>
+        </ul>
+      </div>
+      <div class="forgot-text"> Enter your email address to receive an email with a link to reset your password.</div>
+      <div hidden class="validation" id="empty-forgotEmail">Please enter a valid email</div>
+      <input id="auth0EmailForgot" class="auth0-form__input_forgot" type="email" placeholder="Email" name="femail" required>
+      <button class="auth0-form__btn_forgot" type="submit">Send Email</button>
+    </div>
+    
+    <div hidden class="auth0-form__box_success">
+      <div class="center">
+        <label class="label">
+          <input  class="label__checkbox" type="checkbox" />
+          <span class="label__text">
+            <span class="label__check">
+              <i class="fa fa-check icon" style="color:white"></i>
+            </span>
+          </span>
+        </label>
+        <div class="success-text">Sent!</div>
+      </div>
+    </div>
+
+
+  </div><!-- /.shell -->
+</section><!-- /.section-generic -->
+
+<script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
+<script>
+
+  $(document).ready(function() {
+//     $.ajax({
+//                 method:'POST',
+//                 //url: "http://10.0.1.20:3000/tasks",
+//                 //url: "https://3271f253.ngrok.io/getmultipass",
+//                 //url: "https://6d7dab4a927f.ngrok.io/getrechargeinfo",
+//                 url: "https://shopify-stage.vejo.com/getrechargeinfo",
+//                 data: {
+//                   "email": "garret.lamb@vejo.com",//"holland67@comcast.net", //"devonpayne@gmail.com" //"courtney+test@vejo.com" //"courtney.higginson@vejo.com" ////"tony.sziklai@gmail.com",
+//                   "shopify_id": "" 
+//                 },
+//                 success: function(result){
+//                   console.log(result)
+//                   localStorage.setItem("rechargeInfo", JSON.stringify(result))
+//                   //window.location.href = redirectToUrl;
+//                 },
+//               });
+    
+    
+    
+    var hasUpper = false
+    var hasLower = false
+    var hasNumber = false
+    var hasEight = false
+        
+    //var returnTo = "https://www.vejo.com/tools/recurring/login"  
+    var returnTo = "https://www.vejo.com/pages/myaccount#/"
+    /*
+    if (localStorage.getItem('comingFromCart') === 'true'){
+      returnTo = "https://www.vejo.com/account/"
+    }
+    */
+    
+    $('#loginBtn').on("click", function(){
+    	console.log("login")
+        $('.section-login').css("min-height", "700px")
+    })
+    $('#signupBtn').on("click", function(){
+    	console.log("signup")
+        $('.section-login').css("min-height", "910px")
+    })
+    $('.auth0-form__tab-btn').on("click", function(){
+      $("#empty-pw").attr("hidden", '')
+      $("#empty-email").attr("hidden", '')
+      $(".wrong-div").attr("hidden", '')
+      $(".already-div").attr("hidden", '')
+      $(".password_requirements").attr("hidden", '')
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+    })
+    
+    $("#auth0User").on("click", function(e){
+      if(!$("#empty-email").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 12).toString() + "px")
+      }
+      if(!$(".wrong-div").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 35).toString() + "px")
+      }
+      $("#empty-email").attr("hidden", '')
+      $(".wrong-div").attr("hidden", '')
+    })
+    
+    $("#auth0Password").on("click", function(e){
+      if(!$(".wrong-div").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 35).toString() + "px")
+      }
+      if(!$("#empty-pw").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 12).toString() + "px")
+      }
+      $("#empty-pw").attr("hidden", '')
+      $(".wrong-div").attr("hidden", '')
+    })
+    
+    $("#auth0PasswordSU").on("click", function(e){
+      $(".auth0-form__box").css("height", "855px")
+      $('.section-login').css("min-height", "910px")
+      $("#empty-auth0Pw").attr("hidden", '')
+      $(".password_requirements").removeAttr("hidden")
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+      $(".already-div").attr("hidden", '')
+    })
+    
+    $("#auth0PasswordSU").bind("input", function(){
+    	var val = $("#auth0PasswordSU").val()
+        hasUpper = false
+        hasLower = false
+        hasNumber = false
+        hasEight = false
+        
+        if(val.length > 7){
+       		hasEight = true
+        }
+      
+        for(var i = 0; i < val.length; i++){
+          if(val[i] == val[i].toLowerCase()){
+            if(isNaN(val[i])){
+          	  hasLower = true
+            }
+          }
+          if(val[i] == val[i].toUpperCase()){
+          	if(isNaN(val[i])){
+          	  hasUpper = true
+            }
+          }
+//           if(/\d/.test(val[i])){
+//           	hasNumber = true
+//           }
+          
+          if(!isNaN(val[i])){
+          	hasNumber = true
+          }
+        }
+      
+//       	console.log(hasUpper)
+//         console.log(hasLower)
+//         console.log(hasNumber)
+//         console.log(hasEight)
+      
+        if(hasUpper){
+        	$(".auth0-header__list-item-requirements").css("color", "green")
+            $("#iconn").removeClass("fa-times-circle")
+            $("#iconn").addClass("fa-check-circle")
+            $("#iconn").css("color", "green")
+        }
+        else{
+          	$(".auth0-header__list-item-requirements").css("color", "red")
+            $("#iconn").removeClass("fa-check-circle")
+            $("#iconn").addClass("fa-times-circle")
+            $("#iconn").css("color", "red")
+        }
+      
+      	if(hasLower){
+        	$(".auth0-header__list-item-requirements2").css("color", "green")
+            $("#iconn2").removeClass("fa-times-circle")
+            $("#iconn2").addClass("fa-check-circle")
+            $("#iconn2").css("color", "green")
+        }
+        else{
+          	$(".auth0-header__list-item-requirements2").css("color", "red")
+            $("#iconn2").removeClass("fa-check-circle")
+            $("#iconn2").addClass("fa-times-circle")
+            $("#iconn2").css("color", "red")
+        }
+      	if(hasNumber){
+        	$(".auth0-header__list-item-requirements3").css("color", "green")
+            $("#iconn3").removeClass("fa-times-circle")
+            $("#iconn3").addClass("fa-check-circle")
+            $("#iconn3").css("color", "green")
+        }
+        else{
+          	$(".auth0-header__list-item-requirements3").css("color", "red")
+            $("#iconn3").removeClass("fa-check-circle")
+            $("#iconn3").addClass("fa-times-circle")
+            $("#iconn3").css("color", "red")
+        }
+      	if(hasEight){
+        	$(".auth0-header__list-item-requirements4").css("color", "green")
+            $("#iconn4").removeClass("fa-times-circle")
+            $("#iconn4").addClass("fa-check-circle")
+            $("#iconn4").css("color", "green")
+        }
+        else{
+          	$(".auth0-header__list-item-requirements4").css("color", "red")
+            $("#iconn4").removeClass("fa-check-circle")
+            $("#iconn4").addClass("fa-times-circle")
+            $("#iconn4").css("color", "red")
+        }
+    })
+    
+    $("#auth0RPassword").on("click", function(e){
+      if(!$("#empty-auth0RPw").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 12).toString() + "px")
+      }
+      else{
+      	$(".auth0-form__box").css("height", "780px")
+      }
+      $(".password_requirements").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      
+      $(".auth0-form__box").css("height", "780px")
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+      $(".already-div").attr("hidden", '')
+    })
+    
+    $("#auth0FirstName").on("click", function(e){
+      if(!$("#empty-fn").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 12).toString() + "px")
+      }
+      else{
+      	$(".auth0-form__box").css("height", "780px")
+      }
+      $(".password_requirements").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      
+      $(".auth0-form__box").css("height", "780px")
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+      $(".already-div").attr("hidden", '')
+    })
+    
+    $("#auth0LastName").on("click", function(e){
+      if(!$("#empty-ln").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 12).toString() + "px")
+      }
+      else{
+      	$(".auth0-form__box").css("height", "780px")
+      }
+      $(".password_requirements").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      
+      $(".auth0-form__box").css("height", "780px")
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+      $(".already-div").attr("hidden", '')
+    })
+    
+    $("#auth0UserSU").on("click", function(e){
+      if(!$("#empty-auth0User").is(":hidden")){
+      	$(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) - 12).toString() + "px")
+      }
+      else{
+      	$(".auth0-form__box").css("height", "780px")
+      }
+      $(".password_requirements").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+      
+      $(".auth0-form__box").css("height", "780px")
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0Pw").attr("hidden", '')
+      $("#empty-auth0RPw").attr("hidden", '')
+      $("#empty-fn").attr("hidden", '')
+      $("#empty-ln").attr("hidden", '')
+      $("#empty-auth0User").attr("hidden", '')
+      $(".already-div").attr("hidden", '')
+    })
+    
+    $("#auth0EmailForgot").on("click", function(e){
+      $("#empty-forgotEmail").attr("hidden", '')
+    })
+    
+    $(".auth0-form__forgot").on("click", function(e){
+    	console.log("forgot")
+        $(".auth0-form__box").attr("hidden", '')
+        $(".auth0-form__box_forgot").removeAttr("hidden")
+    })
+    
+    $(".back-text").on("click", function(e){
+        $(".auth0-form__box_forgot").attr("hidden", '')
+        $(".auth0-form__box").removeAttr("hidden")
+    })
+    
+    $("#signupBtn").on("click", function(e){
+        //$(".auth0-form__box").addClass("auth0-form__box-signup")
+    	$(".auth0-form__box").css("height", "780px")
+    })
+    
+    $("#loginBtn").on("click", function(e){
+        //$(".auth0-form__box").removeClass("auth0-form__box-signup")
+      	 $(".auth0-form__box").css("height", "610px")
+    })
+
+    $(".auth0-form").on("submit", function(e) {
+      console.log("LOGGIN IN")
+      e.preventDefault();
+      
+      var valid = true;
+      var extraHeight = 0;
+
+      const user = $("#auth0User").val(),
+            pw = $("#auth0Password").val();
+      
+      if(user == "" || !user.includes("@")){
+      	$("#empty-email").removeAttr("hidden")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      if(pw == ""){
+      	$("#empty-pw").removeAttr("hidden")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      extraHeight = (extraHeight + 610).toString() + "px"
+      $(".auth0-form__box").css("height", extraHeight)
+      
+      if(valid){
+        $('.auth0-form__btn').html("LOGGING YOU IN..")
+        $.ajax({
+          method:'POST',
+          //url: "http://10.0.1.20:3000/tasks",
+          //url: "https://3271f253.ngrok.io/getmultipass",
+          url: "https://shopify-stage.vejo.com/getmultipass",
+          data: {
+            "username":user,
+            "password":pw,
+            "returnto": returnTo
+          },
+          success: function(result){
+            console.log(result);
+            var redirectToUrl = result
+            console.log(user.replace("+", "%2B"))
+            if(result != "Wrong email or password"){
+              $.ajax({
+                method:'POST',
+                //url: "http://10.0.1.20:3000/tasks",
+                //url: "https://3271f253.ngrok.io/getmultipass",
+                //url: "https://6d7dab4a927f.ngrok.io/getrechargeinfo",
+                url: "https://shopify-stage.vejo.com/getrechargeinfo",
+                data: {
+                  "email": user.replace("+", "%2B"), //"devonpayne@gmail.com" //"courtney+test@vejo.com" //"courtney.higginson@vejo.com" ////"tony.sziklai@gmail.com",
+                  "shopify_id": "" 
+                },
+                success: function(result){
+                  console.log(result)
+                  localStorage.setItem("rechargeInfo", JSON.stringify(result))
+                  window.location.href = redirectToUrl;
+                },
+              });
+              //window.location.href = result;
+            }     
+            else{
+              $('.auth0-form__btn').html("LOG IN")
+              console.log("wrong email or password")
+              $(".wrong-div").removeAttr("hidden")
+              $(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) + 35).toString() + "px")
+            }
+          },
+        });
+      }
+      else{
+      	console.log("FORM ISNT VALID")
+      }
+    });
+
+    $(".auth0-signup-form").on("submit", function(e) {
+      e.preventDefault();
+      
+      $(".password_requirements").attr("hidden", '')
+      
+      var valid = true;
+      var extraHeight = 0;
+
+      const fn = $("#auth0FirstName").val(),
+            ln = $("#auth0LastName").val(),
+      		email = $("#auth0UserSU").val(),
+     		psw = $("#auth0PasswordSU").val(),
+      		rpsw = $("#auth0RPassword").val()
+      
+      if(email == "" || !email.includes("@")){
+      	$("#empty-auth0User").removeAttr("hidden")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      if(fn == ""){
+      	$("#empty-fn").removeAttr("hidden")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      if(ln == ""){
+      	$("#empty-ln").removeAttr("hidden")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      if(psw == ""){
+      	$("#empty-auth0Pw").removeAttr("hidden")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      if(rpsw == ""){
+      	$("#empty-auth0RPw").removeAttr("hidden")
+        $("#empty-auth0RPw").html("Please repeat your password")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      if(rpsw != "" && psw != rpsw){
+      	$("#empty-auth0RPw").removeAttr("hidden")
+        $("#empty-auth0RPw").html("Passwords don't match")
+        valid = false
+        extraHeight = extraHeight + 12
+      }
+      
+      extraHeight = (extraHeight + 780).toString() + "px"
+      $(".auth0-form__box").css("height", extraHeight)
+      
+      if(!hasUpper || !hasLower || !hasNumber || !hasEight){
+      	valid = false
+        $(".auth0-form__box").css("height", "855px")
+        $('.section-login').css("min-height", "910px")
+        $("#empty-auth0Pw").attr("hidden", '')
+        $(".password_requirements").removeAttr("hidden")
+        $("#empty-auth0Pw").attr("hidden", '')
+        $("#empty-auth0RPw").attr("hidden", '')
+        $("#empty-fn").attr("hidden", '')
+        $("#empty-ln").attr("hidden", '')
+        $("#empty-auth0User").attr("hidden", '')
+        $(".already-div").attr("hidden", '')
+      }
+      
+      if(valid){
+        $('.auth0-form__btn').html("SIGNING YOU IN..")
+        console.log("SIGNING UP");
+        $.ajax({
+          method:'POST',
+          //url: "http://10.0.1.20:3000/tasks",
+          //url: "https://3271f253.ngrok.io/signup",
+          url: "https://shopify-stage.vejo.com/signup",
+          data: {"firstname":fn, 
+                 "lastname":ln, 
+                 "password":psw, 
+                 "returnto":returnTo, 
+                 "email":email
+                },
+          success: function(result){
+            console.log(result);
+            if(result == "Email already in use"){
+              $('.auth0-form__btn').html("START SAVING")
+              console.log("Email already in use")
+              $(".already-div-2").removeAttr("hidden")
+              $(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) + 35).toString() + "px")
+            } 
+            else if(result == "Wrong email or password"){
+              $('.auth0-form__btn').html("START SAVING")
+              console.log("Wrong pw")
+              $(".wrong-pw-div").removeAttr("hidden")
+              $(".auth0-form__box").css("height", (parseInt($(".auth0-form__box").css("height"), 10) + 35).toString() + "px")
+            }
+            else{
+              window.location.href = result;
+            }
+          },
+        });
+
+        console.log("first", fn);
+        console.log("last", ln);
+        console.log("email", email);
+        console.log("pw", psw);
+        console.log("rpw", rpsw);
+      }
+      else{
+      	console.log("Form is not valid")
+      }
+    });
+
+    $(".auth0-form__btn_forgot").on("click", function(e) {
+      var valid = true
+      const email = $("#auth0EmailForgot").val()
+      
+      if(email == "" || !email.includes("@")){
+        $("#empty-forgotEmail").removeAttr("hidden")
+      	valid = false
+      }
+      
+      if(valid){
+        $(".auth0-form__box_forgot").attr("hidden", '')
+      	$(".auth0-form__box_success").removeAttr("hidden")
+      	console.log("FORGOT");
+        console.log(email);
+        $.ajax({
+          method:'POST',
+          //url: "http://10.0.1.20:3000/tasks",
+          //url: "https://3271f253.ngrok.io/resetpw",
+          url: "https://shopify-stage.vejo.com/resetpw",
+          data: {"email":email},
+          success: function(result){
+            console.log(result);
+            $(".label__checkbox").prop( "checked", true );
+            setTimeout(function(){
+                $(".auth0-form__box_success").attr("hidden", '')
+                $(".auth0-form__box_forgot").attr("hidden", '')
+                $(".auth0-form__box").removeAttr("hidden")
+            }, 3000);
+          },
+        });
+      }
+      else{
+      	console.log("Form is not valid")
+      }
+//       setTimeout(function(){
+//         $(".label__checkbox").prop( "checked", true );
+//         setTimeout(function(){
+//         	$(".auth0-form__box_success").attr("hidden", '')
+//             $(".auth0-form__box_forgot").attr("hidden", '')
+//             $(".auth0-form__box").removeAttr("hidden")
+//       	}, 3000);
+//       }, 500);      
+    })
+
+  });
+
+</script>
+
+<!-- <script>
+  console.log("testing API")
+  $.ajax({
+    method:'POST',
+    //url: "http://10.0.1.20:3000/tasks",
+    //url: "https://3271f253.ngrok.io/getmultipass",
+    //url: "https://6d7dab4a927f.ngrok.io/getrechargeinfo",
+    url: "https://shopify-stage.vejo.com/getrechargeinfo",
+    data: {
+      "email": "sheeva@vejo.com",
+      "shopify_id": "" 
+    },
+    success: function(result){
+      console.log(result)
+    }
+  })
+</script> -->
+
+{% endcomment %}

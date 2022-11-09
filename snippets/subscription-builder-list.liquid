@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  @media (max-width: 769px){
+	.mobile{
+      display: block !important;
+    }
+  	.desktop{
+      display: none !important;
+	}
+   .sectionBlends {
+    justify-content: space-around !important;
+    }
+  }      
+    .quantity{
+    width : 15px;
+    }
+
+    .plus {
+      cursor: pointer;
+
+    }
+
+    .name_product {
+      margin-left: 13px;
+    }
+
+    .minus{
+
+          cursor: pointer;
+
+    }
+
+    .img {
+    width: 124px;
+    }
+
+    .sectionBlends{
+    justify-content: space-between;
+    display:flex;
+    }
+    .box{
+      border-radius: 15px;
+      padding: 15px;
+      border: 1px solid #a19e9e47;
+    }
+    .box img{
+      border-radius: 15px;
+
+    }
+
+    .Quantity{
+    display: flex;
+    font-size: 23px;
+    justify-content: space-evenly;
+    }
+    .Quantity div:nth-child(2){
+    font-size:14px;
+    padding-top: 5px;
+    }
+
+    .box h5 {
+      text-align:center;
+      margin-top:5px;
+      height:47px;
+    }
+    .box p {
+      text-align:center;
+      font-size: 14px;
+      height: 30px;
+
+    }
+    .label_blend{
+      font-size: 17px;
+      padding: 18px 0 13px 0 !important;
+    }
+    .box_mobile_margin{
+      margin-right:3px !important;
+    }
+  </style>
+
+  
+</head>
+
+<body>
+  
+  <div class="desktop">
+  <div>
+  <div class="ff-heading label_blend"> <label>Select two FREE 4-packs of your choice</label></div>
+  <div class="sectionBlends">
+  <div class="box" >
+  <div class='strawberry-banana img'>
+  
+  <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-organic-strawberry-banana_720x.jpg?v=1650903534'>
+    <h5> Strawberry Banana </h5>
+    <p>4 pack</p>
+  </div>
+    
+                 <div class="Quantity">
+        <div class="minus removeStrawberry-banana" id="removeStrawberry-banana">-</div>
+
+        <div class="39487812501598" id="39487812501598">0</div>
+         <div  class="plus addStrawberry-banana" id="addStrawberry-banana">+</div>
+    </div>
+      </div>
+  <div class="box">
+
+      <div class='Tropical img'>
+  
+  <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-organic-tropical_720x.jpg?v=1650903701'>
+   <div class="tt">
+    <h5>Tropical </h5>
+    <p>4 pack</p>
+   </div>
+  </div>
+    
+                 <div class="Quantity">
+        <div class="minus removeTropical" id="removeTropical">-</div>
+
+        <div  class="39487804375134" id="39487804375134">0</div>
+         <div  class="plus addTropical" id="addTropical">+</div>
+    </div>
+    
+    </div>
+      
+      
+      
+        <div class="box">
+
+      <div class='tart-berry img'>
+  
+  <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-tart-berry_720x.jpg?v=1650903626'>
+     <h5> Tart Berry </h5>
+    <p>4 pack</p>
+  </div>
+    
+                 <div class="Quantity">
+        <div class="minus removeTart_Berry" id="removeTart_Berry">-</div>
+
+        <div class="39487813582942"id="39487813582942">0</div>
+         <div  class="plus addTart_Berry" id="addTart_Berry">+</div>
+    </div>
+    
+    </div>
+              </div>
+    
+    <div class="sectionBlends" style="margin-top:30px">
+
+  <div class="box" >
+    
+  <div class='clean-green img'>
+  
+  <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-clean-greens_720x.jpg?v=1650903294'>
+    <div>
+    <h5> Clean Greens</h5>
+    <p>4 pack</p>
+  </div>
+    
+                 <div class="Quantity">
+        <div  class="minus removeClean_Green"id="removeClean_Green">-</div>
+
+        <div  class="39487813681246" id="39487813681246">0</div>
+         <div  class="plus addClean_Green" id="addClean_Green">+</div>
+      </div></div>
+      </div>
+  <div class="box">
+
+      <div class='chocolate-plant-based-protein img'>
+  
+  <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-chocolate-plant-based-protein_720x.jpg?v=1650903438'>
+       <div class="tt">
+      <h5> Plant-Based Protein Chocolate</h5>
+         <p>4 pack</p></div>
+  </div>
+    
+                 <div class="Quantity">
+        <div class="minus removeChocolate_Pro" id="removeChocolate_Pro">-</div>
+
+        <div class="39487861850206" id="39487861850206">0</div>
+         <div  class="plus addChocolate_Pro" id="addChocolate_Pro">+</div>
+    </div>
+    
+    </div>
+      
+      
+      
+        <div class="box">
+
+      <div class='matcha-latte img'>
+  
+  <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-oatmilk-matcha-latte_720x.jpg?v=1650903372'>
+    <h5> Matcha Latte </h5>
+    <p>4 pack</p>
+  </div>
+    
+                 <div class="Quantity">
+        <div  class="minus removeMatcha_latte"id="removeMatcha_latte">-</div>
+
+        <div  class="39487862210654" id="39487862210654">0</div>
+         <div  class="plus addMatcha_latte" id="addMatcha_latte">+</div>
+    </div>
+    
+    </div>
+              </div>
+
+    </div>
+ </div>
+  
+  <div class="mobile" style="display:none">
+  <div>
+  <div class="ff-heading label_blend"> <label>Select two FREE 4-packs of your choice</label></div>
+  <div class="sectionBlends">
+
+  <div class="box box_mobile_margin" >
+  <div class='strawberry-banana img'>
+  
+  <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-organic-strawberry-banana_720x.jpg?v=1650903534'>
+    <h5> Strawberry Banana </h5>
+    <p>4 pack</p>
+  </div>
+    
+                 <div class="Quantity">
+        <div class="minus removeStrawberry-banana" id="removeStrawberry-banana">-</div>
+
+        <div class="39487812501598" id="39487812501598">0</div>
+         <div  class="plus addStrawberry-banana" id="addStrawberry-banana">+</div>
+    </div>
+      </div>
+  <div class="box">
+
+      <div class='Tropical img'>
+  
+  <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-organic-tropical_720x.jpg?v=1650903701'>
+    <h5>Tropical </h5>
+    <p>4 pack</p>
+  </div>
+    
+                 <div class="Quantity">
+        <div class="minus removeTropical" id="removeTropical">-</div>
+
+        <div class="39487804375134" id="39487804375134">0</div>
+         <div  class="plus addTropical" id="addTropical">+</div>
+    </div>
+    
+    </div>
+    </div>
+    
+    <div class="sectionBlends" style="margin-top:15px">
+    <div class="box box_mobile_margin">
+
+      <div class='tart-berry img'>
+  
+  <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-tart-berry_720x.jpg?v=1650903626'>
+     <h5> Tart Berry </h5>
+    <p>4 pack</p>
+  </div>
+    
+                 <div class="Quantity">
+        <div class="minus removeTart_Berry" id="removeTart_Berry">-</div>
+
+        <div class="39487813582942" id="39487813582942">0</div>
+         <div  class="plus addTart_Berry" id="addTart_Berry">+</div>
+    </div>
+    
+    </div>
+
+  <div class="box" >
+  <div class='clean-green img'>
+  
+  <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-clean-greens_720x.jpg?v=1650903294'>
+    <h5> Clean Greens</h5>
+    <p>4 pack</p>
+  </div>
+    
+                 <div class="Quantity">
+        <div  class="minus removeClean_Green"id="removeClean_Green">-</div>
+
+        <div class="39487813681246" id="39487813681246">0</div>
+         <div  class="plus addClean_Green" id="addClean_Green">+</div>
+    </div>
+      </div>
+    </div>
+      <div class="sectionBlends" style="margin-top:15px">
+  <div class="box box_mobile_margin">
+
+      <div class='chocolate-plant-based-protein img'>
+  
+  <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-chocolate-plant-based-protein_720x.jpg?v=1650903438'>
+      <h5> Plant-Based Protein Chocolate </h5>
+    <p>4 pack</p>
+  </div>
+    
+                 <div class="Quantity">
+        <div class="minus removeChocolate_Pro" id="removeChocolate_Pro">-</div>
+
+        <div class="39487861850206" id="39487861850206">0</div>
+         <div  class="plus addChocolate_Pro" id="addChocolate_Pro">+</div>
+    </div>
+    
+    </div>
+      
+      
+      
+        <div class="box">
+
+      <div class='matcha-latte img'>
+  
+  <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-oatmilk-matcha-latte_720x.jpg?v=1650903372'>
+    <h5> Matcha Latte </h5>
+    <p>4 pack</p>
+  </div>
+    
+                 <div class="Quantity">
+        <div  class="minus removeMatcha_latte"id="removeMatcha_latte">-</div>
+
+        <div class="39487862210654" id="39487862210654">0</div>
+         <div  class="plus addMatcha_latte" id="addMatcha_latte">+</div>
+    </div>
+    
+    </div>
+  </div>
+
+    </div>
+       <h2 class="body ff-body"style="margin-top: 20%">Your pack<h2>
+       <div  class="product__border" style="margin-top: 9px;"></div>
+    {%render "subscription-builder-pack"%}
+    </div>
+</body>
+
+</html>

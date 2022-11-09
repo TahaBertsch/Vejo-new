@@ -1,0 +1,538 @@
+{%- liquid
+  assign video_url = section.settings.video_url
+assign image_overlay1 = section.settings.image1
+assign image_overlay2 = section.settings.image2
+assign image_overlay3 = section.settings.image3
+assign image_overlay4 = section.settings.image4
+assign image_overlay5 = section.settings.image5
+assign image_overlay6 = section.settings.image6
+assign image_overlay7 = section.settings.image7
+assign image_overlay8 = section.settings.image8
+assign sub_headline1 = section.settings.sub_headline1
+assign main_headline1 = section.settings.main_headline1
+assign sub_headline2 = section.settings.sub_headline2
+assign main_headline2 = section.settings.main_headline2
+assign sub_headline3 = section.settings.sub_headline3
+assign main_headline3 = section.settings.main_headline3
+assign sub_headline4 = section.settings.sub_headline4
+assign main_headline4 = section.settings.main_headline4
+assign sub_headline5 = section.settings.sub_headline5
+assign main_headline5 = section.settings.main_headline5
+assign sub_headline6 = section.settings.sub_headline6
+assign main_headline6 = section.settings.main_headline6
+assign sub_headline7 = section.settings.sub_headline7
+assign main_headline7 = section.settings.main_headline7
+assign sub_headline8 = section.settings.sub_headline8
+assign main_headline8 = section.settings.main_headline8
+assign subheadline_color = section.settings.title_color
+assign mainHeadline_color= section.settings.text_color
+
+
+
+
+
+  assign shadow_amount = section.settings.overlay_shadow | divided_by: 100.00
+  assign shadow_amount_lesser = shadow_amount | minus: 0.04
+  assign overlay_opacity = section.settings.overlay_opacity | divided_by: 100.00
+  assign align = section.settings.alignment | split: "_"
+  assign enable_text_overlay = true
+  assign video_aspect = section.settings.video_aspect
+  assign disable_style = true
+
+  if video_aspect == 'original' and video_url == blank
+    assign disable_style = false
+  endif
+
+  if shadow_amount == 0
+    assign enable_text_overlay = false
+  endif
+
+  assign brightness_button = block.settings.color_background_button | color_brightness
+  if brightness_button > 60
+    assign color_background_button_hover = block.settings.color_background_button | color_darken: 20
+    else
+    assign color_background_button_hover = block.settings.color_background_button | color_lighten: 20
+  endif
+  assign section_background_color = section.settings.gradient_background
+-%}
+<style>
+ .desktop_display_animation .slick-dots{
+    bottom: initial !important;
+    width: 200%;
+    display: grid;
+    margin-top: 54px !important;
+    left:96%;
+  }
+</style>
+{%- assign _section  = section.settings -%}
+{% assign vejo_care_customer = false %}
+{%- for tag in customer.tags -%}
+  {%- if tag == "Vejo Care" or tag == "Vejo Invited" -%}
+    {% assign vejo_care_customer = true %}
+  {%- endif -%}
+{%- endfor -%}
+
+{{ "hp-blender-animation.scss.css" | asset_url | stylesheet_tag }}
+<style>
+    @media (max-width: 769px){
+	.mobile{
+      display: block !important;
+    }
+  	.desktop{
+      display: none !important;
+}
+
+       .carousel_img{
+    display:block !important;
+  }
+  }
+  .carousel_img{
+    display:flex !important;
+  }
+
+  @media (max-width: 769px){
+	.mobile_display_animation{
+        display:block !important;
+    }
+  	.desktop_display_animation{
+  		 display:none !important
+   }
+    .revers_display_animation{
+  		 display:none !important
+   }
+  }
+  .mobile_display_animation .image__img
+    {
+      position : inherit !important;
+    }
+  .mobile_display_animation .video-hero__video
+    {
+      position : inherit !important;
+    }
+  .revers_display_animation .image__img
+    {
+      position : inherit !important;
+    }
+  .revers_display_animation .video-hero__video
+    {
+      position : inherit !important;
+    }
+  .blender_animation_icon
+    {
+      fill:{{ _section.text_color }};
+      text-indent: -2px !important;
+     vertical-align: middle;
+    }
+  .slick-dots li button:before{
+     color: white !important;
+  }
+  .slick-dots li.slick-active button:before{
+     opacity: .90 !important;
+  }
+</style>
+<div class="sctn sctn-block-1 image-with-text--square" id="sctn-{{ section.id }}" style="background: {{ section_background_color }};">
+  <div class="grid-overlay desktop_display_animation"  {%if section.settings.revers_asset =='right'%}style="display:none" {%endif%}>
+
+    <div class="blender-scroll-animation carousel" style="">
+
+
+      {% if image_overlay1!= blank and image_overlay2==blank  and image_overlay3==blank and image_overlay4==blank and image_overlay5==blank and image_overlay6==blank and image_overlay7==blank and image_overlay8==blank %}
+        {% render 'image_test1' with image: image_overlay1, disable_style: false, wrapper_class: 'video-hero__image' ,main_headline1:main_headline1 , sub_headline1:sub_headline1 , subheadline_color:subheadline_color , mainHeadline_color:mainHeadline_color %}
+
+        {% else %}
+      {%- if image_overlay1 != blank -%}
+        
+        {% render 'image_test' with image: image_overlay1, disable_style: false, wrapper_class: 'video-hero__image' ,main_headline1:main_headline1 , sub_headline1:sub_headline1 , subheadline_color:subheadline_color , mainHeadline_color:mainHeadline_color %}
+      {%- endif -%}
+           {%- if image_overlay2 != blank -%}
+        {% render 'image_test' with image: image_overlay2, disable_style: false, wrapper_class: 'video-hero__image'  ,main_headline1:main_headline2 , sub_headline1:sub_headline2  , subheadline_color:subheadline_color , mainHeadline_color:mainHeadline_color%}
+      {%- endif -%}
+           {%- if image_overlay3 != blank -%}
+        {% render 'image_test' with image: image_overlay3, disable_style: false, wrapper_class: 'video-hero__image' ,main_headline1:main_headline3 , sub_headline1:sub_headline3 ,subheadline_color:subheadline_color, mainHeadline_color:mainHeadline_color %}
+      {%- endif -%}
+             {%- if image_overlay4 != blank -%}
+        {% render 'image_test' with image: image_overlay4, disable_style: false, wrapper_class: 'video-hero__image' ,main_headline1:main_headline4 , sub_headline1:sub_headline4 ,subheadline_color:subheadline_color , mainHeadline_color:mainHeadline_color%}
+      {%- endif -%}
+             {%- if image_overlay5 != blank -%}
+        {% render 'image_test' with image: image_overlay5, disable_style: false, wrapper_class: 'video-hero__image' ,main_headline1:main_headline5 , sub_headline1:sub_headline5 ,subheadline_color:subheadline_color, mainHeadline_color:mainHeadline_color %}
+      {%- endif -%}
+             {%- if image_overlay6 != blank -%}
+        {% render 'image_test' with image: image_overlay6, disable_style: false, wrapper_class: 'video-hero__image' ,main_headline1:main_headline6 , sub_headline1:sub_headline6 ,subheadline_color:subheadline_color, mainHeadline_color:mainHeadline_color%}
+      {%- endif -%}
+             {%- if image_overlay7 != blank -%}
+        {% render 'image_test' with image: image_overlay7, disable_style: false, wrapper_class: 'video-hero__image' ,main_headline1:main_headline7 , sub_headline1:sub_headline7 ,subheadline_color:subheadline_color, mainHeadline_color:mainHeadline_color%}
+      {%- endif -%}
+             {%- if image_overlay8 != blank -%}
+               
+        {% render 'image_test' with image: image_overlay8, disable_style: false, wrapper_class: 'video-hero__image' ,main_headline1:main_headline8 , sub_headline1:sub_headline8 ,subheadline_color:subheadline_color, mainHeadline_color:mainHeadline_color%}
+      {%- endif -%}
+      {%- endif -%}
+
+    </div>
+  </div>
+  
+  
+   <div class="revers_display_animation"  {%if section.settings.revers_asset =='left'%}style="display:none" {%endif%}>
+  <div class="blender-scroll-animation" style="width:50%; float:right;height: {{ section.settings.height_content}}px;" >
+    {%- if video_url != blank -%}
+
+      <video class="video-hero__video" autoplay playsinline loop muted src="{{ video_url }}"></video>
+      {% render 'video-pause' %}
+    {%- else -%}
+      {%- if image_overlay != blank -%}
+        {% render 'blender-animation-image' with image: image_overlay, disable_style: false, wrapper_class: 'video-hero__image'  %}
+         
+    {%- endif -%}
+    {%- endif -%}
+    </div>
+   <div class="sctn-header" style="color: {{ _section.text_color }}; padding:{{ section.settings.padding_content}}px;
+                                    height: {{ section.settings.height_content}}px; justify-content:unset; text-align:{{ section.settings.text_alignment}}";>
+        <h2 style="margin-bottom:{{ section.settings.marign_bottom_content}}%;font-size:38px">{{ _section.main_headline }}</h2>
+        <div style="margin-bottom:{{ section.settings.marign_bottom_content}}%">{{ _section.sub_headline }}</div>
+        {% if _section.show_bullets %}
+        <ul style="list-style: none;">
+          <li>{%- render 'icon' with icon:  section.settings.icon_bullet1 , class :'blender_animation_icon' -%} {{ _section.bullet_1 }}</li>
+          <li>{%- render 'icon' with icon:  section.settings.icon_bullet2 , class :'blender_animation_icon' -%}{{ _section.bullet_2 }}</li>
+          <li>{%- render 'icon' with icon:  section.settings.icon_bullet3 , class :'blender_animation_icon' -%}{{ _section.bullet_3 }}</li>
+        </ul>
+        {% endif %}
+       <div class="btn-wrp" {% if section.settings.with_bottom == false %}style="display:none"{% endif %} >
+              <a href="{{ section.settings.button_url}}"
+                class="btn-link {% if section.settings.text_alignment == 'center' %}button_centered {% endif %}" 
+                 style="border: {{section.settings.button_border_width}}px {{section.settings.button_border_style}} {{ section.settings.color_border_button}};
+                   color:{{section.settings.button_text_color}}; background-color:{{section.settings.button_background_color}};border-radius: {{section.settings.button_border-radius}}px;;"
+              >{{ section.settings.button_text}}</a>
+         </div>
+      </div>
+  </div>
+  
+  
+  <div class="mobile_display_animation" style="display:none; height:700px ">
+  <div class="carousel_mobile" >
+      {%- if image_overlay1 != blank -%}
+      
+        {% render 'blender-animation-image_1' with image: image_overlay1, disable_style: false, wrapper_class: 'video-hero__image',main_headline1:main_headline1 , sub_headline1:sub_headline1,subheadline_color:subheadline_color, mainHeadline_color:mainHeadline_color %}
+      {%- endif -%}
+           {%- if image_overlay2 != blank -%}
+        {% render 'blender-animation-image_1' with image: image_overlay2, disable_style: false, wrapper_class: 'video-hero__image' ,main_headline1:main_headline2 , sub_headline1:sub_headline2,subheadline_color:subheadline_color, mainHeadline_color:mainHeadline_color%}
+      {%- endif -%}
+           {%- if image_overlay3 != blank -%}
+        {% render 'blender-animation-image_1' with image: image_overlay3, disable_style: false, wrapper_class: 'video-hero__image',main_headline1:main_headline3 , sub_headline1:sub_headline3,subheadline_color:subheadline_color, mainHeadline_color:mainHeadline_color %}
+      {%- endif -%}
+        
+         {%- if image_overlay4 != blank -%}
+        {% render 'blender-animation-image_1' with image: image_overlay4, disable_style: false, wrapper_class: 'video-hero__image',main_headline1:main_headline4 , sub_headline1:sub_headline4,subheadline_color:subheadline_color, mainHeadline_color:mainHeadline_color %}
+      {%- endif -%}
+         {%- if image_overlay5 != blank -%}
+        {% render 'blender-animation-image_1' with image: image_overlay5, disable_style: false, wrapper_class: 'video-hero__image',main_headline1:main_headline5 , sub_headline1:sub_headline5,subheadline_color:subheadline_color, mainHeadline_color:mainHeadline_color %}
+      {%- endif -%}
+         {%- if image_overlay6 != blank -%}
+        {% render 'blender-animation-image_1' with image: image_overlay6, disable_style: false, wrapper_class: 'video-hero__image',main_headline1:main_headline6 , sub_headline1:sub_headline6,subheadline_color:subheadline_color, mainHeadline_color:mainHeadline_color %}
+      {%- endif -%}
+         {%- if image_overlay7 != blank -%}
+        {% render 'blender-animation-image_1' with image: image_overlay7, disable_style: false, wrapper_class: 'video-hero__image',main_headline1:main_headline7 , sub_headline1:sub_headline7,subheadline_color:subheadline_color, mainHeadline_color:mainHeadline_color %}
+      {%- endif -%}
+         {%- if image_overlay8 != blank -%}
+        {% render 'blender-animation-image_1' with image: image_overlay8, disable_style: false, wrapper_class: 'video-hero__image',main_headline1:main_headline8 , sub_headline1:sub_headline8 ,subheadline_color:subheadline_color, mainHeadline_color:mainHeadline_color%}
+      {%- endif -%}
+
+    </div>
+
+      </div>
+
+  </div>
+  
+</div>
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+
+<script>
+  try{
+$('.carousel').slick({
+  infinite: false,
+  dots:true,
+  arrows:false,
+    appendDots: $(".desktop_display_animation")
+
+
+});
+    } catch (err) {
+    alert(err) ; 
+    }
+  
+  $('.carousel_mobile').slick({  
+    infinite: false,
+
+  dots:true,
+  arrows:false})
+</script>
+<script>
+
+  
+</script>
+<style>
+
+.carousel{
+height: 754px;}
+
+  .carousel_mobile .slick-dots{
+    top:671px;
+  }
+  
+</style>
+{% schema %}
+  {
+    "name": "blends_carousel_section",
+    "settings": [
+      {
+        "type":"header",
+        "content":"Section Image/Background"
+      },
+
+      {
+        "type": "image_picker",
+        "id": "image1",
+        "label": "Image1"
+      },
+         {
+        "type": "image_picker",
+        "id": "image2",
+        "label": "image2"
+      },
+         {
+        "type": "image_picker",
+        "id": "image3",
+        "label": "image3"
+      },
+       {
+        "type": "image_picker",
+        "id": "image4",
+        "label": "image4"
+      },
+       {
+        "type": "image_picker",
+        "id": "image5",
+        "label": "image5"
+      },
+       {
+        "type": "image_picker",
+        "id": "image6",
+        "label": "image6"
+      },
+       {
+        "type": "image_picker",
+        "id": "image7",
+        "label": "image7"
+      },
+       {
+        "type": "image_picker",
+        "id": "image8",
+        "label": "image8"
+      },
+       
+  	{"type": "select",
+        "id": "revers_asset",
+        "label": "Show asset",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "left"
+          },
+          {
+            "value": "right",
+            "label": "right"
+          }
+        ]
+      },
+      {
+        "id": "gradient_background",
+        "type": "color",
+        "label":"Section Background",
+		"default":"#000000"
+       
+      },
+      {
+        "type":"header",
+        "content":"Header"
+      },
+      {
+        "type":"text",
+        "id":"main_headline1",
+        "label":"Main Headline1"
+      },
+      {
+        "type": "richtext",
+        "id":"sub_headline1",
+        "label":"Sub Headline1",
+        "info":"ex.) With our Holiday Bundles, it has never been easier to give the gift of health to yourself and the ones you love."
+      },
+            {
+        "type":"text",
+        "id":"main_headline2",
+        "label":"Main Headline2"
+      },
+      {
+        "type": "richtext",
+        "id":"sub_headline2",
+        "label":"Sub Headline2",
+        "info":"ex.) With our Holiday Bundles, it has never been easier to give the gift of health to yourself and the ones you love."
+      },
+            {
+        "type":"text",
+        "id":"main_headline3",
+        "label":"Main Headline3"
+      },
+      {
+        "type": "richtext",
+        "id":"sub_headline3",
+        "label":"Sub Headline3",
+        "info":"ex.) With our Holiday Bundles, it has never been easier to give the gift of health to yourself and the ones you love."
+      },
+               {
+        "type":"text",
+        "id":"main_headline4",
+        "label":"Main Headline4"
+      },
+      {
+        "type": "richtext",
+        "id":"sub_headline4",
+        "label":"Sub Headline4",
+        "info":"ex.) With our Holiday Bundles, it has never been easier to give the gift of health to yourself and the ones you love."
+      },
+          {
+        "type":"text",
+        "id":"main_headline5",
+        "label":"Main Headline5"
+      },
+      {
+        "type": "richtext",
+        "id":"sub_headline5",
+        "label":"Sub Headline5",
+        "info":"ex.) With our Holiday Bundles, it has never been easier to give the gift of health to yourself and the ones you love."
+      },
+                {
+        "type":"text",
+        "id":"main_headline6",
+        "label":"Main Headline6"
+      },
+      {
+        "type": "richtext",
+        "id":"sub_headline6",
+        "label":"Sub Headline6",
+        "info":"ex.) With our Holiday Bundles, it has never been easier to give the gift of health to yourself and the ones you love."
+      },
+          {
+        "type":"text",
+        "id":"main_headline7",
+        "label":"Main Headline7"
+      },
+      {
+        "type": "richtext",
+        "id":"sub_headline7",
+        "label":"Sub Headline7",
+        "info":"ex.) With our Holiday Bundles, it has never been easier to give the gift of health to yourself and the ones you love."
+      },
+                {
+        "type":"text",
+        "id":"main_headline8",
+        "label":"Main Headline8"
+      },
+      {
+        "type": "richtext",
+        "id":"sub_headline8",
+        "label":"Sub Headline8",
+        "info":"ex.) With our Holiday Bundles, it has never been easier to give the gift of health to yourself and the ones you love."
+      },
+
+ 
+	  
+
+  	{
+        "type": "select",
+        "id": "text_alignment",
+        "label": "t:sections.image_with_text.settings.text_alignment.label",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__1"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__2"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "padding_content",
+        "label": "Padding for desktop",
+        "unit": "px",
+        "min": 10,
+        "max": 200,
+        "step": 5,
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding top for mobile",
+        "unit": "px",
+        "min": 10,
+        "max": 100,
+        "step": 5,
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding bottom for mobile",
+        "unit": "px",
+        "min": 10,
+        "max": 100,
+        "step": 5,
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "height_content",
+        "label": "Height",
+        "unit": "px",
+        "min": 450,
+        "max": 700,
+        "step": 10,
+        "default": 500
+      },
+	  {
+        "type": "range",
+        "id": "marign_bottom_content",
+        "label": "Marign bottom",
+        "unit": "%",
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "default": 5
+      },
+      {
+        "type":"color",
+        "id":"text_color",
+        "label":"Text Color",
+        "default":"#000000"
+      },
+      {
+        "type":"color",
+        "id":"title_color",
+        "label":"title_color",
+        "default":"#000000"
+      }
+      
+    ],
+    "presets": [
+      {
+        "name": "blends_carousel_section",
+        "category": "Block 1"
+      }
+    ]
+  }
+{% endschema %}

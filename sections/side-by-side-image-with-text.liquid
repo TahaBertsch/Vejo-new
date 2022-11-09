@@ -1,0 +1,328 @@
+{%- assign _section  = section.settings -%}
+
+{% assign vejo_care_customer = false %}
+{%- for tag in customer.tags -%}
+  {%- if tag == "Vejo Care" or tag == "Vejo Invited" -%}
+    {% assign vejo_care_customer = true %}
+  {%- endif -%}
+{%- endfor -%}
+
+<style>
+  @media (max-width: 769px){
+	.mobile{
+      display: block !important;
+    }
+  	.desktop{
+      display: none !important;
+}
+</style>
+<div class="sctn sctn-block-2" id="sctn-{{ section.id }}"
+     style="background: {{section.settings.gradient_background}};
+            padding-top:{{section.settings.padding_top}}% ;padding-bottom :{{section.settings.padding_bottom}}%" >
+  <div class="sctn-content desktop">
+    {% for block in section.blocks %}
+      <div class="card card-{% increment %}">
+        <img data-src="{{ block.settings.img_mobile | img_url: 'master'}}" class="bg-img bg-mobile lazyload" alt="{{ block.settings.title }}">
+        <img data-src="{{ block.settings.img_tablet | img_url: 'master'}}" class="bg-img bg-tablet lazyload" alt="{{ block.settings.title }}">
+        <img data-src="{{ block.settings.img_desktop | img_url: 'master'}}" class="bg-img bg-desktop lazyload" alt="{{ block.settings.title }}">
+        <div class="sctn-text">
+          <div class="sctn-bg"></div>
+          <div class="sctn-header " {% if block.settings.text_alignment == 'center' %} 
+               style="text-align:{{ block.settings.text_alignment}}; max-width:100%;width:100%;left:0px" {% endif %}>
+            <h2 style="color: {{ block.settings.color_label }}">{{ block.settings.title }}</h2>
+            <div style="color: {{ block.settings.color_description }};"> {{ block.settings.sub_headline }} </div>
+           
+            <div class="btn-wrp" {% if block.settings.with_bottom == false %}style="display:none"{% endif %} >
+              <a href="{{ block.settings.button_url}}"
+                class="btn-link {% if block.settings.text_alignment == 'center' %}button_centered {% endif %}" 
+                 style="border: {{block.settings.button_border_width}}px {{block.settings.button_border_style}} {{ block.settings.color_border_button}};
+                   color:{{block.settings.button_text_color}}; background-color:{{block.settings.button_background_color}};"
+              >{{ block.settings.button_text}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+    <div class="sctn-content mobile" style="display:none">
+    {% for block in section.blocks %}
+      <div class="card card-{% increment %}">
+        <img data-src="{{ block.settings.img_mobile | img_url: 'master'}}" class="bg-img bg-mobile lazyload" alt="{{ block.settings.title }}">
+        <img data-src="{{ block.settings.img_tablet | img_url: 'master'}}" class="bg-img bg-tablet lazyload" alt="{{ block.settings.title }}">
+        <img data-src="{{ block.settings.img_desktop | img_url: 'master'}}" class="bg-img bg-desktop lazyload" alt="{{ block.settings.title }}">
+        <div class="sctn-text">
+          <div class="sctn-bg"></div>
+          <div class="sctn-header " {% if block.settings.text_alignment == 'center' %} 
+               style="text-align:{{ block.settings.text_alignment_mobile}}; max-width:100%;width:100%;left:0px" {% endif %}>
+            <h2 style="color: {{ block.settings.color_label_mobile }}">{{ block.settings.title }}</h2>
+            <div style="color: {{ block.settings.color_description_mobile }};"> {{ block.settings.sub_headline }} </div>
+           
+            <div class="btn-wrp" {% if block.settings.with_bottom == false %}style="display:none"{% endif %} >
+              <a href="{{ block.settings.button_url}}"
+                class="btn-link {% if block.settings.text_alignment == 'center' %}button_centered {% endif %}" 
+                 style="border: {{block.settings.button_border_width_mobile}}px {{block.settings.button_border_style_mobile}} {{ block.settings.color_border_button_mobile}};
+                   color:{{block.settings.button_text_color_mobile}}; background-color:{{block.settings.button_background_color_mobile}};"
+              >{{ block.settings.button_text}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Side by side images",
+    "max_blocks": 2,
+	"tag": "section",
+	"settings": [
+	  {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding top",
+        "unit": "%",
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "default": 7
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding bottom",
+        "unit": "%",
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "default": 5
+      },
+      {
+        "id": "gradient_background",
+        "type": "color_background",
+        "label": "t:sections.image_with_text.settings.gradient.label"
+      }
+	],
+    "blocks": [
+      {
+        "type": "section",
+        "name": "Promotion Cards",
+        "settings": [
+          {
+            "type":"header",
+            "content":"Header"
+          },
+          {
+            "type":"text",
+            "id": "title",
+            "label":"Main Headline",
+            "info":"ex.) Bundle up!"
+          },
+          {
+            "type":"richtext",
+            "id":"sub_headline",
+            "label":"Sub Headline",
+            "info":"ex.) With our Holiday Bundles, it has never been easier to give the gift of health to yourself and the ones you love."
+          },
+		 {
+          "id": "color_label",
+          "type": "color",
+          "label": "Label color",
+          "default": "#ffffff"
+         },
+         		 {
+          "id": "color_label_mobile",
+          "type": "color",
+          "label": "Label color mobile",
+          "default": "#ffffff"
+         },
+		 {
+          "id": "color_description",
+          "type": "color",
+          "label": "Description color",
+          "default": "#ffffff"
+         },
+         {
+          "id": "color_description_mobile",
+          "type": "color",
+          "label": "Description color mobile",
+          "default": "#ffffff"
+         },
+         {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "t:sections.image_with_text.settings.text_alignment.label",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__1"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__2"
+          }
+        ]
+      },
+        {
+        "type": "select",
+        "id": "text_alignment_mobile",
+        "label": "Text alignment mobile",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__1"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__2"
+          }
+        ]
+      },
+          {
+            "id": "with_bottom",
+            "type": "checkbox",
+            "label": "t:sections.slideshow.blocks.slide.settings.with_bottom.label",
+            "default": true
+          },
+          {
+            "type":"header",
+            "content":"Button"
+          },
+          {
+            "type":"text",
+            "id":"button_text",
+            "label":"Button Text",
+            "default": "Shop Now"
+          },
+          {
+            "type":"url",
+            "id":"button_url",
+            "label":"Button URL"
+          },
+          {
+            "type": "color",
+            "id":"button_background_color",
+            "label":"Button Color",
+           
+            "default":"#000"
+          },
+         {
+            "type": "color",
+            "id":"button_background_color_mobile",
+            "label":"Button Color mobile",
+           
+            "default":"#000"
+          },
+	
+          {
+            "type": "color",
+            "id":"button_text_color",
+            "label":"Button text Color",
+           
+            "default":"#fff"
+          },
+           {
+            "type": "color",
+            "id":"button_text_color_mobile",
+            "label":"Button text Color mobile",
+           
+            "default":"#fff"
+          },
+		
+		{
+          "id": "color_border_button",
+          "type": "color",
+          "label": "Button border",
+          "default": "#181818"
+         },
+         {
+          "id": "color_border_button_mobile",
+          "type": "color",
+          "label": "Button border mobile",
+          "default": "#181818"
+         },
+		  {
+          "type": "range",
+          "id": "button_border_width",
+          "label": "Border width ",
+          "unit": "px",
+          "min": 0,
+          "max": 6,
+          "step": 1,
+          "default": 0
+      	  },
+          {
+          "type": "range",
+          "id": "button_border_width_mobile",
+          "label": "Border width mobile",
+          "unit": "px",
+          "min": 0,
+          "max": 6,
+          "step": 1,
+          "default": 0
+      	  },
+           {
+          "id": "button_border_style",
+          "type": "select",
+          "label": "Button border style",
+          "options": [
+			{ "label": "Dashed", "value": "dashed" },
+            { "label": "Dotted", "value": "dotted" },
+	 		{ "label": "Double", "value": "double" },
+            { "label": "Groove", "value": "groove" },
+			{ "label": "Inset ", "value": "inset" },
+			{ "label": "Outset", "value": "outset" },
+			{ "label": "Ridge", "value": "ridge" },
+            { "label": "Solid", "value": "solid" }
+          ],
+          "default": "solid"
+        },
+         {
+          "id": "button_border_style_mobile",
+          "type": "select",
+          "label": "Button border style mobile",
+          "options": [
+			{ "label": "Dashed", "value": "dashed" },
+            { "label": "Dotted", "value": "dotted" },
+	 		{ "label": "Double", "value": "double" },
+            { "label": "Groove", "value": "groove" },
+			{ "label": "Inset ", "value": "inset" },
+			{ "label": "Outset", "value": "outset" },
+			{ "label": "Ridge", "value": "ridge" },
+            { "label": "Solid", "value": "solid" }
+          ],
+          "default": "solid"
+        },
+          {
+            "type":"header",
+            "content":"Background Image"
+          },
+          {
+            "type":"image_picker",
+            "id":"img_mobile",
+            "label":"Mobile Image"
+          },
+          {
+            "type":"image_picker",
+            "id":"img_tablet",
+            "label":"Tablet Image"
+          },
+          {
+            "type":"image_picker",
+            "id":"img_desktop",
+            "label":"Desktop Image"
+          }
+
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Side by side images",
+        "category": "Block 2"
+      }
+    ]
+  }
+{% endschema %}

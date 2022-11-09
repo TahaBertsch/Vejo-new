@@ -1,0 +1,92 @@
+<style>
+  .cart-popup-1-popup-bg{	
+    display:none;	
+    z-index:1000;
+    height:100vh;	
+    width:100vw;	
+    justify-content:center;	
+    align-items:center;	
+    position:fixed;	
+    background-color:rgba(0, 0, 0, 0.8);	
+    top:0
+  }	
+  .cart-popup-1-popup {
+    max-width: 450px;
+    padding: 20px 20px;
+    margin: 0;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .cart-popup-1-popup-title{
+    text-align: center;
+    font-size:19px; 
+    font-weight:400; 
+    font-family:'Scandia'; 
+    margin-top:10px; 
+    margin-bottom:0px
+  }
+  .cart-popup-1-popup-info{
+    text-align: center;
+    font-size:18px; 
+    font-weight:500; 
+    font-family:'Scandia'; 
+    margin-top:10px; 
+    margin-bottom:0px
+  }
+  .cart-popup-1-button{
+    margin-bottom:0px;
+    background-color:black;
+    border-radius:100px;
+    border: 2px solid black;
+    padding-bottom: 15px;
+    padding-top: 20px;
+    font-size: 21px;
+    font-weight: 500;
+    width: 312px;
+    cursor:pointer;
+    max-height: 58px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    color:white;
+  }
+  @media(max-width: 800px) {
+    .cart-popup-1-popup {
+      padding:20px 20px;
+      width:88vw;
+      overflow:scroll;
+      top:60%;
+    }
+  }
+</style>
+
+<div class="cart-popup-1-popup-bg">
+  <div class="cart-popup-1-popup">
+    <div class="cart-popup-1-popup-title" style="margin-bottom:15px">Sorry. To enjoy the savings and benefits of a Vejo Subscription, you must order at least five 4-packs from our selection of organic, delicious blends.</div>
+    <div class="cart-popup-1-popup-info" id="cart-popup-info-text" style="margin-bottom:30px">You have chosen </div>
+    <div id="okay" class="add-address-button" style="margin-bottom:5px">
+      ORDER MORE BLENDS
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#okay').on('click', function() {
+      let blendsURL = "https://www.vejo.com/collections/all-blends-4-packs"
+      $('.cart-popup-1-popup-bg').css('display','none')
+      if(!window.location.href.includes(blendsURL)){
+        window.location.href = blendsURL
+      }
+    })
+  })
+</script>

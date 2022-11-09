@@ -1,0 +1,222 @@
+{%- liquid
+  assign max_products = 6
+  assign columns = section.settings.columns
+-%}
+
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="recommended-products"
+  data-product-id="{{ product.id }}"
+  data-limit="{{ max_products }}"
+  class="
+    recommended-products
+    recommended-products--columns-{{ columns }}
+    {% if settings.enable_quick_add -%}
+      recommended-products--has-quick-buy
+      section--has-quick-buy
+    {%- endif %}
+    section
+    {% if section.settings.section_contrast -%}
+      section--contrast
+    {%- endif %}
+  "
+  style="--text-max-width: {{ section.settings.text_max_width }}rem;
+         background: {{section.settings.gradient_background}};
+         padding-top:{{section.settings.padding_top}}%;
+         padding-bottom :{{section.settings.padding_bottom}}%"
+
+>
+  <div class="section__inner">
+    {% render 'section-header',
+      heading: section.settings.title,
+      subheading: section.settings.subheading,
+      color_header: section.settings.color_header,
+      color_header_mobile: section.settings.color_header_mobile,
+      color_description: section.settings.color_description,
+      color_description_mobile: section.settings.color_description_mobile,
+      text_font: section.settings.text_font,
+      text_font_mobile: section.settings.text_font_mobile,
+      text_description_font: section.settings.text_description_font,
+      text_description_font_mobile: section.settings.text_description_font_mobile,
+      classes: 'section-header--large section-header--center',
+    %}
+
+    <div class="recommended-products__content" data-recommendations>
+      <div class="recommended-products__slider-wrapper" style="overflow-y: hidden">
+        {%- liquid
+          assign carousel_wraps = false
+          assign minimum_items_for_wrap_around = columns | plus: 1
+          assign items_needed = minimum_items_for_wrap_around | minus: recommendations.products_count
+
+          if items_needed <= 0
+            assign carousel_wraps = true
+          endif
+        -%}
+
+        {%- if recommendations.products_count > 0 -%}
+          <div class="recommended-products__slider" data-slider data-carousel-wraps="{{ carousel_wraps }}">
+            {%- for product in recommendations.products -%}
+              <div class="recommended-products__slide" data-slide>
+                {% render 'product-item' with product: product, aspect_ratio: section.settings.aspect_ratio, product_columns: columns %}
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {% render 'carousel-navigation' with columns: columns, item_count: recommendations.products_count %}
+    </div>
+  </div>
+</div>
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+
+{% schema %}
+  {
+    "name": "t:sections.product_recommendations.name",
+    "tag": "section",
+    "class": "shopify-section--stackable",
+    "settings": [
+      {
+        "type": "range",
+        "id": "columns",
+        "label": "t:sections.product_recommendations.settings.columns.label",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "t:sections.product_recommendations.settings.title.label",
+        "default": "Recommended"
+      },
+      {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "t:sections.product_recommendations.settings.subheading.label",
+        "default": "<p>You might want to take a closer look.</p>"
+      },
+	{
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding top",
+        "unit": "%",
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "default": 7
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding bottom",
+        "unit": "%",
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "default": 12
+      },
+
+      {
+        "type": "range",
+        "id": "text_max_width",
+        "label": "t:sections.product_recommendations.settings.text_max_width.label",
+        "min": 24,
+        "max": 48,
+        "step": 1,
+        "default": 42
+      },
+      {
+        "type": "range",
+        "id": "text_font",
+        "label": "Header text fonts",
+        "min": 30,
+        "max": 48,
+        "step": 2,
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "text_font_mobile",
+        "label": "Header text fonts for mobile",
+        "min": 30,
+        "max": 48,
+        "step": 2,
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "text_description_font",
+        "label": "Description text fonts",
+        "min": 16,
+        "max": 28,
+        "step": 2,
+        "default": 18
+      },
+      {
+        "type": "range",
+        "id": "text_description_font_mobile",
+        "label": "Description text fonts for mobile",
+        "min": 16,
+        "max": 28,
+        "step": 2,
+        "default": 18
+      },
+      {
+        "id": "aspect_ratio",
+        "type": "select",
+        "label": "t:sections.product_recommendations.settings.aspect_ratio.label",
+        "options": [
+          { "label": "t:sections.product_recommendations.settings.aspect_ratio.options__1", "value": "natural" },
+          { "label": "t:sections.product_recommendations.settings.aspect_ratio.options__2", "value": "square" },
+          { "label": "t:sections.product_recommendations.settings.aspect_ratio.options__3", "value": "landscape" },
+          { "label": "t:sections.product_recommendations.settings.aspect_ratio.options__4", "value": "portrait" }
+        ],
+        "default": "natural"
+      },
+	 {
+         "id": "color_header",
+         "type": "color",
+         "label": "Header color",
+         "default": "#000000"
+      },
+	 {
+         "id": "color_header_mobile",
+         "type": "color",
+         "label": "Header color for mobile",
+         "default": "#000000"
+      },
+	  {
+          "id": "color_description",
+          "type": "color",
+          "label": "Description color",
+          "default": "#000000"
+       },
+	  {
+          "id": "color_description_mobile",
+          "type": "color",
+          "label": "Description color for mobile",
+          "default": "#000000"
+       },
+	{
+        "id": "gradient_background",
+        "type": "color_background",
+        "label": "t:sections.image_with_text.settings.gradient.label"
+        },
+      {
+        "id": "section_contrast",
+        "type": "checkbox",
+        "label": "t:sections.product_recommendations.settings.section_contrast.label",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "t:sections.product_recommendations.presets.name"
+      }
+    ],
+    "templates": ["product"]
+  }
+{% endschema %}

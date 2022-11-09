@@ -1,0 +1,317 @@
+{%- liquid
+  assign paginated = false
+  if section.settings.pagination == 'paginated'
+    assign paginated = true
+  endif
+  assign menu = section.settings.mobile_menu
+  assign menu_links = linklists[menu].links
+  
+-%}
+<style>
+  @media (max-width: 769px){
+	.mobile{
+      display: block !important;
+    }
+  	.desktop{
+      display: none !important;
+
+}
+</style>
+{{ "collection.scss.css" | asset_url | stylesheet_tag }}
+<section
+  data-section-id="{{ section.id }}"
+  data-section-type="collection"
+  data-pagination-type="{{ section.settings.pagination }}"
+  data-collection-item-count="{{ collection.all_products_count }}"
+  class="
+    collection
+    collection--columns-{{ section.settings.columns }}
+    collection--columns-mobile-{{ section.settings.columns_mobile }}
+    collection--pagination-{{ section.settings.pagination }}
+  "
+  style="background:{{ section.settings.gradient_background }}; padding-top:{{ section.settings.padding_top }}%; padding-bottom:{{ section.settings.padding_bottom }}%"
+>
+  <div style="padding-left: 5%;z-index: 50;position: sticky;
+              padding-right: 5%;background-color: white;box-shadow: none; 
+              margin-bottom: 0px;padding-bottom: 0;" class="collection-nav-desktop desktop">
+  {% include 'collection-nav-desktop' %}
+  </div>
+    <div style="padding-left: 0 !important ;z-index: 50;position: sticky;
+              padding-right: 5%;background-color: white;
+              margin-bottom: 0px;padding-bottom: 0;display:none;padding-right:0" class="collection-nav-desktop mobile">
+  {% include 'collection-nav-mobile' %}
+  </div>
+  <div class="collection__inner">
+    {%- if collection.all_products_count > 0 -%}
+      <script type="application/json" data-tags>
+        {% if collection.all_tags.size > 0 %}
+          [
+            {%- for tag in collection.all_tags -%}
+              { "label": "{{ tag | escape }}", "handle": "{{ tag | handleize }}" }
+              {%- if forloop.last == false -%}, {%- endif -%}
+            {%- endfor -%}
+          ]
+        {% else %}
+          []
+        {% endif %}
+      </script>
+
+      {% paginate collection.products by section.settings.per_page %}
+        <div class="collection__container">
+          	 
+          <div class="collection__content">
+            <div class="collection__filters" data-filter-bar>
+              {% render 'filter-bar' with
+                results: collection,
+                show_sort: section.settings.show_sort,
+                show_filters: section.settings.show_filters
+              %}
+
+              {% render 'mobile-filters' with
+              results: collection,
+                show_sort: section.settings.show_sort,
+                show_filters: section.settings.show_filters
+              %}
+            </div>
+            
+			
+            <div class="collection__main-area">
+              
+              <div class="collection__window">
+                <div class="collection__loading" data-loading>
+                  {% render 'loader' %}
+                </div>
+
+                <div id="root" data-partial>
+                  <div class="collection__active-filters-container">
+                    {%- render 'active-filters' with results: collection -%}
+                  </div>
+                  <div class="collection__products collection__infinite-container">
+                    {% for product in collection.products %}
+                      {% render 'product-item' with
+                        product: product,
+                        aspect_ratio: section.settings.aspect_ratio,
+                        product_columns: section.settings.columns,
+                        color_header: section.settings.color_header,
+                        color_header_mobile: section.settings.color_header_mobile,
+                        text_alignment: section.settings.text_alignment,
+                        heading_text_size_mobile: section.settings.heading_text_size_mobile,
+                        product_columns_mobile: section.settings.columns_mobilem
+                      %}
+                    {% else %}
+                      <div class="collection__empty">
+                        <div>{{ 'collections.general.no_products' | t }}</div>
+                        <button type="button" class="btn btn--text-link" data-clear="true">{{ 'collections.filters.clear_filters' | t }}</button>
+                      </div>
+                    {% endfor %}
+                  </div>
+
+                  {% unless paginated %}
+                    <div class="collection__infinite-trigger">
+                      {% if paginate.next %}
+                        <a href="{{ paginate.next.url }}" class="btn btn--secondary no-transition">{{ 'general.pagination.load_more' | t }}</a>
+                      {% endif %}
+                    </div>
+                  {% endunless %}
+
+                  {% if paginated %}
+                    <div>
+                      {% if paginate.pages > 1 %}
+                        {% render 'pagination' with
+                          paginate: paginate,
+                          type: 'general.pagination.products'
+                        %}
+                      {% else %}
+                        {% render 'pagination' with
+                          paginate: paginate,
+                          type: 'general.pagination.products',
+                          display_paginate_item_count_only: true
+                        %}
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endpaginate %}
+
+      {% render 'filter-drawer' with
+        results: collection,
+        show_sort: section.settings.show_sort,
+        show_filters: section.settings.show_filters,
+      %}
+    {%- else -%}
+      <div class="collection__empty ta-c">
+        <p class="fs-body-base fs-body-large-ns">{{ 'collections.general.no_matches' | t }}</p>
+        <a class="btn btn--text-link" href="{{ routes.all_products_collection_url }}">{{ 'general.404.link' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+{% schema %}
+  {
+    "name": "t:sections.main_collection_product_grid.name",
+    "class": "collection-section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.main_collection_product_grid.settings.filtering__header.content"
+      },
+      {
+        "id": "show_sort",
+        "type": "checkbox",
+        "label": "t:sections.main_collection_product_grid.settings.show_sort.label",
+        "default": true
+      },
+      {
+        "id": "show_filters",
+        "type": "checkbox",
+        "label": "t:sections.main_collection_product_grid.settings.show_filters.label",
+        "default": true
+      },
+      {
+        "id": "mobile_menu",
+        "type": "link_list",
+        "label": "Navigation menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.main_collection_product_grid.settings.collection__header.content"
+      },
+      {
+        "type": "range",
+        "id": "columns",
+        "label": "t:sections.main_collection_product_grid.settings.columns.label",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "select",
+        "id": "columns_mobile",
+        "label": "t:sections.main_collection_product_grid.settings.columns_mobile.label",
+        "options": [
+          {
+            "value": "1",
+            "label": "t:sections.main_collection_product_grid.settings.columns_mobile.options__1"
+          },
+          {
+            "value": "2",
+            "label": "t:sections.main_collection_product_grid.settings.columns_mobile.options__2"
+          }
+        ],
+        "default": "2"
+      },
+      {
+        "id": "per_page",
+        "type": "range",
+        "label": "t:sections.main_collection_product_grid.settings.per_page.label",
+        "default": 12,
+        "min": 12,
+        "max": 36,
+        "step": 12
+      },
+      {
+        "type": "select",
+        "id": "pagination",
+        "label": "t:sections.main_collection_product_grid.settings.pagination.label",
+        "default": "paginated",
+        "options": [
+          {
+            "value": "infinite",
+            "label": "t:sections.main_collection_product_grid.settings.pagination.options__1"
+          },
+          {
+            "value": "click",
+            "label": "t:sections.main_collection_product_grid.settings.pagination.options__2"
+          },
+          {
+            "value": "paginated",
+            "label": "t:sections.main_collection_product_grid.settings.pagination.options__3"
+          }
+        ],
+        "info": "t:sections.main_collection_product_grid.settings.pagination.info"
+      },
+      {
+        "id": "aspect_ratio",
+        "type": "select",
+        "label": "t:sections.main_collection_product_grid.settings.aspect_ratio.label",
+        "options": [
+          { "label": "t:sections.main_collection_product_grid.settings.aspect_ratio.options__1", "value": "natural" },
+          { "label": "t:sections.main_collection_product_grid.settings.aspect_ratio.options__2", "value": "square" },
+          { "label": "t:sections.main_collection_product_grid.settings.aspect_ratio.options__3", "value": "landscape" },
+          { "label": "t:sections.main_collection_product_grid.settings.aspect_ratio.options__4", "value": "portrait" }
+        ],
+        "default": "natural"
+      },
+          {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "t:sections.text_columns_with_images.settings.text_alignment.label",
+        "default": "center",
+        "options": [
+        {
+          "value": "left",
+          "label": "t:sections.text_columns_with_images.settings.text_alignment.options__1"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.text_columns_with_images.settings.text_alignment.options__2"
+        }
+        ]
+      },
+     {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Padding top",
+          "unit": "%",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "default": 7
+       },
+       {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Padding bottom",
+          "unit": "%",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "default": 5
+       },
+       {
+          "id": "heading_text_size",
+          "type": "range",
+          "label": "t:sections.slideshow.blocks.slide.settings.heading_text_size.label",
+          "unit": "px",
+          "min": 16,
+          "max": 28,
+          "step": 2,
+          "default": 18
+       },
+       {
+          "id": "heading_text_size_mobile",
+          "type": "range",
+          "label": "Heading size for mobile",
+          "unit": "px",
+          "min": 16,
+          "max": 28,
+          "step": 2,
+          "default": 18
+       },
+  	
+      {
+        "id": "gradient_background",
+        "type": "color_background",
+        "label":"Section Background"
+      }
+    ]
+  }
+{% endschema %}

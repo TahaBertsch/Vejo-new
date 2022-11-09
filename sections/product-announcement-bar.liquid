@@ -1,0 +1,76 @@
+<style>
+  .product_announcement_link{
+    padding: 20px;
+    text-decoration: none;
+    display: inline-flex;
+    
+  }
+   @media (max-width: 769px){
+	.product_announcement_link{
+      display: block;
+      padding: 10px;
+    }
+   
+     }
+</style>
+<div data-section-id="{{ section.id }}">
+<div class="section-header section-header--large" style="background-color:{{section.settings.color_background}};text-align: center; color:{{section.settings.color_text}}">
+  	<a href="{{ section.settings.link}}"  class="product_announcement_link" style="font-size: {{section.settings.text_font}}px !important;">
+    <h3 style="margin: 0 10px;font-size: {{section.settings.text_font}}px !important;">{{ section.settings.title}}</h3>
+    <h4 style="text-decoration: underline;padding-top: 2px;font-size: {{section.settings.text_font |minus :2}}px !important;"> {{  section.settings.link_text }}</h4>
+  </a>
+  </div>
+</div> 
+    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+  
+{% schema %}
+  {
+    "name": "Product announcement bar",
+    "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "t:sections.featured_collection_row.settings.title.label",
+          "default": "Announcement"
+        },
+		{
+            "id": "link",
+            "type": "url",
+            "label": "Link"
+         },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link label"
+        },
+    	{
+           "id": "color_text",
+           "type": "color",
+           "label": "t:sections.slideshow.blocks.slide.settings.color_text.label",
+           "default": "#000000"
+    	},
+    	{
+           "id": "color_background",
+           "type": "color",
+           "label": "background Color",
+           "default": "#109310"
+    	},
+          {
+            "type": "range",
+            "id": "text_font",
+            "label": "text fonts",
+            "min": 12,
+            "max": 28,
+            "step": 2,
+            "default": 18
+          }
+ 	 ],
+      "presets": [
+        {
+          "name": "Product announcement bar"
+        }
+      ]
+  }
+{% endschema %}
+

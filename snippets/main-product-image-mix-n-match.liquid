@@ -1,0 +1,31 @@
+<div class="product-main__variants colors-div">    
+  <ul class="list-variants" style="margin-top:20px">
+  {% for variant in product.variants %}
+    {% if forloop.index < 4 %}
+      <li>
+        <div class="radio">
+          <input
+            colorName="{{variant.title}}"
+            type="radio"
+            name="color"
+            id="{{ variant.id }}"
+            {% if forloop.index == 1 %}
+            checked="checked"
+            {% endif %}
+            >
+          <label
+            class= "labelo{{ forloop.index }}"
+            data-title= "{{ variant.title }}"
+            data-button = "ORDER"
+            data-shipping = "Ships in 2-3 business days"
+            data-price= "{{ variant.price | money }}"
+            data-color2= "| {{ variant.title }}"
+            for= "{{ variant.id }}"
+            style="{% if variant.title == "Chalk White" %} border: 1px solid gray; {% endif %}background-color: #fff; cursor:pointer">
+          </label>
+        </div>
+      </li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</div>

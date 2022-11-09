@@ -1,0 +1,60 @@
+{% if heading != blank or subheading != blank or link_text != blank %}
+
+  {%- liquid
+    assign button_classes = 'btn--small btn--medium-ns'
+
+    if classes contains 'section-header--large'
+      assign button_classes = 'btn--medium'
+    endif
+  -%}
+<style>
+  @media (max-width: 769px){
+	.mobile{
+      display: block !important;
+    }
+  	.desktop{
+      display: none !important;
+
+}
+</style>
+  <div class="section-header {{ classes }} desktop" style="">
+    {%- unless heading == blank -%}
+      <h2 class="section-header__heading ff-heading fs-heading-2-base fs-heading-1-base-ns"  style="color:{{ color_header }}; font-size:{{ text_font }}px !important;margin-bottom:0px">
+        {{ heading | newline_to_br }}
+      </h2>
+    {%- endunless -%}
+
+    {%- unless subheading == blank -%}
+      <div class="section-header__subheading rte ff-body fs-body-base fs-body-large-ns"  style="color:{{ color_description }}; font-size:{{ text_description_font }}px !important">
+        {{ subheading }}
+      </div>
+    {%- endunless -%}
+
+    {%- if url != blank and link_text != blank -%}
+      <a href="{{ url }}" class="section-header__button btn btn--primary {{ button_classes }}">
+        {{ link_text }}
+      </a>
+    {%- endif -%}
+  </div>
+
+
+  <div class="section-header {{ classes }} mobile" style="display:none">
+    {%- unless heading == blank -%}
+      <h2 class="section-header__heading ff-heading fs-heading-2-base fs-heading-1-base-ns"  style="color:{{ color_header_mobile }}; font-size:{{ text_font_mobile }}px !important">
+        {{ heading | newline_to_br }}
+      </h2>
+    {%- endunless -%}
+
+    {%- unless subheading == blank -%}
+      <div class="section-header__subheading rte ff-body fs-body-base fs-body-large-ns"  style="color:{{ color_description_mobile }}; font-size:{{ text_description_font_mobile }}px !important">
+        {{ subheading }}
+      </div>
+    {%- endunless -%}
+
+    {%- if url != blank and link_text != blank -%}
+      <a href="{{ url }}" class="section-header__button btn btn--primary {{ button_classes }}">
+        {{ link_text }}
+      </a>
+    {%- endif -%}
+  </div>
+{% endif %}

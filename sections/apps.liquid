@@ -1,0 +1,59 @@
+<style>
+  #insta-feed{
+    margin-top:0 !important;
+  }
+</style>
+
+<div
+       style="background: {{section.settings.gradient_background}};
+              padding-top:{{section.settings.padding_top}}% ;padding-bottom :{{section.settings.padding_bottom}}%" 
+     >
+  {%- for block in section.blocks -%}
+    {% render block %}
+  {%- endfor -%}
+</div>
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+{% schema %}
+{
+  "name": "t:sections.apps.name",
+  "tag": "section",
+  "settings":[
+	  {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding top",
+        "unit": "%",
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding bottom",
+        "unit": "%",
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "default": 0
+      },
+      {
+        "id": "gradient_background",
+        "type": "color_background",
+        "label": "t:sections.image_with_text.settings.gradient.label"
+      }
+],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.apps.presets.name"
+    }
+  ]
+}
+{% endschema %}

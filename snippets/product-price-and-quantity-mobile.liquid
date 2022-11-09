@@ -1,0 +1,48 @@
+<div  style="display:none; justify-content: space-between; align-items: center;" class="pricingForMobile">
+      <div class=" product__price product__block product__block--small" style="font-weight: 600; margin-bottom:0px">
+           <span class="fs-heading-4-base" style="font-size: 18PX" data-price>{{ current_variant.price | money }}</span>
+
+           <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+           	 <s data-compare-price>
+               {%- if current_variant.compare_at_price > current_variant.price -%}
+                    {{ current_variant.compare_at_price | money }}
+               {%- endif -%}
+             </s>
+           {% render 'unit-price' item: current_variant %}
+      </div>
+      {% assign label_classes = 'ff-heading fs-heading-4-base' %}
+
+
+      <div style="display:flex; justify-content: space-between; align-items: center;margin-bottom:0px;margin-left: 20px;"
+          class="product__controls-group product__controls-group-quanity  product__block product__block--medium">
+          <div style="margin-bottom: 0px;"
+              class="product__label-wrapper{% unless block.settings.show_labels %} product__label-wrapper--collapse{% endunless %}">
+              <label style="margin-bottom: 0px;" class="product__label {{ label_classes }}"
+                  for="Quantity-Input-{{ product.id }}"> {{
+                  'products.product.quantity' | t }} </label>
+          </div>
+          <div class="product__item product__quantity"
+              style="border-radius: 16px">
+              <button style="padding: 0;" type="button"
+                  class="product__quantity-button product__quantity-subtract-item"
+                  data-subtract-quantity
+                  aria-label="{{ 'general.accessibility.quantity_add' | t }}">
+                  {% render 'icon' with icon: 'minus' true, non_focusable: true %}</button>
+              <input type="number" id="Quantity-Input-{{ product.id }}" value="1"
+                  min="1" pattern="[0-9]*"
+                  class="product__input product__input--quantity" data-quantity-input
+                  aria-label="{{ 'general.accessibility.quantity' | t }}">
+              <button style="padding: 0;" type="button"
+                  class="product__quantity-button product__quantity-add-item"
+                  data-add-quantity
+                  aria-label="{{ 'general.accessibility.quantity_subtract' | t }}">
+                  {% render 'icon' with icon: 'plus', non_focusable: true %}</button>
+
+          </div>
+      </div>
+
+        <div
+            class="product__quantity-error product__block product__block--medium hidden"
+            data-quantity-error>{{ 'products.product.quantity_error' | t }}
+        </div>
+</div>

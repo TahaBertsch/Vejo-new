@@ -1,0 +1,351 @@
+{%- liquid
+  assign paginate_by = section.settings.articles_per_row | times: 3
+  assign columns = section.settings.articles_per_row
+  assign aspect_ratio = section.settings.aspect_ratio
+assign tes=0
+  assign image_is_constrained = true
+
+  if aspect_ratio == 'natural'
+    assign image_is_constrained = false
+  endif
+
+  case columns
+    when 2
+      assign article_heading_type = 'fs-heading-2-large-l'
+    when 3
+      assign article_heading_type = 'fs-heading-2-base-l'
+    when 4
+      assign article_heading_type = 'fs-heading-3-base-l'
+  endcase
+  assign isTagsSelected= true
+  for tag in blog.all_tags
+  	assign url =  tag | handle 
+    if url contains request.path or request.path contains url
+    	assign isTagsSelected= false
+   endif  
+  endfor
+-%}
+
+<style>
+  @media (max-width: 769px){
+	.mobile{
+      display: block !important;
+    }
+  	.desktop{
+      display: none !important;
+
+}
+</style>
+
+{% paginate blog.articles by paginate_by %}
+{{ "collection.scss.css" | asset_url | stylesheet_tag }}
+  <div
+    class="
+      blog
+      blog--columns-{{ columns }}
+      blog--{{ aspect_ratio }}
+      page
+    "
+    data-section-id="{{ section.id }}"
+    data-section-type="blog"
+   {%- if section.settings.blog_show_tags -%}  style="margin-top: 0px; background: {{section.settings.gradient_background}}; padding-top:{{section.settings.padding_top}}% ;padding-bottom :{{section.settings.padding_bottom}}%"{% endif %}
+  >
+{%- if section.settings.blog_show_tags -%}
+     <div style="top:0px;padding:3.5% 5% 0 5%;z-index: 50;position: sticky;background-color: white;box-shadow: none;margin-bottom: 5%;" class="collection-nav-mobile">
+    <nav style="background-color: white;border: 1px solid black;border-radius: 25px;padding:15px" class="collection-nav-mobile" role="navigation" >
+   	<ul class="collection-nav-mobile__list">
+       {%- for tag in blog.all_tags -%}	
+       
+      	{% assign url =  tag | handle %}
+        {% assign current_url = false %}
+        {%- if url contains request.path or request.path contains url-%}
+              {% assign current_url = true %}
+      
+        {%- endif  -%}
+     	
+         <li  {% if forloop.first and  isTagsSelected  %}
+             id="activeItem"
+             {% elsif current_url %}
+              id="activeItem"
+          	{% endif %} 
+             class="collection-nav-mobile__item">         
+                   <!-- MENU LINK -->  
+            <a class="collection-nav-mobile__link
+              {% if forloop.first and  isTagsSelected  %}
+                      active
+               {%elsif current_url%}
+                      active
+              {% endif %} "  
+              href="{{ blog.url }}/tagged/{{ tag | handle }}" >
+             {{ tag }}</a>
+           
+           <div class="collection-nav-mobile__underline"></div>
+          
+         </li>
+      {% endfor %}
+	</ul>
+</nav>
+    </div>
+{% endif %}
+    <div class="blog__inner page__inner">
+    
+
+      <ul class="blog__article-list" >
+        {%- for article in blog.articles -%}
+          <li class="blog__article-item">
+            {%- if article.image != blank -%}
+              <a href="{{ article.url }}" class="hover">
+                {% render 'image' with
+                  image: article.image,
+                  wrapper_class: 'blog__article-image'
+                  disable_style: image_is_constrained,
+                %}
+              </a>
+            {%- else -%}
+              <div class="blog__article-image placeholder-image">
+                {{ 'image' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {%- endif -%}
+
+            <div class="blog__meta {% if article.image == blank %}blog__meta--no-image{% endif %} desktop">
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                  {%- when 'title'-%}
+                    <h3
+                      class="blog__article-title ff-heading fs-heading-3-base fs-heading-2-base-nl {{ article_heading_type }} ta-c"
+                      style="color:{{section.settings.color_header}}; font-size:{{section.settings.text_font}}px !important"
+                      {{ block.shopify_attributes }}
+                    >
+                      <a href="{{ article.url }}">{{ article.title }}</a>
+                    </h3>
+
+                    {%- if block.settings.show_date -%}
+                      <p class="blog__date fs-body-small fs-body-base-ns ta-c" style="color: {{section.settings.color_description}}">{{ article.published_at | time_tag: format: 'date' }}</p>
+                    {%- endif -%}
+
+                  {%- when 'summary'-%}
+                    <p class="blog__article-excerpt ff-body fs-body-small fs-body-base-ns ta-c" style="color: {{section.settings.color_description}}; font-size: {{section.settings.text_font_description}}px !important">
+                      {{ article.excerpt_or_content | strip_html | truncate: 120 }}
+                      {%- if block.settings.show_link -%}
+                        <a href="{{ article.url }}" class="btn btn--text-link">{{ 'sections.blog_posts.more' | t }}</a>
+                      {%- endif -%}
+                    </p>
+
+                {%- endcase -%}
+              {%- endfor -%}
+            </div>
+            
+            <div class="blog__meta {% if article.image == blank %}blog__meta--no-image{% endif %} mobile" style="display:none">
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                  {%- when 'title'-%}
+                    <h3
+                      class="blog__article-title ff-heading fs-heading-3-base fs-heading-2-base-nl {{ article_heading_type }} ta-c"
+                      style="color:{{section.settings.color_header_mobile}}; font-size:{{section.settings.text_font_mobile}}px !important"
+                      {{ block.shopify_attributes }}
+                    >
+                      <a href="{{ article.url }}">{{ article.title }}</a>
+                    </h3>
+
+                    {%- if block.settings.show_date -%}
+                      <p class="blog__date fs-body-small fs-body-base-ns ta-c" style="color: {{section.settings.color_description_mobile}}">{{ article.published_at | time_tag: format: 'date' }}</p>
+                    {%- endif -%}
+
+                  {%- when 'summary'-%}
+                    <p class="blog__article-excerpt ff-body fs-body-small fs-body-base-ns ta-c" style="color: {{section.settings.color_description_mobile}}; font-size: {{section.settings.text_font_description_mobile}}px !important">
+                      {{ article.excerpt_or_content | strip_html | truncate: 120 }}
+                      {%- if block.settings.show_link -%}
+                        <a href="{{ article.url }}" class="btn btn--text-link">{{ 'sections.blog_posts.more' | t }}</a>
+                      {%- endif -%}
+                    </p>
+
+                {%- endcase -%}
+              {%- endfor -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      <div class="blog__pagination">
+        {% if paginate.pages > 1 %}
+          {% render 'pagination' with paginate: paginate, type: 'general.pagination.blog_posts' %}
+        {% else %}
+          {% render 'pagination' with paginate: paginate, type: 'general.pagination.blog_posts', display_paginate_item_count_only: true %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+{% endpaginate %}
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+{% schema %}
+{
+  "name": "t:sections.main_blog.name",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "id": "show_rss",
+      "type": "checkbox",
+      "label": "t:sections.main_blog.settings.show_rss.label",
+      "default": true
+    },{
+      "type": "checkbox",
+      "id": "blog_show_tags",
+      "label": "Show tags",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "articles_per_row",
+      "label": "t:sections.main_blog.settings.articles_per_row.label",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main_blog.settings.header.content"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "options": [
+        {
+          "value": "natural",
+          "label": "t:sections.main_blog.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.main_blog.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.main_blog.settings.image_ratio.options__3.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.main_blog.settings.image_ratio.options__4.label"
+        }
+      ],
+      "default": "square",
+      "label": "t:sections.main_blog.settings.image_ratio.label"
+    },
+       {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Padding top",
+          "unit": "%",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Padding bottom",
+          "unit": "%",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "range",
+          "id": "text_font",
+          "label": "Header text fonts",
+          "min": 18,
+          "max": 28,
+          "step": 1,
+          "default": 26
+       },
+        {
+          "type": "range",
+          "id": "text_font_mobile",
+          "label": "Header text fonts for mobile",
+          "min": 18,
+          "max": 28,
+          "step": 1,
+          "default": 23
+       },
+        {
+          "type": "range",
+          "id": "text_font_description",
+          "label": "Description text fonts",
+          "min": 12,
+          "max": 28,
+          "step": 1,
+          "default": 18
+       },
+        {
+          "type": "range",
+          "id": "text_font_description_mobile",
+          "label": "Description text fonts for mobile",
+          "min": 12,
+          "max": 28,
+          "step": 1,
+          "default": 18
+       },
+	 {
+         "id": "color_header",
+         "type": "color",
+         "label": "Header color",
+         "default": "#1D1D1D"
+      },
+	 {
+         "id": "color_header_mobile",
+         "type": "color",
+         "label": "Header color for mobile",
+         "default": "#1D1D1D"
+      },
+	  {
+          "id": "color_description",
+          "type": "color",
+          "label": "Description color",
+          "default": "#1D1D1D"
+       },
+	  {
+          "id": "color_description_mobile",
+          "type": "color",
+          "label": "Description color for mobile",
+          "default": "#1D1D1D"
+       },
+      {
+        "id": "gradient_background",
+        "type": "color_background",
+        "label": "t:sections.image_with_text.settings.gradient.label"
+      }
+  ],
+  "blocks": [
+    {
+      "type": "title",
+      "name": "t:sections.main_blog.blocks.title.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_date",
+          "default": true,
+          "label": "t:sections.main_blog.blocks.title.settings.show_date.label"
+        }
+      ]
+    },
+    {
+      "type": "summary",
+      "name": "t:sections.main_blog.blocks.summary.name",
+      "limit": 1,
+      "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_link",
+        "default": true,
+        "label": "t:sections.main_blog.blocks.summary.settings.show_link.label"
+      }
+    ]
+    }
+  ]
+}
+{% endschema %}

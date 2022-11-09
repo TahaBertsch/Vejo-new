@@ -1,0 +1,94 @@
+<style>
+  .sub-choices-popup-bg{	
+    display:none;	
+    height:100vh;	
+    width:100vw;	
+    justify-content:center;	
+    align-items:center;	
+    position:fixed;	
+    background-color:rgba(0, 0, 0, 0.9);	
+    z-index:1000;	
+    top:0;
+  }	
+  .sub-choices-popup {
+    text-align: center;
+    padding: 30px 30px;
+    margin: 0;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .sub-choices-popup-title{ 
+    font-size:19px; 
+    font-weight:400; 
+    font-family:'Scandia'; 
+    margin-top:10px; 
+    margin-bottom:20px
+  }
+  .sub-choices-button{
+    margin-bottom:0px;
+    background-color:black;
+    border-radius:100px;
+    border: 2px solid black;
+    padding-bottom: 15px;
+    padding-top: 20px;
+    font-size: 21px;
+    font-weight: 500;
+    width: 312px;
+    cursor:pointer;
+    max-height: 58px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    color:white;
+  }
+  @media(max-width: 800px) {
+    .sub-choices-popup {
+      padding: 30px 30px;
+      width: 88vw;
+      overflow: scroll;
+      top: 60%;
+    }
+    .sub-choices-popup-title{
+      padding-left:20px;
+      padding-right:20px;
+    }
+    .add-address-button{
+      width:100%;
+    }
+  }
+</style>
+
+<div class="sub-choices-popup-bg">
+  <div class="sub-choices-popup">
+    <div class="sub-choices-popup-title" style="margin-bottom:30px">Do you have a Vejo monthly subscription?</div>
+    <div id="hasSub" class="add-address-button" style="margin-bottom:15px">
+      YES I DO
+    </div>
+    <div id="noSub" class="add-address-button">
+      NO, NOT YET
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#hasSub').on('click', function() {
+      login(false)
+      localStorage.setItem("productName", $('.sub-choices-popup-bg').attr('productName'))
+      $('.sub-choices-popup-bg').css('display','none')
+    })
+    $('#noSub').on('click', function() {
+      $('.sub-choices-popup-bg').css('display','none')
+      mainAddToCart($('.sub-choices-popup-bg').attr('productQty'), $('.sub-choices-popup-bg').attr('productId'))
+    })
+  })
+</script>

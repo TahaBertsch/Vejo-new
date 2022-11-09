@@ -1,0 +1,177 @@
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="quote"
+  class="
+    quote
+    {% if section.settings.image_shape == 'round' -%}
+      quote--image-rounded
+    {%- endif %}
+    section
+    {% if section.settings.section_contrast -%}
+      section--contrast
+    {%- endif %}
+  "
+  style="background: {{section.settings.gradient_background}}
+         ;margin:0; padding-top:{{section.settings.padding_top}}% ;padding-bottom :{{section.settings.padding_bottom}}%; color: {{section.settings.text_color}}" 
+>
+  <div class="section__inner">
+    <div
+      class="quotes"
+      data-slider
+      data-timer="{{ section.settings.timer | times: 1000 }}"
+    >
+      {%- for block in section.blocks -%}
+        {%- render 'quote-item' with
+          block: block,
+          forloop: forloop,
+          quote: block.settings.quote,
+          text_max_width: block.settings.text_max_width,
+          text_font: block.settings.text_font,
+          text_font_mobile : block.settings.text_font_mobile,
+          image: block.settings.image,
+          author: block.settings.author,
+          text_color_mobile : section.settings.text_color_mobile,
+        -%}
+      {%- endfor -%}
+    </div>
+    {% if section.blocks.size  > 1 %}
+      <div class="quote__navigation">
+        {%- render 'navigation-dots' with dot_count: section.blocks.size  -%}
+      </div>
+    {% endif %}
+
+  </div>
+    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+</div>
+
+{% schema %}
+  {
+    "name": "t:sections.quotes.name",
+    "tag": "section",
+    "class": "shopify-section--stackable shopify-section--text-first",
+    "settings": [
+      {
+        "id": "timer",
+        "type": "range",
+        "label": "t:sections.quotes.settings.timer.label",
+        "default": 7,
+        "min": 3,
+        "max": 15,
+        "step": 1
+      },
+      {
+        "id": "image_shape",
+        "type": "radio",
+        "label": "t:sections.quotes.settings.image_shape.label",
+        "default": "round",
+        "options": [
+          { "value": "round", "label": "t:sections.quotes.settings.image_shape.options__1" },
+          { "value": "square", "label": "t:sections.quotes.settings.image_shape.options__2" }
+        ]
+      },
+	
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding top",
+        "unit": "%",
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "default": 7
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding bottom",
+        "unit": "%",
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "default": 5
+      },
+      {
+        "id": "gradient_background",
+        "type": "color_background",
+        "label": "t:sections.image_with_text.settings.gradient.label"
+      },
+ 	{
+        "id": "text_color",
+        "type": "color",
+        "label": "Text color",
+        "default": "#000000"
+       },
+ 	{
+        "id": "text_color_mobile",
+        "type": "color",
+        "label": "Text color for mobile",
+        "default": "#000000"
+       }
+    ],
+    "max_blocks": 4,
+    "blocks": [
+      {
+        "type": "quote",
+        "name": "t:sections.quotes.blocks.quote.name",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "quote",
+            "label": "t:sections.quotes.blocks.quote.settings.quote.label",
+            "default": "<p>\"Absolutely unparalleled products and service. I'm confident that this store will be the next big thing in its industry, and that its products will be timeless.\"</p>"
+          },
+          {
+            "type": "text",
+            "id": "author",
+            "label": "t:sections.quotes.blocks.quote.settings.author.label",
+            "default": "Steve Jordans"
+          },
+          {
+            "type": "range",
+            "id": "text_max_width",
+            "label": "t:sections.quotes.blocks.quote.settings.text_max_width.label",
+            "min": 40,
+            "max": 60,
+            "step": 1,
+            "default": 48
+          },
+          {
+            "type": "range",
+            "id": "text_font",
+            "label": "text fonts",
+            "min": 12,
+            "max": 32,
+            "step": 2,
+            "default": 30
+          },
+          {
+            "type": "range",
+            "id": "text_font_mobile",
+            "label": "text fonts for mobile",
+            "min": 12,
+            "max": 32,
+            "step": 2,
+            "default": 30
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "t:sections.quotes.blocks.quote.settings.image.label",
+            "info": "t:sections.quotes.blocks.quote.settings.image.info"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "t:sections.quotes.presets.name",
+        "blocks": [
+          {
+            "type": "quote"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

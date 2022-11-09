@@ -1,0 +1,20 @@
+{% assign popup_subscription_product = _product.metafields.subscriptions %}
+{% assign popup_shipping_interval_frequency = popup_subscription_product.shipping_interval_frequency | split: ',' | default: 30 %}
+{% assign popup_shipping_interval_unit_type = popup_subscription_product.shipping_interval_unit_type | default: 'Days' %}
+{% assign popuplabel_unit_type = popup_subscription_product.label_unit_type | default: popup_shipping_interval_unit_type %}
+
+<label for="popup_delivery">{{ 'products.product.recharge.deliver_every' | t }}</label>
+
+<select id="popup_delivery" name="properties[shipping_interval_frequency]">
+  {%- for interval in popup_shipping_interval_frequency -%}
+    <option value="{{ interval }}" {% if forloop.first %} selected {% endif %}>
+      {{ interval }}
+
+      {% if interval == "1" and label_unit_type == 'Months' or label_unit_type == 'Weeks' %}
+        {{ label_unit_type | remove: 's' }}
+      {% else %}
+        {{ label_unit_type }}
+      {% endif %}
+    </option>
+  {%- endfor -%}
+</select>

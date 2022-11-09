@@ -1,0 +1,343 @@
+{%- liquid
+  assign featured_collection = section.settings.collection
+  assign aspect_ratio = section.settings.aspect_ratio
+  assign heading = section.settings.title
+  assign subheading = section.settings.subheading
+  assign link_text = section.settings.link_text
+  assign text_max_width = section.settings.text_max_width
+  assign max_products = 7
+  assign count = max_products
+
+  if featured_collection != blank
+    assign count = featured_collection.products.size | plus: 1
+  endif
+
+  
+-%}
+
+
+<style>
+  @media (max-width: 769px){
+	.blends-carousel-header{
+      width: {{section.settings.carousel_mobile-width}}% !important;
+    }
+    .blends_mobile_title{
+      display: block !important;
+    }
+  	.blends_desktop_title{
+      display: none !important;
+    }
+    .blends_mobile_subheading{
+      display: block !important;
+    }
+    .blends_desktop_subheading{
+      display: none !important;
+    }
+  	
+}
+</style>
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="featured-collection-row"
+  class="
+    featured-collection-row
+    featured-collection-row--columns-{{ section.settings.columns }}
+    featured-collection-row--{{ aspect_ratio }}
+    featured-collection-row--text-align-{{ section.settings.text_alignment }}
+    {% if settings.enable_quick_add and section.settings.collection != blank -%}
+      featured-collection-row--has-quick-buy
+      section--has-quick-buy
+    {%- endif %}
+    section
+    {% if section.settings.section_contrast -%}
+      section--contrast
+    {%- endif %}
+  "
+ style="background: {{section.settings.gradient_background}};padding-top: 80px;padding-bottom:calc( var(--quick-buy-button-height) + var(--spacing-medium-large) + var(--spacing-medium) + var(--box-shadow-offset-bottom) )" 
+>
+  <div class="section__inner section-header section-header--large blends-carousel-header" style="text-align:{{section.settings.text_alignment}};  width: {{section.settings.carousel_desktop-width}}%; max-width: {{ section.settings.text_max_width }}rem;">
+      <h1 class="ff-heading fs-heading-2-base fs-heading-1-base-ns blends_desktop_title" style="font-size: {{section.settings.text_heading_font}}px !important;  color:{{section.settings.color_label}}">{{ section.settings.title}}</h1>
+        <div class="rte ff-body fs-body-base fs-body-large-ns blends_desktop_subheading" style=" color: {{ section.settings.color_description}}; font-size: {{section.settings.text_description_font}}px !important">
+       	 {{section.settings.subheading}}
+      	</div>
+      <h1 class="ff-heading fs-heading-2-base fs-heading-1-base-ns blends_mobile_title" style="font-size: {{section.settings.text_heading_font_mobile}}px !important; display: none;  color:{{section.settings.color_label_mobile}}">{{ section.settings.title}}</h1>
+        <div class="rte ff-body fs-body-base fs-body-large-ns blends_mobile_subheading" style=" color: {{ section.settings.color_description_mobile}}; font-size: {{section.settings.text_description_font_mobile}}px !important; display: none">
+       	 {{section.settings.subheading}}
+      	</div>
+      {%- if featured_collection.url != blank and section.settings.link_text  != blank -%}
+      <div class="btn-wrp {% if section.settings.with_bottom == false %}withOut_button{% endif %} " style="margin:15px">
+        <a href="{{ featured_collection.url}}" class="btn-link btn-outline-black" 
+           style=" border: {{section.settings.button_border_syle}} {{ section.settings.color_border_button}}
+                  ;color:{{section.settings.color_text_button}};background-color: {{section.settings.color_button}}">{{  section.settings.link_text }}</a>
+      </div>
+      {% endif %}
+    </div>
+  
+  
+  <div class="section__inner">
+   
+
+    <div class="featured-collection-row__content">
+      <div class="featured-collection-row__slider-wrapper">
+        <div class="featured-collection-row__slider" data-slider>
+          {%- if featured_collection != blank -%}
+            {{ text_slide }}
+            {%- for product in featured_collection.products  -%}
+              <div class="featured-collection-row__slide" data-slide>
+                {% render 'blend-product-item', product: product, aspect_ratio: aspect_ratio,isDescription :section.settings.blend_description, isIngredients :section.settings.blend_ingredients, isPrice:section.settings.blend_price, isUnit:section.settings.blend_unit_price %}
+               
+              </div>
+            {%- endfor -%}
+          {%- else -%}
+            {{ text_slide }}
+            {%- for i in (1..max_products) -%}
+              <div class="featured-collection-row__slide" data-slide>
+               {% render 'blend-product-item', product: blank, aspect_ratio: aspect_ratio, placeholder: true, product_columns: section.settings.columns %}
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+
+      {% render 'carousel-navigation' with columns: columns, item_count: count, product_columns: section.settings.columns %}
+    </div>
+  </div>
+</div>
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+{% schema %}
+  {
+    "name": "Blends carousel",
+    "tag": "section",
+    "class": "shopify-section--stackable shopify-section--text-first",
+    "settings": [
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "t:sections.featured_collection_row.settings.collection.label"
+      },
+      {
+        "type": "range",
+        "id": "columns",
+        "label": "t:sections.featured_collection_row.settings.columns.label",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 3
+      }, 
+      {
+         "type": "range",
+         "id": "carousel_desktop-width",
+         "label": "Header section width for desktop",
+	     "unit": "%",
+         "min": 60,
+         "max": 100,
+         "step": 10,
+         "default": 60
+      },
+	  {
+         "type": "range",
+         "id": "carousel_mobile-width",
+         "label": "Header section width for mobile",
+	     "unit": "%",
+         "min": 60,
+         "max": 100,
+         "step": 10,
+         "default": 100
+      },
+	  {
+        "id": "blend_description",
+        "type": "checkbox",
+        "label": "Show description",
+        "default": true
+      },
+	  {
+        "id": "blend_ingredients",
+        "type": "checkbox",
+        "label": "Show Ingredients",
+        "default": true
+      },
+      {
+        "id": "blend_price",
+        "type": "checkbox",
+        "label": "Show price",
+        "default": true
+      },
+      {
+        "id": "blend_unit_price",
+        "type": "checkbox",
+        "label": "Show unit price",
+        "default": true
+      },
+      {
+        "id": "title",
+        "type": "text",
+        "label": "t:sections.featured_collection_row.settings.title.label",
+        "default": "Collection"
+      },
+      {
+        "id": "subheading",
+        "type": "richtext",
+        "label": "t:sections.featured_collection_row.settings.subheading.label"
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "t:sections.featured_collection_row.settings.text_alignment.label",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.featured_collection_row.settings.text_alignment.options__1"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.featured_collection_row.settings.text_alignment.options__2"
+          }
+        ]
+      },
+          {
+            "type": "range",
+            "id": "text_max_width",
+            "label": "t:sections.image_with_text.blocks.heading.settings.text_max_width.label",
+            "min": 24,
+            "max": 48,
+            "step": 1,
+            "default": 32
+          },
+          {
+            "type": "range",
+            "id": "text_heading_font",
+            "label": "Heading text fonts",
+            "min": 32,
+            "max": 62,
+            "step": 2,
+            "default": 38
+          },
+          {
+            "type": "range",
+            "id": "text_heading_font_mobile",
+            "label": "Heading text fonts for mobile",
+            "min": 12,
+            "max": 28,
+            "step": 2,
+            "default": 24
+          },
+          {
+            "type": "range",
+            "id": "text_description_font",
+            "label": "Description text fonts",
+            "min": 12,
+            "max": 28,
+            "step": 2,
+            "default": 18
+          },
+          {
+            "type": "range",
+            "id": "text_description_font_mobile",
+            "label": "Description text fonts for mobile",
+            "min": 12,
+            "max": 28,
+            "step": 2,
+            "default": 18
+          },
+		{
+          "id": "color_label",
+          "type": "color",
+          "label": "Label color",
+          "default": "#181818"
+         },
+		{
+          "id": "color_label_mobile",
+          "type": "color",
+          "label": "Label color for mobile",
+          "default": "#181818"
+         },
+		{
+          "id": "color_description",
+          "type": "color",
+          "label": "Description color",
+          "default": "#181818"
+         }, 
+		{
+          "id": "color_description_mobile",
+          "type": "color",
+          "label": "Description color for mobile",
+          "default": "#181818"
+         }, 
+      {
+        "type": "text",
+        "id": "link_text",
+        "label": "t:sections.featured_collection_row.settings.link_text.label"
+      },
+		{
+            "id": "with_bottom",
+            "type": "checkbox",
+            "label": "t:sections.slideshow.blocks.slide.settings.with_bottom.label",
+            "default": true
+          },
+     {
+        "id": "button_border_syle",
+        "type": "select",
+        "label": "Button border style",
+        "options": [
+    	{ "label": "Dashed", "value": "dashed" },
+        { "label": "Dotted", "value": "dotted" },
+		{ "label": "Double", "value": "double" },
+        { "label": "Groove", "value": "groove" },
+        { "label": "Inset ", "value": "inset" },
+		{ "label": "Outset", "value": "outset" },
+		{ "label": "Ridge", "value": "ridge" },
+        { "label": "Solid", "value": "solid" }
+         ],
+          "default": "solid"
+        },
+		{
+          "id": "color_text_button",
+          "type": "color",
+          "label": "button text color",
+          "default": "#181818"
+         },
+		{
+          "id": "color_button",
+          "type": "color",
+          "label": "button color"
+          
+         },
+		{
+          "id": "color_border_button",
+          "type": "color",
+          "label": "button border",
+          "default": "#181818"
+         },
+      {
+        "id": "aspect_ratio",
+        "type": "select",
+        "label": "t:sections.featured_collection_row.settings.aspect_ratio.label",
+        "options": [
+          { "label": "t:sections.featured_collection_row.settings.aspect_ratio.options__1", "value": "natural" },
+          { "label": "t:sections.featured_collection_row.settings.aspect_ratio.options__2", "value": "square" },
+          { "label": "t:sections.featured_collection_row.settings.aspect_ratio.options__3", "value": "landscape" },
+          { "label": "t:sections.featured_collection_row.settings.aspect_ratio.options__4", "value": "portrait" }
+        ],
+        "default": "natural"
+      },
+      {
+        "id": "gradient_background",
+        "type": "color_background",
+        "label": "t:sections.image_with_text.settings.gradient.label"
+      },
+      {
+        "id": "section_contrast",
+        "type": "checkbox",
+        "label": "t:sections.featured_collection_row.settings.section_contrast.label",
+        "default": false
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blends carousel"
+      }
+    ]
+  }
+{% endschema %}

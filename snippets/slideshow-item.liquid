@@ -1,0 +1,317 @@
+{%- liquid
+  assign desktop_image = desktop_image
+  assign mobile_image = mobile_image
+  assign align = alignment | split: "_"
+  assign align_mobile = alignment_mobile | split: "_"
+  assign focal_alignment = focal_point | replace: "_", " "
+  assign mobile_focal_alignment = mobile_focal_point | replace: "_", " "
+  assign shadow_amount = overlay_shadow | divided_by: 100.00
+  assign shadow_amount_lesser = shadow_amount | minus: 0.04
+  assign overlay_opacity_final = overlay_opacity | divided_by: 100.00
+  assign enable_text_overlay = true
+  assign disable_style = true
+  assign with_animation = with_animation
+
+  if image_aspect == 'original'
+    assign disable_style = false
+  endif
+
+  assign has_content = false
+  if heading != blank or subheading != blank or link != blank or link_text != blank
+    assign has_content = true
+  endif
+
+  if shadow_amount == 0
+    assign enable_text_overlay = false
+  endif
+
+  assign color_background_button = color_background_button
+
+  assign brightness_button = color_background_button | color_brightness
+  if brightness_button > 60
+    assign color_background_button_hover = color_background_button | color_darken: 20
+    else
+    assign color_background_button_hover = color_background_button | color_lighten: 20
+  endif
+  
+  assign color_background_button_under_image = color_background_button_under_image
+
+  assign brightness_button_under_image = color_background_button_under_image | color_brightness
+  if brightness_button_under_image > 60
+    assign color_background_button_hover_under_image = color_background_button_under_image | color_darken: 20
+    else
+    assign color_background_button_hover_under_image = color_background_button_under_image | color_lighten: 20
+  endif
+  
+-%}
+<style>
+  @media (max-width: 769px){
+	.mobile{
+      display: block !important;
+    }
+  	.desktop{
+      display: none !important;
+}
+  }
+</style>
+
+
+ <div
+  class="
+    slideshow__cell
+    {% if enable_text_overlay %}slideshow--has-shadow{% endif %}
+    {% if mobile_image != blank %}slideshow__cell--has-mobile-image{% endif %}
+    {% if desktop_image == blank and mobile_image == blank %}slideshow__cell--no-image{% endif %}
+  "
+  data-slide
+  data-index="{{ forloop.index0 }}"
+  {{ block.shopify_attributes }}
+  style="
+    --color-background-button: {{ color_background_button }};
+    --color-background-button-hover: {{ color_background_button_hover }};
+    --slide-color-text: {{ color_text }};
+    --color-text-button: {{ color_text_button }};
+    --color-overlay: {{ color_overlay }};
+    --overlay-opacity: {{ overlay_opacity_final }};
+    --text-shadow-amount: {{ shadow_amount }};
+    --text-shadow-amount-lesser: {{ shadow_amount_lesser }};
+    --media-focal-alignment: {{ focal_alignment }};
+    --mobile-media-focal-alignment: {{ mobile_focal_alignment }};
+  "
+>
+  <div class="slideshow__asset desktop">
+    {%- if desktop_image != blank -%}
+      {%- if with_animation -%}
+        {% render 'image' with
+          image: desktop_image,
+          wrapper_class: 'slideshow__image-wrapper slideshow__image--desktop',
+          disable_style: disable_style
+        %}
+      {%- else -%}
+          {% render 'image' with
+          image: desktop_image,
+          wrapper_class: 'slideshow__image-wrapper slideshow__image--desktop slider_image-no_animation ',
+          disable_style: disable_style
+        %}
+      {%- endif -%}
+    {%- endif -%}
+
+
+    {%- if desktop_image == blank -%}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+
+      <div class="placeholder-image">
+        {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {%- endif -%}
+    <div class="slideshow__overlay"></div>
+  </div>
+  {%- if display_under_image != true -%}
+    <div class="slideshow__asset mobile" style="display:none">
+        {%- if mobile_image != blank -%}
+          {%- if with_animation -%}
+            {% render 'image' with
+              image: mobile_image,
+              wrapper_class: 'slideshow__image-wrapper slideshow__image--mobile',
+              disable_style: disable_style
+            %}
+            {%- else -%}
+            {% render 'image' with
+              image: mobile_image,
+              wrapper_class: 'slideshow__image-wrapper slideshow__image--mobile slider_image-no_animation ',
+              disable_style: disable_style
+            %}
+          {%- endif -%}
+        {%- endif -%}
+
+        {%- if desktop_image == blank -%}
+          {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+
+          <div class="placeholder-image">
+            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {%- endif -%}
+        <div class="slideshow__overlay"></div>
+      </div>
+   {%- endif -%}
+  <div class="slideshow__content-wrapper slideshow__conten-desktop desktop">
+    <div
+      class="
+        slideshow__content
+        slideshow__content--h-{{ align[0] }}
+        slideshow__content--v-{{ align[1] }}
+        {% if has_content != true %}slideshow__content--no-content{% endif %}
+      "
+      style="--max-width-content: {{ max_width_subheading }}rem;"
+    >
+      {%- if link != blank and link_text == blank -%}
+        <a href="{{ link }}" class="slideshow__content-inner">
+      {%- else -%}
+        <div class="slideshow__content-inner">
+      {%- endif -%}
+
+        {%- if heading != blank -%}
+          <h4 class="slideshow__heading ff-heading {% if with_animation %}animate{% endif %}" style="font-size: {{ heading_text_size }}px !important; text-align:{{header_alignment}};margin-bottom:{{header_margin_bottom}}%">
+            {{ heading | newline_to_br }}
+          </h4>
+        {%- endif -%}
+
+        {%- if subheading != blank -%}
+          <div class="slideshow__subheading rte ff-body fs-body-large {% if with_animation %}animate{% endif %}" style=" font-size: {{ description_text_size }}px !important; text-align:{{subheader_alignment}};margin-bottom:{{subheader_margin_bottom}}%">
+            {{ subheading }}
+          </div>
+        {%- endif -%}
+        {%- if link != blank and link_text != blank -%}
+         <div style="text-align:{{ button_alignment }} !important; margin-top:28px">
+          <div class="slideshow__button   {% if with_animation %}animate{% endif %} "style="{% if with_bottom == false %} display:none {% endif %}" >
+            <a class="btn btn--primary btn--large" style="font-size:18px;border-radius: {{ button_border-radius }}px" href="{{ link }}">
+              {{ link_text }}
+              </a>
+          </div>
+          </div>
+        {%- endif -%}
+
+      {%- if link != blank and link_text == blank -%}
+        </a>
+      {%- else -%}
+        </div>
+    
+      {%- endif -%}
+    </div>
+   </div>
+  {%if display_under_image != true  %}
+   <div class="slideshow__content-wrapper slideshow__conten-mobile" style="display:none">
+    <div
+      class="
+        slideshow__content
+        slideshow__content--h-{{ align_mobile[0] }}
+        slideshow__content--v-{{ align_mobile[1] }}
+        {% if has_content != true %}slideshow__content--no-content{% endif %}
+      "
+      style="--max-width-content: {{ max_width_subheading }}rem;"
+    >
+      {%- if link != blank and link_text == blank -%}
+        <a href="{{ link }}" class="slideshow__content-inner">
+      {%- else -%}
+        <div class="slideshow__content-inner desktop">
+      {%- endif -%}
+
+        {%- if heading != blank -%}
+          <h4 class="slideshow__heading ff-heading {% if with_animation %}animate{% endif %}" style="text-align:{{header_alignment}};margin-bottom:{{header_margin_bottom}}%">
+            {{ heading | newline_to_br }}
+          </h4>
+        {%- endif -%}
+
+        {%- if subheading != blank -%}
+          <div class="slideshow__subheading rte ff-body fs-body-large {% if with_animation %}animate{% endif %}" style="text-align:{{subheader_alignment}};margin-bottom:{{subheader_margin_bottom}}%">
+            {{ subheading }}
+          </div>
+        {%- endif -%}
+
+        {%- if link != blank and link_text != blank -%}
+         <div style="text-align:{{ button_alignment }} !important; margin-top:28px">
+          <div class="slideshow__button   {% if with_animation %}animate{% endif %} " style=" {% if with_bottom == false %} display:none {% endif %} ">
+            <a class="btn btn--primary btn--large" style="font-size:18px;border-radius: {{ button_border-radius }}px" href="{{ link }}">
+              {{ link_text }}
+            </a>
+           </div>
+          </div>
+        {%- endif -%}
+
+      {%- if link != blank and link_text == blank -%}
+        </a>
+      {%- else -%}
+        </div>
+            
+      <div class="slideshow__content-inner mobile" style="display:none">
+      {%- endif -%}
+
+        {%- if heading != blank -%}
+          <h4 class="slideshow__heading ff-heading {% if with_animation %}animate{% endif %}" style="text-align:{{header_alignment_mobile}}; font-size:{{heading_text_size_mobile}}px !important;margin-bottom:{{header_margin_bottom}}%">
+            {{ heading | newline_to_br }}
+          </h4>
+        {%- endif -%}
+
+        {%- if subheading != blank -%}
+          <div class="slideshow__subheading rte ff-body fs-body-large {% if with_animation %}animate{% endif %}" style="font-size: {{ description_text_size_mobile }}px !important; text-align:{{subheader_alignment_mobile}};margin-bottom:{{subheader_margin_bottom}}%">
+            {{ subheading }}
+          </div>
+        {%- endif -%}
+
+        {%- if link != blank and link_text != blank -%}
+        <div style="text-align:{{ button_alignment_mobile }} !important; margin-top:28px">
+          <div class="slideshow__button   {% if with_animation %}animate{% endif %}" style="{% if with_bottom == false %} display:none {% endif %}">
+            <a style="border-radius: {{ button_border-radius }}px;" class="btn btn--primary btn--large" href="{{ link }}">
+              {{ link_text }}
+            </a>
+          </div>
+          </div>
+        {%- endif -%}
+
+      {%- if link != blank and link_text == blank -%}
+        </a>
+      {%- else -%}
+        </div>
+      {%- endif -%}
+    </div>
+   {%endif%}
+  </div>
+</div>
+{%if display_under_image  %}
+<div class="mobile" style="background: {{color_background}};
+            --color-background-button: {{ color_background_button_under_image }};
+    --color-background-button-hover: {{ color_background_button_hover_under_image }};
+    --slide-color-text: {{ color_text_under_image }};
+    --color-text-button: {{ color_button_under_image }};
+    --color-overlay: {{ color_overlay }};
+    --overlay-opacity: {{ overlay_opacity_final }};
+    --text-shadow-amount: {{ shadow_amount }};
+    --text-shadow-amount-lesser: {{ shadow_amount_lesser }};
+    --media-focal-alignment: {{ focal_alignment }};
+    --mobile-media-focal-alignment: {{ mobile_focal_alignment }};display:none;">
+{%- if mobile_image != blank -%}
+      {%- if with_animation -%}
+        {% render 'image' with
+          image: mobile_image
+        %}
+        {%- else -%}
+        {% render 'image' with
+          image: mobile_image
+        %}
+      {%- endif -%}
+    {%- endif -%}
+  <div   class="
+        slideshow__content
+        slideshow__content--h-{{ align_mobile[0] }}
+        slideshow__content--v-{{ align_mobile[1] }}
+            {% if has_content != true %}slideshow__content--no-content{% endif %}
+          "
+          style="display:block;"
+        >
+
+    {%- if heading != blank -%}
+              <h4 class="slideshow__heading ff-heading {% if with_animation %}animate{% endif %}" style="text-align:{{header_alignment_mobile}}; font-size:{{heading_text_size_mobile}}px !important;margin-bottom:{{header_margin_bottom}}%">
+                {{ heading | newline_to_br }}
+              </h4>
+            {%- endif -%}
+
+            {%- if subheading != blank -%}
+              <div class="slideshow__subheading rte ff-body fs-body-large {% if with_animation %}animate{% endif %}" style="font-size: {{ description_text_size_mobile }}px !important; text-align:{{subheader_alignment_mobile}};margin-bottom:{{subheader_margin_bottom}}%">
+                {{ subheading }}
+              </div>
+            {%- endif -%}
+
+            {%- if link != blank and link_text != blank -%}
+          <div style="text-align:{{ button_alignment_mobile }} !important; margin-top:28px">
+              <div class="slideshow__button   {% if with_animation %}animate{% endif %}" style=" {% if with_bottom == false %} display:none {% endif %}">
+                <a style="border-radius: {{ button_border-radius }}px;" class="btn btn--primary btn--large;" href="{{ link }}">
+                  {{ link_text }}
+                </a>
+              </div>
+           </div>
+            {%- endif -%}
+
+
+    </div>
+</div>
+{%endif%}

@@ -1,0 +1,435 @@
+
+{%- liquid
+  assign desktop_image = section.settings.columns
+  assign numbre_block = 0
+  for block in section.blocks
+  if block.settings.image != blank  or block.settings.heading != blank  or block.settings.subheading != blank 
+  	assign numbre_block = numbre_block  | plus: 1 
+    
+  endif
+  endfor
+  if numbre_block < section.settings.columns and numbre_block != 0
+  	assign numbre_column = numbre_block
+  else
+  	 assign numbre_column =  section.settings.columns
+   endif
+   assign firstblock = section.blocks.first
+-%}
+
+<style>
+.carousel-indicators .active {
+  background-color:{{section.settings.Indicators_Color_Active}}; 
+}
+.carousel-indicators li
+  {
+    background-color:{{section.settings.Indicators_Color}}; 
+  }
+.columnsItemSlide > .slick-next:before {
+  color: #000;
+}
+.columnsItemSlide > .slick-prev:before {
+  color: #000;
+}
+@media (max-width: 769px){
+	.columns-image_mobile{
+        display:block !important;
+    }
+  	.columns-image_desktop{
+   display:none !important
+   }
+  	.mobile{
+      display: block !important;
+    }
+  	.desktop{
+      display: none !important;
+
+}
+}
+</style>
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="text-columns-with-images"
+  class="
+    text-columns-with-images
+    text-columns-with-images--columns-{{ numbre_column }}
+    text-columns-with-images--text-{{ section.settings.text_alignment }}
+    {% if section.settings.image_shape == 'round' -%}
+      text-columns-with-images--image-rounded
+    {%- endif %}
+    section
+    section--small
+    {% if section.settings.section_contrast -%}
+      section--contrast
+    {%- endif %}
+  "
+  style="--text-max-width: 42rem; padding-top:{{ section.settings.padding_top }}%; padding-bottom:{{ section.settings.padding_bottom }}%;
+         background: {{section.settings.gradient_background}}
+         "
+> 
+  
+   
+  <div class="section__inner">
+    <div class="desktop" style="text-align: center; max-width: 800px; padding: 0 33px; margin: 50px auto 90px auto;" >
+            <h1 style="font-size: {{ section.settings.heading_text_size }}px; color: {{ section.settings.color_header }};margin-bottom: 15px;">{{section.settings.title}}</h1>
+     		 <div style="font-size :{{ section.settings.subheading_text_size }}px; color: {{ section.settings.color_description }}">{{section.settings.subheading}}</div>
+     </div>
+    <div class="mobile" style="text-align: center; max-width: 800px; padding: 0 33px; margin: 50px auto 90px auto; display:none" >
+            <h1 style="font-size: {{ section.settings.heading_text_size_mobile }}px; color: {{ section.settings.color_header_mobile }};margin-bottom: 15px;">{{section.settings.title}}</h1>
+     		 <div style="font-size :{{ section.settings.subheading_text_size_mobile }}px; color: {{ section.settings.color_description_mobile }}">{{section.settings.subheading}}</div>
+     </div>
+
+    <div class="{%if section.blocks.size > 4 %}columnsItemSlide{% else %}text-columns-with-images__grid  {%endif%} columns-image_desktop" >
+     
+
+        {%- for block in section.blocks -%}
+      	 {%- if block.settings.image != blank  or block.settings.heading != blank  or block.settings.subheading != blank -%}
+          {%- render 'text-columns-with-images-item' with
+            columns: section.settings.columns,
+            image: block.settings.image,
+            heading: block.settings.heading,
+            subheading: block.settings.subheading,
+            text_max_width: block.settings.text_max_width,
+            link: block.settings.link,
+            link_text: block.settings.link_text
+            button_size: button_size,
+    	    image-size: section.settings.width_desktop,
+      		color_description: block.settings.color_description,
+            color_header: block.settings.color_header,
+            
+            subheading_text_size: block.settings.subheading_text_size,
+            heading_text_size: block.settings.heading_text_size,
+      		subheading_text_size_mobile: block.settings.subheading_text_size_mobile,
+            heading_text_size_mobile: block.settings.heading_text_size_mobile,
+      		margin_slide: '0 10px'
+          -%}
+      	 {%- endif -%}
+        {%- endfor -%}
+    </div>
+   
+
+  <div class="columns-image_mobile"   style="display:none">
+    
+         {%- for block in section.blocks -%}
+      		{%- if block.settings.image != blank  or block.settings.heading != blank  or block.settings.subheading != blank -%}
+      		{%- render 'text-columns-with-images-item' with
+              columns: section.settings.columns,
+              image: block.settings.image,
+              heading: block.settings.heading,
+              subheading: block.settings.subheading,
+              text_max_width: block.settings.text_max_width,
+              link: block.settings.link,
+              link_text: block.settings.link_text
+              button_size: button_size,
+              image-size: section.settings.width_desktop,
+           	  color_description: block.settings.color_description,
+              color_header: block.settings.color_header,
+            
+              subheading_text_size: block.settings.subheading_text_size_mobile,
+              heading_text_size: block.settings.heading_text_size_mobile,
+              color_header: block.settings.color_header_mobile,
+              color_description: block.settings.color_description_mobile,
+              
+            -%}
+             {%- endif -%}
+     	 {%- endfor -%}
+    </div>
+   
+  
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" type="text/javascript"></script>
+<script>
+$('.columnsItemSlide').slick({
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  
+});
+$('.columns-image_mobile').slick({
+  dots:true
+});
+</script>
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+{% schema %}
+  {
+    "name": "t:sections.text_columns_with_images.name",
+    "tag": "section",
+    "class": "shopify-section--stackable shopify-section--small shopify-section--text-first",
+    "settings": [
+      {
+        "type": "range",
+        "id": "columns",
+        "label": "t:sections.text_columns_with_images.settings.columns.label",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 4
+      },
+      {
+        "id": "image_shape",
+        "type": "radio",
+        "label": "t:sections.text_columns_with_images.settings.image_shape.label",
+        "default": "round",
+        "options": [
+          { "value": "round", "label": "t:sections.text_columns_with_images.settings.image_shape.options__1" },
+          { "value": "square", "label": "t:sections.text_columns_with_images.settings.image_shape.options__2" }
+        ]
+      },
+	  {
+         "type":"text",
+         "id":"width_desktop",
+         "label":"Image Max Width and Height (desktop)"
+      },
+       {
+            "id": "title",
+            "type": "text",
+            "label": "t:sections.slideshow.blocks.slide.settings.title.label"
+            
+          },
+          {
+            "id": "subheading",
+            "type": "richtext",
+            "label": "t:sections.slideshow.blocks.slide.settings.subheading.label"
+          
+          },
+          {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "t:sections.text_columns_with_images.settings.text_alignment.label",
+        "default": "center",
+        "options": [
+        {
+          "value": "left",
+          "label": "t:sections.text_columns_with_images.settings.text_alignment.options__1"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.text_columns_with_images.settings.text_alignment.options__2"
+        }
+        ]
+      },
+          {
+            "id": "heading_text_size",
+            "type": "range",
+            "label": "t:sections.slideshow.blocks.slide.settings.heading_text_size.label",
+            "unit": "px",
+            "min": 36,
+            "max": 64,
+            "step": 2,
+            "default": 36
+          },
+          {
+            "id": "heading_text_size_mobile",
+            "type": "range",
+            "label": "Heading size for mobile",
+            "unit": "px",
+            "min": 20,
+            "max": 40,
+            "step": 2,
+            "default": 24
+          },
+            {
+            "id": "subheading_text_size",
+            "type": "range",
+            "label": "Description text font",
+            "unit": "px",
+            "min": 16,
+            "max": 26,
+            "step": 2,
+            "default": 18
+          },
+              {
+            "id": "subheading_text_size_mobile",
+            "type": "range",
+            "label": "Description text font for mobile",
+            "unit": "px",
+            "min": 12,
+            "max": 24,
+            "step": 2,
+            "default": 16
+          },
+    	  {
+            "type": "range",
+            "id": "padding_top",
+            "label": "Padding top",
+            "unit": "%",
+            "min": 0,
+            "max": 30,
+            "step": 1,
+            "default": 7
+          },
+          {
+            "type": "range",
+            "id": "padding_bottom",
+            "label": "Padding bottom",
+            "unit": "%",
+            "min": 0,
+            "max": 30,
+            "step": 1,
+            "default": 5
+          },
+          
+    	 {
+         "id": "color_header",
+         "type": "color",
+         "label": "Header color",
+         "default": "#000000"
+      },
+      	 {
+         "id": "color_header_mobile",
+         "type": "color",
+         "label": "Header color for mobile",
+         "default": "#000000"
+      },
+	  {
+          "id": "color_description",
+          "type": "color",
+          "label": "Description color",
+          "default": "#000000"
+       },
+  	  {
+          "id": "color_description_mobile",
+          "type": "color",
+          "label": "Description color for mobile",
+          "default": "#000000"
+       },
+    	
+  		
+      {
+        "id": "section_contrast",
+        "type": "checkbox",
+        "label": "t:sections.text_columns_with_images.settings.section_contrast.label",
+        "default": true
+      },
+    {
+        "id": "gradient_background",
+        "type": "color_background",
+        "label": "t:sections.image_with_text.settings.gradient.label",
+		"default": "linear-gradient(180deg, rgba(242,242,242,1) 0%, rgba(242,242,242,1) 35%, rgba(248,248,248,1) 100%)"
+      }
+    ],
+    "max_blocks": 8,
+    "blocks": [
+      {
+        "type": "column",
+        "name": "t:sections.text_columns_with_images.blocks.column.name",
+        "settings": [
+          {
+            "id": "image",
+            "type": "image_picker",
+            "label": "t:sections.text_columns_with_images.blocks.column.settings.image.label",
+            "info": "t:sections.text_columns_with_images.blocks.column.settings.image.info"
+          },
+          {
+            "id": "heading",
+            "type": "text",
+            "label": "t:sections.text_columns_with_images.blocks.column.settings.heading.label",
+            "default": "Feature heading"
+          },
+          {
+            "id": "subheading",
+            "type": "richtext",
+            "label": "t:sections.text_columns_with_images.blocks.column.settings.subheading.label",
+            "default": "<p>Tell a story, explain a detail about your product, or describe a new promotion.</p>"
+          },
+            {
+            "id": "heading_text_size",
+            "type": "range",
+            "label": "t:sections.slideshow.blocks.slide.settings.heading_text_size.label",
+            "unit": "px",
+            "min": 23,
+            "max": 63,
+            "step": 2,
+            "default": 23
+          },
+            {
+            "id": "subheading_text_size",
+            "type": "range",
+            "label": "Description text font",
+            "unit": "px",
+            "min": 16,
+            "max": 26,
+            "step": 2,
+            "default": 18
+          },{
+            "id": "heading_text_size_mobile",
+            "type": "range",
+            "label": "Header font size for mobile",
+            "unit": "px",
+            "min": 17,
+            "max": 23,
+            "step": 1,
+            "default": 18
+          },
+            {
+            "id": "subheading_text_size_mobile",
+            "type": "range",
+            "label": "Subheader font size for mobile",
+            "unit": "px",
+            "min": 16,
+            "max": 20,
+            "step": 1,
+            "default": 16
+          },
+  	 {
+         "id": "color_header",
+         "type": "color",
+         "label": "Header color",
+         "default": "#181818"
+      },
+    	 {
+         "id": "color_header_mobile",
+         "type": "color",
+         "label": "Header color for mobile",
+         "default": "#181818"
+      },
+	  {
+          "id": "color_description",
+          "type": "color",
+          "label": "Description color",
+          "default": "#000000"
+       },
+  	  {
+          "id": "color_description_mobile",
+          "type": "color",
+          "label": "Description color for mobile",
+          "default": "#000000"
+       },
+  
+          {
+            "id": "link",
+            "type": "url",
+            "label": "t:sections.text_columns_with_images.blocks.column.settings.link.label"
+          },
+          {
+            "id": "link_text",
+            "type": "text",
+            "label": "t:sections.text_columns_with_images.blocks.column.settings.link_text.label",
+            "default": "Read more"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "t:sections.text_columns_with_images.presets.name",
+        "blocks": [
+          {
+            "type": "column"
+          },
+          {
+            "type": "column"
+          },
+          {
+            "type": "column"
+          },
+          {
+            "type": "column"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

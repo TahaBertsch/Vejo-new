@@ -1,0 +1,403 @@
+{%- liquid
+  assign image_is_constrained = true
+
+  if section.settings.aspect_ratio == 'natural'
+    assign image_is_constrained = false
+  endif
+-%}
+
+<style>
+  @media (max-width: 769px){
+	.section_mobile{
+      display: block !important;
+    }
+  	.section_desktop{
+      display: none !important;
+
+}
+  }
+  .image-with-features--text-left .image-with-features__image-container {
+    margin-left : 0 !important;
+        
+
+  }
+.hero-img{
+  padding-right: 0  !important;padding-left: 0  !important; margin-left: 0  !important; margin-right: 0  !important; max-width: 100%  !important;
+}
+  .customHeightDesktop{
+     transform: scale({{section.settings.desktop_height}}%);
+    margin-top : {{section.settings.desktop_height_margin }}px !important;
+    margin-bottom:{{section.settings.desktop_height_margin }}px !important;
+  }
+
+
+</style>
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="slideshow"
+  class="slideshow
+    image-with-features
+    image-with-features--text-{{ section.settings.text_position }}
+    image-with-features--align-{{ section.settings.text_alignment }}
+    image-with-features--{{ section.settings.aspect_ratio }}
+    image-with-features--image-{{ section.settings.image_width }}
+    section
+    {% if section.settings.section_contrast -%}
+      section--contrast
+    {%- endif %}
+  section_desktop "
+  style="background: {{section.settings.gradient_background}};padding-top:{{section.settings.padding_top}}% ;padding-bottom :{{section.settings.padding_bottom}}%; --desktop-height: 500vh; z-index:1 !important"
+>
+  <div class="image-with-features__inner section__inner hero-img"  >
+    <div class="image-with-features__image-container{% if section.settings.image_aspect=="custom"%} customHeightDesktop{% endif %}"  style="width:100%;margin-right : 0 !important;">
+      {%- if section.settings.image -%}
+        <div class="image-with-features__image-wrapper">
+          {% render 'image' with
+            image: section.settings.image,
+            wrapper_class: 'image-with-features__image ',
+            disable_style: image_is_constrained,
+          %}
+        </div>
+      {%- else -%}
+        <div class="image-with-features__image-wrapper">
+          <div class="image-with-features__image placeholder-image">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+
+  </div>
+  {% liquid assign x= 60 | minus: section.settings.overlay_shadow %}
+  <div class="slideshow__content-wrapper slideshow__conten-desktop ">
+    <div class="
+        slideshow__content
+        slideshow__content--h-center
+        slideshow__content--v-center
+        
+      " style="--max-width-content: 30rem;"><div class="slideshow__content-inner style="padding:0 !important"><h4 class="slideshow__heading ff-heading " style="text-align: center; margin-bottom:{{section.settings.header_margin_bottom}}%; font-size: {{section.settings.heading_text_size }}px !important; color:{{ section.settings.color_text }} !important; text-shadow:7px 4px {{ x }}px #000000; max-width:{{  section.settings.max_width_subheading }}% !important" data-open-accessibility-text-original="38px">
+        {{ section.settings.heading }}</h4>
+           <div class="slideshow__subheading rte ff-body fs-body-large " style="font-size: {{section.settings.subheading_text_size }}px !important; text-align:center;margin-bottom:{{section.settings.subheader_margin_bottom}}%;color:{{ section.settings.color_text }}!important;">
+            <p style="font-size: 24px;" data-open-accessibility-text-original="24px"> {{ section.settings.subheading }}</p>
+          </div>
+        <div style="text-align:center !important; margin-top:28px">
+            {%  if section.settings.Button %}
+          <div class="slideshow__button" style="">
+            <a class="btn btn--primary btn--large navigable" style="font-size:18px;border-radius: 15px; color:{{ section.settings.button_text_color }} !important; background-color:{{ section.settings.button_color }}!important;" href="{{ section.settings.button_link }}" data-open-accessibility-text-original="18px">
+             {{ section.settings.text_button }}
+              </a>
+          </div>
+              {% endif %}
+          </div>
+      </div>
+      </div>
+   </div>
+
+</div>
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="image-with-features"
+  class="
+    image-with-features
+    image-with-features--text-{{ section.settings.text_position }}
+    image-with-features--align-{{ section.settings.text_alignment }}
+    image-with-features--{{ section.settings.aspect_ratio }}
+    image-with-features--image-{{ section.settings.image_width }}
+    section
+    {% if section.settings.section_contrast -%}
+      section--contrast
+    {%- endif %}
+  section_mobile "
+  style="background: {{section.settings.gradient_background}};padding-top:{{section.settings.padding_top}}% ;padding-bottom :{{section.settings.padding_bottom}}% ; display:none;"
+>
+  <div class="image-with-features__inner section__inner hero-img"  >
+    <div class="image-with-features__image-container" style="width:100%;margin-right : 0 !important;">
+      {%- if section.settings.image -%}
+        <div class="image-with-features__image-wrapper">
+          {% render 'image' with
+            image: section.settings.image_mobile,
+            wrapper_class: 'image-with-features__image',
+            disable_style: image_is_constrained,
+          %}
+        </div>
+      {%- else -%}
+        <div class="image-with-features__image-wrapper">
+          <div class="image-with-features__image placeholder-image">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+
+  </div>
+  <div class="text_container">
+    <div  class="
+        slideshow__content
+        slideshow__content--h-center
+        slideshow__content--v-center" style="background-color:{{ section.settings.gradient_background }} !important;"><div class="slideshow__content-inner"><h4 class="slideshow__heading ff-heading " style="text-align: center; margin-bottom: 0%; font-size: {{section.settings.heading_text_size_mobile }}px !important; color:{{ section.settings.text_under_image }} !important;" data-open-accessibility-text-original="38px">
+        {{ section.settings.heading }}</h4>
+           <div class="slideshow__subheading rte ff-body fs-body-large " style="font-size: {{section.settings.subheading_text_size_mobile }}px !important; text-align:center;margin-bottom:0%;color:{{ section.settings.text_under_image }}!important;">
+            <p style="font-size: 24px;" data-open-accessibility-text-original="24px"> {{ section.settings.subheading }}</p>
+          </div>
+        <div style="text-align:center !important; margin-top:28px">
+            {%  if section.settings.Button %}
+          <div class="slideshow__button" style="">
+            <a class="btn btn--primary btn--large navigable" style="font-size:18px;border-radius: 15px; color:{{ section.settings.button_under_image_text_color }} !important; background-color:{{ section.settings.button_under_image_color }}!important;" href="{{ section.settings.button_link }}" data-open-accessibility-text-original="18px">
+             {{ section.settings.text_button }}
+              </a>
+          </div>
+              {% endif %}
+          </div>
+    </div>
+      </div>
+      </div>
+   </div>
+ 
+
+</div>
+
+
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+{% schema %}
+  {
+    "name": "hero-image",
+    "tag": "section",
+    "class": "shopify-section--stackable shopify-section--image-first",
+    "settings": [
+       {
+        "type": "radio",
+        "id": "image_aspect",
+        "label": "t:sections.slideshow.settings.image_aspect.label",
+        "options": [
+          { "value": "custom", "label": "t:sections.slideshow.settings.image_aspect.option_1" },
+          { "value": "original", "label": "t:sections.slideshow.settings.image_aspect.option_2" }
+        ],
+        "default": "original"
+      },
+         {
+            "id": "desktop_height",
+            "type": "range",
+            "label": "desktop height",
+            "unit": "%",
+            "min": 100,
+            "max": 150,
+            "step": 1,
+            "default": 148
+          },
+         {
+            "id": "desktop_height_margin",
+            "type": "range",
+            "label": "margin (desktop height)",
+            "unit": "px",
+            "min": 0,
+            "max": 150,
+            "step": 2,
+            "default": 150
+          },
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "t:sections.image_with_features.settings.image.label"
+      },
+        {
+        "id": "image_mobile",
+        "type": "image_picker",
+        "label": "mobile image"
+      },
+     
+      {
+        "id": "aspect_ratio",
+        "type": "select",
+        "label": "t:sections.image_with_features.settings.aspect_ratio.label",
+        "options": [
+          { "label": "t:sections.image_with_features.settings.aspect_ratio.options__1", "value": "natural" },
+          { "label": "t:sections.image_with_features.settings.aspect_ratio.options__2", "value": "square" },
+          { "label": "t:sections.image_with_features.settings.aspect_ratio.options__3", "value": "landscape" },
+          { "label": "t:sections.image_with_features.settings.aspect_ratio.options__4", "value": "portrait" }
+        ],
+        "default": "natural"
+      },
+        {
+            "id": "heading",
+            "type": "richtext",
+            "label": "Heading"
+           
+          },
+          {
+            "id": "subheading",
+            "type": "richtext",
+            "label": "SubHeading"
+           
+          },
+        {
+            "id": "heading_text_size",
+            "type": "range",
+            "label": "Heading size",
+            "unit": "px",
+            "min": 38,
+            "max": 72,
+            "step": 2,
+            "default": 38
+          },
+          {
+            "id": "subheading_text_size",
+            "type": "range",
+            "label": "SubHeading size",
+            "unit": "px",
+            "min": 20,
+            "max": 72,
+            "step": 2,
+            "default": 24
+          },
+          {
+            "id": "subheading_text_size_mobile",
+            "type": "range",
+            "label": "SubHeading size for mobile",
+            "unit": "px",
+            "min": 20,
+            "max": 28,
+            "step": 2,
+            "default": 24
+          },
+          {
+            "id": "heading_text_size_mobile",
+            "type": "range",
+            "label": "Heading size for mobile",
+            "unit": "px",
+            "min": 38,
+            "max": 72,
+            "step": 2,
+            "default": 38
+          },
+          {
+            "type": "range",
+            "id": "overlay_shadow",
+            "label": "t:sections.slideshow.blocks.slide.settings.overlay_shadow.label",
+            "unit": "%",
+            "min": 0,
+            "max": 60,
+            "step": 5,
+            "default": 10
+          },
+          {
+            "id": "max_width_subheading",
+            "type": "range",
+            "label": "t:sections.slideshow.blocks.slide.settings.max_width_subheading.label",
+            "min": 20,
+            "max": 100,
+            "step": 2,
+            "default": 100
+          },
+          {
+            "type": "range",
+            "id": "header_margin_bottom",
+            "label": "t:sections.slideshow.blocks.slide.settings.header_margin_bottom.label",
+            "unit": "%",
+            "min": 0,
+            "max": 50,
+            "step": 5,
+            "default": 0
+          },
+          {
+            "type": "range",
+            "id": "subheader_margin_bottom",
+            "label": "t:sections.slideshow.blocks.slide.settings.subheader_margin_bottom.label",
+            "unit": "%",
+            "min": 0,
+            "max": 50,
+            "step": 5,
+            "default": 0
+          },
+          {
+            "id": "Button",
+            "type": "checkbox",
+            "label": "Display button",
+           "default" : true
+           
+          },
+          {
+            "id": "text_button",
+            "type": "text",
+            "label": "Button label"
+           
+          },
+         {
+            "id": "button_link",
+            "type": "url",
+            "label": "button link"
+           
+          },
+       {
+            "type": "range",
+            "id": "padding_top_text_container",
+            "label": "padding top text container",
+            "unit": "%",
+            "min": 60,
+            "max": 100,
+            "step": 2,
+            "default":72
+          },
+         {
+            "type": "range",
+            "id": "padding_bottom_text_container",
+            "label": "padding_bottom_text_container",
+            "unit": "%",
+            "min": 0,
+            "max": 50,
+            "step": 2,
+            "default":0
+          },
+       {
+            "id": "color_text",
+            "type": "color",
+            "label": "color text",
+            "default": "#ffffff"
+          },
+         {
+            "id": "button_text_color",
+            "type": "color",
+            "label": "button text color",
+            "default": "#FFFFFF"
+          },
+      {
+            "id": "button_color",
+            "type": "color",
+            "label": "button color",
+            "default": "#000000"
+          },
+        {
+            "id": "text_under_image",
+            "type": "color",
+            "label": "text under image",
+            "default": "#000000"
+          },
+		{
+            "id": "gradient_background",
+            "type": "color_background",
+            "label": "t:sections.image_with_text.settings.gradient.label"
+      	},
+         {
+            "id": "button_under_image_color",
+            "type": "color",
+            "label": "button under image color",
+            "default": "#000000"
+          },
+         {
+            "id": "button_under_image_text_color",
+            "type": "color",
+            "label": "button under image text color",
+            "default": "#000000"
+          }
+    ],
+
+    "presets": [
+      {
+        "name": "hero-image"
+      
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,154 @@
+{% assign current_collection = collection.title %}
+
+<nav class="shopping-nav" role="navigation">
+    <ul class="shopping-nav__list">
+        {%- for link in linklists.shopping-menu.links -%}
+
+            <!-- MENU ITEM -->
+            <li class="shopping-nav__item">
+
+                <!-- SUB MENU +/- ICON -->
+                {%- if link.links != blank -%}
+                <div class="shopping-nav__expand {% if link.active or link.child_active %}expanded{% endif %}">
+                    <span class="shopping-nav__span-1"></span>
+                    <span class="shopping-nav__span-2 {% if link.active or link.child_active %}expanded{% endif %}"></span>
+                </div>
+                {%- endif -%}
+
+                <!-- MENU LINK -->
+                <a class="shopping-nav__link {% if link.links != blank %}shopping-nav__nested{% endif %} collection-nav__title {% if link.active or link.child_active %}active{% endif %}" href="{% if link.active %}#{% else %}{{ link.url }}{% endif %}" {% if link.active %}aria-current="page" {% endif %}>
+                    <p class="shopping-nav__item-title">
+                        {{ link.title }}
+
+                        <!-- UNDERLINE ANIMATION -->
+                         <span class="collection-nav__underline"></span>
+                    </p>
+                </a>
+
+                {%- if link.links != blank -%}
+
+                    <!-- SUB MENU -->
+                    <ul class="shopping-nav__sub-list 
+                            {% if link.active or link.child_active %}
+                                expanded
+                            {% endif %}
+                        ">
+                        {%- for child_link in link.links -%}
+
+                            <!-- SUB MENU ITEM -->
+                            <li class="shopping-nav__sub-item">
+                                {%- if child_link.links != blank -%}
+
+                                <!-- SUB MENU +/- ICON -->
+                                <div class="shopping-nav__expand">
+                                    <span class="shopping-nav__span-1"></span>
+                                    <span class="shopping-nav__span-2"></span>
+                                </div>
+
+                                {%- endif -%}
+
+                                <!-- SUB MENU LINK -->
+                                <a class="shopping-nav__sub-link {% if child_link.links != blank %} shopping-nav__nested {% endif %} collection-nav__title {% if child_link.active %}active{% endif %}" href="{{ child_link.url }}"
+                                    {% if child_link.active %}aria-current="page" {% endif %}>
+                                    {{ child_link.title }}
+
+                                    <!-- UNDERLINE ANIMATION
+                                    <div class="collection-nav__underline"></div>
+                                    -->
+                                </a>
+
+                                {%- if child_link.links != blank -%}
+
+                                <!-- NESTED MENU -->
+                                <ul class="shopping-nav__sub-list">
+                                    {%- for grandchild_link in child_link.links -%}
+
+                                    <!-- NESTED MENU ITEM -->
+                                    <li class="shopping-nav__sub-item">
+
+                                        <!-- NESTED MENU LINK -->
+                                        <a class="shopping-nav__sub-link collection-nav__title {% if link.active %}active{% endif %}" href="{{ grandchild_link.url }}"
+                                            {% if grandchild_link.active %}aria-current="page" {% endif %}>
+                                            {{ grandchild_link.title }}
+
+                                            <!-- UNDERLINE ANIMATION
+                                            <div class="collection-nav__underline"></div>
+                                            -->
+                                        </a>
+                                    </li>
+                                    {%- endfor -%}
+                                </ul>
+                                {%- endif -%}
+
+                            </li>
+                        
+                        {%- endfor -%}
+                    </ul>
+
+                {%- endif -%}
+            </li>
+
+        {%- endfor -%}
+    </ul>
+  
+</nav>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        // CLICK HANDLERS
+        $(".shopping-nav__link[href$='#']").click(shoppingNavExpand);
+        $(".shopping-nav__expand").click(shoppingNavExpand);
+
+        /*
+        $("body").on("click", "li.shopping-nav__item", function() {
+            var $this = $(this).find(".shopping-nav__link");
+            shoppingNavItemActivate($this);
+        });
+        */
+
+        var docHeight = $("#app").height(),
+            footerHeight = $(".footer").height(),
+            absoluteMenu = docHeight - footerHeight - 200;
+            fixedMenuTop = absoluteMenu + 110;
+
+        $('.shopping-nav').stickyItem(absoluteMenu, fixedMenuTop);
+    });
+
+    // EXPAND NESTED SHOPPING MENU
+    shoppingNavExpand = function () {
+        $(this).siblings(".shopping-nav__sub-list").toggleClass("expanded");
+        $(this).parent().find(".shopping-nav__span-2").toggleClass("expanded");
+    }
+
+    // ACTIVATE LINK WHEN CLICKING PARENT LIST ITEM
+    shoppingNavItemActivate = function(trigger) {
+        trigger[0].click();
+    }
+
+    /* MAKE A ELEMENT FIXED UP TO A CERTAIN POINT
+        - takes a trigger (scrollTop position of when to make item absolute)
+        - takes a position (css top value for item when in fixed position)
+    */
+    $.fn.stickyItem = function (absoluteTrigger, fixedTopPosition) {
+        var $this = this,
+            $document = $(document);
+        
+        $document.scroll(function(e){
+            if ($document.scrollTop() > absoluteTrigger) {
+                $this.css({
+                    position: 'absolute',
+                    top: fixedTopPosition                      
+                });
+            } else {
+                $this.css({
+                    position: 'fixed',
+                    top: 112,
+                });
+            }
+        });
+    };
+
+
+
+</script>

@@ -1,0 +1,54 @@
+{%- layout none -%}
+{%- assign listParams = request.path | replace: page.url, "" | remove: "/" | split: '+' -%}
+
+{% if listParams != empty %}
+{
+  
+  {% for param in listParams -%}
+  {%- assign getList = linklists[param] -%}
+  {%- if getList != empty %}
+      "{{ param }}": [{% for level1 in getList.links %}{
+		  "id": "{{ level1.title | handle }}-{{ forloop.index0 }}",
+          "title": "{{ level1.title }}",
+          "url": "{% if level1.type != "http_link" %}{{ shop.url }}{% endif %}{{ level1.url }}",
+          "children": [
+            {%- for level2 in level1.links -%}
+            {
+              "id": "{{ level2.title | handle }}-{{ forloop.index0 }}",
+              "title": "{{ level2.title }}",
+              "url": "{% if level2.type != "http_link" %}{{ shop.url }}{% endif %}{{ level2.url }}",
+              "children": [
+                {%- for level3 in level2.links -%}
+                {
+                  "id": "{{ level2.title | handle }}-{{ forloop.index }}",
+                  "title": "{{ level3.title }}",
+                  "url": "{% if level3.type != "http_link" %}{{ shop.url }}{% endif %}{{ level3.url }}"
+                }
+                {%- if forloop.last == false %},{% endif -%}
+                {%- endfor -%}
+              ]
+            }
+            {%- if forloop.last == false %},{% endif -%}
+            {%- endfor -%}
+          ]
+        }
+        {%- if forloop.last == false %},{% endif -%}
+        {% endfor %}
+      ]{%- if forloop.last == false %},{% endif -%}
+{% else %}
+    "{{ param }}": [
+        {
+            "status": 404,
+            "code": "not-found",
+            "title": "Menu Not Found",
+            "detail": "Menu `{{ param }}` was not found"
+        }
+    ]{%- if forloop.last == false %},{% endif -%}
+{%- endif -%}
+{%- endfor %}
+}
+{% else %}
+  {%- section 'apimenus' -%}
+  {% assign menuHandles = linklists | map: 'handle' %}
+  {"menus": ["{{ menuHandles | join: '","'}}"]}
+{% endif %}

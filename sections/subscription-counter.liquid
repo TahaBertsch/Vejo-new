@@ -1,0 +1,72 @@
+<style>
+    #shopify-section-subscription-counter{
+      position:sticky;
+      z-index: 100;
+      display: none;
+      top:0px;
+    }
+    
+    .sub_count_background{
+      background-color: black;
+      width:100vw;
+      height:40px;
+      display: flex;
+      justify-content: center;
+      align-items:center;
+    }
+    .sub_count_text{
+      font-family: Scandia;
+      font-size:15px;
+      color:white;
+      text-align: center;
+    }
+    .sub_count_text_2{
+      display:none;
+      font-family: Scandia;
+      font-size:15px;
+      color:white;
+      text-align: center;
+    }
+    @media(max-width: 800px) {
+      .sub_count_text{
+        padding-left:15px;
+        padding-right:15px;
+        font-size:13px;
+      }
+      .sub_count_text_2{
+        padding-left:15px;
+        padding-right:15px;
+        font-size:13px;
+      }
+    }
+  </style>
+  
+  <div class="sub_count_background">
+    <div class="sub_count_text">You have <span id="currentSubCount"></span> Please <span id="chooseLink" style="font-weight: regular; cursor: pointer">choose</span> <span id="remainingSub"></span> more.</div>
+    <div class="sub_count_text_2">You have at least five 4-Packs qualifying  for subscription. <span onclick="checkout()" style="text-decoration: underline; font-weight: regular; cursor: pointer">Checkout</span> now!</div>
+  </div>
+  
+  <script>
+    $(document).ready(function() {
+      let blendsURL = "https://www.vejo.com/collections/all-blends-4-packs"
+      let isOnBlendsPage = false
+      
+      if(window.location.href.includes(blendsURL)){
+        $('#chooseLink').css('text-decoration', 'none')
+        $('#chooseLink').css('cursor', 'default')
+        isOnBlendsPage = true
+      } else{
+        $('#chooseLink').css('text-decoration', 'underline')
+        $('#chooseLink').css('cursor', 'pointer')
+        isOnBlendsPage = false
+      }
+      
+      $('#chooseLink').on('click', function(){
+        if(!isOnBlendsPage){
+          window.location.href = blendsURL
+        }
+      })
+      // var headerHeight = $("#shopify-section-header").height()
+      // $('#shopify-section-subscription-counter').css("top", "0px")
+    })
+  </script>

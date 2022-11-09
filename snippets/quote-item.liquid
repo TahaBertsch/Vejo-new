@@ -1,0 +1,57 @@
+
+<div
+  class="quote__item"
+  {{ block.shopify_attributes }}
+  data-index="{{ forloop.index0 }}"
+  data-slide
+>
+  {%- unless quote == blank -%}
+    <h4
+      class="quote__item-text ff-heading fs-heading-3-base fs-heading-2-large-ns quote_heading_desktop"
+      style="--text-max-width: {{ text_max_width }}rem; font-size: {{ text_font }}px !important"
+    >
+      <span>{{ quote }}</span>
+    </h4>
+  	<h4
+      class="quote__item-text ff-heading fs-heading-3-base fs-heading-2-large-ns quote_heading_mobile"
+      style="--text-max-width: {{ text_max_width }}rem; font-size: {{ text_font_mobile }}px !important; display : none"
+    >
+      <span>{{ quote }}</span>
+    </h4>
+  {%- endunless -%}
+
+  {%- unless author == blank -%}
+    <div class="quote__item-author ff-body fs-body-small fs-body-base-ns">
+      &mdash;&ensp;<span>{{ author }}</span>
+    </div>
+  {%- endunless -%}
+
+  {%- unless image == blank -%}
+    <div class="quote__item-image" style="margin-top: 15px !important; width:100% !important; height:100% !important;">
+      {%- liquid
+        assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+        assign height = image.height | times: 1.0 | default: 1.0
+        assign width = image.width | times: 1.0 | default: 1.0
+
+        assign padding_top = height | divided_by: width | times: 100 | append: "%"
+
+        if id == blank
+          assign id = image.id
+        endif
+      -%}
+
+      <div>
+        <img
+          class="lazyload{% if preload %} lazypreload{% endif %} {{ image_class }}"
+          src="{{ image | img_url: '300x300' }}"
+          data-src="{{ img_url }}"
+          data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+          data-aspectratio="{{ image.aspect_ratio }}"
+          data-sizes="auto"
+          alt="{{ image.alt | escape }}"
+          style="display: block !important; margin: 0 auto !important; margin-top: 30px !important; height: 50px !important;"
+         >
+      </div>
+    </div>
+  {%- endunless -%}
+</div>

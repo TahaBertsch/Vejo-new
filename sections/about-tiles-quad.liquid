@@ -1,0 +1,608 @@
+{%- assign _section  = section.settings -%}
+
+{% assign vejo_care_customer = false %}
+{%- for tag in customer.tags -%}
+  {%- if tag == "Vejo Care" or tag == "Vejo Invited" -%}
+    {% assign vejo_care_customer = true %}
+  {%- endif -%}
+{%- endfor -%}
+
+<style>
+    @media (max-width: 769px){
+    .mobile{
+      display: block !important;
+    }
+  	.desktop{
+      display: none !important;
+    } 
+    .block_mobile{
+      display: block !important;
+    }
+  	.block_desktop{
+      display: none !important;
+    } 
+  }
+</style>
+
+<div class="sctn2 sctn-tiles-quad" id="sctn-{{ section.id }}" style="background: {{section.settings.gradient_background}}; padding-top:{{section.settings.padding_top}}px; padding-bottom:{{section.settings.padding_bottom}}px">
+  <div class="sctn-content">
+    <div class="sctn-header desktop" style="margin:0px auto; color:{{ _section.color_description }};">
+      <h1 style=" color: {{ _section.color_header }}; text-align:{{section.settings.text_alignment}}; font-size:{{section.settings.heading_text_size}}px !important">{{ _section.main_title }}</h1>
+      {% if _section.main_subhead != '' %}
+      <div style=" font-size:{{section.settings.subheading_text_size}}px !important">{{ _section.main_subhead }}</div>
+      {% endif %}
+    </div>
+    <div class="sctn-header mobile" style="margin:0px auto; color:{{ _section.color_description_mobile }}; display:none">
+      <h1 style=" color: {{ _section.color_header_mobile }}; text-align:{{section.settings.text_alignment_mobile}}; font-size:{{section.settings.heading_text_size_mobile}}px !important">{{ _section.main_title }}</h1>
+      {% if _section.main_subhead != '' %}
+      <div style=" font-size:{{section.settings.subheading_text_size_mobile}}px !important">{{ _section.main_subhead }}</div>
+      {% endif %}
+    </div>
+    <div class="blocks" style="margin-top:0px">
+    {% for block in section.blocks %}
+       {%- case block.type -%}
+       {%- when 'section' -%}
+      {% assign quad_block = block.settings %}
+
+      <div class="block block-{% increment %}">
+        <img src="{{ quad_block.img_mobile | img_url: 'master'}}" class="bg-img bg-mobile" alt="">
+        <img src="{{ quad_block.img_tablet | img_url: 'master'}}" class="bg-img bg-tablet" alt="">
+        <img src="{{ quad_block.img_desktop | img_url: 'master'}}" class="bg-img bg-desktop" alt="">
+        <div class="block-text" style="">
+          <div class="block-bg"></div>
+          <div class="block-header text-{{ quad_block.text_color }} mobile-text-{{ quad_block.mobile_text }} block_desktop" style:"text-align: {{quad_block.text_alignment}};">
+            <h1 style="font-size:{{quad_block.text_font_header}}px !important; color: {{ quad_block.heading_web_color }}">{{ quad_block.title }}</h1>
+            <div style="font-size:{{quad_block.text_font_subheader}}px !important; color: {{ quad_block.description_web_color }}"> {{ quad_block.sub_headline }} </div>
+
+            <div class="btn-wrp">
+              {% if quad_block.is_link == true %}
+                {% if quad_block.app_download == true %}
+                  <a href=""
+                    class="link-item app-link-mobile"
+                    target="_blank"
+                    rel="noopener noreferrer">{{ quad_block.link_text }}</a>
+                  <div class="links-desktop-wrp">
+                    <a href="https://apps.apple.com/us/app/vejo/id1324259512" target="_blank" rel="noreferrer noopener" class="app-link-desktop link-item">iOS<i class="fab fa-apple"></i></a>
+                    <a href="https://play.google.com/store/apps/details?id=com.vejo&hl=en_US&gl=US" target="_blank" rel="noreferrer noopener" class="app-link-desktop link-item">ANDROID<i class="fab fa-google-play"></i></a>
+                  </div>
+                {% else %}
+                  <a href="{{ quad_block.link_url }}"
+                    class="link-item {% if quad_block.tech_specs == true %}tech-show{% endif %}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >{{ quad_block.link_text }}</a>
+                {% endif %}
+              {% else %}
+              	<a class="link-item no-link"
+                >&nbsp;</a>
+              {% endif %}
+            </div>
+            
+          </div>
+          
+          <div class="block-header text-{{ quad_block.text_color }} mobile-text-{{ quad_block.mobile_text }} block_mobile" style="text-align: {{quad_block.text_alignment_mobile}}; display:none">
+            <h1 style="font-size:{{quad_block.text_font_header_mobile}}px !important; color: {{ quad_block.heading_mobile_color }}">{{ quad_block.title }}</h1>
+            <div style="font-size:{{quad_block.text_font_subheader_mobile}}px !important; color: {{ quad_block.description_mobile_color }}"> {{ quad_block.sub_headline }} </div>
+
+            <div class="btn-wrp">
+              {% if quad_block.is_link == true %}
+                {% if quad_block.app_download == true %}
+                  <a href=""
+                    class="link-item app-link-mobile"
+                    target="_blank"
+                    rel="noopener noreferrer">{{ quad_block.link_text }}</a>
+                  <div class="links-desktop-wrp">
+                    <a href="https://apps.apple.com/us/app/vejo/id1324259512" target="_blank" rel="noreferrer noopener" class="app-link-desktop link-item">iOS<i class="fab fa-apple"></i></a>
+                    <a href="https://play.google.com/store/apps/details?id=com.vejo&hl=en_US&gl=US" target="_blank" rel="noreferrer noopener" class="app-link-desktop link-item">ANDROID<i class="fab fa-google-play"></i></a>
+                  </div>
+                {% else %}
+                  <a href="{{ quad_block.link_url }}"
+                    class="link-item {% if quad_block.tech_specs == true %}tech-show{% endif %}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >{{ quad_block.link_text }}</a>
+                {% endif %}
+              {% else %}
+              	<a class="link-item no-link"
+                >&nbsp;</a>
+              {% endif %}
+            </div>
+            
+          </div>
+          
+        </div>
+        {% if quad_block.tech_specs == true %}
+          <div class="tech-specs-wrp">
+            <div class="close-specs"></div>
+            <div class="specs-wrp">
+              <div class="tech-specs">
+                <h1>Technical specs</h1>
+                <div class="specs">
+                  <div class="spec spec-1">
+                    <span class="label">Weight</span>
+                    <span class="info">1.2 lbs</span>
+                  </div>
+                  <div class="spec spec-2">
+                    <span class="label">Capacity</span>
+                    <span class="info">8 oz (7.5 oz to fill line)</span>
+                  </div>
+                  <div class="spec spec-3">
+                    <span class="label">Height</span>
+                    <span class="info">8 inches (204.5mm)</span>
+                  </div>
+                  <div class="spec spec-4">
+                    <span class="label">Width</span>
+                    <span class="info">2.75 inches (70 mm)</span>
+                  </div>
+                  <div class="spec spec-5">
+                    <span class="label">Motor</span>
+                    <span class="info">3 phase brushless</span>
+                  </div>
+                  <div class="spec spec-6">
+                    <span class="label">Motor Volts</span>
+                    <span class="info">9 VDC Rated</span>
+                  </div>
+                  <div class="spec spec-7">
+                    <span class="label">Battery</span>
+                    <span class="info">7.4VDC - 1000mAh</span>
+                  </div>
+                  <div class="spec spec-8">
+                    <span class="label">Wireless charger</span>
+                    <span class="info">5V DC @ 2.0A</span>
+                  </div>
+                  <div class="spec spec-9">
+                    <span class="label">Charging time</span>
+                    <span class="info">Approx. 3 hrs</span>
+                  </div>
+                  <div class="spec spec-10">
+                    <span class="label">Blends per charge</span>
+                    <span class="info">8 blends</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>
+            $(document).ready(function(){
+              $('.close-specs').on('click', function(){
+                $('.tech-specs-wrp').hide();
+              })
+              $('.tech-show').on('click', function(e){
+                e.preventDefault();
+                $('.tech-specs-wrp').show();
+              })
+            });
+          </script>
+        {% endif %}
+      </div>
+       {%- endcase -%}
+    {% endfor %}
+    </div>
+     <div style="margin: 0 auto;padding: 0 33px;margin-top:15px; text-align: center">
+      	{%- for block in section.blocks -%}
+     	  {%- case block.type -%}
+      		 {%- when 'button' -%}
+                {%- if  block.settings.link != blank and block.settings.link_text != blank -%}
+                      <a href="{{ block.settings.link }}" class="image-with-text__button fs-body-base btn btn--primary btn--medium" style="border: {{section.settings.button_border_width}}px {{section.settings.button_border_style}} {{ section.settings.color_border_button}};
+                                                                                                                                           background: {{section.settings.color_background_button}}; color: {{section.settings.color_label}}">
+                        {{ block.settings.link_text }}
+                      </a>
+         	   {%- endif -%}
+     	 {%- endcase -%}
+       {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  jQuery( document ).ready(function() {
+      const appLinksDesktop = document.getElementsByClassName('app-link-desktop');
+      const appLinkMobile = document.getElementsByClassName('app-link-mobile')[0];
+    if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {     
+      // iOS Device
+      console.log("iOS");
+      appLinkMobile.href = "itms-apps://apps.apple.com/us/app/vejo/id1324259512";
+    } else if (navigator.userAgent.match(/Android/i)) {     
+      // Android Device
+      appLinkMobile.href = "https://play.app.goo.gl/?link=https://play.google.com/store/apps/details?id=com.vejo&hl=en_US";
+      console.log("Android");
+      // non Android/iOS Device
+    } else {
+      for (const el of appLinksDesktop) {
+        el.style.display = 'inline-block';
+      }
+      appLinkMobile.style.display = 'none';
+    }
+  });
+</script>
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+
+
+{% schema %}
+  {
+    "name": "About Tiles - Quad",
+    "settings":[
+      {
+        "type":"header",
+        "content":"Main Headline"
+      },
+      {
+        "type":"text",
+        "id":"main_title",
+        "label":"Main Title",
+        "default": "Your Vejo blender"
+      },
+      {
+        "type":"richtext",
+        "id":"main_subhead",
+        "label":"Main Subheading",
+        "default": "<p>subheading</p>"
+      },
+  	{
+        "type": "select",
+        "id": "text_alignment",
+        "label": "t:sections.image_with_text.settings.text_alignment.label",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__1"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__2"
+          }
+        ]
+      },
+  	{
+        "type": "select",
+        "id": "text_alignment_mobile",
+        "label": "Text alignment for mobile",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__1"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__2"
+          }
+        ]
+      },
+      {
+        "id": "heading_text_size",
+        "type": "range",
+        "label": "t:sections.video_hero.blocks.heading.settings.heading_text_size.label",
+        "unit": "px",
+        "min": 30,
+        "max": 48,
+        "step": 2,
+        "default": 36
+      },
+      {
+        "id": "heading_text_size_mobile",
+        "type": "range",
+        "label": "Heading size for mobile",
+        "unit": "px",
+        "min": 20,
+        "max": 30,
+        "step": 2,
+        "default": 22
+      },
+      {
+        "id": "subheading_text_size",
+        "type": "range",
+        "label": "Descripton text fonts",
+        "unit": "px",
+        "min": 16,
+        "max": 28,
+        "step": 2,
+        "default": 18
+      },
+      {
+        "id": "subheading_text_size_mobile",
+        "type": "range",
+        "label": "Descripton text fonts for mobile",
+        "unit": "px",
+        "min": 12,
+        "max": 28,
+        "step": 2,
+        "default": 16
+      },
+   	  {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding top",
+        "unit": "%",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "default": 7
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding bottom",
+        "unit": "%",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "default": 5
+      },
+		{
+          "id": "color_header",
+          "type": "color",
+          "label": "Header color",
+          "default": "#181818"
+         },
+		{
+          "id": "color_header_mobile",
+          "type": "color",
+          "label": "Header color for mobile",
+          "default": "#181818"
+         },
+		{
+          "id": "color_description",
+          "type": "color",
+          "label": "Description color",
+          "default": "#181818"
+         },
+		{
+          "id": "color_description_mobile",
+          "type": "color",
+          "label": "Description color for mobile",
+          "default": "#181818"
+         },
+           {
+          "id": "button_border_style",
+          "type": "select",
+          "label": "Button border style",
+          "options": [
+			{ "label": "Dashed", "value": "dashed" },
+            { "label": "Dotted", "value": "dotted" },
+	 		{ "label": "Double", "value": "double" },
+            { "label": "Groove", "value": "groove" },
+			{ "label": "Inset ", "value": "inset" },
+			{ "label": "Outset", "value": "outset" },
+			{ "label": "Ridge", "value": "ridge" },
+            { "label": "Solid", "value": "solid" }
+          ],
+          "default": "solid"
+        },
+		{
+          "type": "range",
+          "id": "button_border_width",
+          "label": "Border width ",
+          "unit": "px",
+          "min": 0,
+          "max": 6,
+          "step": 1,
+          "default": 0
+      	  },
+      {
+        "id": "color_background_button",
+        "type": "color",
+        "label": "Button background color",
+		"default": "#000000"
+      },
+      {
+        "id": "color_label",
+        "type": "color",
+        "label": "Label color",
+        "default": "#FFFFFF"
+      },
+		{
+          "id": "color_border_button",
+          "type": "color",
+          "label": "Button border",
+          "default": "#181818"
+         },
+	 {
+        "id": "gradient_background",
+        "type": "color_background",
+        "label": "t:sections.image_with_text.settings.gradient.label"
+      }
+    ],
+    "max_blocks": 5,
+    "blocks": [
+      {
+        "type": "section",
+        "name": "Promotion Card",
+        "settings": [
+          {
+            "type":"header",
+            "content":"Header"
+          },
+          {
+            "type":"text",
+            "id": "title",
+            "label":"Main Headline",
+            "info":"ex.) Bundle up!"
+          },
+          {
+            "type":"richtext",
+            "id":"sub_headline",
+            "label":"Sub Headline",
+            "info":"ex.) With our Holiday Bundles, it has never been easier to give the gift of health to yourself and the ones you love."
+          },
+  	{
+        "type": "select",
+        "id": "text_alignment",
+        "label": "t:sections.image_with_text.settings.text_alignment.label",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__1"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__2"
+          }
+        ]
+      },
+  	{
+        "type": "select",
+        "id": "text_alignment_mobile",
+        "label": "Text alignment for mobile",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__1"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.image_with_text.settings.text_alignment.options__2"
+          }
+        ]
+      },
+	   {
+          "type": "range",
+          "id": "text_font_header",
+		  "unit": "px", 
+          "label": "Heading fonts",
+          "min": 26,
+          "max": 48,
+          "step": 2,
+          "default": 36
+         },
+	   {
+          "type": "range",
+          "id": "text_font_header_mobile",
+		  "unit": "px", 
+          "label": "Heading fonts for mobile",
+          "min": 26,
+          "max": 48,
+          "step": 2,
+          "default": 36
+         },
+	   {
+          "type": "range",
+          "id": "text_font_subheader",
+		  "unit": "px", 
+          "label": "SubHeading fonts",
+          "min": 16,
+          "max": 28,
+          "step": 2,
+          "default": 18
+         },
+	   {
+          "type": "range",
+          "id": "text_font_subheader_mobile",
+		  "unit": "px", 
+          "label": "SubHeading fonts for mobile",
+          "min": 16,
+          "max": 28,
+          "step": 2,
+          "default": 18
+         },
+          {
+            "type": "checkbox",
+            "id": "is_link",
+            "label": "Does this tile have a link?",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "tech_specs",
+            "label": "Is the link for Tech Specs?",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "app_download",
+            "label": "Is the link for app download?",
+            "default": false
+          },
+          {
+            "type":"text",
+            "id":"link_text",
+            "label":"Link Text",
+            "default":"Learn More"
+          },
+          {
+            "type":"url",
+            "id":"link_url",
+            "label":"Link URL"
+          },
+		{
+          "id": "heading_web_color",
+          "type": "color",
+          "label": "Heading color",
+          "default": "#181818"
+         },
+		{
+          "id": "heading_mobile_color",
+          "type": "color",
+          "label": "Heading color for mobile",
+          "default": "#181818"
+         },
+		{
+          "id": "description_web_color",
+          "type": "color",
+          "label": "Description color",
+          "default": "#181818"
+         },
+		{
+          "id": "description_mobile_color",
+          "type": "color",
+          "label": "Description color for mobile",
+          "default": "#181818"
+         },
+		{
+          "id": "mobile_text",
+          "type": "color",
+          "label": "Mobile text color",
+          "default": "#181818"
+         },
+          {
+            "type":"header",
+            "content":"Background Image"
+          },
+          {
+            "type":"image_picker",
+            "id":"img_mobile",
+            "label":"Mobile Image"
+          },
+          {
+            "type":"image_picker",
+            "id":"img_tablet",
+            "label":"Tablet Image"
+          },
+          {
+            "type":"image_picker",
+            "id":"img_desktop",
+            "label":"Desktop Image"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "t:sections.image_with_text.blocks.button.name",
+        "limit": 1,
+        "settings": [
+          {
+            "id": "link",
+            "type": "url",
+            "label": "t:sections.image_with_text.blocks.button.settings.link.label"
+          },
+          {
+            "id": "link_text",
+            "type": "text",
+            "label": "t:sections.image_with_text.blocks.button.settings.link_text.label",
+            "default": "Read more"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "PDP Tiles - Quad",
+        "category": "PDP Sections"
+      }
+    ]
+  }
+{% endschema %}

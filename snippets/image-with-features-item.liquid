@@ -1,0 +1,81 @@
+{%- liquid
+  assign block_has_image = false
+  assign heading_style = 'fs-heading-2-base-ns'
+
+  if image
+    assign block_has_image = true
+    assign heading_style = 'fs-heading-3-base-ns'
+  endif
+-%}
+
+<style>
+  @media (max-width: 769px){
+	.mobile{
+      display: block !important;
+    }
+  	.desktop{
+      display: none !important;
+
+}
+</style>
+<div
+  class="
+    image-with-features__item
+    {% if image_shape == 'round' %} image-with-features__item--rounded{% endif %}
+    {% if block_has_image %} image-with-features__item--has-image{% endif %} desktop
+  "
+  style="--text-max-width: {{ text_max_width }}rem;"
+>
+  {%- if block_has_image -%}
+    <div class="image-with-features__item-image">
+      {% render 'image' with image: image, disable_style: true %}
+    </div>
+  {%- endif -%}
+
+  {%- if heading != blank or subheading != blank -%}
+    <div class="image-with-features__item-content">
+      {%- unless heading == blank -%}
+        <h4 class="image-with-features__item-heading ff-heading fs-heading-4-base {{ heading_style }}" style=" color:{{ color_header_description }}; font-size:{{ text_header_font }}px !important">{{ heading }}</h4>
+      {%- endunless -%}
+
+      {%- unless subheading == blank -%}
+        <div class="image-with-features__item-text fs-body-small fs-body-base-ns" style="color:{{ color_description }}; font-size:{{ text_font }}px !important">
+          {{ subheading }}
+        </div>
+      {%- endunless -%}
+
+    </div>
+  {%- endif -%}
+</div>
+
+
+
+<div
+  class="
+    image-with-features__item
+    {% if image_shape == 'round' %} image-with-features__item--rounded{% endif %}
+    {% if block_has_image %} image-with-features__item--has-image{% endif %} mobile
+  "
+  style="--text-max-width: {{ text_max_width }}rem; display:none"
+>
+  {%- if block_has_image -%}
+    <div class="image-with-features__item-image">
+      {% render 'image' with image: image, disable_style: true %}
+    </div>
+  {%- endif -%}
+
+  {%- if heading != blank or subheading != blank -%}
+    <div class="image-with-features__item-content">
+      {%- unless heading == blank -%}
+        <h4 class="image-with-features__item-heading ff-heading fs-heading-4-base {{ heading_style }}" style=" color:{{ color_header_description_mobile }}; font-size:{{ text_header_font_mobile }}px !important">{{ heading }}</h4>
+      {%- endunless -%}
+
+      {%- unless subheading == blank -%}
+        <div class="image-with-features__item-text fs-body-small fs-body-base-ns" style="color:{{ color_description_mobile }}; font-size:{{ text_font_mobile }}px !important">
+          {{ subheading }}
+        </div>
+      {%- endunless -%}
+
+    </div>
+  {%- endif -%}
+</div>

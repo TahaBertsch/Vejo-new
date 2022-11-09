@@ -1,0 +1,922 @@
+{%- include 'sub-choices-popup-builder' -%}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+    <body>
+
+                         {%render "subscription_builder_pack_desktop"%}
+         <div class="desktop-subscription" style="padding-bottom: 12%;">
+           <div class="warning-container"><div class="warning-button more-than-8">You can only select 8 blends</div></div>
+<div id="bxp-discount-toast" class="discountApplied" style="background-color: green; bottom: 111px;display: none;width: 11%;font-size: 19px;padding: 7px;position: fixed;justify-content: center;padding: 7px;margin: 0 27.5%; color:white"><div>Discount Applied</div></div>
+           
+                       <div class="sectionBlends">
+               <div class="box-subscription myPack" style="margin-left:0 !important;margin-bottom:0 !important">
+                  <div class='banana-almond img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-banana-almond_720x.jpg?v=1650903257'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeBanana-almond" id="removeBanana-almond">-</div>
+                     <div class="39487814074462" id="39487814074462">0</div>
+                     <div  class="plus addBanana-almond" id="addBanana-almond">+</div>
+                  </div>
+                     <h5> Banana Almond - 4 Pack </h5>
+               </div>
+               <div class="box-subscription myPack" style="margin-bottom: 0 !important; margin-left:20px !important; margin-right:20px !important">
+                  <div class='Clean-Greens img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-clean-greens_720x.jpg?v=1650903294'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeCleanGreens" id="removeCleanGreens">-</div>
+                     <div  class="39487813681246" id="39487813681246">0</div>
+                     <div  class="plus addClean_Green" id="addClean_Green">+</div>
+                  </div>
+                     <div class="tt">
+                        <h5>Clean Greens - 4 Pack </h5>
+                     </div>
+               </div>
+               <div class="box-subscription myPack" style="margin-right:0 !important;margin-bottom:0 !important">
+                  <div class='Cold-Brew-Coffee img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-cold-brew-coffee_720x.jpg?v=1650903316'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeColdBrewCoffee" id="removeColdBrewCoffee">-</div>
+                     <div class="39487861850206"id="39487861850206">0</div>
+                     <div  class="plus addColdBrewCoffee" id="addColdBrewCoffee">+</div>
+                  </div>
+                     <h5> Cold Brew Coffee - 4 Pack </h5>
+               </div>
+            </div>
+                <div class="sectionBlends" style="margin-top:30px">
+               <div class="box-subscription myPack" style="margin-left:0 !important;margin-bottom:0 !important">
+                  <div class='immunity-fuel img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-berry-immunity-fuel_720x.jpg?v=1650903352'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeimmunity-fuel" id="removeimmunity-fuel">-</div>
+                     <div class="39493239144542" id="39493239144542">0</div>
+                     <div  class="plus addimmunity-fuel" id="addimmunity-fuel">+</div>
+                  </div>
+                     <h5> Immunity Fuel - 4 Pack </h5>
+               </div>
+               <div class="box-subscription myPack" style="margin-bottom: 0 !important; margin-left:20px !important; margin-right:20px !important">
+                  <div class='Matcha-Latte img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-oatmilk-matcha-latte_720x.jpg?v=1650903372'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeMatcha_latte" id="removeMatcha_latte">-</div>
+                     <div  class="39487862210654" id="39487862210654">0</div>
+                     <div  class="plus addMatcha_latte" id="addMatcha_latte">+</div>
+                  </div>
+                     <div class="tt">
+                        <h5>Matcha Latte - 4 Pack </h5>
+                     </div>
+               </div>
+               <div class="box-subscription myPack" style="margin-right:0 !important;margin-bottom:0 !important">
+                  <div class='Pina-Greens img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-organic-pina-greens_720x.jpg?v=1650903405'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removePina-Greens" id="removePina-Greens">-</div>
+                     <div class="39487813091422"id="39487813091422">0</div>
+                     <div  class="plus addPina-Greens" id="addPina-Greens">+</div>
+                  </div>
+                     <h5> Pina Greens - 4 Pack </h5>
+               </div>
+            </div>
+                    <div class="sectionBlends" style="margin-top:30px">
+               <div class="box-subscription myPack" style="margin-left:0 !important;margin-bottom:0 !important">
+                  <div class='protein-vanilla img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-vanilla-plant-based-protein_720x.jpg?v=1650903462'>
+                     <div class="Quantity-subscription">
+                        <div  class="minus removeprotein-vanilla"id="removeprotein-vanilla">-</div>
+                        <div  class="39487862603870" id="39487862603870">0</div>
+                        <div  class="plus addprotein-vanilla" id="addprotein-vanilla">+</div>
+                     </div>
+                        <h5> Plant-Based Protein Vanilla - 4 Pack </h5>
+                  </div>
+               </div>
+               <div class="box-subscription myPack" style="margin-bottom: 0 !important; margin-left:20px !important; margin-right:20px !important">
+                  <div class='chocolate-plant-based-protein img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-chocolate-plant-based-protein_720x.jpg?v=1650903438'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeChocolate_Pro" id="removeChocolate_Pro">-</div>
+                     <div class="39487862538334" id="39487862538334">0</div>
+                     <div  class="plus addChocolate_Pro" id="addChocolate_Pro">+</div>
+                  </div>
+                     <div class="tt">
+                        <h5> Plant-Based Protein Chocolate - 4 Pack</h5>
+                     </div>
+               </div>
+               <div class="box-subscription myPack" style="margin-right:0 !important;margin-bottom:0 !important">
+                  <div class='Sleep img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-sleep-dietary-supplement_720x.jpg?v=1650903485'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div  class="minus removeSleep"id="removeSleep">-</div>
+                     <div  class="39606476013662" id="39606476013662">0</div>
+                     <div  class="plus addSleep" id="addSleep">+</div>
+                  </div>
+                     <h5> Sleep - 4 Pack </h5>
+               </div>
+            </div>
+            <div class="sectionBlends" style="margin-top:30px">
+               <div class="box-subscription myPack" style="margin-left:0 !important;margin-bottom:0 !important">
+                  <div class='strawberry-banana img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-organic-strawberry-banana_720x.jpg?v=1650903534'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeStrawberry-banana" id="removeStrawberry-banana">-</div>
+                     <div class="39487812501598" id="39487812501598">0</div>
+                     <div  class="plus addStrawberry-banana" id="addStrawberry-banana">+</div>
+                  </div>
+                     <h5> Strawberry Banana - 4 Pack </h5>
+               </div>
+               <div class="box-subscription myPack" style="margin-bottom: 0 !important; margin-left:20px !important; margin-right:20px !important">
+                  <div class='Tropical img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-organic-tropical_720x.jpg?v=1650903701'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeTropical" id="removeTropical">-</div>
+                     <div  class="39487804375134" id="39487804375134">0</div>
+                     <div  class="plus addTropical" id="addTropical">+</div>
+                  </div>
+                     <div class="tt">
+                        <h5>Tropical - 4 Pack </h5>
+                     </div>
+               </div>
+               <div class="box-subscription myPack" style="margin-right:0 !important;margin-bottom:0 !important">
+                  <div class='tart-berry img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-tart-berry_720x.jpg?v=1650903626'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeTart_Berry" id="removeTart_Berry">-</div>
+                     <div class="39487813582942"id="39487813582942">0</div>
+                     <div  class="plus addTart_Berry" id="addTart_Berry">+</div>
+                  </div>
+                     <h5> Tart Berry - 4 Pack </h5>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      <div class="mobile-subscription" style="padding-bottom:15%;display:none">
+                {%render "subscription_builder_pack_mobile"%}
+         <div>
+            <div class="sectionBlends" style="margin-top:15px">
+               <div class="box-subscription box-subscription_mobile_margin myPack" style="margin: 0% 2% !important;">
+                  <div class='banana-almond img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-banana-almond_720x.jpg?v=1650903257'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeBanana-almond" id="removeBanana-almond">-</div>
+                     <div class="39487814074462" id="39487814074462">0</div>
+                     <div  class="plus addBanana-almond" id="addBanana-almond">+</div>
+                  </div>
+                     <h5> Banana Almond - 4 Pack </h5>
+               </div>
+               <div class="box-subscription myPack" style="margin: 0% 2% !important;">
+                  <div class='clean-green img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-clean-greens_720x.jpg?v=1650903294'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeCleanGreens" id="removeCleanGreens">-</div>
+                     <div  class="39487813681246" id="39487813681246">0</div>
+                     <div  class="plus addClean_Green" id="addClean_Green">+</div>
+                  </div>
+                     <h5> Clean Greens - 4 Pack </h5>
+               </div>
+            </div>
+            <div class="sectionBlends" style="margin-top:15px">
+               <div class="box-subscription box-subscription_mobile_margin myPack" style="margin: 0% 2% !important;">
+                  <div class='Cold-Brew-Coffee img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-cold-brew-coffee_720x.jpg?v=1650903316'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeColdBrewCoffee" id="removeColdBrewCoffee">-</div>
+                     <div class="39487861850206"id="39487861850206">0</div>
+                     <div  class="plus addColdBrewCoffee" id="addColdBrewCoffee">+</div>
+                  </div>
+                     <h5> Cold Brew Coffee - 4 Pack </h5>
+               </div>
+               <div class="box-subscription myPack" style="margin: 0% 2% !important;">
+                  <div class='immunity-fuel img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-berry-immunity-fuel_720x.jpg?v=1650903352'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeimmunity-fuel" id="removeimmunity-fuel">-</div>
+                     <div class="39493239144542" id="39493239144542">0</div>
+                     <div  class="plus addimmunity-fuel" id="addimmunity-fuel">+</div>
+                  </div>
+                     <h5> Immunity Fuel - 4 Pack </h5>
+               </div>
+            </div>
+                       <div class="sectionBlends" style="margin-top:15px">
+               <div class="box-subscription box-subscription_mobile_margin myPack" style="margin: 0% 2% !important;">
+                  <div class='Matcha-Latte img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-oatmilk-matcha-latte_720x.jpg?v=1650903372'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeMatcha_latte" id="removeMatcha_latte">-</div>
+                     <div  class="39487862210654" id="39487862210654">0</div>
+                     <div  class="plus addMatcha_latte" id="addMatcha_latte">+</div>
+                  </div>
+                     <h5> Matcha Latte - 4 Pack</h5>
+               </div>
+               <div class="box-subscription myPack" style="margin: 0% 2% !important;">
+                  <div class='Pina-Greens img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-organic-pina-greens_720x.jpg?v=1650903405'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removePina-Greens" id="removePina-Greens">-</div>
+                     <div class="39487813091422"id="39487813091422">0</div>
+                     <div  class="plus addPina-Greens" id="addPina-Greens">+</div>
+                  </div>
+                     <h5> Pina Greens - 4 Pack </h5>
+               </div>
+            </div>
+                       <div class="sectionBlends" style="margin-top:15px">
+               <div class="box-subscription box-subscription_mobile_margin myPack" style="margin: 0% 2% !important;">
+                  <div class='protein-vanilla img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-vanilla-plant-based-protein_720x.jpg?v=1650903462'>
+                  </div>
+                  <div class="Quantity-subscription">
+                        <div  class="minus removeprotein-vanilla"id="removeprotein-vanilla">-</div>
+                        <div  class="39487862603870" id="39487862603870">0</div>
+                        <div  class="plus addprotein-vanilla" id="addprotein-vanilla">+</div>
+                  </div>
+                     <h5> Plant-Based Protein VANILLA - 4 Pack</h5>
+               </div>
+               <div class="box-subscription myPack" style="margin: 0% 2% !important;">
+                  <div class='chocolate-plant-based-protein img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-chocolate-plant-based-protein_720x.jpg?v=1650903438'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeChocolate_Pro" id="removeChocolate_Pro">-</div>
+                     <div class="39487862538334" id="39487862538334">0</div>
+                     <div  class="plus addChocolate_Pro" id="addChocolate_Pro">+</div>
+                  </div>
+                     <h5> Plant-Based Protein Chocolate - 4 Pack </h5>
+               </div>
+            </div>
+                       <div class="sectionBlends" style="margin-top:15px">
+               <div class="box-subscription box-subscription_mobile_margin myPack" style="margin: 0% 2% !important;">
+                  <div class='Sleep img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-sleep-dietary-supplement_720x.jpg?v=1650903485'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div  class="minus removeSleep"id="removeSleep">-</div>
+                     <div  class="39606476013662" id="39606476013662">0</div>
+                     <div  class="plus addSleep" id="addSleep">+</div>
+                  </div>
+                     <h5> Sleep - 4 Pack</h5>
+               </div>
+               <div class="box-subscription myPack" style="margin: 0% 2% !important;">
+                  <div class='strawberry-banana img'>
+                      <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-organic-strawberry-banana_720x.jpg?v=1650903534'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeStrawberry-banana" id="removeStrawberry-banana">-</div>
+                     <div class="39487812501598" id="39487812501598">0</div>
+                     <div  class="plus addStrawberry-banana" id="addStrawberry-banana">+</div>
+                  </div>
+                     <h5> Strawberry Banana - 4 Pack </h5>
+               </div>
+            </div>
+                       <div class="sectionBlends" style="margin-top:15px">
+               <div class="box-subscription box-subscription_mobile_margin myPack" style="margin: 0% 2% !important;">
+                  <div class='Tropical img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-organic-tropical_720x.jpg?v=1650903701'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeTropical" id="removeTropical">-</div>
+                     <div  class="39487804375134" id="39487804375134">0</div>
+                     <div  class="plus addTropical" id="addTropical">+</div>
+                  </div>
+                     <h5> Tropical - 4 Pack </h5>
+               </div>
+               <div class="box-subscription myPack" style="margin: 0% 2% !important;">
+                  <div class='tart-berry img'>
+                     <img src='https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-tart-berry_720x.jpg?v=1650903626'>
+                  </div>
+                  <div class="Quantity-subscription">
+                     <div class="minus removeTart_Berry" id="removeTart_Berry">-</div>
+                     <div class="39487813582942"id="39487813582942">0</div>
+                     <div  class="plus addTart_Berry" id="addTart_Berry">+</div>
+                  </div>
+                     <h5> Tart Berry - 4 Pack </h5>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
+
+<script>
+ document.addEventListener('cart:updated', function (evt) {
+    setTimeout(() => {
+ $('#recharge_button_quick').css('display','none') 
+}, "700")
+
+});
+  function isLoggedIn() {
+    return (localStorage.getItem("rechargeInfo"))
+  }
+
+  var Quan_Banana_Almond = 0;
+  var Quan_Clean_Greens = 0;
+  var Quan_Cold_Brew_Coffee = 0;
+  var Quan_Immunity_Fuel = 0;
+  var Quan_Matcha_Latte = 0;
+  var Quan_Pina_Greens = 0;
+  var Quan_Protein_Vanilla = 0;
+  var Quan_Protein_Chocolate = 0;
+  var Quan_Sleep = 0;
+  var Quan_Strawberry_Banana = 0;
+  var Quan_Tropical = 0;
+  var Quan_Tart_Berry = 0;
+  var all_blends =0 ;
+  var In=0;
+
+
+  
+  var bananaAlmondImg ="https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-banana-almond_720x.jpg?v=1650903257"
+  var cleanGreenImg = "https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-clean-greens_720x.jpg?v=1650903294";
+  var ColdBrewCoffeeImg ="https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-cold-brew-coffee_720x.jpg?v=1650903316"
+  var ImmunityFuelImg ="https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-berry-immunity-fuel_720x.jpg?v=1650903352"
+  var matchaLatteImg ="https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-oatmilk-matcha-latte_720x.jpg?v=1650903372";
+  var pinaGreensImg ="https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-organic-pina-greens_720x.jpg?v=1650903405"
+  var proteinVanillaImg ="https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-vanilla-plant-based-protein_720x.jpg?v=1650903462"
+  var proteinChocolateImg =  "https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-chocolate-plant-based-protein_720x.jpg?v=1650903438";
+  var sleepImg = "https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-sleep-dietary-supplement_720x.jpg?v=1650903485"
+  var strawberryImg="https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-organic-strawberry-banana_720x.jpg?v=1650903534";
+  var tropicalImg="https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-organic-tropical_720x.jpg?v=1650903701";
+  var tartBerryImg= "https://cdn.shopify.com/s/files/1/1852/7957/products/vejo-blended-drink-tart-berry_720x.jpg?v=1650903626";
+
+
+try {
+
+
+function appendFirstItem(imgsrc,blendName,qt,allBlends) {
+  var blends_in_pack= $(".desktop-subscription .order_details").length;
+  if (blends_in_pack==0 && qt==1)  {
+  
+     var img1 = "<div  class='order_details blends firstItem "+blendName+"'><h6 class='blends firstItem "+blendName+" pack_plus'>  </h6><div><img class='blends firstItem "+blendName+" secondImg img_pack'  style='width: 54px; margin-top: 21px; margin-right:10px; border-radius:4px'src="+ imgsrc +">   <div class='blends firstItem "+blendName+" lbl'><h6 class='quantity'><p class='p qtBlend-"+blendName+"'>x" + qt +"</p></h6></div> </div></div>"; 
+  }
+   if (blends_in_pack==1 && qt==1) {
+           var img1 = "<div  class='order_details blends secondItem "+blendName+"'><h6 class='blends secondItem "+blendName+" pack_plus'>  </h6><div><img class='blends secondItem "+blendName+" secondImg img_pack'  style='width: 54px; margin-top: 21px; margin-right:10px; border-radius:4px'src="+ imgsrc +">   <div class='blends secondItem "+blendName+" lbl'><h6 class='quantity'><p class='p qtBlend-"+blendName+"'>x" + qt +"</p></h6></div></div> </div>"; 
+
+    }
+  if (blends_in_pack==2 && qt==1) {
+           var img1 = "<div  class='order_details blends thirdItem "+blendName+"'><h6 class='blends thirdItem "+blendName+" pack_plus'>  </h6><div><img class='blends thirdItem "+blendName+" secondImg img_pack'  style='width: 54px; margin-top: 21px; margin-right:10px; border-radius:4px'src="+ imgsrc +">   <div class='blends thirdItem "+blendName+" lbl'><h6 class='quantity'><p class='p qtBlend-"+blendName+"'>x" + qt +"</p></h6></div></div> </div>"; 
+
+    }
+  if (blends_in_pack==3 && qt==1) {
+           var img1 = "<div  class='order_details blends thirdItem "+blendName+"'><h6 class='blends thirdItem "+blendName+" pack_plus'>  </h6><div><img class='blends thirdItem "+blendName+" secondImg img_pack'  style='width: 54px; margin-top: 21px; margin-right:10px; border-radius:4px'src="+ imgsrc +">   <div class='blends thirdItem "+blendName+" lbl'><h6 class='quantity'><p class='p qtBlend-"+blendName+"'>x" + qt +"</p></h6></div></div> </div>"; 
+
+    }
+  if (blends_in_pack==4 && qt==1) {
+           var img1 = "<div  class='order_details blends fourthItem "+blendName+"'><h6 class='blends fourthItem "+blendName+" pack_plus'>  </h6><div><img class='blends fourthItem "+blendName+" secondImg img_pack'  style='width: 54px; margin-top: 21px; margin-right:10px; border-radius:4px'src="+ imgsrc +">   <div class='blends fourthItem "+blendName+" lbl'><h6 class='quantity'><p class='p qtBlend-"+blendName+"'>x" + qt +"</p></h6></div></div> </div>"; 
+
+    }
+  if (blends_in_pack==5 && qt==1) {
+    
+           var img1 = "<div  class='order_details blends fifthItem "+blendName+"'><h6 class='blends fifthItem "+blendName+" pack_plus'>  </h6><div><img class='blends fifthItem "+blendName+" secondImg img_pack'  style='width: 54px; margin-top: 21px; margin-right:10px; border-radius:4px'src="+ imgsrc +">   <div class='blends fifthItem "+blendName+" lbl'><h6 class='quantity'><p class='p qtBlend-"+blendName+"'>x" + qt +"</p></h6></div></div> </div>"; 
+
+    }
+  if (blends_in_pack==6 && qt==1) {
+           var img1 = "<div  class='order_details blends sixthItem "+blendName+"'><h6 class='blends sixthItem "+blendName+" pack_plus'>  </h6><div><img class='blends sixthItem "+blendName+" secondImg img_pack'  style='width: 54px; margin-top: 21px; margin-right:10px; border-radius:4px'src="+ imgsrc +">   <div class='blends sixthItem "+blendName+" lbl'><h6 class='quantity'><p class='p qtBlend-"+blendName+"'>x" + qt +"</p></h6></div></div> </div>"; 
+
+    }
+  if (blends_in_pack==7 && qt==1) {
+        
+    
+    var img1 = "<div  class='order_details blends seventhItem "+blendName+"'><h6 class='blends seventhItem "+blendName+" pack_plus'>  </h6><div><img class='blends seventhItem "+blendName+" secondImg img_pack'  style='width: 54px; margin-top: 21px; margin-right:10px; border-radius:4px'src="+ imgsrc +">   <div class='blends seventhItem "+blendName+" lbl'><h6 class='quantity'><p class='p qtBlend-"+blendName+"'>x" + qt +"</p></h6></div></div> </div>"; 
+
+  }
+  
+  if (blends_in_pack==8 && qt==1) {
+           var img1 = "<div  class='order_details blends eigthItem "+blendName+"'><h6 class='blends eigthItem "+blendName+" pack_plus'>  </h6><div><img class='blends eigthItem "+blendName+" secondImg img_pack'  style='width: 54px; margin-top: 21px; margin-right:10px; border-radius:4px'src="+ imgsrc +">   <div class='blends eigthItem "+blendName+" lbl'><h6 class='quantity'><p class='p qtBlend-"+blendName+"'>x" + qt +"</p></h6></div></div> </div>"; 
+
+    }
+$(".orders").append(img1);     
+}
+function appendInPack(Qt, itemName,imgUrl) {
+  if(all_blends==8) {
+     $("#bxp-bldr-total_value").html("  <s>$86.4  </s> $66.00")
+         $("#bxp-bldr-total_value2").html("  <s>$86.4  </s> $66.00")
+
+  }
+  else{
+    $("#bxp-bldr-total_value").html("$" + (10.80 * all_blends).toFixed(2) )
+        $("#bxp-bldr-total_value2").html("$" + (10.80 * all_blends).toFixed(2) )
+
+    }
+if(Qt==1){
+    $(".Ya").css('display','flex') ;
+appendFirstItem(imgUrl , itemName,Qt,all_blends);    
+
+  }
+  else{
+     $(".qtBlend-"+itemName).html("x" + Qt);
+  }
+}
+function removeFromPack(Qt, itemName, imgUrl) {
+     $("#bxp-bldr-total_value").html("$" + ((10.80 * all_blends -10.80)).toFixed(2))
+      $("#bxp-bldr-total_value2").html("$" + ((10.80 * all_blends -10.80)).toFixed(2))
+
+
+ if (Qt > 1) {
+     $(".qtBlend-"+itemName).html("x" + (Qt-1));
+  }
+  else {
+          $("." + itemName).remove();
+
+  }
+if (all_blends==1) {
+              $(".Ya").css('display','none') ;
+                $(".Ya , .mobile-subscription").css('display','none !important') ;
+
+
+}
+}
+
+$(".addTropical").click(function () {
+if(Quan_Tropical<8 && all_blends!=8  ) {
+Quan_Tropical++;
+all_blends++;
+$(".39487804375134").html(Quan_Tropical)
+appendInPack(Quan_Tropical, "Tropicalitem",tropicalImg)
+
+}
+});
+ 
+$(".addTart_Berry").click(function () {
+if(Quan_Tart_Berry<8 && all_blends!=8 && isLoggedIn()) {
+Quan_Tart_Berry++;
+all_blends++;
+$(".39487813582942").html(Quan_Tart_Berry)
+appendInPack(Quan_Tart_Berry, "Tart_Berryitem",tartBerryImg)
+}
+});
+
+
+$('.addStrawberry-banana').click(function () {
+if(Quan_Strawberry_Banana<8 && all_blends!=8 && isLoggedIn()) {
+Quan_Strawberry_Banana++;
+ all_blends++;
+$(".39487812501598").text(Quan_Strawberry_Banana)
+appendInPack(Quan_Strawberry_Banana, "Strawberry-bananaitem",strawberryImg)
+}
+});
+
+$(".addChocolate_Pro").click(function () {
+if(Quan_Protein_Chocolate<8 && all_blends!=8 && isLoggedIn()) {
+Quan_Protein_Chocolate++;
+all_blends++;
+$(".39487862538334").html(Quan_Protein_Chocolate)
+appendInPack(Quan_Protein_Chocolate, "Chocolate_Proitem",proteinChocolateImg)
+}
+});
+
+$(".addClean_Green").click(function () {
+if (Quan_Clean_Greens<8 && all_blends!=8 && isLoggedIn()) {
+Quan_Clean_Greens++;
+all_blends++;
+$(".39487813681246").html(Quan_Clean_Greens)
+appendInPack(Quan_Clean_Greens, "Clean_Greenitem",cleanGreenImg)
+}
+});
+
+$(".addMatcha_latte").click(function () {
+if(Quan_Matcha_Latte<8 && all_blends!=8 && isLoggedIn() ) {
+Quan_Matcha_Latte++;
+all_blends++;
+$(".39487862210654").html(Quan_Matcha_Latte)
+appendInPack(Quan_Matcha_Latte, "Matcha_latteitem",matchaLatteImg)  
+}
+}); 
+
+$(".addBanana-almond").click(function () {
+if(Quan_Banana_Almond<8 && all_blends!=8  && isLoggedIn()) {
+Quan_Banana_Almond++;
+all_blends++;
+$(".39487814074462").html(Quan_Banana_Almond)
+appendInPack(Quan_Banana_Almond, "bananaAlmond-item",bananaAlmondImg)  
+}
+});  
+
+  $(".addColdBrewCoffee").click(function () {
+if(Quan_Cold_Brew_Coffee<8 && all_blends!=8  && isLoggedIn()) {
+Quan_Cold_Brew_Coffee++;
+all_blends++;
+$(".39487861850206").html(Quan_Cold_Brew_Coffee)
+appendInPack(Quan_Cold_Brew_Coffee, "ColdBrewitem",ColdBrewCoffeeImg)  
+}
+});
+
+    $(".addimmunity-fuel").click(function () {
+if(Quan_Immunity_Fuel<8 && all_blends!=8  && isLoggedIn()) {
+Quan_Immunity_Fuel++;
+all_blends++;
+$(".39493239144542").html(Quan_Immunity_Fuel)
+appendInPack(Quan_Immunity_Fuel, "immunity-fuelitem",ImmunityFuelImg)  
+}
+});
+      $(".addPina-Greens").click(function () {
+if(Quan_Pina_Greens<8 && all_blends!=8 && isLoggedIn() ) {
+Quan_Pina_Greens++;
+all_blends++;
+$(".39487813091422").html(Quan_Pina_Greens)
+appendInPack(Quan_Pina_Greens, "Pina-Greensitem",pinaGreensImg)  
+}
+});
+        $(".addprotein-vanilla").click(function () {
+if(Quan_Protein_Vanilla<8 && all_blends!=8  && isLoggedIn()) {
+Quan_Protein_Vanilla++;
+all_blends++;
+$(".39487862603870").html(Quan_Protein_Vanilla)
+appendInPack(Quan_Protein_Vanilla, "protein-vanillaitem",proteinVanillaImg)  
+}
+});
+          $(".addSleep").click(function () {
+if(Quan_Sleep<8 && all_blends!=8  && isLoggedIn()) {
+Quan_Sleep++;
+all_blends++;
+$(".39606476013662").html(Quan_Sleep)
+appendInPack(Quan_Sleep, "Sleep_item",sleepImg)  
+}
+});
+
+
+  $(".removeTropical").click(function () {
+  if(Quan_Tropical>0){
+  removeFromPack(Quan_Tropical, "Tropicalitem", tropicalImg) 
+  Quan_Tropical--;
+  all_blends--;
+  $(".39487804375134").html(Quan_Tropical)
+
+   
+   }
+
+});
+
+
+$(".removeTart_Berry").click(function () {
+  
+  if(Quan_Tart_Berry>0) {
+  removeFromPack(Quan_Tart_Berry, "Tart_Berryitem", tartBerryImg) 
+  all_blends--;
+  Quan_Tart_Berry--;
+  $(".39487813582942").html(Quan_Tart_Berry)
+
+
+  }
+  
+});
+$(".removeStrawberry-banana").click(function () {
+  if(Quan_Strawberry_Banana>0) {
+  removeFromPack(Quan_Strawberry_Banana, "Strawberry-bananaitem", strawberryImg) 
+  all_blends--;
+  Quan_Strawberry_Banana--;
+  $(".39487812501598").html(Quan_Strawberry_Banana)
+  }
+});
+
+
+$(".removeChocolate_Pro").click(function () {
+  if(Quan_Protein_Chocolate>0) {
+  removeFromPack(Quan_Protein_Chocolate, "Chocolate_Proitem", proteinChocolateImg) 
+  all_blends--;
+  Quan_Protein_Chocolate--;
+  $(".39487862538334").html(Quan_Protein_Chocolate)
+
+
+  }
+  
+});
+$(".removeCleanGreens").click(function () {
+  
+  if(Quan_Clean_Greens>0) {
+  removeFromPack(Quan_Clean_Greens, "Clean_Greenitem", cleanGreenImg) 
+  all_blends--;
+  Quan_Clean_Greens--;
+  $(".39487813681246").html(Quan_Clean_Greens)
+  }   
+});
+
+$(".removeMatcha_latte").click(function () {
+  if(Quan_Matcha_Latte>0) {
+  removeFromPack(Quan_Matcha_Latte, "Matcha_latteitem", matchaLatteImg) 
+  all_blends--;
+  Quan_Matcha_Latte--;
+  $(".39487862210654").html(Quan_Matcha_Latte)
+
+
+  }
+  
+});
+  $(".removeBanana-almond").click(function () {
+  if(Quan_Banana_Almond>0) {
+  removeFromPack(Quan_Banana_Almond, "bananaAlmond-item", bananaAlmondImg) 
+  all_blends--;
+  Quan_Banana_Almond--;
+  $(".39487814074462").html(Quan_Banana_Almond)
+
+
+  }
+  
+});
+  $(".removeColdBrewCoffee").click(function () {
+  if(Quan_Cold_Brew_Coffee>0) {
+  removeFromPack(Quan_Cold_Brew_Coffee, "ColdBrewitem",ColdBrewCoffeeImg) 
+  all_blends--;
+  Quan_Cold_Brew_Coffee--;
+  $(".39487861850206").html(Quan_Cold_Brew_Coffee)
+
+
+  }
+  
+});
+    $(".removeimmunity-fuel").click(function () {
+  if(Quan_Immunity_Fuel>0) {
+  removeFromPack(Quan_Immunity_Fuel, "immunity-fuelitem",ImmunityFuelImg) 
+  all_blends--;
+  Quan_Immunity_Fuel--;
+  $(".39493239144542").html(Quan_Immunity_Fuel)
+
+
+  }
+  
+});
+      $(".removePina-Greens").click(function () {
+  if(Quan_Pina_Greens>0) {
+  removeFromPack(Quan_Pina_Greens, "Pina-Greensitem", pinaGreensImg) 
+  all_blends--;
+  Quan_Pina_Greens--;
+  $(".39487813091422").html(Quan_Pina_Greens)
+
+
+  }
+  
+});
+        $(".removeprotein-vanilla").click(function () {
+  if(Quan_Protein_Vanilla>0) {
+  removeFromPack(Quan_Protein_Vanilla, "protein-vanillaitem",proteinVanillaImg) 
+  all_blends--;
+  Quan_Protein_Vanilla--;
+  $(".39487862603870").html(Quan_Protein_Vanilla)
+
+
+  }
+  
+});
+        $(".removeSleep").click(function () {
+  if(Quan_Sleep>0) {
+  removeFromPack(Quan_Sleep, "Sleep_item", sleepImg) 
+  all_blends--;
+  Quan_Sleep--;
+  $(".39606476013662").html(Quan_Sleep)
+
+
+
+  }
+  
+});
+
+  $(".plus").click(function () {
+    if (!localStorage.getItem("rechargeInfo")){
+               $('.sub-choices-popup-bg-builder').show();
+
+    }
+    else
+    {   $('.bxp-reset').css('background-color','black') 
+      $('.bxp-reset').css('cursor','pointer') 
+    
+if( all_blends==8 ) {
+  In++;
+  if (In==1)
+  { $('.discountApplied').css('display','flex') 
+ setTimeout(() => {
+ $('.discountApplied').css('display','none') 
+}, "3000")}
+  else {
+    $('.more-than-8').css('display','flex') 
+    $('.discountApplied').css('display','none') 
+ setTimeout(() => {
+ $('.more-than-8').css('display','none') 
+}, "3000")
+  }
+}
+     else {
+   
+     $('.bxp-reset').css('background-color','grey') 
+      $('.bxp-reset').css('cursor','no-drop') 
+    }}
+ 
+});  
+
+
+  
+      $(".minus").click(function () {
+  
+    
+if( all_blends==8 ) {
+  $('.bxp-reset').css('background-color','black') 
+      $('.bxp-reset').css('cursor','pointer') 
+
+}
+    else {
+   
+     $('.bxp-reset').css('background-color','grey') 
+      $('.bxp-reset').css('cursor','no-drop') 
+    }
+ 
+}); 
+
+function addToCart(items) {
+  let properties = {};
+  properties.subscription = true;
+  try {
+    let formData = {
+      "items": items
+    };
+    fetch(window.Shopify.routes.root + 'cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(response => {
+           localStorage.setItem("openQuickCart", "true")
+          window.location.reload()
+       // window.location = "/cart"
+        return response.json();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
+
+  } catch (err) {
+
+  }
+}
+$(".bxp-reset").click(function () {
+  if (all_blends == 8) {
+    var blends_title=["Banana Almond - 4 Pack","Clean Greens - 4 Pack","Cold Brew Coffee - 4 Pack","Immunity Fuel - 4 Pack","Matcha Latte - 4 Pack","Piña Greens - 4 Pack","Plant Based Protein Vanilla - 4 Pack","Plant Based Protein Chocolate - 4 Pack","Sleep - 4 Pack","Tart Berry - 4 Pack","Tropical - 4 Pack","Strawberry Banana - 4 Pack"]
+    var blends_quan = [Quan_Banana_Almond, Quan_Clean_Greens, Quan_Cold_Brew_Coffee, Quan_Immunity_Fuel, Quan_Matcha_Latte, Quan_Pina_Greens, Quan_Protein_Vanilla, Quan_Protein_Chocolate, Quan_Sleep, Quan_Tart_Berry, Quan_Tropical, Quan_Strawberry_Banana]
+    var blends_ids = ["39487814074462", "39487813681246", "39487861850206", "39493239144542", "39487862210654", "39487813091422", "39487862603870", "39487862538334", "39606476013662", "39487813582942", "39487804375134", "39487812501598"]
+    var items = [];
+    for (var i = 0; i < blends_quan.length; i++) {
+      if (blends_quan[i] > 0) {
+        var x = {
+          quantity: blends_quan[i],
+          id: getSubId(blends_ids[i]),
+           title:blends_title[i],
+        
+          properties : {
+            "subscription" : true,
+            "subscription-builder" : true
+            
+          }
+        };
+        items.push(x);
+        items2=items;
+      }
+    }
+        openSubPopup2(items);
+
+
+
+  }
+  else {
+     $('.less-than-8').css('display','flex') 
+ setTimeout(() => {
+ $('.less-than-8').css('display','none') 
+}, "3000")
+    
+  }
+});
+
+
+  
+} catch (err) {
+console.log(err)
+}
+    function getSubId(productId) {
+      let subMap = {
+        39487813681246: {'subId': 39745975615582},
+        39487813582942: {'subId': 39745975910494},
+        39487812501598: {'subId': 39745975844958},
+        39487814074462: {'subId': 39745975681118},
+        39487862210654: {'subId': 39745975648350},
+        39493239144542: {'subId': 39745975812190},
+        39487813091422: {'subId': 39745975779422},
+        39606476013662: {'subId': 39745976467550},
+        39487804375134: {'subId': 39745976205406},
+        39487861850206: {'subId': 39745975713886},
+        39487862538334: {'subId': 39745975746654},
+        39487862603870: {'subId': 39745976041566}
+      }
+
+      if(subMap[productId] === undefined){
+        return 0
+      }
+      
+      return subMap[productId]['subId']
+    }
+  async function checkCart2() {
+  var areBlends = true
+  let cart = await jQuery.get('/cart.js')
+  var cartJson = {}
+  try {
+    cartJson = JSON.parse(cart);
+  } catch (e) {
+    cartJson = cart
+  }
+  let items = cartJson['items']
+  var hasSubProduct = false
+    var sum=0
+  for(var i = 0; i < items.length; i++){
+    if((items[i].title.toLowerCase()!='auto renew'  ) && (!items[i].properties["subscription"])){
+      areBlends=false; 
+    }
+    sum=sum+items[i].quantity
+  }
+    if ( areBlends) {
+       $('#recharge_button_quick').css('display', 'none')
+       $('#buy_now_button').css('display', 'none')
+      $('#recharge_button_quick2').css('display', 'flex')
+      $('#shopify-section-subscription-counter').css('display', 'none')
+
+    }
+}
+
+
+
+  
+document.addEventListener('quick-cart:open', function (evt) {
+  checkCart2();
+});
+    document.addEventListener('cart:updated', function (evt) {
+     checkCart2();
+
+   
+  if (window.location.href=='https://www.vejo.com/pages/subscription-builder') {
+          setTimeout(() => {
+$('#recharge_button_quick').css('display', 'none') ;
+}, "1000")
+  }
+  });
+
+
+      function openSubPopup2(product){ 
+     {% if customer %}
+       let rechargeInfo = JSON.parse(localStorage.getItem("rechargeInfo"))
+       let rechargeId = rechargeInfo == undefined ? '' : rechargeInfo['customer'] == null ? '' : rechargeInfo['customer']['hash']
+       if(rechargeId !== ''){
+           for(var i=0;i<product.length;i++){
+          localStorage.setItem("productName "+i+  product[i].title)
+         window.location.href = "https://www.vejo.com/pages/myaccount#/"
+
+        }
+       } else {
+          addToCart(product)
+        
+       }
+     {% else %}
+       if(localStorage.getItem('rechargeInfo') ){
+          addToCart(product)
+         //mainAddToCart(parseInt($('.product__input--quantity').val()), getSubId(product.variants[0].id))
+       } else{
+           localStorage.setItem('hasNoSub', true)
+         $('.sub-choices-popup-bg-builder').show();
+       }
+     {% endif %}
+    }
+
+
+
+</script>
+<script>
+{% schema %}
+  {
+    "name": "subscription builder",
+    "tag": "section",
+    "class": "shopify-section--stackable shopify-section--image-first",
+    "presets": [
+      {
+        "name": "subscription builder"
+     
+      }
+    ]
+  }
+{% endschema %}
+
+</script>

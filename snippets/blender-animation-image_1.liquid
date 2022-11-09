@@ -1,0 +1,40 @@
+{%- liquid
+  assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+  assign height = image.height | times: 1.0 | default: 1.0
+  assign width = image.width | times: 1.0 | default: 1.0
+  assign sub_headline1 = sub_headline1
+  assign main_headline1 = main_headline1
+  assign subheadline_color =subheadline_color
+ assign mainHeadline_color=mainHeadline_color
+    
+
+  assign padding_top = height | divided_by: width | times: 100 | append: "%"
+
+  if id == blank
+    assign id = image.id
+  endif
+-%}
+<div class="mobile" style="display:none !important">
+<div class="carousel_img"  style="display:block !important; ">
+<div class="image js-enabled {% unless disable_style %}image--{{ id }} {% endunless %}{{ wrapper_class }}" style='display:contents !important' >
+  <img
+    class="image__img lazyload{% if preload %} lazypreload{% endif %} {{ image_class }}"
+    src="{{ image | img_url: '300x300' }}"
+    data-src="{{ img_url }}"
+    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+    data-aspectratio="{{ image.aspect_ratio }}"
+    data-sizes="auto"
+    alt="{{ image.alt | escape }}"
+    style='height: 414px;!important;'
+  >
+</div>
+
+<div class="sctn-content mobile"  style='height:784px !important; width:437px !important;padding: 10% 5% ;'>
+  <h2 style="color: {{ subheadline_color }}; margin-bottom:{{ section.settings.marign_bottom_content}}%; font-size:38px">{{ sub_headline1 }}</h2>
+        <div  style="color: {{mainHeadline_color }}; margin-bottom:{{ section.settings.marign_bottom_content}}%; width:350px;" >{{ main_headline1 }} </div>
+  
+</div>
+
+
+  </div>
+  </div>

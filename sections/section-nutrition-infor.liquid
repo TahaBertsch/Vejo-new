@@ -1,0 +1,302 @@
+
+<style>
+	
+  .nutrition-info {
+    background-color: white !important;
+    padding: 84px 0;
+  }
+  
+  .product-wrp .section__inner .section__inner-entry{
+  	padding:0;
+  }
+  .grid-container {
+  	display: grid;
+  }
+  
+  .grid-container-short {
+    display: grid;
+    text-align: center;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    padding: 0 20% 30px 20%;
+  }
+  
+  .nutrition-info-item {
+/*     letter-spacing: 1.0; */
+  	border-right: 1px solid black;
+  }
+  
+  .nut-info-item-num {
+    padding: 5px 0 7px 0;
+    margin: 0;
+  	font-size: 30px;
+    font-weight: 500;
+    font-family: 'Scandia';
+  }
+  
+  .nut-info-item-sub {
+    margin: 0;
+  	font-size: 16px;
+    font-weight: 500;
+    font-family: 'Scandia';
+  }
+  
+  .nutrition-info-health-benefits {
+  	padding: 0 0 24px 0;
+  }
+  
+  .nutrition-info-health-benefits .list-benefits {
+    justify-content: space-between
+  }
+  .nutrition-info-health-benefits .list-benefits h5{
+  	text-align:center;
+    max-width: unset;
+    margin-top: 10px;
+    font-size: 11px;
+  }
+  .nutrition-info-health-benefits .list-benefits li:first-child{
+    margin:0;
+  }
+  
+  
+  .nutrition-note {
+    text-align: center;
+  	font-size: 10px;
+    color: gray;
+    font-weight: 400;
+    opacity: .6;
+  }
+  
+  
+  @media (min-width: 767px) {
+    .nutrition-info_m {
+      display: none;
+    }
+    
+    .grid-container {
+      text-align: center;
+      grid-template-columns: 25% 25% 25% 25%;
+      grid-template-rows: auto;
+      padding: 0 13% 30px 13%;
+    }
+  }
+  
+  
+  @media (max-width: 767px) {
+    .nutrition-info_d {
+      display: none;
+    }
+    
+    .grid-container {
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 50% 50%;
+      padding: 0 10% 30px 10%;
+    }
+    
+    .grid-container-short {
+      padding: 0 13% 30px 13%;
+    }
+    
+    .nutrition-info-item {
+      text-align: center;
+      padding: 20px 5px;
+    }
+    
+    .nutrition-info-item_1 {
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+      padding-top: 0;
+    }
+    .nutrition-info-item_2 {
+      border-right: none;
+      border-bottom: 1px solid black;
+      padding-top: 0;
+    }
+    .nutrition-info-item_3 {
+      border-right: 1px solid black;
+      padding-bottom: 0;
+    }
+    .nutrition-info-item_4 {
+      padding-bottom: 0;
+    }
+    
+    .nutrition-note {
+      font-size: 14px;
+    }
+    
+    .nutrition-info-health-benefits {
+      padding-top: 10px;
+    }
+    
+    .product-main__benefits {
+      padding: 0 20px;
+    }
+    
+    .list-benefits {
+      justify-content: space-evenly !important;
+    }
+    
+  }
+  
+  @media (min-width: 400px) {
+    .product-main__benefits {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+  }
+  @media (min-width: 750px) {
+    .product-main__benefits {
+      max-width: 500px;
+    }
+    
+  }
+  .section__title{
+    text-align: center;
+    letter-spacing: 0.02em;
+    margin-bottom: 65px !important;
+  }
+  @media (max-width: 769px){
+	.health-benefits_mobile-image{
+        display:block !important;
+    }
+  	.health-benefits_disktop-image{
+   display:none !important
+   }
+  }
+</style>
+
+<div class="section__inner nutrition-info">
+  <div class="shell">
+    <div class="section__inner-entry" >
+      <div style="  padding: 0 33px; margin-bottom: 20px;">
+      <h2 class="section__title" style="font-size: 24px; font-weight: 500; letter-spacing: 0; ">
+        {{section.settings.title}}
+      </h2><!-- /.section__title -->
+      </div>
+      {% if product.title == 'Cold Brew Coffee' %}
+      <div class="grid-container-short">
+        {% for i in (1..2) %}
+          {%- assign title = 'section.settings.product_nutrition_info_title_' | append: i -%}
+          {%- assign sub = 'nutrition_info_' | append: i | append: '_sub' -%}
+          <div class="nutrition-info-item nutrition-info-item_{{i}}" style="{% if i == 2 %} border-right: none; {% endif %} border-bottom: none;">
+            <p class="nut-info-item-num" >{{  section.settings.product_nutrition_info }}</p>
+            <p class="nut-info-item-sub">{{ product_nutrition_info[sub] }}</p>
+          </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="grid-container">
+       
+        
+          <div class="nutrition-info-item nutrition-info-item_1" style="  ">
+            <p class="nut-info-item-num">{{section.settings.product_nutrition_info_title_1 }}</p>
+            <p class="nut-info-item-sub">{{section.settings.product_nutrition_info_title_1_sub}}</p>
+          </div>
+        <div class="nutrition-info-item nutrition-info-item_2" style="  ">
+            <p class="nut-info-item-num">{{section.settings.product_nutrition_info_title_2 }}</p>
+            <p class="nut-info-item-sub">{{section.settings.product_nutrition_info_title_2_sub }}</p>
+          </div>
+        <div class="nutrition-info-item nutrition-info-item_3" style=" ">
+            <p class="nut-info-item-num">{{section.settings.product_nutrition_info_title_3 }}</p>
+            <p class="nut-info-item-sub">{{section.settings.product_nutrition_info_title_3_sub }}</p>
+          </div>
+        <div class="nutrition-info-item nutrition-info-item_4" style=" border-right: none; ">
+            <p class="nut-info-item-num">{{section.settings.product_nutrition_info_title_4 }}</p>
+            <p class="nut-info-item-sub">{{section.settings.product_nutrition_info_title_4_sub }}</p>
+          </div>
+        
+      </div>
+      {% endif %}
+      {%if section.settings.health_benefit_1_image != blank %}
+        <div class="nutrition-info-health-benefits health-benefits_disktop-image">
+          <div class="product-main__benefits" style="border:none !important;margin: 0 auto;width: 300px;text-align: center;">
+            
+            <img src="{{ section.settings.health_benefit_1_image  | img_url: '250x250'}}" style="" alt="">
+          </div><!-- /.product-main__benefits -->
+        </div>
+      {% endif %}
+       {%if section.settings.health_benefit_2_image != blank %}
+        <div class="nutrition-info-health-benefits health-benefits_mobile-image" style="display:none">
+          <div class="product-main__benefits" style="border:none !important;margin: 0 auto;width: 300px;text-align: center;">
+            
+            <img src="{{ section.settings.health_benefit_2_image  | img_url: '250x250'}}" style="" alt="">
+          </div><!-- /.product-main__benefits -->
+        </div>
+      {% endif %}
+      <div class="nutrition-note">{{ 'sections.nutrition-info.Percent_daily' | t }}</div>
+
+    </div>
+  </div>
+</div>
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+{% schema %}
+  {
+    "name": "Nutrition info",
+	"tag": "section",
+    "settings": [
+	  {
+        "type": "text",
+        "id": "title",
+        "label": "t:sections.slideshow.blocks.slide.settings.title.label",
+		"default":"Nutritional information"
+      },
+      {
+        "type": "text",
+        "id": "product_nutrition_info_title_1",
+        "label": "PDP Info Pics - Nutrition Title 1"
+      },
+      {
+        "type": "text",
+        "id": "product_nutrition_info_title_2",
+        "label": "PDP Info Pics - Nutrition Title 2" 
+	},
+	{
+		"type": "text",
+        "id": "product_nutrition_info_title_3",
+
+        "label": "PDP Info Pics - Nutrition Title 3"
+	},
+	{
+	 	"type": "text",
+        "id": "product_nutrition_info_title_4",
+		"label": "PDP Info Pics - Nutrition Title 4"
+	},
+	 {
+        "type": "text",
+        "id": "product_nutrition_info_title_1_sub",
+        "label": "PDP Info Pics - Nutrition Subtitle 1 "
+      },
+      {
+        "type": "text",
+        "id": "product_nutrition_info_title_2_sub",
+        "label": "PDP Info Pics - Nutrition Subtitle 2" 
+	},
+	{
+		"type": "text",
+        "id": "product_nutrition_info_title_3_sub",
+        "label": "PDP Info Pics - Nutrition Subtitle 3"
+	},
+	{
+	 	"type": "text",
+        "id": "product_nutrition_info_title_4_sub",
+		"label": "PDP Info Pics - Nutrition Subtitle 4"
+	},
+	{
+         "id": "health_benefit_1_image",
+         "type": "image_picker",
+         "label": "health benefit image"
+     },
+	 {
+         "id": "health_benefit_2_image",
+         "type": "image_picker",
+         "label": "health benefit image for mobile"
+     }
+], 
+	"presets": [{
+			"name": "Nutrition info"
+	}]
+  }
+{% endschema %}
+

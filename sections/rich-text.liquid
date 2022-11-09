@@ -1,0 +1,263 @@
+<style>
+  @media (max-width: 769px){
+	.rich_text_mobile{
+      display: block !important;
+    }
+  	.rich_text_desktop{
+      display: none !important;
+    }
+}
+</style>
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="rich-text"
+  style="background: {{section.settings.gradient_background}};
+         padding-top:{{section.settings.padding_top}}%;
+         padding-bottom :{{section.settings.padding_bottom}}%;
+"
+>
+  <div class="section__inner rich-text__inner">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'heading' -%}
+          {%- unless block.settings.title == blank -%}
+            <h2
+              class="rich-text__heading ff-heading fs-heading-2-base fs-heading-1-base-ns rich_text_desktop"
+              style="--text-max-width: {{ block.settings.text_max_width }}rem; font-size: {{block.settings.text_font}}px; color:{{block.settings.text_color}} "
+            >
+              {{ block.settings.title | newline_to_br }}
+            </h2>
+          {%- endunless -%}
+    
+          {%- unless block.settings.title == blank -%}
+            <h2
+              class="rich-text__heading ff-heading fs-heading-2-base fs-heading-1-base-ns rich_text_mobile"
+              style="--text-max-width: {{ block.settings.text_max_width_mobile }}rem; font-size: {{block.settings.text_font_mobile}}px; color:{{block.settings.text_color_mobile}}; display: none"
+            >
+              {{ block.settings.title | newline_to_br }}
+            </h2>
+          {%- endunless -%}
+
+        {%- when 'text' -%}
+          {%- unless block.settings.subheading == blank -%}
+            <div
+              class="rich-text__subheading rte ff-body fs-body-base fs-body-large-ns rich_text_desktop"
+              style="--text-max-width: {{ block.settings.text_max_width }}rem; font-size: {{block.settings.text_font}}px !important; color:{{block.settings.text_color}}"
+            >
+              {{ block.settings.subheading }}
+            </div>
+    		 <div
+              class="rich-text__subheading rte ff-body fs-body-base fs-body-large-ns rich_text_mobile"
+              style="--text-max-width: {{ block.settings.text_max_width_mobile }}rem; font-size: {{block.settings.text_font_mobile}}px !important; color:{{block.settings.text_color_mobile}}; display: none"
+            >
+              {{ block.settings.subheading }}
+            </div>
+          {%- endunless -%}
+
+        {%- when 'button' -%}
+          {%- if block.settings.link and block.settings.link_text -%}
+            <div class="rich-text__button-wrapper">
+              <a
+                href="{{ block.settings.link }}"
+                class="rich-text__button fs-body-base btn btn--primary btn--medium"
+              >
+                {{ block.settings.link_text }}
+              </a>
+            </div>
+          {%- endif -%}
+
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+{% schema %}
+  {
+    "name": "t:sections.rich_text.name",
+    "tag": "section",
+    "class": "shopify-section--stackable shopify-section--text-first",
+    "settings": [
+	{
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding top",
+        "unit": "%",
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "default": 7
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding bottom",
+        "unit": "%",
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "default": 7
+      },
+		 {
+        "id": "gradient_background",
+        "type": "color_background",
+        "label": "t:sections.image_with_text.settings.gradient.label"
+        }
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "name": "t:sections.rich_text.blocks.heading.name",
+        "limit": 1,
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "t:sections.rich_text.blocks.heading.settings.title.label",
+            "default": "Rich text"
+          },
+          {
+            "type": "range",
+            "id": "text_max_width",
+            "label": "t:sections.rich_text.blocks.heading.settings.text_max_width.label",
+            "min": 24,
+            "max": 48,
+            "step": 1,
+            "default": 32
+          },
+          {
+            "type": "range",
+            "id": "text_max_width_mobile",
+            "label": "Max width of text for mobile",
+            "min": 16,
+            "max": 24,
+            "step": 1,
+            "default": 19
+          },
+      {
+        "type": "range",
+        "id": "text_font",
+        "label": "text fonts",
+        "min": 32,
+        "max": 62,
+        "step": 2,
+        "default": 58
+          },
+      {
+        "type": "range",
+        "id": "text_font_mobile",
+        "label": "Text fonts for mobile",
+        "min": 20,
+        "max": 30,
+        "step": 2,
+        "default": 22
+          },
+      {
+        "type":"color",
+        "id":"text_color",
+        "label":"Text Color",
+        "default":"#000000"
+      },
+      {
+        "type":"color",
+        "id":"text_color_mobile",
+        "label":"Text Color for mobile",
+        "default":"#000000"
+      }
+
+        ]
+      },
+      {
+        "type": "text",
+        "name": "t:sections.rich_text.blocks.text.name",
+        "limit": 1,
+        "settings": [
+          {
+            "id": "subheading",
+            "type": "richtext",
+            "label": "t:sections.rich_text.blocks.text.settings.subheading.label",
+            "default": "<p>Use this text area to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }, {
+            "type": "range",
+            "id": "text_max_width",
+            "label": "t:sections.rich_text.blocks.heading.settings.text_max_width.label",
+            "min": 24,
+            "max": 48,
+            "step": 1,
+            "default": 32
+          },
+          {
+            "type": "range",
+            "id": "text_max_width_mobile",
+            "label": "Max width of text for mobile",
+            "min": 16,
+            "max": 24,
+            "step": 1,
+            "default": 19
+          },
+      {
+        "type": "range",
+        "id": "text_font",
+        "label": "text fonts",
+        "min": 16,
+        "max": 28,
+        "step": 2,
+        "default": 18
+          },
+      {
+        "type": "range",
+        "id": "text_font_mobile",
+        "label": "Text fonts for mobile",
+        "min": 16,
+        "max": 24,
+        "step": 2,
+        "default": 16
+          },
+      {
+        "type":"color",
+        "id":"text_color",
+        "label":"Text Color",
+        "default":"#000000"
+      },
+      {
+        "type":"color",
+        "id":"text_color_mobile",
+        "label":"Text Color for mobile",
+        "default":"#000000"
+      }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "t:sections.rich_text.blocks.button.name",
+        "limit": 1,
+        "settings": [
+          {
+            "id": "link",
+            "type": "url",
+            "label": "t:sections.rich_text.blocks.button.settings.link.label"
+          },
+          {
+            "id": "link_text",
+            "type": "text",
+            "label": "t:sections.rich_text.blocks.button.settings.link_text.label",
+            "default": "Read more"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "t:sections.rich_text.presets.name",
+        "blocks": [
+          {
+            "type": "heading"
+          },
+          {
+            "type": "text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

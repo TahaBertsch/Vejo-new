@@ -1,0 +1,1997 @@
+{% layout none %}
+{% assign default_image = 'https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-island_blue_300x.jpg' %}
+{% assign default_name = 'Island Blue' %}
+
+<!-- https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-black_100x.jpg?v=1582758186 -->
+
+<!DOCTYPE html>
+<html lang="{{ shop.locale }}">
+  <head>
+    {% comment %}
+      {% render 'above-the-fold-styles' %}
+      {% include 'gem-app-header-scripts' %}
+    {% endcomment %}
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+  	<script src="https://kit.fontawesome.com/91a2d26080.js" async></script>
+<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script> -->
+	<link rel="stylesheet" href="{{ 'new-styles.scss.css' | asset_url }}" media="print" onload="this.media='all'">
+	<link rel="stylesheet" href="{{ 'bundle-optimized.scss.css' | asset_url }}" media="print" onload="this.media='all'">
+    {{ theme_styles }}
+	{{ 'ls.rias.min.js' | asset_url | script_tag }}
+    {{ 'lazysizes.min.js' | asset_url | script_tag }}
+    {% comment %}
+      <link rel="stylesheet" href="{{ 'vejo.scss.css' | asset_url }}" media="print" onload="this.media='all'">
+      {{ 'custom.min.js' | asset_url | script_tag }}
+      {{ 'responsive-image.js' | asset_url | script_tag }}
+      <script type="text/javascript" src="{{ 'lity.min.js' | asset_url }}" defer></script>
+      <link rel="stylesheet" href="{{ 'lity.min.css' | asset_url }}" media="print" onload="this.media='all'">    
+      {{ 'ls.rias.min.js' | asset_url | script_tag }}
+      {{ 'bundle.min.js' | asset_url | script_tag }} 
+    {% endcomment %}
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '2423350984582366');
+      fbq('track', 'PageView');
+      fbq('track', 'ViewContent');
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none" 
+           src="https://www.facebook.com/tr?id=2423350984582366&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+    <!-- Google Tag Manager -->
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5TLBC9Q');</script>
+      <!-- End Google Tag Manager -->
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TLBC9Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        dataLayer.push({'pageType': 'SocialLandingPage'});
+      </script>
+     <!-- End Google Tag Manager (noscript) -->
+  </head>
+  <body class="template-page template-page--buysocial hasHover">
+    <div class="wrapper">
+      <div class="main">       
+          {% assign labeloFirst = 1 %}
+          {% assign labeloSecond = 2 %}
+          {% assign numberOfNotPreorder = 0 %}
+          {% assign product = collections["landing-page-products-v2"].products[1] %}
+          {% assign product_inside = product.metafields.sf_what_s_inside %}
+
+
+          <style>
+            html{
+              padding-bottom:0px !important;
+            }
+            em{
+              font-style:normal !important;
+            }
+            .shippingMessage{
+              text-align:center;
+              font-size:14px;
+              font-family:'Scandia';
+              font-style:italic;
+              width:90vw;
+              margin:auto;
+              margin-bottom:15px;
+            }
+            .homepage-cta--dark{
+              display:none;
+            }
+            .wrapper{
+              background-color:#f7f8f7 !important;
+            }
+            .what-you-get{
+              font-family:"Scandia";
+              font-weight:500;
+              text-align: center;
+              padding-bottom: 30px;
+              background-color:white;
+              padding-top:30px;
+              display:flex;
+              justify-content:center;
+              font-size:20px;
+              align-items: center;
+            }
+            .lifestyle-images{
+              /*display:grid;
+              grid-template-columns:repeat(auto-fill, minmax(50%, 50%));*/
+              /*margin-bottom:50px;*/
+            }
+            .lifestyle-img{
+              margin-bottom:0;
+            }
+            .inside-div{
+              /*display:grid;
+              grid-template-columns:repeat(auto-fill, minmax(31%, 31%));
+              column-gap:3%;
+              row-gap:3%;
+              margin-bottom:50px;
+              padding-left: 2vw;
+              padding-right: 2vw;*/
+              font-family:"Scandia";
+              transition: all .2s;
+              align-items:center;
+              display:flex;
+              flex-direction:column;
+              background-color:white;
+              padding-bottom: 30px;
+            }
+            .inside-card{
+              display:flex;
+              /*flex-direction:column;*/
+              align-items:center;
+              background-color: #f7f8f7;
+              margin-bottom: 10px;
+              padding:10px;
+              padding-top: 15px;
+    		  padding-bottom: 15px;
+              width:92vw;
+              border-radius:15px;
+            }
+            .inside-card-right{
+              display:flex;
+              flex-direction:column;
+              /*align-items:center;*/
+            }
+            .inside-img{
+              height:15vw;
+              margin-bottom:0px;
+              margin-right: 10px;
+            }
+            .inside-title{
+              /*text-align:center;*/
+              font-size: 14px;
+              padding-bottom: 5px;
+              font-weight: 600
+            }
+            .inside-desc{
+              font-size:12px;
+            }
+            .main-div{
+              background-color:#f7f8f7;
+            }
+            .sticky-your-choices{
+              width:100%;
+              position: sticky;
+              height:80px;
+              background-color:#f7f8f7;
+              color:white;
+              top:40px;
+              z-index:100;
+              display: flex;
+              justify-content: space-between;
+              box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+            }
+            .body{
+              margin:0;
+            }
+            .pack-select{
+
+            }  
+            .device-img{
+              height:40vw;
+            }
+            .main{
+              padding-top:0px !important;
+            }
+            .pack-div{
+              width:32vw !important;
+              padding:5px;
+            }
+            .list-variants{
+              justify-content:center;
+              margin-left:0 !important;
+            }
+            .wrapper{
+              overflow:unset !important;
+            }
+            .checkout-btn{
+              font-family:"Scandia";
+              padding-top:3px;
+              /*margin-top:5px;*/
+              background-color:green;
+              width:30vw;
+              color:white;
+              /*border-radius:8px;*/
+              justify-content:center;
+              align-items:center;
+              display:flex;
+              height:100%;
+              font-weight: 500;
+              font-size: 14px;
+              text-align:center;
+              padding-right: 15px;
+    		  padding-left: 15px;
+            }
+            .left-div{
+              justify-content: center;
+              display: flex;
+              flex-direction: column;
+              /*margin-left:10px;*/
+            }
+            .sum-img{
+              height:80px;
+              margin-bottom:0px;
+            }
+            .sticky-title{
+              color:black;
+            }
+            .sum-color{
+              font-family:"Scandia";
+              color:black;
+              width:10vw;
+              margin-left:-15px;
+              font-size:13px;
+            }
+            .sum-div{
+              display:flex;
+              align-items:center;
+            }
+            .main-sum-div{
+              display:flex;
+              align-items:center;
+            }
+            .sum-pack{
+              height:80px;
+              margin-bottom:0px;
+              margin-right:3px;
+            }
+            .sum-pack-name{
+              font-family:"Scandia";
+              color:black;
+              width:10vw;
+              font-size:13px;
+              padding-left: 0.5vw;
+            }
+            .sum-div-pack{
+              display:flex;
+              align-items:center;
+              /*margin-right: 20px;*/
+            }
+            .x-div{
+              color:black;
+              display:flex;
+              justify-content:center;
+              align-items:center;
+              font-weight:500;
+              padding-left: 6vw;
+              padding-right: 4vw;
+            }
+            .checkout-button{
+              font-family:"Scandia";
+              width:70vw;
+              background-color:green;
+              color:white;
+              margin:auto;
+              text-align: center;
+              padding: 17px 10px 15px 10px;
+              font-size: 18px;
+              font-weight: 500;
+              margin-bottom: 20px;
+              align-items:center;
+            }
+            .checkout-button:hover{
+              cursor:pointer;
+            }
+            .step1-div{
+              font-family:"Scandia";
+              display:flex; 
+              margin-top:40px; 
+              margin-bottom:20px; 
+              text-align:center; 
+              font-size:23px; 
+              font-style:normal; 
+              font-weight:500;
+              justify-content:center;
+              align-items:center;
+            }
+            .step-icon{
+              padding-left:10px; 
+              color:black; 
+              font-size:18px !important;
+            }
+            .step2-div{
+              font-family:"Scandia";
+              display:flex;
+              margin-top:70px; 
+              margin-bottom:30px; 
+              text-align:center; 
+              font-size:23px; 
+              font-style:normal; 
+              font-weight:500;
+              justify-content:center;
+              align-items:center;
+            }
+            .step3-div{
+              font-family:"Scandia";
+              display: flex;
+              padding-top: 50px;
+              padding-bottom: 50px;
+              text-align: center;
+              font-size: 23px;
+              font-style: normal;
+              font-weight: 500;
+              justify-content: center;
+              background-color: white;
+              align-items:center;
+            }  
+            .step4-div{
+              font-family:"Scandia";
+              display: flex;
+              padding-top: 50px;
+              padding-bottom: 0px;
+              text-align: center;
+              font-size: 23px;
+              font-style: normal;
+              font-weight: 500;
+              justify-content: center;
+              background-color: black;
+              align-items:center;
+              color:white;
+            }  
+            .span-width{
+              width:85%
+            }
+            .pro-div{
+              font-family:"Scandia";
+              display: flex;
+              padding-top: 40px;
+              padding-bottom: 30px;
+              text-align: center;
+              font-size: 23px;
+              font-style: normal;
+              font-weight: 500;
+              justify-content: center;
+              background-color: white;
+            }
+            .select-icon{
+              color:black; 
+              font-size:18px !important;
+            }
+            .learn-more-icon{
+              padding-left:10px;
+              color:black; 
+              font-size:22px !important;
+            }
+            .pro-icon{
+              padding-left:10px;
+              color:black; 
+              font-size:22px !important;
+            }
+            .step-img{
+              padding-left: 10px;
+              width: 40px;
+              margin-bottom: 0px;
+            }
+            .step-img-2{
+              padding-left: 10px;
+              width: 50px;
+              margin-bottom: 0px;
+            }
+            .select-div{
+              display:flex;
+              justify-content:center;
+            }
+            .gif-div{
+              background-color: white;
+              /*padding-top:30px;*/
+              /*height: 67vw;*/
+            }
+            .gif{
+              background-color: white;
+              /*width:100vw;
+              height:67vw;*/
+            }
+            .inside-card-double{
+              background-color: #f7f8f7;
+              border-radius: 15px;
+              padding: 15px;
+              display:flex;
+              justify-content:center;
+              align-items:center;
+              width:45vw;
+            }
+            .overlay-div{
+              display:none;
+              font-family:"Scandia";
+              width:100vw;
+              height:100vh;
+              background-color: #f8f7f8;;
+              opacity:0.95;
+              z-index:2000;
+              position:fixed;
+              color:black;
+              /*display: flex;*/
+              flex-direction:column;
+              justify-content: center;
+              align-items: center;
+              font-size: 23px;
+              font-weight: 600;
+            }
+            .div-show{
+              display:flex;
+              margin-left: 15px;
+              background-color: black;
+              padding-left: 12px;
+              padding-right: 12px;
+              padding-top: 7px;
+              padding-bottom: 5px;
+              border-radius: 8px;
+              align-items: center;
+              justify-content: center;
+            }
+            .div-show-text{
+              font-size:14px;
+              color:white;
+              padding-bottom: 1px;
+            }
+            .div-show-icon{
+              font-size:16px !important;
+              padding-left:5px;
+              color:white;
+            }
+            .social-div{
+              padding-bottom:20px;
+              background-color:white;
+            }
+            .social-div-inside{
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              padding-top: 20px;
+              padding-bottom: 20px;
+              background-color:white;
+            }
+            .social-img{
+              width:20%;
+            }
+            .social-full{
+              width:100%;
+            }
+            .social-quote{
+              display:flex;
+              flex-direction:column;
+              width:60%;
+              font-size:14px;
+              font-family:"Scandia";
+            }
+            .social-quote-author{
+              font-style: italic;
+              align-self: flex-end;
+              text-align: end;
+              padding-top: 10px;
+              padding-right: 5px;
+            }
+            .divider{
+              width: 30vw;
+              height: 1px;
+              background-color: black;
+              margin-left:70vw
+            }
+            .divider-right{
+              width: 30vw;
+              height: 1px;
+              background-color: black;
+            }
+          /*   .divider{
+              width: 90vw;
+              height: 1px;
+              background-color: black;
+              margin: auto;
+            }
+            .divider-right{
+              width: 90vw;
+              height: 1px;
+              background-color: black;
+              margin: auto;
+            } */
+            .floating-div{
+              display:none;
+              width: 20px;
+              height: 20px;
+              background-color: transparent;
+              position: relative;
+              top: -12px;
+              left: 96%;
+              border-bottom: 2px solid black;
+              border-right: 2px solid black;
+            }
+            .floating-div-2{
+              display:none;
+              position: relative;
+              height: 20px;
+              width: 20px;
+              border-left: 2px solid black;
+              border-top: 2px solid black;
+              top: 20px;
+              left: 3%;
+            }
+            .floating-div-3{
+              display:none;
+              position: relative;
+              height: 20px;
+              width: 20px;
+              border-left: 2px solid black;
+              border-top: 2px solid black;
+              top: 35px;
+              left: 3%;
+            }
+            .off-div{
+              opacity: 0.9;
+              transition:all 1s ease;
+              overflow-y:auto;
+              /*top: calc(100vh - 15vw);*/
+              bottom:20px;
+              font-family: "Scandia";
+              position: fixed;
+              right: 20px;
+              background-color: black;
+              max-width: 70vw;
+              color: white;
+              font-size: 14px;
+              border-radius: 8px;
+              z-index: 100;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding-bottom: 4vw;
+              padding-top: 4vw;
+              text-align: left;
+              padding-right: 5vw;
+              padding-left: 5vw;
+              font-weight: 500;
+              /*border: 2px solid white;*/
+              line-height: 20px;
+            }
+            .off-icon{
+              color:white;
+              padding-right:10px;
+              font-size: 16px !important;
+            }
+            .off-icon-right{
+              color:white;
+              padding-left:15px;
+              font-size: 18px !important;
+            }
+            .textonimg{
+              font-family: "Scandia";
+              color: white;
+              font-size: 7vw;
+              text-align: center;
+              position: absolute;
+              width: 61vw;
+              font-weight: 500;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+            .textonimg2{
+              font-family: "Scandia";
+              text-align: center;
+              color: black;
+              font-size: 6vw;
+              width: 61vw;
+              position: absolute;
+              font-weight: 500;
+              top: 25%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+            .textonimg2-inside{
+              font-size: 4vw;
+              font-weight: 400;
+              padding-top: 5vw;
+            }
+            .vejo-button{
+              background-color: green;
+              padding: 10px;
+              padding-top:20px;
+              padding-bottom:20px;
+              display: flex;
+              font-family: "Scandia";
+              font-size: 15px;
+              justify-content: center;
+              color: white;
+              font-weight: 400;
+            }
+            .sticky-off-div{
+              height:40px;
+              display:flex;
+              justify-content:center;
+              align-items:center;
+              background-color:black;
+              color:white;
+              width:100vw;
+              padding:10px;
+              position:sticky;
+              top:0;
+              z-index:1000;
+            }
+            .pack-select-fast .slick-slide{
+              opacity:0.7;
+              transform: scale(1)
+            }
+            .pack-select-fast .slick-current{
+              opacity:1;
+              transform: scale(1.1)
+            }
+            .blend-select-fast .slick-current{
+              opacity:1;
+              transform: scale(1.2)
+            }
+            .reviews{
+              background-color:white;
+            }
+            .reviews-div{
+              padding-top:30px;
+              padding-bottom:30px;
+              background-color:white;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+            }
+            .reviews-div-grey{
+              padding-top:30px;
+              padding-bottom:30px;
+              background-color:#f7f8f7;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+            }
+            .reviews-title{
+              padding-top:10px;
+              font-family: "Scandia";
+              font-weight: 500;
+              font-size: 20px;
+            }
+            .reviews-img{
+              width:40vw;
+            }
+            .reviews-stars{
+              padding-top:10px;
+            }
+            .reviews-review{
+              padding-top:10px;
+              font-family: "Scandia";
+              font-weight: 400;
+              font-size: 15px;
+              text-align:center;
+              padding-left:30px;
+              padding-right:30px;
+            }
+            .reviews-reviewer{
+              font-style:italic;
+              padding-top:5px;
+              font-family: "Scandia";
+              font-weight: 400;
+              font-size: 14px;
+            }
+            .star-icon{
+              color:#DAA520
+            }
+            .love-div{
+           	  font-family: "Scandia";
+              display: flex;
+              padding-top: 50px;
+              padding-bottom: 20px;
+              background-color:#f7f8f7;
+              text-align: center;
+              font-size: 23px;
+              font-style: normal;
+              font-weight: 500;
+              justify-content: center;
+            }
+            .price-div{
+              font-family:"Scandia";
+              font-size:13px;
+              display:flex;
+              justify-content:center;
+              color:green;
+              font-weight:400;
+              padding-bottom:3px;
+            }
+            .price-div2{
+              font-family:"Scandia";
+              font-size:13px;
+              display:flex;
+              justify-content:center;
+              color:green;
+              font-weight:400;
+              padding-bottom:30px;
+            }
+            .free-items{
+              font-family: 'Scandia';
+              font-weight: 500;
+              font-size: 14px;
+              color: green;
+              text-align: center;
+              width: 90%;
+              margin: auto;
+              padding-top: 15px;
+            }
+          </style>
+
+          <div class="overlay-div">
+            <div class="waiting-div" style="width:60vw; text-align:center">
+              Applying 10% off...
+            </div>
+
+            <img id="loadingImage" style="width:50vw; margin-bottom:0px" class="lazyload" data-src="https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-bestsellers-black_3ef368ae-facc-44bc-b3b8-6e209fc916f8.jpg?v=1589900842" />
+          </div>
+
+          <div class="main-div">
+
+            <div class="sticky-off-div">
+            
+            </div>
+            <div class="sticky-your-choices">
+              <div class="main-sum-div">
+                <div class="sum-div">
+                    <div id="sumDevice"><img id="sumDeviceImg" class="lazyload sum-img" data-src="{{ default_image }}" /></div>
+                    <div id="sumColor" class="sum-color">{{ default_name }}</div>
+                </div>
+                <div class="x-div">
+                    +
+                </div>
+                <div class="sum-div-pack">
+                    <div id="sumPack"><img id="sumPackImg" class="lazyload sum-pack" data-src="{{ collections["landing-page-products-v2"].products[1].metafields.sf_product_details.lp_bo_image }}" /></div>
+                    <div id="sumPackName" class="sum-pack-name">{{ collections["landing-page-products-v2"].products[1].metafields.sf_product_details.lp_short_name }}</div>
+                </div>
+              </div>
+              <div class="left-div">
+                <div class="checkout-btn">
+                  BUY NOW
+                </div>
+              </div>
+            </div>
+            
+            <div id="heroDiv" style="position:relative; background-color:white">
+              <img id="heroImage" class="lazyload lifestyle-img" style="width: 100vw; padding-top:45vw" data-src="" />
+              <div id="headerTextHero" class="textonimg" style="top: 22%; line-height:32px; width:75vw; color:black"><br/></div>
+            </div>
+            
+            <script>
+              var getUrlParameter = function getUrlParameter(sParam) {
+                var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                    sURLVariables = sPageURL.split('&'),
+                    sParameterName,
+                    i;
+
+                for (i = 0; i < sURLVariables.length; i++) {
+                    sParameterName = sURLVariables[i].split('=');
+
+                    if (sParameterName[0] === sParam) {
+                        return sParameterName[1] === undefined ? true : sParameterName[1];
+                    }
+                }
+              };
+              
+              var valueOff = getUrlParameter('valueoff');
+              var showHeroDiv = getUrlParameter('showhero');
+              var heroTextColor = getUrlParameter('herotextcolor');
+              var usePaddingTop = getUrlParameter('usepadding');
+              var whichHeroImage = getUrlParameter('heroimage');
+              var whichHeroHeader = getUrlParameter('heroheader');
+              var whichHeroSubHeader = getUrlParameter('herosubheader');
+              
+              
+              if(showHeroDiv != undefined && showHeroDiv == "false"){
+                document.getElementById("heroDiv").style.display = "none"
+              }
+              else{
+              
+                {% assign heroimages = settings.hero_image_list | split: "," %}
+                var heroImages = []
+
+                {% for image in heroimages %}
+                  heroImages.push(`{{ image }}`.replace(".png", "_600x.png").replace("<p>", "").replace(".jpg", "_600x.jpg").replace("</p>", "").replace("<", ""))
+                {% endfor %}
+
+                var indexImage = 0
+
+                if(whichHeroImage != undefined){
+                  if(heroImages[whichHeroImage] != undefined){
+                    indexImage = whichHeroImage
+                  }
+                }
+
+                document.getElementById("heroImage").setAttribute("data-src", heroImages[indexImage])
+
+                {% assign heroheaders = settings.get_social_header_list | split: "/" %}
+                var heroHeaders = []
+
+                {% for header in heroheaders %}
+                  heroHeaders.push(`{{ header }}`.replace("<p>", "").replace("</p>", "").replace("<", ""))
+                {% endfor %}
+
+                var indexHeader = 0
+
+                if(whichHeroHeader != undefined){
+                  if(heroHeaders[whichHeroHeader] != undefined){
+                    indexHeader = whichHeroHeader
+                  }
+                }
+
+                document.getElementById("headerTextHero").innerHTML = heroHeaders[indexHeader]
+
+                {% assign herosubheaders = settings.get_social_sub_header_list | split: "/" %}
+                var heroSubHeaders = []
+
+                {% for subheader in herosubheaders %}
+                  heroSubHeaders.push(`{{ subheader }}`.replace("<p>", "").replace("</p>", "").replace("<", ""))
+                {% endfor %}
+
+                var indexsubHeader = 0
+
+                if(whichHeroSubHeader != undefined){
+                  if(heroSubHeaders[whichHeroSubHeader] != undefined){
+                    indexsubHeader = whichHeroSubHeader
+                  }
+                }
+                
+                if(usePaddingTop != undefined && usePaddingTop == "false"){
+                  document.getElementById("heroImage").style.paddingTop = "0px"
+                }
+                
+                if(heroTextColor != undefined){
+                  document.getElementById("headerTextHero").style.color = "#" + heroTextColor
+                }
+
+                document.getElementById("headerTextHero").innerHTML += `
+                  <p id="subHeaderTextHero" style="font-weight:400; font-size:15px; line-height:22px; padding-top:10px">` + heroSubHeaders[indexsubHeader] + `</p>
+                `
+              }
+              
+              if(valueOff != undefined){
+                document.getElementsByClassName("sticky-off-div")[0].innerHTML = "Buy a Vejo Starter Kit and get " + valueOff + " off"
+                document.getElementsByClassName("waiting-div")[0].innerHTML = "Applying " + valueOff + " off..."
+              }
+              else{
+                document.getElementsByClassName("sticky-off-div")[0].innerHTML = "Buy a Vejo Starter Kit and get 10% off"
+              }
+              
+            </script>
+            
+            <div class="product-main__kit-item step1-div">
+              <span>Choose Your Blender</span>
+            </div><!-- /.product-main__kit-item -->
+
+            <div style="opacity:0" class="blend-select-fast slick-list dragable"></div>
+
+            <div id="product-main__price_color" class="product-main__price" style="margin-top:0px; text-align:center; font-style:normal !important; padding-left:0px !important; font-weight:600">
+              Jet Black
+            </div><!-- /.product-main__price -->
+
+            {% assign nbrOfColorsPerRow = 4 %}
+            {% assign has_colors = true %}    
+            {% include 'main-product-image-mix-n-match' %}
+
+            {% section 'landing-vejo-choose-blends-v2' %}
+            
+            <div class="shippingMessage" id="shippingMessage"></div>
+
+            <div class="checkout-button">
+              BUY NOW
+              <i class="fa fa-arrow-right select-icon" style="padding-left:7px; color:white; font-size:16px !important;"></i>
+            </div>
+            <div class="price-div">
+              REGULARLY  &nbsp <span id="price-div-span" style="text-decoration:line-through">${{ collections["landing-page-products-v2"].products[1].price | divided_by: 100 }}</span>
+            </div>
+            <div class="price-div2">
+              BUY NOW AND PAY ${{ collections["landing-page-products-v2"].products[1].price | divided_by: 1000 | times: 9 }}
+            </div>
+
+            {% section 'landing-vejo-in-the-box-v2' %}
+            
+            <div id="vejoIsHealthyDiv" style="position:relative;">
+              <img class="lazyload lifestyle-img" style="width: 100vw;" data-src="https://cdn.shopify.com/s/files/1/1852/7957/files/starwberryCopy_600x.jpg?v=1590616258" />
+              <div class="textonimg" style="top: 20%; line-height:32px; width:75vw; color:black">Vejo is healthy nutrition delivered in a convenient pod. <br/> <p style="font-weight:400; font-size:15px; line-height:22px; padding-top:10px">Our blends are designed for all of your daily needs, from morning to night.</p></div>
+            </div>
+            
+            <div id="vejoPreservedDiv" style="position:relative;">
+              <img class="lazyload lifestyle-img" style="width: 100vw;" data-src="//cdn.shopify.com/s/files/1/1852/7957/files/Vejo-Web-Eco-Assets-Desktop-preserved_600x.jpg?v=1581188881" />
+              <div class="textonimg" style="top: 22%; line-height:35px; width:75vw; color:black">Vejo blends are naturally preserved.<br/> <p style="font-weight:400; font-size:15px; line-height:20px; padding-top:10px">Fresh produce is freeze-dried at the point of harvest, locking in the nutrients.</p></div>
+            </div>
+            
+            <div id="vejoPodsDiv" style="position:relative;">
+              <img class="lazyload lifestyle-img" style="width: 100vw;" data-src="//cdn.shopify.com/s/files/1/1852/7957/files/Vejo-Web-Eco-Assets-Desktop-fantastic_600x.jpg?v=1581188881" />
+              <div class="textonimg" style="top: 25%; line-height:40px; width:75vw">Vejo pods are <br/> 100% biodegradable. 0% waste.</div>
+            </div>
+            
+            {% section 'landing-what-people-love' %}                     
+            {% section 'landing-vejo-lifestyle' %}
+            {% section 'landing-vejo-in-the-press' %}
+            
+            <div id="vejoLearnDiv" class="product-main__kit-item step4-div">
+              <span class="span-width">Learn more about Vejo</span>
+            </div>
+            
+            <div id="vejoLearnDiv2" >
+
+              {% section 'learn-sections' %}
+            
+            <div class="vejo-button">
+              Visit Vejo.com
+              <i class="fa fa-arrow-right select-icon" style="padding-left:7px; color:white; font-size:15px !important;"></i>
+            </div>
+
+          </div>
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+          <script>
+            $( document ).ready(function() {
+              var activateInventoryCheck = `{{ settings.blender_rules }}`
+              var genericOos = `{{ settings.all_shipping_message_bo }}`
+              var genericLa = `{{ settings.all_low_availibility_message }}`
+              var genericCartTitle = `{{ settings.all_cart_message_title }}`
+              var genericCartText = `{{ settings.all_cart_message_text }}`
+              var genericSf = `{{ settings.all_shipping_message }}`
+              var masterInventoryJson = {
+                "Neon Pink":{
+                  "outofstock":`{{ settings.neon_pink_stock }}`,
+                  "units":`{{ settings.neon_pink_units }}`,
+                  "nolaterthan":`{{ settings.neon_pink_shipping_message }}`,
+                  "backorder":`{{ settings.neon_pink_shipping_bo_message }}`
+                },
+                "Neon Yellow":{
+                  "outofstock":`{{ settings.neon_yellow_stock }}`,
+                  "units":`{{ settings.neon_yellow_units }}`,
+                  "nolaterthan":`{{ settings.neon_yellow_shipping_message }}`,
+                  "backorder":`{{ settings.neon_yellow_shipping_bo_message }}`
+                },
+                "Jet Black":{
+                  "outofstock":`{{ settings.jet_black_stock }}`,
+                  "units":`{{ settings.jet_black_units }}`,
+                  "nolaterthan":`{{ settings.jet_black_shipping_message }}`,
+                  "backorder":`{{ settings.jet_black_shipping_bo_message }}`
+                },
+                "Chalk White":{
+                  "outofstock":`{{ settings.chalk_white_stock }}`,
+                  "units":`{{ settings.chalk_white_units }}`,
+                  "nolaterthan":`{{ settings.chalk_white_shipping_message }}`,
+                  "backorder":`{{ settings.chalk_white_shipping_bo_message }}`
+                },
+                "Island Blue":{
+                  "outofstock":`{{ settings.island_blue_stock }}`,
+                  "units":`{{ settings.island_blue_units }}`,
+                  "nolaterthan":`{{ settings.island_blue_shipping_message }}`,
+                  "backorder":`{{ settings.island_blue_shipping_bo_message }}`
+                },
+                "Indigo Blue":{
+                  "outofstock":`{{ settings.indigo_blue_stock }}`,
+                  "units":`{{ settings.indigo_blue_units }}`,
+                  "nolaterthan":`{{ settings.indigo_blue_shipping_message }}`,
+                  "backorder":`{{ settings.indigo_blue_shipping_bo_message }}`
+                },
+                "Sky Blue":{
+                  "outofstock":`{{ settings.sky_blue_stock }}`,
+                  "units":`{{ settings.sky_blue_units }}`,
+                  "nolaterthan":`{{ settings.sky_blue_shipping_message }}`,
+                  "backorder":`{{ settings.sky_blue_shipping_bo_message }}`
+                },
+                "Burnt Red":{
+                  "outofstock":`{{ settings.burnt_red_stock }}`,
+                  "units":`{{ settings.burnt_red_units }}`,
+                  "nolaterthan":`{{ settings.burnt_red_shipping_message }}`,
+                  "backorder":`{{ settings.burnt_red_shipping_bo_message }}`
+                },
+                "Bright Orange":{
+                  "outofstock":`{{ settings.bright_orange_stock }}`,
+                  "units":`{{ settings.bright_orange_units }}`,
+                  "nolaterthan":`{{ settings.bright_orange_shipping_message }}`,
+                  "backorder":`{{ settings.bright_orange_shipping_bo_message }}`
+                },
+                "Navy Blue":{
+                  "outofstock":`{{ settings.navy_blue_stock }}`,
+                  "units":`{{ settings.navy_blue_units }}`,
+                  "nolaterthan":`{{ settings.navy_blue_shipping_message }}`,
+                  "backorder":`{{ settings.navy_blue_shipping_bo_message }}`
+                }
+              }
+//               "Navy Blue":{
+//                   "id":28386176893022,
+//                 }
+              var soloBlendersImages = {
+                "Jet Black":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-black_300x.jpg?v=1582758186",
+                "Chalk White":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-white_300x.jpg?v=1582758186",
+                "Neon Pink":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-neon_pink_300x.jpg?v=1582758186",
+                "Neon Yellow":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-neon_yellow_300x.jpg?v=1582758186",
+                "Island Blue":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-island_blue_300x.jpg?v=1582758186",
+                "Indigo Blue":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-indigo_blue_300x.jpg?v=1582758186",
+                "Sky Blue":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-mcfc_blue_300x.jpg?v=1582758186",
+                "Burnt Red":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-bayern_red_300x.jpg?v=1582758186",
+                "Bright Orange":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-orange_300x.jpg?v=1582758186",  
+				"Navy Blue":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-navy.jpg"
+              }
+              
+              var availableColors = 0
+              
+              {% for variant in product.variants %}
+              	if(masterInventoryJson[`{{ variant.title }}`] != undefined){
+                  if(masterInventoryJson[`{{ variant.title }}`]["outofstock"] == "false"){
+                      availableColors = availableColors + 1
+                      $('.blend-select-fast').append(`
+                          <div id="color` + {{ forloop.index }} + `div" data-color="{{ variant.title }}" ><img id="color` + {{ forloop.index }} + `" class="device-img" src=` + soloBlendersImages[`{{ variant.title }}`] + ` /></div>
+                      `)
+                  }
+                }
+              {% endfor %}
+              
+              $('#shippingMessage').css("color", "black")
+              $('#shippingMessage').html(masterInventoryJson["Jet Black"]["nolaterthan"])
+              
+              var todaysDate = new Date()
+              var today = todaysDate.getDay()
+              
+              var getUrlParameter = function getUrlParameter(sParam) {
+                var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                    sURLVariables = sPageURL.split('&'),
+                    sParameterName,
+                    i;
+
+                for (i = 0; i < sURLVariables.length; i++) {
+                    sParameterName = sURLVariables[i].split('=');
+
+                    if (sParameterName[0] === sParam) {
+                        return sParameterName[1] === undefined ? true : sParameterName[1];
+                    }
+                }
+              };
+
+              var specialRequest = getUrlParameter('specialrequest');
+              var codeToApply = getUrlParameter('code');
+              var whichHeroImage = getUrlParameter('heroimage');
+              
+//               console.log("special:", specialRequest)
+//               console.log("code:", codeToApply)
+              
+              var showVejoIsHealthy = getUrlParameter('showvejoishealthy');
+//               console.log("hero image:", showVejoIsHealthy)
+              
+              if(showVejoIsHealthy != undefined && showVejoIsHealthy == "false"){
+                document.getElementById("vejoIsHealthyDiv").style.display = "none"
+              }
+              
+              var banner = getUrlParameter('banner');
+//               console.log("banner:", banner)
+              
+              if(banner != undefined && banner == "free"){
+                document.getElementsByClassName("sticky-off-div")[0].textContent  = "Buy a Vejo Starter Kit and get free US shipping"
+                document.getElementsByClassName("waiting-div")[0].textContent  = "Applying free US shipping"
+                document.getElementsByClassName("price-div")[0].textContent = "$130"
+                document.getElementsByClassName("price-div2")[0].style.color = "#f8f7f8"
+                document.getElementsByClassName("price-div2")[0].textContent = "$130"
+              }
+              
+              var showVejoPreserved = getUrlParameter('showvejopreserved');
+//               console.log("hero image:", showVejoPreserved)
+              
+              if(showVejoPreserved != undefined && showVejoPreserved == "false"){
+                document.getElementById("vejoPreservedDiv").style.display = "none"
+              }
+              
+              var showVejoPods = getUrlParameter('showvejopods');
+//               console.log("hero image:", showVejoPods)
+              
+              if(showVejoPods != undefined && showVejoPods == "false"){
+                document.getElementById("vejoPodsDiv").style.display = "none"
+              }
+              
+              var showVejoRatings = getUrlParameter('showvejoratings');
+//               console.log("hero image:", showVejoRatings)
+              
+              if(showVejoRatings != undefined && showVejoRatings == "false"){
+                document.getElementById("vejoRatingsDiv").style.display = "none"
+              }
+              
+              var showVejoPress = getUrlParameter('showvejopress');
+//               console.log("hero image:", showVejoPress)
+              
+              if(showVejoPress != undefined && showVejoPress == "false"){
+                document.getElementById("vejoPressDiv").style.display = "none"
+                document.getElementById("vejoPressDiv2").style.display = "none"
+              }
+              
+              var openBox = getUrlParameter('openbox');
+//               console.log("hero image:", openBox)
+              
+              var showVejoLife = getUrlParameter('showvejolifestyle');
+//               console.log("hero image:", showVejoLife)
+              
+              if(showVejoLife != undefined && showVejoLife == "false"){
+                document.getElementById("vejoLifeDiv").style.display = "none"
+                document.getElementById("vejoLifeDiv2").style.display = "none"
+              }
+              
+              var showVejoLearn = getUrlParameter('showvejolearnmore');
+//               console.log("hero image:", showVejoLearn)
+              
+              
+              if(showVejoLearn != undefined && showVejoLearn == "false"){
+                document.getElementById("vejoLearnDiv").style.display = "none"
+                document.getElementById("vejoLearnDiv2").style.display = "none"
+              }
+              
+              var discountedPrice = getUrlParameter('discountedprice');
+//               console.log("discountedPrice:", discountedPrice)
+              
+              if(discountedPrice == undefined){
+                discountedPrice = 0.9
+              }
+              else{
+                discountedPrice = parseFloat(discountedPrice)
+              }
+              
+//               console.log("discountedPrice", discountedPrice)
+              
+              localStorage.setItem("origin", "LP")
+              var isOutOfStock = false;
+              var currentColorInt = 0;
+              var currentPackInt = 1;
+              var pack1Availabilities = []
+              var pack2Availabilities = []
+              var pack3Availabilities = []
+              var matrix = {}
+              var jsonImagesVejoAndPack = {}
+              var packNamesHC = []
+              var packDesc = []
+              var packPrices = []
+              
+              {% for product in collections["landing-page-products-v2"].products %}
+                packNamesHC.push(`{{product.title}}`)
+                packDesc.push(`{{ product.description | strip_html | split: "What" | first }}`)
+              {% endfor %}
+              
+              {% for variant in collections["landing-page-products-v2"].products[0].variants%}
+                {% if variant.title contains "Pre-Order" or variant.title contains "Neon Green" or variant.title contains "Indigo" %}
+                {% else %}
+                  if(masterInventoryJson[`{{ variant.title }}`]["outofstock"] == "false"){
+                    pack1Availabilities.push("true")
+                  }
+                  matrix[`{{ variant.title }}`] = {"1":`{{ variant.id }}`, "2":0, "3":0}
+                  jsonImagesVejoAndPack[`{{ variant.title }}`] = {"1":`{{ variant.featured_image.src | img_url | replace:"_small" : "" }}`, "2":0, "3":0}
+                {% endif %}
+              {% endfor %}
+              {% for variant in collections["landing-page-products-v2"].products[1].variants%}
+                //console.log("variant bestseller:", {{ variant | json }})
+                {% if variant.title contains "Pre-Order" or variant.title contains "Neon Green" or variant.title contains "Indigo" %}
+                {% else %}
+                  {% comment %}
+                    {% if variant.title contains "Black" %}
+                      pack2Availabilities.push(`{{ variant.available }}`)
+                    {% else %}
+                      pack2Availabilities.push('false')
+                    {% endif %}
+                  {% endcomment %}
+                  if(masterInventoryJson[`{{ variant.title }}`]["outofstock"] == "false"){
+                    pack2Availabilities.push("true")
+                  }
+
+                  if(matrix[`{{ variant.title }}`] != undefined){
+                    matrix[`{{ variant.title }}`]["2"] = `{{ variant.id }}`
+                    jsonImagesVejoAndPack[`{{ variant.title }}`]["2"] = `{{ variant.featured_image.src | img_url | replace:"_small" : "" }}`
+                  }
+                {% endif %}
+              {% endfor %}
+              {% for variant in collections["landing-page-products-v2"].products[2].variants%}
+                {% if variant.title contains "Pre-Order" or variant.title contains "Neon Green" or variant.title contains "Indigo" %}
+                {% else %}
+                  if(masterInventoryJson[`{{ variant.title }}`]["outofstock"] == "false"){
+                    pack3Availabilities.push("true")
+                  }
+                  if(matrix[`{{ variant.title }}`] != undefined){
+                    matrix[`{{ variant.title }}`]["3"] = `{{ variant.id }}`
+                    jsonImagesVejoAndPack[`{{ variant.title }}`]["3"] = `{{ variant.featured_image.src | img_url | replace:"_small" : ""}}`
+                  }
+                {% endif %}
+              {% endfor %}
+                
+//               console.log("matcha avail:", pack1Availabilities)
+//               console.log("best avail:", pack2Availabilities)
+//               console.log("favs avail:", pack3Availabilities)
+//               console.log("matrixTest:", matrix)
+//               console.log("jsonImagesVejoAndPackTest:", jsonImagesVejoAndPack)
+//               console.log("packNames:", packNamesHC)
+//               console.log("packDesc:", packDesc)
+              
+              $('.blend-select-fast').slick({
+                infinite: true,
+                initialSlide: 0,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                centerMode: true,
+                focusOnSelect: true,
+                variableWidth:true,
+                nextArrow:'<i class="nextSlick-fast fas fa-chevron-right" style="position:absolute; top:43%; right:30%"></i>',
+                prevArrow:'<i class="prevSlick-fast fas fa-chevron-left"  style="position:absolute; top:43%; left:30%; z-index:1"></i>'
+              });
+              
+              $('.pack-select-fast').slick({
+                  infinite: true,
+                  initialSlide: 1,
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  centerMode: true,
+                  focusOnSelect: true,
+                  variableWidth:true,
+                  nextArrow:'<i class="nextSlick-fast fas fa-chevron-right" style="position:absolute; top:43%; right:32%"></i>',
+                  prevArrow:'<i class="prevSlick-fast fas fa-chevron-left"  style="position:absolute; top:43%; left:32%; z-index:1"></i>'
+              });
+              
+              $('.blend-select-fast').css("opacity", "1")
+              
+              $(window).bind("pageshow", function(event) {
+                $('.overlay-div').css('display', 'none')
+              })
+              
+              $('.vejo-button').on("click", function(){
+                //Add UTM to know who clicks here
+                window.location.href = "https://www.vejo.com"
+              })
+              
+              var colors = {
+                "Jet Black":"#000000",
+                "Chalk White":"#FFFFFF",
+                "Bright Orange":"#FF5100",
+                "Island Blue":"#2FA3FF",
+                "Indigo Blue":"#253B76",
+                "Sky Blue":"#99D4ED ",
+                "Burnt Red":"#CF1E2D",
+                "Neon Yellow":"#FFF337",
+                "Neon Pink":"#FD178C",
+                "Navy Blue":"#253159",
+              }
+              
+              
+              $(".list-variants label").each(function() {
+                var $this = $(this);
+                var title = $this.data("title");
+
+                $this.css("background-color", colors[title]);
+                
+              });
+
+              $(".list-variants").addClass("loaded");
+              
+
+              var offopen = true
+              $(".off-div").on("click", function(){
+                if(!offopen){
+                  $('.off-div').html(`Get 10% off this order when you continue! <i class="fa fa-times off-icon-right"></i>`)
+                  offopen = true
+                }
+                else{            
+                  $('.off-div').html(`<i class="fa fa-fire-alt off-icon"></i> Get 10% off`)
+                  offopen = false
+                }
+              })
+
+              $('.section-homepage').children().eq(7).css("height", "170vw")
+
+              var chosenColor = "{{ default_name }}"
+              var chosenPack = "3"
+              var isOpen = false
+              
+              var colorAndLabeloMatrix = {
+                "Jet Black":1, 
+                "Chalk White":2, 
+                "Bright Orange":3, 
+                "Island Blue":4, 
+                "Indigo Blue":6, 
+                "Neon Yellow":8, 
+                "Neon Pink":9, 
+                "Navy Blue": 10
+              }
+
+              var jsonImagesVejoAndPackHC = {
+                "Jet Black":{
+                  "1":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Performance-black.jpg?v=1589526651", 
+                  "2":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-bestsellers-black_3ef368ae-facc-44bc-b3b8-6e209fc916f8.jpg?v=1589522966", 
+                  "3":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Wellness-black.jpg?v=1589526380"
+                },
+                "Chalk White":{
+                  "1":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Performance-white.jpg?v=1589526651", 
+                  "2":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-bestsellers-white.jpg?v=1589522966", 
+                  "3":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Wellness-white.jpg?v=1589526380"
+                },
+                "Bright Orange":{
+                  "1":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Performance-orange.jpg?v=1589526651", 
+                  "2":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-bestsellers-orange.jpg?v=1589522966", 
+                  "3":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Wellness-orange.jpg?v=1589526380"
+                },
+                "Island Blue":{
+                  "1":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Performance-island_bluecopy.jpg?v=1589526651", 
+                  "2":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-bestsellers-islandblue.jpg?v=1589522966", 
+                  "3":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Wellness-islandblue.jpg?v=1589526380"
+                },
+                "Indigo Blue":{
+                  "1":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Performance-indigo_blue.jpg?v=1589526651", 
+                  "2":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-bestsellers-indigoblue.jpg?v=1589522966", 
+                  "3":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Wellness-indigoblue.jpg?v=1589526380"
+                },
+                "Navy Blue":{
+                  "1":"https://cdn.shopify.com/s/files/1/1852/7957/products/8-pack_and_blender_web-performance-navy-1024x1105-v2.jpg?v=1585425276", 
+                  "2":"https://cdn.shopify.com/s/files/1/1852/7957/files/200206_8-pack_and_blender_VARIETY_PACK_STARTER_KIT-Navy_Blue_opt.png?v=1587775218", 
+                  "3":"https://cdn.shopify.com/s/files/1/1852/7957/files/200206_8-pack_and_blender_VARIETY_PACK_STARTER_KIT-Navy_Blue_opt.png?v=1587775218"
+                },
+                "Sky Blue":{
+                  "1":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Performance-mcfc_blue.jpg?v=1592958883", 
+                  "2":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-bestsellers-cityzenblue.jpg?v=1592956297", 
+                  "3":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Wellness-cityzenblue.jpg?v=1592959986"
+                },
+                "Burnt Red":{
+                  "1":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Performance-bayern_red_1.jpg?v=1592958883", 
+                  "2":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-bestsellers-bayernred_1.jpg?v=1592958983", 
+                  "3":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Wellness-bayernred.jpg?v=1592959624"
+                },
+                "Neon Yellow":{
+                  "1":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Performance-neon_yellow.jpg?v=1589526651", 
+                  "2":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-bestsellers-neonyellow.jpg?v=1589522966", 
+                  "3":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Wellness-neonyellow.jpg?v=1589526380"
+                },
+                "Neon Pink":{
+                  "1":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Performance-neon_pink.jpg?v=1589526651", 
+                  "2":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-bestsellers-neonpink.jpg?v=1589522966", 
+                  "3":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-BlendsNoBox-web-Wellness-neonpink.jpg?v=1589526380"
+                },
+              }
+
+              var matrixHC = {
+                "Jet Black":{
+                  "1":30296638357598, 
+                  "2":12964495589470, 
+                  "3":31621921931358
+                },
+                "Chalk White":{
+                  "1":31173769658462, 
+                  "2":12964495622238, 
+                  "3":31621921964126
+                },
+                "Bright Orange":{
+                  "1":30296638423134, 
+                  "2":12964495655006, 
+                  "3":31621921996894
+                },
+                "Island Blue":{
+                  "1":31173720146014, 
+                  "2":16067970203742, 
+                  "3":31621922029662
+                },
+                "Indigo Blue":{
+                  "1":31173745377374, 
+                  "2":28388847681630, 
+                  "3":31621922062430
+                },
+                "Navy Blue":{
+                  "1":31173767659614, 
+                  "2":28388847779934, 
+                  "3":31621922062430
+                },
+                "Sky Blue":{
+                  "1":31173724635230, 
+                  "2":28388847583326, 
+                  "3":32017775427678
+                },
+                "Burnt Red":{
+                  "1":31173740068958, 
+                  "2":29426214633566, 
+                  "3":32017771298910
+                },
+                "Neon Yellow":{
+                  "1":31173742231646, 
+                  "2":29426212667486, 
+                  "3":31621922095198
+                },
+                "Neon Pink":{
+                  "1":31173737676894, 
+                  "2":29426213093470, 
+                  "3":31621922127966
+                },
+              }
+              
+              console.log("COLLECTION", {{ collections["landing-page-products-v2"].products | json }})
+//               console.log("COLLECTION", {{ collections["landing-page-products"].products | json }})
+
+              var packNames = [
+                `{{ collections["landing-page-products-v2"].products[0].metafields.sf_product_details.lp_name }}`, 
+                `{{ collections["landing-page-products-v2"].products[1].metafields.sf_product_details.lp_name }}`,                
+                `{{ collections["landing-page-products-v2"].products[2].metafields.sf_product_details.lp_name }}`
+              ]
+              
+              var packPrices = [
+                parseInt(`{{ collections["landing-page-products-v2"].products[0].price }}`)/100, 
+                parseInt(`{{ collections["landing-page-products-v2"].products[1].price }}`)/100, 
+                parseInt(`{{ collections["landing-page-products-v2"].products[2].price }}`)/100
+              ]
+              
+              var packNamesShort = [
+                `{{ collections["landing-page-products-v2"].products[0].metafields.sf_product_details.lp_short_name }}`, 
+                `{{ collections["landing-page-products-v2"].products[1].metafields.sf_product_details.lp_short_name }}`, 
+                `{{ collections["landing-page-products-v2"].products[2].metafields.sf_product_details.lp_short_name }}`
+              ]
+
+              var packDescHC = [
+                "The perfect introduction to Vejo for the fitness-inclined.  The Vejo Starter Kit - Performance Edition comes complete with everything you need to enjoy your Vejo Portable Pod-Based Blender, plus a variety pod pack consisting of the blends you need to crush your training. Our powerful Pre- and Post-Workout will elevate your exercise to the extreme.", 
+                "The perfect introduction to Vejo.  The Vejo Portable Blender Starter Kit comes complete with everything you need to enjoy your Vejo Portable Pod-Based Blender, plus a variety pack consisting of our most popular blends.  Sample them all, then re-order your favorites!", 
+                "The perfect offering to kick start your wellness. Daily consumption of nutritious fruits and veggies, as well as proper supplementation, are all key to ensuring a strong and consistent immune response over time."
+              ]
+
+              var jsonImages = {
+                "Jet Black":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-black_100x.jpg?v=1582758186",
+                "Chalk White":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-white_100x.jpg?v=1582758186",
+                "Bright Orange":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-orange_100x.jpg?v=1582758186",
+                "Island Blue":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-island_blue_100x.jpg?v=1582758186",
+                "Indigo Blue":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-indigo_blue_100x.jpg?v=1582758186",
+                "Navy Blue":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-navy.jpg",
+                "Sky Blue":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-mcfc_blue.jpg?v=1582758186",
+                "Burnt Red":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-bayern_red.jpg?v=1582758186",
+                "Neon Yellow":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-neon_yellow_100x.jpg?v=1582758186",
+                "Neon Pink":"https://cdn.shopify.com/s/files/1/1852/7957/products/Vejo-Blender-solo-web-neon_pink_100x.jpg?v=1582758186",
+              }
+
+              var packImages = [
+                `{{ collections["landing-page-products-v2"].products[0].metafields.sf_product_details.lp_bo_image }}`,
+                `{{ collections["landing-page-products-v2"].products[1].metafields.sf_product_details.lp_bo_image }}`,
+                `{{ collections["landing-page-products-v2"].products[2].metafields.sf_product_details.lp_bo_image }}`
+              ]
+              
+//               console.log("packPrices:", packPrices)
+
+              {% for variant in product.variants %}
+                $('.labelo' + {{ forloop.index }}).on('click', function () {
+                  var currentJson = masterInventoryJson[$('.labelo' + {{ forloop.index }}).attr("data-title")]
+                  
+                  var numberOfOos = 0
+                  var allVariants = {{ collections["landing-page-products-v2"].products[1].variants | json }}                  
+                  for(var i = 0; i < allVariants.length; i++){
+                    if(allVariants[i]["title"] == $('.labelo' + {{ forloop.index }}).attr("data-title")){
+                      break
+                    }
+                    else if(masterInventoryJson[allVariants[i]["title"]] != undefined){
+                      if(masterInventoryJson[allVariants[i]["title"]]["outofstock"] == "true"){
+                        numberOfOos += 1
+                      }
+                    }
+                    else{
+                      numberOfOos += 1
+                    }
+                  }
+                  var index = {{ forloop.index | minus: 1 }}
+                  index = index - numberOfOos
+                  
+                  {% if settings.blender_rules %}
+                    if(currentJson["outofstock"] == "true"){
+                      $('#shippingMessage').html(genericOos + " " + currentJson["backorder"])
+                      $('#shippingMessage').css("color", "grey")
+                    }else{
+                      if(currentJson["units"] == "red"){
+                        $('#shippingMessage').css("color", "red")
+                        $('#shippingMessage').html(genericLa + " " + currentJson["nolaterthan"])
+                      }
+                      else{
+                        $('#shippingMessage').css("color", "black")
+                        $('#shippingMessage').html(currentJson["nolaterthan"])
+                      }
+                    }
+                  {% endif %}
+//                   console.log("Oos?", currentJson["outofstock"])
+//                   console.log("OosNumber", numberOfOos)
+                  {% assign minusOne = forloop.index | minus: 1 %}
+                  {% comment %}
+                  {% if minusOne == 6 or minusOne == 7 %}
+                      {% assign minusOne = forloop.index | minus: 2 %}
+                  {% elsif minusOne > 7 %}
+                      {% assign minusOne = forloop.index | minus: 2 %}
+                  {% endif %}
+                  
+                  {% if minusOne == 6 %}
+                      {% assign minusOne = forloop.index | minus: 4 %}
+                  {% endif %}
+                  
+                  {% if minusOne == 7 %}
+                      {% assign minusOne = 2 %}
+                  {% endif %}
+                  {% if minusOne == 9 %}
+                      {% assign minusOne = 3 %}
+                  {% endif %}
+                  {% endcomment %}
+                 
+                  $("#sumDeviceImg").attr("src", jsonImages[$('.labelo' + {{ forloop.index }})[0]["dataset"]["title"]])
+                  $("#sumColor").html($('.labelo' + {{ forloop.index }})[0]["dataset"]["title"])
+                  $('.blend-select-fast').slick('slickGoTo', index)
+                })
+              {% endfor %}
+
+              $('.div-show').on("click", function(){
+                if(isOpen){
+                  $('#boxIcon').removeClass("fa-box-open")
+                  $('#boxIcon').addClass("fa-box")
+                  $('.inside-div').attr("hidden", "")
+                  $('.div-show-text').html("Open")
+                  $('#up').css("display", "none")
+                  $('#down').css("display", "flex")
+                  isOpen = false
+                }
+                else{
+                  $('#boxIcon').removeClass("fa-box")
+                  $('#boxIcon').addClass("fa-box-open")
+                  $('.inside-div').removeAttr("hidden")
+                  $('.div-show-text').html("Close")
+                  $('#up').css("display", "flex")
+                  $('#down').css("display", "none")
+                  isOpen = true
+                }       
+              })
+              
+              if(openBox != undefined && openBox == "false"){}
+              else{
+                $('.div-show').trigger("click")
+              }
+
+              $('.sum-div').on("click", function(){
+                $('html, body').animate({
+                  scrollTop: $(".step1-div").offset().top - 158
+                }, 200);
+              })
+
+              $('.sum-div-pack').on("click", function(){
+                $('html, body').animate({
+                  scrollTop: $(".step2-div").offset().top - 158
+                }, 200);
+              })
+              
+              if(discountedPrice > 1){
+                 $('.price-div2').text("BUY NOW AND PAY $" + (packPrices[1] - discountedPrice))
+               }
+               else{
+                 $('.price-div2').text("BUY NOW AND PAY $" + packPrices[1]*discountedPrice)
+               }
+
+              $('.pack-select-fast').on('afterChange', function(event, slick, direction){
+                var currentSlide = $('.pack-select-fast').slick('slickCurrentSlide');
+                chosenPack = currentSlide + 1
+
+                if(currentSlide == 0){
+                   currentPackInt = 0
+                   $('#pack-name').text(packNames[0])
+                   $('#price-div-span').text("$" + packPrices[0])
+                   if(discountedPrice > 1){
+                     $('.price-div2').text("BUY NOW AND PAY $" + (packPrices[0] - discountedPrice))
+                   }
+                   else{
+                     $('.price-div2').text("BUY NOW AND PAY $" + packPrices[0]*discountedPrice)
+                   }
+                   $('.product-main__entry').html(packDesc[0])
+                   $("#sumPackName").html(packNamesShort[0])
+                   $("#sumPackImg").attr("src", packImages[0])
+                   {% assign product = collections["landing-page-products-v2"].products[0] %}
+                   $('.free-items').html(`{{ product.metafields.sf_product_details.free_items }}`)
+                   {% assign product_inside = product.metafields.sf_what_s_inside %}
+                   {% assign product_inside_length = product_inside.size | divided_by: 3 %}
+                   $('.inside-div').html(`{%- for i in (1..3) -%}
+                    {% if i == 1 %}
+                      {%- assign image_handle = 'item_' | append: i | append: '_image' -%}
+                      {%- assign name_handle = 'item_' | append: i | append: '_name' -%}
+                      {%- assign description_handle = 'item_' | append: i | append: '_description' -%}
+                      {%- assign origin_handle = 'item_' | append: i | append: '_origin_ingredients' -%}
+
+                      {% assign iplusone = i | plus: 1 %}
+                      {%- assign image_handle_2 = 'item_' | append: iplusone | append: '_image' -%}
+                      {%- assign name_handle_2 = 'item_' | append: iplusone | append: '_name' -%}
+                      {%- assign description_handle_2 = 'item_' | append: iplusone | append: '_description' -%}
+                      {%- assign origin_handle_2 = 'item_' | append: iplusone | append: '_origin_ingredients' -%}
+
+                      <div class="inside-card" style="justify-content:space-between; background-color:white; padding:0">
+                        <div class="inside-card-double">
+                          <img style="margin-left: -15px;" id="blenderImage" class="lazyload inside-img" data-src={{product_inside[image_handle]}} />
+                          <div class="inside-title" style="padding-bottom:0">{{ product_inside[name_handle] | escape }} Blender</div>
+                        </div>
+                        <div class="inside-card-double" style="padding-right:10px">
+                          <img id="blenderImage" class="lazyload inside-img" data-src={{product_inside[image_handle_2]}} />
+                          <div class="inside-title" style="padding-bottom:0">{{ product_inside[name_handle_2] | escape }}</div>
+                        </div>
+                      </div>
+                    {% elsif i > 2 %}
+                      {%- assign image_handle = 'item_' | append: i | append: '_image' -%}
+                      {%- assign name_handle = 'item_' | append: i | append: '_name' -%}
+                      {%- assign description_handle = 'item_' | append: i | append: '_description' -%}
+                      {%- assign origin_handle = 'item_' | append: i | append: '_origin_ingredients' -%}
+
+                      {% if product_inside[description_handle] != "" %}
+                        <div class="inside-card">
+                          <img id="blenderImage" class="lazyload inside-img" data-src={{product_inside[image_handle]}} />
+                          <div class="inside-card-right">
+                              <div class="inside-title">{{ product_inside[name_handle] | escape }}</div>
+                              <div class="inside-desc" >{{ product_inside[description_handle] }}</div>
+                              <div class="inside-desc" style="padding-top:10px" >{{ product_inside[origin_handle] }}</div>
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endif %}
+                  {%- endfor -%}`)
+                  
+                  if(pack1Availabilities[currentColorInt] != "true"){
+//                   	console.log("deny")
+//                     console.log(currentColorInt)
+                    $('.checkout-btn').html("OUT OF STOCK")
+                    $('.checkout-btn').css("background-color", "grey")
+                    $('.checkout-button').html("OUT OF STOCK")
+                    $('.checkout-button').css("background-color", "grey")
+                    isOutOfStock = true
+                  }
+                  else{
+                    $('.checkout-btn').html("BUY NOW")
+                    $('.checkout-btn').css("background-color", "green")
+                    $('.checkout-button').html("BUY NOW")
+                    $('.checkout-button').css("background-color", "green")
+                    isOutOfStock = false
+                  }
+                }
+                else if(currentSlide == 1){
+                   currentPackInt = 1
+                   $('#pack-name').text(packNames[1])
+                   $('#price-div-span').text("$" + packPrices[1])
+                   if(discountedPrice > 1){
+                     $('.price-div2').text("BUY NOW AND PAY $" + (packPrices[1] - discountedPrice))
+                   }
+                   else{
+                     $('.price-div2').text("BUY NOW AND PAY $" + packPrices[1]*discountedPrice)
+                   }
+                   $('.product-main__entry').html(packDesc[1])
+                   $("#sumPackName").html(packNamesShort[1])
+                   $("#sumPackImg").attr("src", packImages[1])
+                   {% assign product = collections["landing-page-products-v2"].products[1] %}
+                   $('.free-items').html(`{{ product.metafields.sf_product_details.free_items }}`)
+                   {% assign product_inside = product.metafields.sf_what_s_inside %}
+
+                    $('.inside-div').html(`<div class="inside-card" style="justify-content:space-between; background-color:white; padding:0">
+                      <div class="inside-card-double">
+                        <img style="margin-left: -15px;" id="blenderImage" class="lazyload inside-img" data-src={{product.metafields.non_blend['item_vejo_image']}} />
+                        <div class="inside-title" style="padding-bottom:0">{{ product.metafields.non_blend['item_vejo_name'] | escape }} Blender</div>
+                      </div>
+                      <div class="inside-card-double" style="padding-right:10px">
+                        <img id="blenderImage" class="lazyload inside-img" data-src={{product.metafields.non_blend['item_charger_image']}} />
+                        <div class="inside-title" style="padding-bottom:0">{{ product.metafields.non_blend['item_charger_name'] | escape }}</div>
+                      </div>
+                    </div>`)
+                        
+                   $('.inside-div').append(`{%- for i in (1..9) -%}
+					{% comment %}
+                    {% if i == 1 %}
+                      {%- assign image_handle = 'item_' | append: i | append: '_image' -%}
+                      {%- assign name_handle = 'item_' | append: i | append: '_name' -%}
+                      {%- assign description_handle = 'item_' | append: i | append: '_description' -%}
+                      {%- assign origin_handle = 'item_' | append: i | append: '_origin_ingredients' -%}
+
+                      {% assign iplusone = i | plus: 1 %}
+                      {%- assign image_handle_2 = 'item_' | append: iplusone | append: '_image' -%}
+                      {%- assign name_handle_2 = 'item_' | append: iplusone | append: '_name' -%}
+                      {%- assign description_handle_2 = 'item_' | append: iplusone | append: '_description' -%}
+                      {%- assign origin_handle_2 = 'item_' | append: iplusone | append: '_origin_ingredients' -%}
+
+                      <div class="inside-card" style="justify-content:space-between; background-color:white; padding:0">
+                        <div class="inside-card-double">
+                          <img style="margin-left: -15px;" id="blenderImage" class="lazyload inside-img" data-src={{product_inside[image_handle]}} />
+                          <div class="inside-title" style="padding-bottom:0">{{ product_inside[name_handle] | escape }} Blender</div>
+                        </div>
+                        <div class="inside-card-double" style="padding-right:10px">
+                          <img id="blenderImage" class="lazyload inside-img" data-src={{product_inside[image_handle_2]}} />
+                          <div class="inside-title" style="padding-bottom:0">{{ product_inside[name_handle_2] | escape }}</div>
+                        </div>
+                      </div>
+					{% endif %}
+					{% endcomment %}
+                    {% if i == 2 or i == 5 %}
+					{% else %}
+                      {%- assign image_handle = 'item_' | append: i | append: '_image' -%}
+                      {%- assign name_handle = 'item_' | append: i | append: '_name' -%}
+                      {%- assign description_handle = 'item_' | append: i | append: '_description' -%}
+                      {%- assign origin_handle = 'item_' | append: i | append: '_origin_ingredients' -%}
+
+                      {% if product_inside[name_handle] != "" %}
+                        <div class="inside-card">
+                          <img id="blenderImage" class="lazyload inside-img" data-src={{product_inside[image_handle]}} />
+                          <div class="inside-card-right">
+                              <div class="inside-title">{{ product_inside[name_handle] | escape }}</div>
+                              <div class="inside-desc" >{{ product_inside[description_handle] }}</div>
+                              <div class="inside-desc" style="padding-top:10px" >{{ product_inside[origin_handle] }}</div>
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endif %}
+                  {%- endfor -%}`)
+                   
+                  if(pack2Availabilities[currentColorInt] != "true"){
+//                   	console.log("deny")
+//                     console.log(currentColorInt)
+                    $('.checkout-btn').html("OUT OF STOCK")
+                    $('.checkout-btn').css("background-color", "grey")
+                    $('.checkout-button').html("OUT OF STOCK")
+                    $('.checkout-button').css("background-color", "grey")
+                    isOutOfStock = true
+                  }
+                  else{
+                    $('.checkout-btn').html("BUY NOW")
+                    $('.checkout-btn').css("background-color", "green")
+                    $('.checkout-button').html("BUY NOW")
+                    $('.checkout-button').css("background-color", "green")
+                    isOutOfStock = false
+                  }
+                }
+                else if(currentSlide == 2){
+                   currentPackInt = 2
+                   $('#pack-name').text(packNames[2])
+                   $('.product-main__entry').html(packDesc[2])
+                   $('#price-div-span').text("$" + packPrices[2] + "0")
+                   if(discountedPrice > 1){
+                     $('.price-div2').text("BUY NOW AND PAY $" + (packPrices[2] - discountedPrice))
+                   }
+                   else{
+                     $('.price-div2').text("BUY NOW AND PAY $" + packPrices[2]*discountedPrice)
+                   }
+                   $("#sumPackName").html(packNamesShort[2])
+                   $("#sumPackImg").attr("src", packImages[2])
+                   {% assign product = collections["landing-page-products-v2"].products[2] %}
+                   $('.free-items').html(`{{ product.metafields.sf_product_details.free_items }}`)
+                   {% assign product_inside = product.metafields.sf_what_s_inside %}
+                   $('.inside-div').html(`{%- for i in (1..3) -%}
+                    {% if i == 1 %}
+                      {%- assign image_handle = 'item_' | append: i | append: '_image' -%}
+                      {%- assign name_handle = 'item_' | append: i | append: '_name' -%}
+                      {%- assign description_handle = 'item_' | append: i | append: '_description' -%}
+                      {%- assign origin_handle = 'item_' | append: i | append: '_origin_ingredients' -%}
+
+                      {% assign iplusone = i | plus: 1 %}
+                      {%- assign image_handle_2 = 'item_' | append: iplusone | append: '_image' -%}
+                      {%- assign name_handle_2 = 'item_' | append: iplusone | append: '_name' -%}
+                      {%- assign description_handle_2 = 'item_' | append: iplusone | append: '_description' -%}
+                      {%- assign origin_handle_2 = 'item_' | append: iplusone | append: '_origin_ingredients' -%}
+
+                      <div class="inside-card" style="justify-content:space-between; background-color:white; padding:0">
+                        <div class="inside-card-double">
+                          <img style="margin-left: -15px;" id="blenderImage" class="lazyload inside-img" data-src={{product_inside[image_handle]}} />
+                          <div class="inside-title" style="padding-bottom:0">{{ product_inside[name_handle] | escape }} Blender</div>
+                        </div>
+                        <div class="inside-card-double" style="padding-right:10px">
+                          <img id="blenderImage" class="lazyload inside-img" data-src={{product_inside[image_handle_2]}} />
+                          <div class="inside-title" style="padding-bottom:0">{{ product_inside[name_handle_2] | escape }}</div>
+                        </div>
+                      </div>
+                    {% elsif i > 2 %}
+                      {%- assign image_handle = 'item_' | append: i | append: '_image' -%}
+                      {%- assign name_handle = 'item_' | append: i | append: '_name' -%}
+                      {%- assign description_handle = 'item_' | append: i | append: '_description' -%}
+                      {%- assign origin_handle = 'item_' | append: i | append: '_origin_ingredients' -%}
+
+                      {% if product_inside[name_handle] != "" %}
+                        <div class="inside-card">
+                          <img id="blenderImage" class="lazyload inside-img" data-src={{product_inside[image_handle]}} />
+                          <div class="inside-card-right">
+                              <div class="inside-title">{{ product_inside[name_handle] | escape }}</div>
+                              <div class="inside-desc" >{{ product_inside[description_handle] }}</div>
+                              <div class="inside-desc" style="padding-top:10px" >{{ product_inside[origin_handle] }}</div>
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endif %}
+                  {%- endfor -%}`)
+                  
+                  if(pack3Availabilities[currentColorInt] != "true"){
+//                   	console.log("deny")
+//                     console.log(currentColorInt)
+                    $('.checkout-btn').html("OUT OF STOCK")
+                    $('.checkout-btn').css("background-color", "grey")
+                    $('.checkout-button').html("OUT OF STOCK")
+                    $('.checkout-button').css("background-color", "grey")
+                    isOutOfStock = true
+                  }
+                  else{
+                    $('.checkout-btn').html("BUY NOW")
+                    $('.checkout-btn').css("background-color", "green")
+                    $('.checkout-button').html("BUY NOW")
+                    $('.checkout-button').css("background-color", "green")
+                    isOutOfStock = false
+                  }
+                }
+              });
+
+              $('.blend-select-fast').on('afterChange', function(event, slick, direction){
+                var currentSlide = $('.blend-select-fast').slick('slickCurrentSlide');
+                var labeloNumber = currentSlide + 1
+//                 console.log(currentSlide)
+                
+                var numberOfOos = 0
+                var allVariants = {{ collections["landing-page-products-v2"].products[1].variants | json }}                  
+                for(var i = 0; i < allVariants.length; i++){
+                  if(allVariants[i]["title"] == $($(slick.$slides.get(currentSlide)).children().children()).data("color")){
+                    break
+                  }
+                  else if(masterInventoryJson[allVariants[i]["title"]] != undefined){
+                    if(masterInventoryJson[allVariants[i]["title"]]["outofstock"] == "true"){
+                      numberOfOos += 1
+                    }
+                  }
+                  else{
+                    numberOfOos += 1
+                  }
+                }
+                labeloNumber = labeloNumber + numberOfOos
+//                 console.log("numberOfOos",numberOfOos)
+//                 console.log("labeloNumber",labeloNumber)
+
+                chosenColor = $('.labelo' + labeloNumber)[0]["dataset"]["title"]
+
+                $("#product-main__price_color").html($('.labelo' + labeloNumber)[0]["dataset"]["title"])
+                $("#sumDeviceImg").attr("src", jsonImages[$('.labelo' + labeloNumber)[0]["dataset"]["title"]])
+                $("#sumColor").html($('.labelo' + labeloNumber)[0]["dataset"]["title"])
+
+                $('.labelo' + labeloNumber).trigger("click")
+                currentColorInt = currentSlide
+                
+                if(currentPackInt == 0){
+                  if(pack2Availabilities[currentColorInt] != "true"){
+//                   	console.log("deny")
+                    $('.checkout-btn').html("OUT OF STOCK")
+                    $('.checkout-btn').css("background-color", "grey")
+                    $('.checkout-button').html("OUT OF STOCK")
+                    $('.checkout-button').css("background-color", "grey")
+                    isOutOfStock = true
+                  }
+                  else{
+                    $('.checkout-btn').html("BUY NOW")
+                    $('.checkout-btn').css("background-color", "green")
+                    $('.checkout-button').html("BUY NOW")
+                    $('.checkout-button').css("background-color", "green")
+                    isOutOfStock = false
+                  }
+                }
+                if(currentPackInt == 1){
+                  if(pack1Availabilities[currentColorInt] != "true"){
+//                   	console.log("deny")
+                    $('.checkout-btn').html("OUT OF STOCK")
+                    $('.checkout-btn').css("background-color", "grey")
+                    $('.checkout-button').html("OUT OF STOCK")
+                    $('.checkout-button').css("background-color", "grey")
+                    isOutOfStock = true
+                  }
+                  else{
+                    $('.checkout-btn').html("BUY NOW")
+                    $('.checkout-btn').css("background-color", "green")
+                    $('.checkout-button').html("BUY NOW")
+                    $('.checkout-button').css("background-color", "green")
+                    isOutOfStock = false
+                  }
+                }
+                if(currentPackInt == 2){
+                  if(pack3Availabilities[currentColorInt] != "true"){
+//                   	console.log("deny")
+                    $('.checkout-btn').html("OUT OF STOCK")
+                    $('.checkout-btn').css("background-color", "grey")
+                    $('.checkout-button').html("OUT OF STOCK")
+                    $('.checkout-button').css("background-color", "grey")
+                    isOutOfStock = true
+                  }
+                  else{
+                    $('.checkout-btn').html("BUY NOW")
+                    $('.checkout-btn').css("background-color", "green")
+                    $('.checkout-button').html("BUY NOW")
+                    $('.checkout-button').css("background-color", "green")
+                    isOutOfStock = false
+                  }
+                }
+              })
+
+//  Sets the initial click
+              $('.labelo5').trigger("click")
+//               if(`{/{ settings.island_blue_stock }}` == "true"){
+//               	$('.labelo5').trigger("click")
+//               }
+              
+              var freePack = ""
+              {% assign freeProductHandleBandana = "vejo-bandana-black" %}
+              {% assign free_items_enabled = settings.free_items_on %}    
+              {% assign free_items_banner = settings.free_items_text %}
+                 
+              var bannerValue = ""
+              if(banner != undefined && banner == "free"){
+                bannerValue = "Buy now and get free US shipping"
+              }
+              else{
+                bannerValue = "Buy now and get 10% off"
+              }
+               
+              {% if free_items_enabled == true %}
+                console.log("ACTIVATED")
+                $('.sticky-off-div').css("font-size","14px")
+                $('.sticky-off-div').css("text-align","center")
+                $('.sticky-off-div').html(bannerValue + " " + `{{ free_items_banner }}`)
+                {% if all_products[freeProductHandleBandana].variants[0].inventory_quantity > 10000000 %}
+                  freePack = ",32075517001822:1,32091737784414:1"
+                {% else %}
+                  freePack = "," + {{ settings.free_item_id }} + ":1"
+                {% endif %}
+              {% endif %}
+                  
+              {% if settings.free_items_stickers_on %}
+                  freePack = freePack + ",32128665092190:1"
+              {% endif %}
+                  
+              var discountCode = "MOBILE10"
+              
+              if(codeToApply != undefined){
+                discountCode = codeToApply
+                discountCode = discountCode.replace(/%/g, "%25")
+//                 console.log(discountCode)
+              }
+                  
+              if(banner != undefined && banner == "free"){
+                discountCode = "FREESHIP"
+              }
+
+              $('.checkout-btn').on("click", function(){
+                if(isOutOfStock){
+//                   console.log("OUT OF STOCK")
+                }
+                else{
+                  fbq('track', 'initiateCheckout')
+                  $('#loadingImage').attr("src", jsonImagesVejoAndPack[chosenColor][chosenPack])
+                  $('#loadingImage').attr("data-src", jsonImagesVejoAndPack[chosenColor][chosenPack])
+                  $('.overlay-div').css('display', 'flex')
+                  var checkoutUrl = "http://shopjooster.myshopify.com/cart/" + matrix[chosenColor][chosenPack] + ":1" + freePack + "?discount=" + discountCode + "&origin=LP&note=instalp"
+                  window.location.href = checkoutUrl
+                }
+              })
+
+              $('.checkout-button').on("click", function(){
+                if(isOutOfStock){
+//                   console.log("OUT OF STOCK")
+                }
+                else{
+                  fbq('track', 'initiateCheckout')
+                  $('#loadingImage').attr("src", jsonImagesVejoAndPack[chosenColor][chosenPack])
+                  $('#loadingImage').attr("data-src", jsonImagesVejoAndPack[chosenColor][chosenPack])
+                  $('.overlay-div').css('display', 'flex')
+                  var checkoutUrl = "http://shopjooster.myshopify.com/cart/" + matrix[chosenColor][chosenPack] + ":1" + freePack + "?discount=" + discountCode + "&origin=LP&note=instalp"
+                  window.location.href = checkoutUrl
+                }
+              })
+              
+              if(specialRequest != undefined){
+                $('.pack-select-fast').slick('slickGoTo', parseInt(specialRequest))
+              }
+              
+//               console.log("availableColors",availableColors)
+              if(availableColors == 0){
+                $('.checkout-btn').html("OUT OF STOCK")
+                $('.checkout-btn').css("background-color", "grey")
+                $('.checkout-button').html("OUT OF STOCK")
+                $('.checkout-button').css("background-color", "grey")
+                $('.product-main__kit-item').css('display', 'none')
+                $('#product-main__price_color').css("display","none")
+                $('.list-variants').css("display","none")
+                $('#shippingMessage').css("display","none")
+                $('#shopify-section-landing-vejo-choose-blends-v2').css("display","none")
+                isOutOfStock = true
+              }
+            })
+          </script>
+		</div>
+    </div>
+</body>

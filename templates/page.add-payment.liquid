@@ -1,0 +1,91 @@
+<style>
+  .main{
+    padding-top: 120px !important;
+    padding-bottom: 120px;
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+    background-color: #f8f8f8;   
+  }
+  .main-recharge-payment-div{
+    height: 100vh;
+    display:flex;
+    flex-direction:column;
+    padding-left:30px;
+    padding-right:30px;
+    max-width: 500px;
+  }
+  .recharge-payment-title{
+    padding-bottom:30px;
+    font-size:25px;
+  }
+  .recharge-iframe{
+    height:100%;
+    border: none;
+  }
+  .back-to-sub{
+    position: absolute;
+    top: 130px;
+    left: 30px;
+    text-decoration:none;
+  }
+  @media (max-width: 750px) {
+    .main{
+      padding-top:90px !important
+    }
+    .recharge-payment-title{
+      font-size:20px;
+    }
+    .back-to-sub{
+      top:150px;
+      left:15px
+    }
+  }
+</style>
+
+<div class="main-recharge-payment-div">
+  <a class="back-to-sub" href="https://subscriptions.vejo.com">&larr;  Back to my subscriptions</a>
+  <div class="recharge-payment-title">
+    
+  </div>
+  <iframe class="recharge-iframe" src=""></iframe>
+</div>
+
+<script>
+  $(document).ready(function() {
+    var getUrlParameter = function getUrlParameter(sParam) {	
+      var sPageURL = decodeURIComponent(window.location.search.substring(1)),	
+          sURLVariables = sPageURL.split('&'),	
+          sParameterName,	
+          i;	
+      for (i = 0; i < sURLVariables.length; i++) {	
+          sParameterName = sURLVariables[i].split('=');	
+          if (sParameterName[0] === sParam) {	
+              return sParameterName[1] === undefined ? true : sParameterName[1];	
+          }	
+      }	
+    };
+    var id = getUrlParameter('id');
+    var language = getUrlParameter('language');
+    var showHeader = getUrlParameter('showheader');
+    console.log("id", id);
+
+    if(id != null){
+      $('.recharge-iframe').attr("src","https://admin.rechargeapps.com/customer_portal_payment_source_form/" + id + "/payment_source")
+    }
+    if(language == "de"){
+      $('.recharge-payment-title').html(`DE TRANSLATION`)
+    }
+    else{
+      $('.recharge-payment-title').html(`Hi {{ customer.name }}, please enter a new payment method for your Vejo monthly subscription below`)
+    }
+    if(showHeader != null){
+      $("#mainHeader").css("display", "none")
+      $(".header__announcement").css("display", "none")
+      $(".back-to-sub").css("display", "none")
+      $("#shopify-section-footer").css("display", "none")
+      $(".main").css("margin-top", "0px")
+      $(".template-page--add-payment").css("background-color", "#f8f8f8")
+    }
+  })
+</script>

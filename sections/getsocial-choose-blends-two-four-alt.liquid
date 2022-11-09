@@ -1,0 +1,182 @@
+<style>
+  .twofour-title{
+    font-weight:500;
+    text-align:center;
+    padding-bottom:20px;
+    font-size:20px;
+  }
+  .twofour-main-div{
+    padding-top:40px;
+    padding-bottom:30px;
+    background-color:white;
+    font-family: Scandia;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+  .twofour-sub-div{
+    padding-top:10px;
+  	display:flex;
+    justify-content: space-around;
+    width: 98%;
+  }
+  .twofour-blend{
+    background-color: #f3f4f3;
+  	display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items:center;
+    padding:2vw;
+    border-radius:10px;
+    height: 100%;
+    padding-bottom: 15px;
+  }
+  .twofour-blend-img{
+    margin-bottom:10px;
+    border-radius:10px;
+    width:42vw;
+    height:100%;
+    transition: all .1s ease;
+  }
+  .twofour-blend-name{
+    font-size: 15px;
+    text-align: center;
+    font-weight: 500;
+    width: 100%;
+    height: 32px;
+    margin-top: 7px;
+  }
+  .twofour-blend-pack{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+  }
+  .twofour-blend-choices-alt{
+  	display: flex;
+    justify-content: space-around;
+    align-items: inherit;
+    width: 90%;
+  }
+  .twofour-blend-choices-qty-alt{
+    background: white;
+    width: 35%;
+    text-align: center;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    font-size: 16px;
+    border: 0.5px solid black;
+  }
+  .twofour-blend-choices-choice-alt{
+    transition: all .1s ease;
+    font-size:18px;
+    text-align: center;
+    font-weight:500;
+    width:30%
+  }
+  .twofour-blend-choices-choice:active {
+	transform: scale(0.95);
+	transition: .05s;
+  }
+  .twofour-blend-img:active {
+	transform: scale(0.95);
+	transition: .05s;
+  }
+</style>
+
+<div class="twofour-main-div">
+  <div class="twofour-title">Select two FREE 4-packs<br/>of your choice</div>
+  <div class="twofour-sub-div">
+    <div class="twofour-blend">
+      <img class="twofour-blend-img" data-variant="39487812501598" src="https://cdn.shopify.com/s/files/1/1852/7957/files/vejo-blended-drink-organic-strawberry-banana.jpg?v=1655853007"/>
+      <div class="twofour-blend-name">Strawberry Banana</div>
+      <div class="twofour-blend-pack">4-Pack</div>
+      <div class="twofour-blend-choices-alt">
+        <div id="blend0altchoice0" data-qty="packAmount0" data-variant="39487812501598" class="twofour-blend-choices-choice-alt">
+          -
+        </div>
+        <div id="packAmount0" class="twofour-blend-choices-qty-alt">0</div>
+        <div id="blend0altchoice1" data-qty="packAmount0" data-variant="39487812501598" class="twofour-blend-choices-choice-alt">
+          +
+        </div>
+      </div>
+    </div>
+    <div class="twofour-blend">
+      <img class="twofour-blend-img" data-variant="39487804375134" src="https://cdn.shopify.com/s/files/1/1852/7957/files/vejo-blended-drink-organic-tropical.jpg?v=1655853007" />
+      <div class="twofour-blend-name">Tropical</div>
+      <div class="twofour-blend-pack">4-Pack</div>
+      <div class="twofour-blend-choices-alt">
+        <div id="blend1altchoice0" data-qty="packAmount1" data-variant="39487804375134" class="twofour-blend-choices-choice-alt">
+          -
+        </div>
+        <div id="packAmount1" class="twofour-blend-choices-qty-alt">0</div>
+        <div id="blend1altchoice1" data-qty="packAmount1" data-variant="39487804375134" class="twofour-blend-choices-choice-alt">
+          +
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="twofour-sub-div">
+    <div class="twofour-blend">
+      <img class="twofour-blend-img" data-variant="39487813582942" src="https://cdn.shopify.com/s/files/1/1852/7957/files/vejo-blended-drink-tart-berry.jpg?v=1655853007"/>
+      <div class="twofour-blend-name">Tart Berry</div>
+      <div class="twofour-blend-pack">4-Pack</div>
+      <div class="twofour-blend-choices-alt">
+        <div id="blend2altchoice0" data-qty="packAmount2" data-variant="39487813582942" class="twofour-blend-choices-choice-alt">
+          -
+        </div>
+        <div id="packAmount2" class="twofour-blend-choices-qty-alt">0</div>
+        <div id="blend2altchoice1" data-qty="packAmount2" data-variant="39487813582942" class="twofour-blend-choices-choice-alt">
+          +
+        </div>
+      </div>
+    </div>
+    <div class="twofour-blend">
+      <img class="twofour-blend-img" data-variant="39487813681246" src="https://cdn.shopify.com/s/files/1/1852/7957/files/vejo-blended-drink-clean-greens.jpg?v=1655853007"/>
+      <div class="twofour-blend-name">Clean Greens</div>
+      <div class="twofour-blend-pack">4-Pack</div>
+      <div class="twofour-blend-choices-alt">
+        <div id="blend3altchoice0" data-qty="packAmount3" data-variant="39487813681246" class="twofour-blend-choices-choice-alt">
+          -
+        </div>
+        <div id="packAmount3" class="twofour-blend-choices-qty-alt">0</div>
+        <div id="blend3altchoice1" data-qty="packAmount3" data-variant="39487813681246" class="twofour-blend-choices-choice-alt">
+          +
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="twofour-sub-div">
+    <div class="twofour-blend">
+      <img class="twofour-blend-img" data-variant="39487814074462" src="https://cdn.shopify.com/s/files/1/1852/7957/files/vejo-blended-drink-banana-almond.jpg?v=1665431399"/>
+      <div class="twofour-blend-name">Banana Almond</div>
+      <div class="twofour-blend-pack">4-Pack</div>
+      <div class="twofour-blend-choices-alt">
+        <div id="blend4altchoice0" data-qty="packAmount4" data-variant="39487814074462" class="twofour-blend-choices-choice-alt">
+          -
+        </div>
+        <div id="packAmount4" class="twofour-blend-choices-qty-alt">0</div>
+        <div id="blend4altchoice1" data-qty="packAmount4" data-variant="39487814074462" class="twofour-blend-choices-choice-alt">
+          +
+        </div>
+      </div>
+    </div>
+    <div class="twofour-blend">
+      <img class="twofour-blend-img" data-variant="39487862210654" src="https://cdn.shopify.com/s/files/1/1852/7957/files/vejo-blended-drink-oatmilk-matcha-latte.jpg?v=1655853007"/>
+      <div class="twofour-blend-name">Matcha Latte</div>
+      <div class="twofour-blend-pack">4-Pack</div>
+      <div class="twofour-blend-choices-alt">
+        <div id="blend5altchoice0" data-qty="packAmount5" data-variant="39487862210654" class="twofour-blend-choices-choice-alt">
+          -
+        </div>
+        <div id="packAmount5" class="twofour-blend-choices-qty-alt">0</div>
+        <div id="blend5altchoice1" data-qty="packAmount5" data-variant="39487862210654" class="twofour-blend-choices-choice-alt">
+          +
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+

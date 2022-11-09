@@ -1,0 +1,251 @@
+{% assign _section  = section.settings %}
+{% assign _block  = block.settings %}
+{% include 'assign-vejo-care-customer' %}
+
+
+{{ "hp-blends.scss.css" | asset_url | stylesheet_tag }}
+
+<div class="sctn sctn-blends blends-favorites" id="sctn-{{ section.id }}">
+  <div class="sctn-content">
+    <div class="sctn-header">
+      <h2>{{ _section.main_title }}</h2>
+      {{ _section.main_sub_text }}
+      {% if _section.blends_shop_url %}
+      <div class="btn-wrp">
+        <a href="{{ _section.blends_shop_url }}" class="btn-link btn-outline-black">{{ _section.blends_shop }}</a>
+      </div>
+      {% endif %}
+    </div>
+  
+
+    <div class="blends-wrp">
+      <div class="blends-pods">
+        {% for block in section.blocks %}
+          <div class="blend-item blend-nav">
+            <div class="blend-img">
+              <img data-src="{{ block.settings.img_pod | img_url: "master" }}" class="lazyload" alt="{{block.settings.title}}"/>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    
+      <div class="blends-info">
+        {% for block in section.blocks %}
+          <div class="blend-item blend-content">
+            <div class="blend-container">
+              <div class="blend-info">
+                <h3 style="color:{{ block.settings.blend_type_color }}">{{ block.settings.blend_type }}</h3>
+                <h2 style="color:{{ block.settings.blend_name_color }}">{{ block.settings.title }}</h2>
+                <div class="blend-copy">
+                  {{ block.settings.blend_info | truncate: 140 }} 
+                  {% if block.settings.blend_learn_more != '' %}
+                    <a href="{{ block.settings.blend_learn_more }}" 
+                       class="learn-more" 
+                       target="_blank" 
+                       rel="noreferrer noopener" 
+                       aria-label="Opens in a new tab">Learn more</a>
+                  {% endif %}
+                  <div class="ingredients">
+                    {% if block.settings.blend_ingredients != '' %}
+                      {{ block.settings.blend_ingredients }}
+                    {% else %}
+						<p>&nbsp;</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% if _section.enable_blend_btn %}
+              <div class="btn-wrp">
+                <button class="btn-submit btn-black hover-outline btn-submit-blends" data-blend-vid="{{ block.settings.blend_vid }}">{{ block.settings.blend_btn_text }}</button>
+              </div>
+              {% endif %}
+              <div class="nutrition-facts">
+                {% if block.settings.facts_text != '' %}
+                  	<p class="open-facts" data-nf-img-src="{{ block.settings.blend_nf_img }}">{{block.settings.facts_text}}</p>
+                	<img data-src="{{ block.settings.blend_nf_img | img_url: "master" }}" class="lazyload nf-img-hidden" alt="Nutritional Facts"/>
+                {% else %}
+                  	<p>&nbsp;</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="nutrition-facts-modal">
+        <div class="nutrition-facts-content">
+          <div class="nutrition-img-wrp">
+            <div class="close-facts">Close</div>
+            <img src="" class="nutrition-facts-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+{{ "hp-blends.js" | asset_url |  script_tag }}
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+{% schema %}
+  {
+    "name": "Blends - Most Popular",
+    "settings":[
+      {
+        "type":"header",
+        "content":"Main Headline"
+      },
+      {
+        "type":"text",
+        "id":"main_title",
+        "label":"Main Title",
+        "info":"ex.) Find your blend",
+        "default": "Find your blend"
+      },
+      {
+        "type":"richtext",
+        "id":"main_sub_text",
+        "label":"Main Sub Text",
+        "info":"ex.) Whether you’re looking for a dose of clean greens, a healthy smoothie, a pre-workout boost or just a nutritious snack – we’ve got you covered.",
+        "default": "<p>Whether you’re looking for a dose of clean greens, a healthy smoothie, a pre-workout boost or just a nutritious snack – we’ve got you covered.</p>"
+      },
+      {
+        "type":"text",
+        "id":"blends_shop",
+        "label":"Main Button Text",
+        "default": "Shop Now"
+      },
+      {
+        "type":"url",
+        "id":"blends_shop_url",
+        "label":"Main Button Url"
+      },
+	  {
+        "type":"checkbox",
+        "id":"enable_blend_btn",
+        "label":"Show blend button",
+        "default":true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "section",
+        "name": "Blends",
+        "settings": [
+          {
+            "type":"text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type":"color",
+            "id":"blend_name_color",
+            "label":"Blend Name Color"
+          },
+          {
+            "type":"header",
+            "content":"Image"
+          },
+          {
+            "type":"image_picker",
+            "id":"img_pod",
+            "label":"Pod Image"
+          },
+          {
+            "type":"header",
+            "content":"Blend Header"
+          },
+          {
+            "type":"select",
+            "id":"blend_type",
+            "label":"Blend Type",
+            "options":[
+              {
+                "value":"Smoothie Blend",
+                "label":"Smoothie Blend"
+              },
+              {
+                "value":"Functional Blend",
+                "label":"Functional Blend"
+              },
+              {
+                "value":"Protein Blend",
+                "label":"Protein Blend"
+              },
+              {
+                "value":"Beauty Blend",
+                "label":"Beauty Blend"
+              },
+              {
+                "value":"Coffee/Tea Blend",
+                "label":"Coffee/Tea Blend"
+              },
+              {
+                "value":"Vejo+ Blend",
+                "label":"Vejo+ Blend"
+              }
+            ],
+            "default":"Smoothie Blend"
+          },
+          {
+            "type":"color",
+            "id":"blend_type_color",
+            "label":"Blend Type Color"
+          },
+          {
+            "type":"header",
+            "content":"Blend Text"
+          },
+          {
+            "type":"richtext",
+            "id":"blend_info",
+            "label":"Blend Info (Max characters: 140)"
+          },
+          {
+            "type":"richtext",
+            "id":"blend_ingredients",
+            "label":"Listed Ingredients",
+            "info":"Organic pineapple, organic mango, organic banana, organic strawberry"
+          },
+          {
+            "type":"header",
+            "content":"Blend Buttons"
+          },
+          {
+            "type":"url",
+            "id":"blend_learn_more",
+            "label":"Blend Url - Learn more"
+          },
+          {
+            "type":"text",
+            "id":"blend_btn_text",
+            "label":"Button Text",
+            "default":"Add to Cart"
+          },
+          {
+            "type":"text",
+            "id":"blend_vid",
+            "label":"Blend Variant ID"
+          },
+          {
+            "type":"text",
+            "id":"facts_text",
+            "label":"Facts Title",
+            "default":"Nutrition Facts"
+          },
+          {
+            "type":"image_picker",
+            "id":"blend_nf_img",
+            "label":"Nutrition Facts Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blends - Most Popular",
+        "category": "Block - Blends"
+      }
+    ]
+  }
+{% endschema %}

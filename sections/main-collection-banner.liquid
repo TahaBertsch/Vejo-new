@@ -1,0 +1,259 @@
+{%- liquid
+  assign show_collection_image = section.settings.show_collection_image
+  assign collection_image_aspect_ratio = section.settings.collection_image_aspect_ratio
+  assign disable_image_style = true
+
+  if section.settings.show_collection_description
+    assign collection_description = collection.description
+  endif
+
+  if collection_image_aspect_ratio == 'natural'
+    assign disable_image_style = false
+  endif
+  if section.settings.full-width_image
+  	 assign full-width_style = 'margin-top:0px !important;'
+   endif
+-%}
+<style>
+  @media (max-width: 769px){
+	.mobile{
+      display: block !important;
+    }
+  	.desktop{
+      display: none !important;
+
+}
+</style>
+<div
+  class="desktop
+    collection
+    collection--header
+    collection--image-aspect-{{ collection_image_aspect_ratio }}
+    {% if show_collection_image and collection.image -%}collection--has-image{%- endif %}
+  "
+  style="padding-top: 0px; --text-max-width: {{ section.settings.text_max_width }}rem;{{full-width_style }}" >
+  
+  <div class="collection__inner"  {% if section.settings.full-width_image -%} style="padding:0px;max-width: none"{%- endif %}>
+    <header class="collection__header">
+  	{% if section.settings.full-width_image -%} 
+  		
+	  {% if show_collection_image and collection.image  %}
+        <div class="collection__header-image-wrapper collection_banner_for_desktop" {% if section.settings.full-width_image -%} style="width: 100%"{%- endif %}>
+          {% render 'image' with
+            image: collection.image,
+            wrapper_class: 'lazyload collection__header-image',
+            disable_style: disable_image_style
+          %}
+        </div>
+      {% endif %}	
+  	 {% if show_collection_image and section.settings.mobile_image != blank %}
+  		
+        <div class="collection__header-image-wrapper collection_banner_for_mobile" style="display:none; margin-top:0px" {% if section.settings.full-width_image -%} style="width: 100%; "{%- endif %}>
+          {% render 'image' with
+            image: {{section.settings.mobile_image}},
+            wrapper_class: 'lazyload collection__header-image',
+            disable_style: disable_image_style
+          %}
+        </div>
+      {% endif %}	
+      <div class="collection__header-text collection_banner-text-full-width-mobile" {% if section.settings.full-width_image and show_collection_image -%} style="position: absolute; top: 20%;color:{{section.settings.color_text}};margin-top: 30px;margin-bottom:30px;"{%- endif %}>
+        {% render 'section-header',
+          heading: collection.title,
+          subheading: collection_description,
+          classes: 'section-header--large section-header--center',
+          color_header_mobile:section.settings.color_text_mobile,
+          color_description_mobile:section.settings.color_text_mobile,
+        %}
+      </div>
+	{% else %}
+      <div class="collection__header-text" style="color:{{section.settings.color_text}};" {% if section.settings.full-width_image -%} style="position: absolute; top: 20%; "{%- endif %}>
+        {% render 'section-header',
+          heading: collection.title,
+          subheading: collection_description,
+          classes: 'section-header--large section-header--center',
+          color_header_mobile:section.settings.color_text_mobile,
+          color_description_mobile:section.settings.color_text_mobile,
+        %}
+      </div>
+
+      {% if show_collection_image and collection.image %}
+        <div class="collection__header-image-wrapper collection_banner_for_desktop" {% if section.settings.full-width_image -%} style="width: 100%;"{%- endif %}>
+          {% render 'image' with
+            image: collection.image,
+            wrapper_class: 'lazyload collection__header-image',
+            disable_style: disable_image_style
+          %}
+        </div>
+      {% endif %}
+  	   {% if show_collection_image and section.settings.mobile_image != blank %}
+        <div class="collection__header-image-wrapper collection_banner_for_mobile" style="display:none" {% if section.settings.full-width_image -%} style="width: 100%; margin-top:0px"{%- endif %}>
+          {% render 'image' with
+            image: {{section.settings.mobile_image}},
+            wrapper_class: 'lazyload collection__header-image',
+            disable_style: disable_image_style,
+            color_header_mobile:section.settings.color_text_mobile,
+         	color_description_mobile:section.settings.color_text_mobile,
+          %}
+        </div>
+      {% endif %}	
+  	{%- endif %}
+    </header>
+  </div>
+</div>
+
+
+<div
+  class="mobile 
+    collection
+    collection--header
+    collection--image-aspect-{{ collection_image_aspect_ratio }}
+    {% if show_collection_image and collection.image -%}collection--has-image{%- endif %}
+  "
+  style="padding-top: 0px; --text-max-width: {{ section.settings.text_max_width_mobile }}rem !important;{{full-width_style }};display:none" >
+  
+  <div class="collection__inner"  {% if section.settings.full-width_image -%} style="padding:0px;max-width: none"{%- endif %}>
+    <header class="collection__header">
+  	{% if section.settings.full-width_image -%} 
+  		
+	  {% if show_collection_image and collection.image  %}
+        <div class="collection__header-image-wrapper collection_banner_for_desktop" {% if section.settings.full-width_image -%} style="width: 100%"{%- endif %}>
+          {% render 'image' with
+            image: collection.image,
+            wrapper_class: 'lazyload collection__header-image',
+            disable_style: disable_image_style
+          %}
+        </div>
+      {% endif %}	
+  	 {% if show_collection_image and section.settings.mobile_image != blank %}
+  		
+        <div class="collection__header-image-wrapper collection_banner_for_mobile" style="display:none; margin-top:0px" {% if section.settings.full-width_image -%} style="width: 100%; "{%- endif %}>
+          {% render 'image' with
+            image: {{section.settings.mobile_image}},
+            wrapper_class: 'lazyload collection__header-image',
+            disable_style: disable_image_style
+          %}
+        </div>
+      {% endif %}	
+      <div class="collection__header-text collection_banner-text-full-width-mobile" {% if section.settings.full-width_image and show_collection_image -%} style="position: absolute; top: 20%;color:{{section.settings.color_text}};margin-top: 30px;margin-bottom:30px;"{%- endif %}>
+        {% render 'section-header',
+          heading: collection.title,
+          subheading: collection_description,
+          classes: 'section-header--large section-header--center',
+          color_header_mobile:section.settings.color_text_mobile,
+          color_description_mobile:section.settings.color_text_mobile,
+        %}
+      </div>
+	{% else %}
+      <div class="collection__header-text" style="color:{{section.settings.color_text}};" {% if section.settings.full-width_image -%} style="position: absolute; top: 20%; "{%- endif %}>
+        {% render 'section-header',
+          heading: collection.title,
+          subheading: collection_description,
+          classes: 'section-header--large section-header--center',
+          color_header_mobile:section.settings.color_text_mobile,
+          color_description_mobile:section.settings.color_text_mobile,
+        %}
+      </div>
+
+      {% if show_collection_image and collection.image %}
+        <div class="collection__header-image-wrapper collection_banner_for_desktop" {% if section.settings.full-width_image -%} style="width: 100%;"{%- endif %}>
+          {% render 'image' with
+            image: collection.image,
+            wrapper_class: 'lazyload collection__header-image',
+            disable_style: disable_image_style
+          %}
+        </div>
+      {% endif %}
+  	   {% if show_collection_image and section.settings.mobile_image != blank %}
+        <div class="collection__header-image-wrapper collection_banner_for_mobile" style="display:none" {% if section.settings.full-width_image -%} style="width: 100%; margin-top:0px"{%- endif %}>
+          {% render 'image' with
+            image: {{section.settings.mobile_image}},
+            wrapper_class: 'lazyload collection__header-image',
+            disable_style: disable_image_style,
+            color_header_mobile:section.settings.color_text_mobile,
+         	color_description_mobile:section.settings.color_text_mobile,
+          %}
+        </div>
+      {% endif %}	
+  	{%- endif %}
+    </header>
+  </div>
+</div>
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=LKpY5Y"></script>
+
+
+{% schema %}
+{
+  "name": "t:sections.main_collection_banner.name",
+  "class": "collection-section",
+  "settings": [
+    {
+      "id": "show_collection_image",
+      "type": "checkbox",
+      "label": "t:sections.main_collection_banner.settings.show_collection_image.label",
+      "default": false
+    },
+	  {
+      "id": "full-width_image",
+      "type": "checkbox",
+      "label": "banner full width",
+      "default": false
+    },
+    {
+      "id": "mobile_image",
+      "type": "image_picker",
+       "label": "t:sections.slideshow.blocks.slide.settings.mobile_image.label"
+     },
+    {
+      "id": "collection_image_aspect_ratio",
+      "type": "select",
+      "label": "t:sections.main_collection_banner.settings.collection_image_aspect_ratio.label",
+      "options": [
+        { "label": "t:sections.main_collection_banner.settings.collection_image_aspect_ratio.options__1", "value": "natural" },
+        { "label": "t:sections.main_collection_banner.settings.collection_image_aspect_ratio.options__2", "value": "square" },
+        { "label": "t:sections.main_collection_banner.settings.collection_image_aspect_ratio.options__3", "value": "landscape" },
+        { "label": "t:sections.main_collection_banner.settings.collection_image_aspect_ratio.options__4", "value": "portrait" }
+      ],
+      "default": "natural"
+    },
+    {
+      "id": "show_collection_description",
+      "type": "checkbox",
+      "label": "t:sections.main_collection_banner.settings.show_collection_description.label",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "text_max_width",
+      "label": "t:sections.main_collection_banner.settings.text_max_width.label",
+      "min": 24,
+      "max": 48,
+      "step": 1,
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "text_max_width_mobile",
+      "label": "text_max_width_mobile",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "default": 20
+    },
+
+
+    {
+            "id": "color_text",
+            "type": "color",
+            "label": "t:sections.slideshow.blocks.slide.settings.color_text.label",
+            "default": "#000000"
+    },
+	 {
+            "id": "color_text_mobile",
+            "type": "color",
+            "label": "Text for mobile",
+            "default": "#000000"
+    }
+
+  ]
+}
+{% endschema %}

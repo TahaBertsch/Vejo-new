@@ -1,0 +1,44 @@
+{% assign metaNutrition = product.metafields.pdp_nutrition %}
+{% assign nutrition_title = metaNutrition.nutrition_title %}
+{% assign nutrition_breakdown = metaNutrition.nutrition_breakdown %}
+{% assign nutrition_images = metaNutrition.nutrition_images %}
+{% assign nutrition_disclaimer = metaNutrition.nutrition_disclaimer %}
+{% assign nutrition_facts_image = metaNutrition.nutrition_facts_image %}
+
+<div class="snippet snippet-nutritional-facts snippet-nutrition-facts-{{product.handle}}">
+  <div class="snippet-content">
+    <div class="sctn-header">
+      <h2>
+        {%- if nutrition_title -%}
+          {{ nutrition_title }}
+        {%- else -%}
+          Nutritional information
+        {%- endif -%}
+      </h2>
+    </div>
+  
+    <div class="nutrition-wrp">
+      <div class="nutritional-breakdown">
+        {{ nutrition_breakdown }}
+      </div>
+  
+      <div class="icons-wrp">
+        {{ nutrition_images }}
+      </div>
+      <p class="nutrition-disclaimer">{{ nutrition_disclaimer }}</p>
+      {%- if nutrition_facts_image -%}
+        <div class="nutrition-popup-wrp">
+          <h4 class="nutrition-pop">See full nutrition fact panel</h4>
+          <div class="nutrition-popup">
+            <div class="nutrition-facts-wrp">
+              <div class="nutrition-facts">
+                <div class="close-nutrition-facts"></div>
+                <img src="{{ nutrition_facts_image }}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
