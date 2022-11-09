@@ -117,22 +117,36 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
   </html>
   
   <script>
-    function getRechargeInfo(email){
-      $.ajax({
-        method:'POST',
-        url: "https://shopify-stage.vejo.com/getrechargeinfo",
-        data: {
-          "email": email.replace("+", "%2B"),
-          "shopify_id": "" 
-        },
-        success: function(result){
-          if(result['error_desc'] === ''){
+function getRechargeInfo(email, redirectUrl){
+        $.ajax({
+          method:'POST',
+          url: "https://shopify-stage.vejo.com/getrechargeinfo",
+          data: {
+            "email": email.replace("+", "%2B"),
+            "shopify_id": "" 
+          },
+          success: function(result){
             localStorage.setItem("rechargeInfo", JSON.stringify(result))
-            window.location.href = "https://www.vejo.com/pages/myaccount#/"
-          }
-        }
-      });
-    }
+            if (window.location.href=="https://www.vejo.com/pages/subscription-builder") {
+          window.location.href = redirectUrl;
+              console.log("redirectUrl " , redirectUrl)
+              
+          setTimeout(() => {
+          window.location.href = "https://www.vejo.com/pages/subscription-builder";
+          localStorage.setItem('userLoggedIn', 'true');
+            
+          }, "1000")
+              }
+            else {
+                        window.location.href = redirectUrl;
+
+            }
+            // setTimeout(function() {	
+            //   $(".auth0-form__box").removeAttr("hidden")
+            // }, 2000)
+          },
+        });
+      }
     
     function showLoader(text) {
       $('.loading-overlay-bg').css('display','flex')
@@ -247,8 +261,7 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
       }
     }
           async function checkout2() {
-      let subs = await checkCart()
-          console.log("subs" , subs)
+
     
         {% if customer %}
           window.location.href = reChargeProcessCart2()
