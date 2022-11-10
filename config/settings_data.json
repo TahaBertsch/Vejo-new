@@ -1,1 +1,682 @@
-{"current":{"shipping_banner":"Buy now and get free shipping","discount_code":"FREESHIP","checking_out_message":"Applying free shipping...","pack_image":"shopify:\/\/shop_images\/8-pack.png","pack_name":"Welcome Sampler","hero_image":"shopify:\/\/shop_images\/high-quality-nutrition-meets-portability.jpg","hero_ratio":"131.99","default_color":"2\/Neon Pink","shipping_banner_bs":"Special Welcome Offer: $99 + Free Shipping<br>Choose Your Blender Color and Free Blends","discount_code_bs":"CHOOSEVEJOSK","checking_out_message_bs":"Applying free blends and free shipping to your order...","price_bs":"$99","hero_font_size_bs":"18px","hero_font_weight_bs":"normal","start_now_bs":"#f9475b","buy_now_bs":"#359846","hero_image_bs":"shopify:\/\/shop_images\/vejoHeroLineup_06.jpg","hero_ratio_bs":"132","default_color_bs":"1\/Black","default_blend_selector_bs":"plus_minus","color_background_body":"#ffffff","color_border":"#dddde1","color_overlay":"#181818","color_text":"#181818","color_text_link":"#1d1d1d","color_header_bg":"#ffffff","color_header_text":"#181818","color_background_footer":"#F4F4F4","color_text_footer":"#1D1D1D","color_background_button":"#000000","color_background_contrast":"#f8f8f8","color_text_contrast":"#000000","color_border_contrast":"#d8dade","color_background_button_contrast":"#1C2232","color_text_button_contrast":"#ffffff","color_text_link_contrast":"#000000","color_background_popover":"#fdfdfd","color_text_popover":"#1c2232","color_border_popover":"#c2c5cc","color_background_button_popover":"#ffffff","color_text_button_popover":"#131313","font_logo":"abril_fatface_n4","capitalize_logo":true,"logo_letter_spacing":0,"logo_base_size":31,"font_heading":"cabin_n6","capitalize_headings":false,"heading_letter_spacing":0,"heading_base_size":40,"font_body":"ibm_plex_sans_n4","body_letter_spacing":0,"body_base_size":18,"capitalize_product_title":true,"product_title_letter_spacing":-25,"enable_page_transitions":false,"enable_sticky_header":true,"button_style":"uppercase","button_shape":"48px","swatch_options":"Color","chip_options":"Size, Pack Size","variant_titles":"Limited Metallic, Mind Green, Green, Red, Yellow, Ultramarine, Olive, Metallic Rose Gold, Metallic Graphite, Metallic Pearl White, Orange","sale_badge_includes_percent":true,"enable_card_hover_options":true,"enable_quick_add":true,"show_quick_add_quantity":false,"show_quick_cart_after_quick_add":true,"cart_show_notes":false,"search_show_articles":true,"search_show_pages":false,"social_facebook_link":"https:\/\/facebook.com\/myvejo","social_instagram_link":"https:\/\/instagram.com\/vejo","social_pinterest_link":"","social_snapchat_link":"","social_tiktok_link":"","social_tumblr_link":"","social_twitter_link":"","social_youtube_link":"","favicon":"shopify:\/\/shop_images\/V-favicon.png","checkout_logo_image":"shopify:\/\/shop_images\/VEJO_LOGO-2020-black-rgb-01.png","checkout_heading_font":"Roboto","checkout_accent_color":"#ababab","checkout_button_color":"#1d8c28","checkout_error_color":"#ff5100","font_italic":"cabin_n6","variant_popup_page":"size-guide","color_border_header":"#363636","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"ebcbec80-c6d0-4fd6-bdf3-9bb3856b2dd1":{"type":"announcement","settings":{"title":"Join the Vejo Wellness Advocate Program Now","link":"shopify:\/\/pages\/vejo-advocate-program","color_background":"#ffd75b","color_text":"#000000"}},"announcement-bar-0":{"type":"announcement","settings":{"title":"100% Satisfaction Guarantee | Want Free US Shipping? Spend $75+","link":"","color_background":"#ffd75b","color_text":"#000000"}},"5c2cf9c7-fe5f-4b90-8cf9-47e70ad9d7f2":{"type":"announcement","settings":{"title":"Monthly Subscribers Save 10% + Free Shipping","link":"","color_background":"#ffd75b","color_text":"#000000"}}},"block_order":["ebcbec80-c6d0-4fd6-bdf3-9bb3856b2dd1","announcement-bar-0","5c2cf9c7-fe5f-4b90-8cf9-47e70ad9d7f2"],"settings":{"timing":3}},"header":{"type":"header","settings":{"logo":"shopify:\/\/shop_images\/VEJO_LOGO_2020_black_cmyk_Logo.jpg","logo_max_width":100,"menu":"new-menu","secondary_menu":"","style":"inline","navigation_position":"inline","logo_position":"left","menu_position":"center","enable_transparent_home":false,"color_text_transparent":"#ffffff","color_icon_transparent":"#ffffff","color_count_transparent":"#181818","color_border_transparent":"#ffffff","opacity_border_transparent":20}},"footer":{"type":"footer","blocks":{"ea95832f-d4ee-4602-bfd1-0c627787c6fb":{"type":"menu","settings":{"title":"SHOP","link_list":"shop-footer"}},"e80df371-65f5-441e-87fd-243179dcfb35":{"type":"menu","disabled":true,"settings":{"title":"ABOUT VEJO","link_list":""}},"eff06a7c-5c10-4dc1-9f36-ea8d9c5c78a7":{"type":"menu","settings":{"title":"SUPPORT","link_list":"support"}},"4f7d6b9a-34dc-486a-ad63-847ad7718806":{"type":"newsletter","settings":{"title":"VEJO NEWSLETTER","text":"<p>Join the Vejo mailing list for product updates, new blend releases, and more.<\/p>"}}},"block_order":["ea95832f-d4ee-4602-bfd1-0c627787c6fb","e80df371-65f5-441e-87fd-243179dcfb35","eff06a7c-5c10-4dc1-9f36-ea8d9c5c78a7","4f7d6b9a-34dc-486a-ad63-847ad7718806"],"settings":{"show_locale_selector":true,"show_currency_selector":true,"show_social_icons":true,"show_payment_icons":true,"text_alignment":"left","text_color":"#000000","gradient_background":"#F5C942"}},"popup":{"type":"popup","blocks":{"popup-0":{"type":"heading","settings":{"title":"Subscribe","subheading":"<p>We only send emails once or twice a month and only about good things.<\/p>"}},"popup-1":{"type":"newsletter_signup","settings":{}}},"block_order":["popup-0","popup-1"],"settings":{"enable_popup":false,"image_position":"center","color_text":"#ffffff","color_text_button":"#ffffff","color_background_button":"#1c2232","color_overlay":"#b75c4c","overlay_opacity":100}}},"content_for_index":[],"blocks":{"10605408327587305396":{"type":"shopify:\/\/apps\/easygift-auto-add-to-cart\/blocks\/app-embed\/0f7d4f74-1e89-4820-aec4-6564d7e535d2","disabled":false,"settings":{"version":"v3"}},"855628211100114053":{"type":"shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507","disabled":false,"settings":{}}}},"presets":{"Chic":{"color_background_body":"#ffffff","color_border":"#d4d4d4","color_overlay":"#181818","color_text":"#1d1d1d","color_text_link":"#000000","color_header_bg":"#000000","color_header_text":"#ffffff","color_background_footer":"#F4F4F4","color_text_footer":"#1D1D1D","color_background_button":"#191919","color_background_contrast":"#f4f4f4","color_text_contrast":"#000000","color_border_contrast":"#d4d4d4","color_background_button_contrast":"#000000","color_text_button_contrast":"#ffffff","color_text_link_contrast":"#000000","color_background_popover":"#131313","color_border_popover":"#3D3D3D","color_background_button_popover":"#ffffff","color_text_button_popover":"#131313","font_logo":"frutiger_serif_n7","capitalize_logo":false,"logo_letter_spacing":0,"logo_base_size":37,"font_heading":"frutiger_serif_n7","heading_letter_spacing":-25,"heading_base_size":48,"font_body":"assistant_n4","capitalize_product_title":true,"product_title_letter_spacing":25,"button_shape":"0","swatch_options":"Color","variant_popup_page":"size-guide","social_twitter_link":"","social_facebook_link":"","social_pinterest_link":"","social_instagram_link":"","social_snapchat_link":"","social_tumblr_link":"","color_border_header":"#363636","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"announcement-bar-0":{"type":"announcement","settings":{"title":"Announce something here","link":"https:\/\/fluorescent.co\/help\/spark\/announcement-bar#set-up-the-announcement-bar","color_background":"#ffffff","color_text":"#000000"}},"6babe932-3e75-48f4-8e66-f0777108ae33":{"type":"announcement","settings":{"title":"Announce something here","link":"https:\/\/fluorescent.co\/help\/spark\/announcement-bar#set-up-the-announcement-bar","color_background":"#ffffff","color_text":"#191919"}}},"block_order":["announcement-bar-0","6babe932-3e75-48f4-8e66-f0777108ae33"],"settings":{"timing":4}},"header":{"type":"header","settings":{"logo_max_width":200,"menu":"main-menu","style":"icon","navigation_position":"inline","logo_position":"center","enable_transparent_home":true,"color_text_transparent":"#ffffff","color_icon_transparent":"#ffffff","color_count_transparent":"#000000","color_border_transparent":"#ffffff","opacity_border_transparent":0}},"footer":{"type":"footer","blocks":{"newsletter-1":{"type":"newsletter","settings":{"title":"Newsletter","text":"<p>Subscribe for store updates and discounts.<\/p>"}}},"block_order":["newsletter-1"],"settings":{"show_locale_selector":true,"show_currency_selector":true,"show_social_icons":true,"show_payment_icons":true}},"popup":{"type":"popup","blocks":{"popup-0":{"type":"heading","settings":{"title":"Subscribe","subheading":"<p>We only send emails once or twice a month and only about good things.<\/p>"}},"popup-1":{"type":"newsletter_signup","settings":{}}},"block_order":["popup-0","popup-1"],"settings":{"enable_popup":true,"image_position":"center","color_text":"#ffffff","color_text_button":"#1C2232","color_background_button":"#ffffff","color_overlay":"#000000","overlay_opacity":10}}}},"Clean":{"color_background_body":"#ffffff","color_border":"#d4d4d4","color_overlay":"#181818","color_text":"#101010","color_text_link":"#000000","color_header_bg":"#ffffff","color_header_text":"#080808","color_background_footer":"#1d1d1d","color_text_footer":"#ffffff","color_background_button":"#181818","color_text_button":"#ffffff","color_background_contrast":"#1d1d1d","color_text_contrast":"#ffffff","color_border_contrast":"#3b3b3b","color_background_button_contrast":"#393939","color_text_button_contrast":"#ffffff","color_text_link_contrast":"#ffffff","color_background_popover":"#131313","color_border_popover":"#3D3D3D","color_background_button_popover":"#ffffff","color_text_button_popover":"#131313","font_logo":"zurich_extended_n9","capitalize_logo":true,"logo_letter_spacing":75,"logo_base_size":40,"font_heading":"zurich_extended_n8","capitalize_headings":true,"heading_letter_spacing":0,"heading_base_size":40,"font_body":"ibm_plex_sans_n4","body_letter_spacing":0,"body_base_size":18,"capitalize_product_title":true,"product_title_letter_spacing":25,"button_style":"uppercase","button_shape":"0","swatch_options":"Material","enable_card_hover_options":true,"social_facebook_link":"x","social_instagram_link":"x","social_linkedin_link":"x","social_pinterest_link":"x","social_snapchat_link":"x","social_tiktok_link":"x","social_tumblr_link":"x","social_twitter_link":"x","variant_popup_page":"size-guide","color_border_header":"#363636","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"announcement-bar-0":{"type":"announcement","settings":{"title":"Announce something here","link":"https:\/\/fluorescent.co\/help\/spark\/announcement-bar#set-up-the-announcement-bar","color_background":"#292929","color_text":"#ffffff"}},"announcement-bar-1":{"type":"announcement","settings":{"title":"Announce something here","link":"https:\/\/fluorescent.co\/help\/spark\/announcement-bar#set-up-the-announcement-bar","color_background":"#292929","color_text":"#ffffff"}}},"block_order":["announcement-bar-0","announcement-bar-1"],"settings":{"timing":4}},"header":{"type":"header","settings":{"logo_max_width":200,"menu":"main-menu","secondary_menu":"","style":"inline","navigation_position":"below","logo_position":"center","enable_transparent_home":false,"color_text_transparent":"#ffffff","color_icon_transparent":"#ffffff","color_count_transparent":"#000000","color_border_transparent":"#ffffff","opacity_border_transparent":30}},"footer":{"type":"footer","blocks":{"newsletter-1":{"type":"newsletter","settings":{"title":"Newsletter","text":"<p>Subscribe for store updates and discounts.<\/p>"}}},"block_order":["newsletter-1"],"settings":{"show_locale_selector":true,"show_currency_selector":true,"show_social_icons":true,"show_payment_icons":true}},"popup":{"type":"popup","blocks":{"popup-0":{"type":"heading","settings":{"title":"Subscribe","subheading":"<p>We only send emails once or twice a month and only about good things.<\/p>"}},"popup-1":{"type":"newsletter_signup","settings":{}}},"block_order":["popup-0","popup-1"],"settings":{"enable_popup":true,"image_position":"center","color_text":"#ffffff","color_text_button":"#000000","color_background_button":"#ffffff","color_overlay":"#717171","overlay_opacity":100}}}},"Minimal":{"color_border":"#dddde1","color_text_link":"#b75c4c","color_background_button":"#b75a4e","color_border_contrast":"#d8dade","color_background_button_contrast":"#1C2232","color_text_popover":"#1c2232","color_background_popover":"#fdfdfd","color_border_popover":"#c2c5cc","font_logo":"abril_fatface_n4","capitalize_logo":true,"logo_letter_spacing":0,"logo_base_size":40,"font_heading":"georgia_pro_n7","capitalize_headings":false,"heading_letter_spacing":0,"heading_base_size":46,"font_body":"ibm_plex_sans_n4","body_letter_spacing":0,"body_base_size":18,"variant_popup_page":"size-guide","social_twitter_link":"","social_facebook_link":"","social_pinterest_link":"","social_instagram_link":"","social_snapchat_link":"","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"announcement-bar-0":{"type":"announcement","settings":{"title":"Announce something here","link":"https:\/\/fluorescent.co\/help\/spark\/announcement-bar#set-up-the-announcement-bar","color_background":"#1c2232","color_text":"#ffffff"}},"edba0405-b6f3-4251-856a-bce93ff6b8f3":{"type":"announcement","settings":{"title":"Announce something here","link":"https:\/\/fluorescent.co\/help\/spark\/announcement-bar#set-up-the-announcement-bar","color_background":"#1c2232","color_text":"#ffffff"}}},"block_order":["announcement-bar-0","edba0405-b6f3-4251-856a-bce93ff6b8f3"],"settings":{"timing":4}},"header":{"type":"header","settings":{"logo_max_width":200,"menu":"main-menu","secondary_menu":"","style":"icon","navigation_position":"below","logo_position":"center","enable_transparent_home":true,"color_text_transparent":"#ffffff","color_icon_transparent":"#ffffff","color_count_transparent":"#000000","color_border_transparent":"#ffffff","opacity_border_transparent":20}},"footer":{"type":"footer","blocks":{"newsletter-1":{"type":"newsletter","settings":{"title":"Newsletter","text":"<p>Subscribe for store updates and discounts.<\/p>"}}},"block_order":["newsletter-1"],"settings":{"show_locale_selector":true,"show_currency_selector":true,"show_social_icons":true,"show_payment_icons":true}},"popup":{"type":"popup","blocks":{"popup-0":{"type":"heading","settings":{"title":"Subscribe","subheading":"<p>We only send emails once or twice a month and only about good things.<\/p>"}},"popup-1":{"type":"newsletter_signup","settings":{}}},"block_order":["popup-0","popup-1"],"settings":{"enable_popup":true,"image_position":"center","color_text":"#ffffff","color_text_button":"#ffffff","color_background_button":"#1c2232","color_overlay":"#b75c4c","overlay_opacity":100}}}}}}
+{
+  "current": {
+    "shipping_banner": "Buy now and get free shipping",
+    "discount_code": "FREESHIP",
+    "checking_out_message": "Applying free shipping...",
+    "pack_image": "shopify:\/\/shop_images\/8-pack.png",
+    "pack_name": "Welcome Sampler",
+    "hero_image": "shopify:\/\/shop_images\/high-quality-nutrition-meets-portability.jpg",
+    "hero_ratio": "131.99",
+    "default_color": "2\/Neon Pink",
+    "shipping_banner_bs": "Special Welcome Offer: $99 + Free Shipping<br>Choose Your Blender Color and Free Blends",
+    "discount_code_bs": "CHOOSEVEJOSK",
+    "checking_out_message_bs": "Applying free blends and free shipping to your order...",
+    "price_bs": "$99",
+    "hero_font_size_bs": "18px",
+    "hero_font_weight_bs": "normal",
+    "start_now_bs": "#f9475b",
+    "buy_now_bs": "#359846",
+    "hero_image_bs": "shopify:\/\/shop_images\/vejoHeroLineup_06.jpg",
+    "hero_ratio_bs": "132",
+    "default_color_bs": "1\/Black",
+    "default_blend_selector_bs": "plus_minus",
+    "color_background_body": "#ffffff",
+    "color_border": "#dddde1",
+    "color_overlay": "#181818",
+    "color_text": "#181818",
+    "color_text_link": "#1d1d1d",
+    "color_header_bg": "#ffffff",
+    "color_header_text": "#181818",
+    "color_background_footer": "#F4F4F4",
+    "color_text_footer": "#1D1D1D",
+    "color_background_button": "#000000",
+    "color_background_contrast": "#f8f8f8",
+    "color_text_contrast": "#000000",
+    "color_border_contrast": "#d8dade",
+    "color_background_button_contrast": "#1C2232",
+    "color_text_button_contrast": "#ffffff",
+    "color_text_link_contrast": "#000000",
+    "color_background_popover": "#fdfdfd",
+    "color_text_popover": "#1c2232",
+    "color_border_popover": "#c2c5cc",
+    "color_background_button_popover": "#ffffff",
+    "color_text_button_popover": "#131313",
+    "font_logo": "abril_fatface_n4",
+    "capitalize_logo": true,
+    "logo_letter_spacing": 0,
+    "logo_base_size": 31,
+    "font_heading": "cabin_n6",
+    "capitalize_headings": false,
+    "heading_letter_spacing": 0,
+    "heading_base_size": 40,
+    "font_body": "ibm_plex_sans_n4",
+    "body_letter_spacing": 0,
+    "body_base_size": 18,
+    "capitalize_product_title": true,
+    "product_title_letter_spacing": -25,
+    "enable_page_transitions": false,
+    "enable_sticky_header": true,
+    "button_style": "uppercase",
+    "button_shape": "48px",
+    "swatch_options": "Color",
+    "chip_options": "Size, Pack Size",
+    "variant_titles": "Limited Metallic, Mind Green, Green, Red, Yellow, Ultramarine, Olive, Metallic Rose Gold, Metallic Graphite, Metallic Pearl White, Orange",
+    "sale_badge_includes_percent": true,
+    "enable_card_hover_options": true,
+    "enable_quick_add": true,
+    "show_quick_add_quantity": false,
+    "show_quick_cart_after_quick_add": true,
+    "cart_show_notes": false,
+    "search_show_articles": true,
+    "search_show_pages": false,
+    "social_facebook_link": "https:\/\/facebook.com\/myvejo",
+    "social_instagram_link": "https:\/\/instagram.com\/vejo",
+    "social_pinterest_link": "",
+    "social_snapchat_link": "",
+    "social_tiktok_link": "",
+    "social_tumblr_link": "",
+    "social_twitter_link": "",
+    "social_youtube_link": "",
+    "favicon": "shopify:\/\/shop_images\/V-favicon.png",
+    "checkout_logo_image": "shopify:\/\/shop_images\/VEJO_LOGO-2020-black-rgb-01.png",
+    "checkout_heading_font": "Roboto",
+    "checkout_accent_color": "#ababab",
+    "checkout_button_color": "#1d8c28",
+    "checkout_error_color": "#ff5100",
+    "font_italic": "cabin_n6",
+    "variant_popup_page": "size-guide",
+    "color_border_header": "#363636",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "ebcbec80-c6d0-4fd6-bdf3-9bb3856b2dd1": {
+            "type": "announcement",
+            "settings": {
+              "title": "Join the Vejo Wellness Advocate Program Now",
+              "link": "shopify:\/\/pages\/vejo-advocate-program",
+              "color_background": "#ffd75b",
+              "color_text": "#000000"
+            }
+          },
+          "announcement-bar-0": {
+            "type": "announcement",
+            "settings": {
+              "title": "100% Satisfaction Guarantee | Want Free US Shipping? Spend $75+",
+              "link": "",
+              "color_background": "#ffd75b",
+              "color_text": "#000000"
+            }
+          },
+          "5c2cf9c7-fe5f-4b90-8cf9-47e70ad9d7f2": {
+            "type": "announcement",
+            "settings": {
+              "title": "Monthly Subscribers Save 10% + Free Shipping",
+              "link": "",
+              "color_background": "#ffd75b",
+              "color_text": "#000000"
+            }
+          }
+        },
+        "block_order": [
+          "ebcbec80-c6d0-4fd6-bdf3-9bb3856b2dd1",
+          "announcement-bar-0",
+          "5c2cf9c7-fe5f-4b90-8cf9-47e70ad9d7f2"
+        ],
+        "settings": {
+          "timing": 3
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/VEJO_LOGO_2020_black_cmyk_Logo.jpg",
+          "logo_max_width": 100,
+          "menu": "new-menu",
+          "secondary_menu": "",
+          "style": "inline",
+          "navigation_position": "inline",
+          "logo_position": "left",
+          "menu_position": "center",
+          "enable_transparent_home": false,
+          "color_text_transparent": "#ffffff",
+          "color_icon_transparent": "#ffffff",
+          "color_count_transparent": "#181818",
+          "color_border_transparent": "#ffffff",
+          "opacity_border_transparent": 20
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "ea95832f-d4ee-4602-bfd1-0c627787c6fb": {
+            "type": "menu",
+            "settings": {
+              "title": "SHOP",
+              "link_list": "shop-footer"
+            }
+          },
+          "e80df371-65f5-441e-87fd-243179dcfb35": {
+            "type": "menu",
+            "disabled": true,
+            "settings": {
+              "title": "ABOUT VEJO",
+              "link_list": ""
+            }
+          },
+          "eff06a7c-5c10-4dc1-9f36-ea8d9c5c78a7": {
+            "type": "menu",
+            "settings": {
+              "title": "SUPPORT",
+              "link_list": "support"
+            }
+          },
+          "4f7d6b9a-34dc-486a-ad63-847ad7718806": {
+            "type": "newsletter",
+            "settings": {
+              "title": "VEJO NEWSLETTER",
+              "text": "<p>Join the Vejo mailing list for product updates, new blend releases, and more.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "ea95832f-d4ee-4602-bfd1-0c627787c6fb",
+          "e80df371-65f5-441e-87fd-243179dcfb35",
+          "eff06a7c-5c10-4dc1-9f36-ea8d9c5c78a7",
+          "4f7d6b9a-34dc-486a-ad63-847ad7718806"
+        ],
+        "settings": {
+          "show_locale_selector": true,
+          "show_currency_selector": true,
+          "show_social_icons": true,
+          "show_payment_icons": true,
+          "text_alignment": "left",
+          "text_color": "#000000",
+          "gradient_background": "#F5C942"
+        }
+      },
+      "popup": {
+        "type": "popup",
+        "blocks": {
+          "popup-0": {
+            "type": "heading",
+            "settings": {
+              "title": "Subscribe",
+              "subheading": "<p>We only send emails once or twice a month and only about good things.<\/p>"
+            }
+          },
+          "popup-1": {
+            "type": "newsletter_signup",
+            "settings": {
+            }
+          }
+        },
+        "block_order": [
+          "popup-0",
+          "popup-1"
+        ],
+        "settings": {
+          "enable_popup": false,
+          "image_position": "center",
+          "color_text": "#ffffff",
+          "color_text_button": "#ffffff",
+          "color_background_button": "#1c2232",
+          "color_overlay": "#b75c4c",
+          "overlay_opacity": 100
+        }
+      },
+      "subscription-counter": {
+        "type": "subscription-counter",
+        "settings": {
+        }
+      }
+    },
+    "content_for_index": [
+
+    ],
+    "blocks": {
+      "10605408327587305396": {
+        "type": "shopify:\/\/apps\/easygift-auto-add-to-cart\/blocks\/app-embed\/0f7d4f74-1e89-4820-aec4-6564d7e535d2",
+        "disabled": false,
+        "settings": {
+          "version": "v3"
+        }
+      },
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "12561304603952093179": {
+        "type": "shopify:\/\/apps\/bevy-share-cart-social-link\/blocks\/app-embed.js\/6f179945-6ca4-4ba4-919e-6daa3f1c383b",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
+  },
+  "presets": {
+    "Chic": {
+      "color_background_body": "#ffffff",
+      "color_border": "#d4d4d4",
+      "color_overlay": "#181818",
+      "color_text": "#1d1d1d",
+      "color_text_link": "#000000",
+      "color_header_bg": "#000000",
+      "color_header_text": "#ffffff",
+      "color_background_footer": "#F4F4F4",
+      "color_text_footer": "#1D1D1D",
+      "color_background_button": "#191919",
+      "color_background_contrast": "#f4f4f4",
+      "color_text_contrast": "#000000",
+      "color_border_contrast": "#d4d4d4",
+      "color_background_button_contrast": "#000000",
+      "color_text_button_contrast": "#ffffff",
+      "color_text_link_contrast": "#000000",
+      "color_background_popover": "#131313",
+      "color_border_popover": "#3D3D3D",
+      "color_background_button_popover": "#ffffff",
+      "color_text_button_popover": "#131313",
+      "font_logo": "frutiger_serif_n7",
+      "capitalize_logo": false,
+      "logo_letter_spacing": 0,
+      "logo_base_size": 37,
+      "font_heading": "frutiger_serif_n7",
+      "heading_letter_spacing": -25,
+      "heading_base_size": 48,
+      "font_body": "assistant_n4",
+      "capitalize_product_title": true,
+      "product_title_letter_spacing": 25,
+      "button_shape": "0",
+      "swatch_options": "Color",
+      "variant_popup_page": "size-guide",
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_snapchat_link": "",
+      "social_tumblr_link": "",
+      "color_border_header": "#363636",
+      "sections": {
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "blocks": {
+            "announcement-bar-0": {
+              "type": "announcement",
+              "settings": {
+                "title": "Announce something here",
+                "link": "https:\/\/fluorescent.co\/help\/spark\/announcement-bar#set-up-the-announcement-bar",
+                "color_background": "#ffffff",
+                "color_text": "#000000"
+              }
+            },
+            "6babe932-3e75-48f4-8e66-f0777108ae33": {
+              "type": "announcement",
+              "settings": {
+                "title": "Announce something here",
+                "link": "https:\/\/fluorescent.co\/help\/spark\/announcement-bar#set-up-the-announcement-bar",
+                "color_background": "#ffffff",
+                "color_text": "#191919"
+              }
+            }
+          },
+          "block_order": [
+            "announcement-bar-0",
+            "6babe932-3e75-48f4-8e66-f0777108ae33"
+          ],
+          "settings": {
+            "timing": 4
+          }
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "logo_max_width": 200,
+            "menu": "main-menu",
+            "style": "icon",
+            "navigation_position": "inline",
+            "logo_position": "center",
+            "enable_transparent_home": true,
+            "color_text_transparent": "#ffffff",
+            "color_icon_transparent": "#ffffff",
+            "color_count_transparent": "#000000",
+            "color_border_transparent": "#ffffff",
+            "opacity_border_transparent": 0
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "newsletter-1": {
+              "type": "newsletter",
+              "settings": {
+                "title": "Newsletter",
+                "text": "<p>Subscribe for store updates and discounts.<\/p>"
+              }
+            }
+          },
+          "block_order": [
+            "newsletter-1"
+          ],
+          "settings": {
+            "show_locale_selector": true,
+            "show_currency_selector": true,
+            "show_social_icons": true,
+            "show_payment_icons": true,
+            "text_color": "#000000"
+          }
+        },
+        "popup": {
+          "type": "popup",
+          "blocks": {
+            "popup-0": {
+              "type": "heading",
+              "settings": {
+                "title": "Subscribe",
+                "subheading": "<p>We only send emails once or twice a month and only about good things.<\/p>"
+              }
+            },
+            "popup-1": {
+              "type": "newsletter_signup",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "popup-0",
+            "popup-1"
+          ],
+          "settings": {
+            "enable_popup": true,
+            "image_position": "center",
+            "color_text": "#ffffff",
+            "color_text_button": "#1C2232",
+            "color_background_button": "#ffffff",
+            "color_overlay": "#000000",
+            "overlay_opacity": 10
+          }
+        }
+      }
+    },
+    "Clean": {
+      "color_background_body": "#ffffff",
+      "color_border": "#d4d4d4",
+      "color_overlay": "#181818",
+      "color_text": "#101010",
+      "color_text_link": "#000000",
+      "color_header_bg": "#ffffff",
+      "color_header_text": "#080808",
+      "color_background_footer": "#1d1d1d",
+      "color_text_footer": "#ffffff",
+      "color_background_button": "#181818",
+      "color_text_button": "#ffffff",
+      "color_background_contrast": "#1d1d1d",
+      "color_text_contrast": "#ffffff",
+      "color_border_contrast": "#3b3b3b",
+      "color_background_button_contrast": "#393939",
+      "color_text_button_contrast": "#ffffff",
+      "color_text_link_contrast": "#ffffff",
+      "color_background_popover": "#131313",
+      "color_border_popover": "#3D3D3D",
+      "color_background_button_popover": "#ffffff",
+      "color_text_button_popover": "#131313",
+      "font_logo": "zurich_extended_n9",
+      "capitalize_logo": true,
+      "logo_letter_spacing": 75,
+      "logo_base_size": 40,
+      "font_heading": "zurich_extended_n8",
+      "capitalize_headings": true,
+      "heading_letter_spacing": 0,
+      "heading_base_size": 40,
+      "font_body": "ibm_plex_sans_n4",
+      "body_letter_spacing": 0,
+      "body_base_size": 18,
+      "capitalize_product_title": true,
+      "product_title_letter_spacing": 25,
+      "button_style": "uppercase",
+      "button_shape": "0",
+      "swatch_options": "Material",
+      "enable_card_hover_options": true,
+      "social_facebook_link": "x",
+      "social_instagram_link": "x",
+      "social_linkedin_link": "x",
+      "social_pinterest_link": "x",
+      "social_snapchat_link": "x",
+      "social_tiktok_link": "x",
+      "social_tumblr_link": "x",
+      "social_twitter_link": "x",
+      "variant_popup_page": "size-guide",
+      "color_border_header": "#363636",
+      "sections": {
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "blocks": {
+            "announcement-bar-0": {
+              "type": "announcement",
+              "settings": {
+                "title": "Announce something here",
+                "link": "https:\/\/fluorescent.co\/help\/spark\/announcement-bar#set-up-the-announcement-bar",
+                "color_background": "#292929",
+                "color_text": "#ffffff"
+              }
+            },
+            "announcement-bar-1": {
+              "type": "announcement",
+              "settings": {
+                "title": "Announce something here",
+                "link": "https:\/\/fluorescent.co\/help\/spark\/announcement-bar#set-up-the-announcement-bar",
+                "color_background": "#292929",
+                "color_text": "#ffffff"
+              }
+            }
+          },
+          "block_order": [
+            "announcement-bar-0",
+            "announcement-bar-1"
+          ],
+          "settings": {
+            "timing": 4
+          }
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "logo_max_width": 200,
+            "menu": "main-menu",
+            "secondary_menu": "",
+            "style": "inline",
+            "navigation_position": "below",
+            "logo_position": "center",
+            "enable_transparent_home": false,
+            "color_text_transparent": "#ffffff",
+            "color_icon_transparent": "#ffffff",
+            "color_count_transparent": "#000000",
+            "color_border_transparent": "#ffffff",
+            "opacity_border_transparent": 30
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "newsletter-1": {
+              "type": "newsletter",
+              "settings": {
+                "title": "Newsletter",
+                "text": "<p>Subscribe for store updates and discounts.<\/p>"
+              }
+            }
+          },
+          "block_order": [
+            "newsletter-1"
+          ],
+          "settings": {
+            "show_locale_selector": true,
+            "show_currency_selector": true,
+            "show_social_icons": true,
+            "show_payment_icons": true,
+            "text_color": "#000000"
+          }
+        },
+        "popup": {
+          "type": "popup",
+          "blocks": {
+            "popup-0": {
+              "type": "heading",
+              "settings": {
+                "title": "Subscribe",
+                "subheading": "<p>We only send emails once or twice a month and only about good things.<\/p>"
+              }
+            },
+            "popup-1": {
+              "type": "newsletter_signup",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "popup-0",
+            "popup-1"
+          ],
+          "settings": {
+            "enable_popup": true,
+            "image_position": "center",
+            "color_text": "#ffffff",
+            "color_text_button": "#000000",
+            "color_background_button": "#ffffff",
+            "color_overlay": "#717171",
+            "overlay_opacity": 100
+          }
+        }
+      }
+    },
+    "Minimal": {
+      "color_border": "#dddde1",
+      "color_text_link": "#b75c4c",
+      "color_background_button": "#b75a4e",
+      "color_border_contrast": "#d8dade",
+      "color_background_button_contrast": "#1C2232",
+      "color_text_popover": "#1c2232",
+      "color_background_popover": "#fdfdfd",
+      "color_border_popover": "#c2c5cc",
+      "font_logo": "abril_fatface_n4",
+      "capitalize_logo": true,
+      "logo_letter_spacing": 0,
+      "logo_base_size": 40,
+      "font_heading": "georgia_pro_n7",
+      "capitalize_headings": false,
+      "heading_letter_spacing": 0,
+      "heading_base_size": 46,
+      "font_body": "ibm_plex_sans_n4",
+      "body_letter_spacing": 0,
+      "body_base_size": 18,
+      "variant_popup_page": "size-guide",
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_snapchat_link": "",
+      "sections": {
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "blocks": {
+            "announcement-bar-0": {
+              "type": "announcement",
+              "settings": {
+                "title": "Announce something here",
+                "link": "https:\/\/fluorescent.co\/help\/spark\/announcement-bar#set-up-the-announcement-bar",
+                "color_background": "#1c2232",
+                "color_text": "#ffffff"
+              }
+            },
+            "edba0405-b6f3-4251-856a-bce93ff6b8f3": {
+              "type": "announcement",
+              "settings": {
+                "title": "Announce something here",
+                "link": "https:\/\/fluorescent.co\/help\/spark\/announcement-bar#set-up-the-announcement-bar",
+                "color_background": "#1c2232",
+                "color_text": "#ffffff"
+              }
+            }
+          },
+          "block_order": [
+            "announcement-bar-0",
+            "edba0405-b6f3-4251-856a-bce93ff6b8f3"
+          ],
+          "settings": {
+            "timing": 4
+          }
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "logo_max_width": 200,
+            "menu": "main-menu",
+            "secondary_menu": "",
+            "style": "icon",
+            "navigation_position": "below",
+            "logo_position": "center",
+            "enable_transparent_home": true,
+            "color_text_transparent": "#ffffff",
+            "color_icon_transparent": "#ffffff",
+            "color_count_transparent": "#000000",
+            "color_border_transparent": "#ffffff",
+            "opacity_border_transparent": 20
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "newsletter-1": {
+              "type": "newsletter",
+              "settings": {
+                "title": "Newsletter",
+                "text": "<p>Subscribe for store updates and discounts.<\/p>"
+              }
+            }
+          },
+          "block_order": [
+            "newsletter-1"
+          ],
+          "settings": {
+            "show_locale_selector": true,
+            "show_currency_selector": true,
+            "show_social_icons": true,
+            "show_payment_icons": true,
+            "text_color": "#000000"
+          }
+        },
+        "popup": {
+          "type": "popup",
+          "blocks": {
+            "popup-0": {
+              "type": "heading",
+              "settings": {
+                "title": "Subscribe",
+                "subheading": "<p>We only send emails once or twice a month and only about good things.<\/p>"
+              }
+            },
+            "popup-1": {
+              "type": "newsletter_signup",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "popup-0",
+            "popup-1"
+          ],
+          "settings": {
+            "enable_popup": true,
+            "image_position": "center",
+            "color_text": "#ffffff",
+            "color_text_button": "#ffffff",
+            "color_background_button": "#1c2232",
+            "color_overlay": "#b75c4c",
+            "overlay_opacity": 100
+          }
+        }
+      }
+    }
+  }
+}
