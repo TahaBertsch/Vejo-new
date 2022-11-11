@@ -295,7 +295,7 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40,
         "height_content": 530,
-        "marign_bottom_content": 5,
+        "marign_bottom_content": 13,
         "text_color": "#ffffff",
         "with_bottom": true,
         "button_text": "JOIN US",
